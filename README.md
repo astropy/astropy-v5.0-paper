@@ -55,34 +55,33 @@ be sent to crawfordsm@gmail.com.  -->
 Rules for Authorship
 --------------------
 
-TBD
+We invite you to become a co-author if any of the following applies to you:
 
-<!-- We would like you to become a co-author if any of the following applies to you:
+   - You have an official role in the project, as defined on http://www.astropy.org/team.html
+   - You are a Voting Member, as listed on https://www.astropy.org/team.html#votingmembers
+   - You have contributed code to the core package
+   - You have contributed to Astropy Project infrastructure, including:
+      - Sphinx plugins
+      - Pytest plugins
+      - Package template
+      - Astropy Website
+      - Learn Astropy
+   - You have contributed to one of the following Astropy coordinated affiliated packages (see http://affiliated.astropy.org/):
+      - astropy-healpix
+      - astroquery
+      - ccdproc
+      - photutils
+      - regions
+      - reproject
+      - specutils / specreduce
 
-    You have an official role in the project, as defined on http://www.astropy.org/team.html
-    You have contributed code to the core package
-    You have contributed to one of the following pieces of infrastructure:
-        Astropy-helpers
-        Package-template
-        Ci-helpers
-        Sphinx-automodapi
-        astropy tutorial
-        Website
-    You have contributed to one of the following ‘core’ affiliated packages (packages planned and developed by the Astropy core team for key functionality that may be merged into core in the future):
-        Photutils
-        Specutils
-        Regions
-        Reproject
-        ccdproc
+If you would like to be a co-author, please complete the [Google form
+here](TODO). If the above does not apply to you but you feel that you should
+still be considered for co-authorship, please complete the form and your
+application will be reviewed.
 
-If you would like to be a co-author, please complete the form [here](https://docs.google.com/forms/d/1UOA7-fqWy5aeGtW54gNFHiMvs53ahOMrfJtFJiS0fyQ/).   If the above does not apply to you but you feel that you should still be considered for co-authorship, please complete the form and your application will be reviewed.
-
-The coordination committee has determine that the author order will be
-'The Astropy Collaboration' as the first author, followed by people
-who have contributed significantly to the paper, in order of
-contribution level (or alphabetically where contribution levels are
-similar), and all other authors will then be listed alphabetically. A
-note will be included to indicate the author list and how it was
-determined. Final decisions about author order will be made by Kelle
-Cruz (on behalf of the Astropy Coordination Committee) and Steve
-Crawford (on behalf of the Paper II coordination committee). -->
+The author order will be 'The Astropy Collaboration' as the first author,
+followed by people who have contributed significantly to the paper, in order of
+contribution level (or alphabetically where contribution levels are similar),
+and all other authors will then be listed alphabetically. A note will be
+included to indicate the author list and how it was determined.
