@@ -7,14 +7,9 @@ Astropy Paper III
 Scope of the Paper
 ------------------
 
-<!-- The goal is to produce a brief and informative paper that covers major
-astropy principles not mentioned in the first paper, the core v2.0
-package, and infrastructure in the astropy project to support development
-in python.
-
-The draft of the paper can be found [here](https://github.com/astropy/astropy-v5.0-paper/blob/master-pdf/main.pdf). -->
-
-TBD
+Our goal is to produce a brief and informative description of major updates
+about the Astropy Project, drawing on relevant changes or news since 2018
+(v2.0).
 
 
 Notes on writing
@@ -27,29 +22,24 @@ Notes on writing
    `\equationname` not ``Equation``etc.
 *  Use `\astropypkg` for the astropy package, `\astropy` for the astropy
    project, `\python` not ``Python``
-<!-- *  If your subpackage was included in Paper I, then please just include a
-   note on what the package does, a reference to paper I, and any new major
-   updates to your package
-*  If your subpackage was not included, then please describe the
-   subpackage on level with what was in the first paper, and highlight any
-   major features in it. Typical length should be equivalent to one page
-   (single-column). -->
 
 
 Journal
 -------
 
-<!-- The paper will be submitted to the software section of the
-Astrophysical Journal. -->
-
-TBD
+The paper will be jointly submitted to the software section of the
+Astrophysical Journal and the Journal of Open Source Software.
 
 
-<!-- Feedback
---------
+Coordinators
+------------
 
-Comments on the paper are welcome as issues.   Questions and comments can also
-be sent to crawfordsm@gmail.com.  -->
+Please feel free to reach out with comments or feedback by creating issues in
+this repository, or by messaging any of the Paper Coordinators:
+
+- Adrian Price-Whelan
+- Nicholas Earl
+- Pey Lian Lim
 
 
 Rules for Authorship
