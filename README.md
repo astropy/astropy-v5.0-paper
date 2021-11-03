@@ -66,7 +66,7 @@ We invite you to become a co-author if any of the following applies to you:
       - Package template
       - Astropy Website
       - Learn Astropy
-   - You have contributed to one of the following Astropy coordinated affiliated packages (see http://affiliated.astropy.org/):
+   - You have contributed to one of the following Astropy coordinated packages (see http://affiliated.astropy.org/):
       - astropy-healpix
       - astroquery
       - ccdproc
