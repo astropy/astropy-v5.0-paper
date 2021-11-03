@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: astropy-paper-3.aux
+The style file: aasjournal.bst
+Database file #1: bibliography.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty journal in erfa
+You've used 7 entries,
+            3168 wiz_defined-function locations,
+            703 strings with 6661 characters,
+and the built_in function-call counts, 3587 in all, are:
+= -- 259
+> -- 345
+< -- 2
++ -- 117
+- -- 124
+* -- 347
+:= -- 702
+add.period$ -- 8
+call.type$ -- 7
+change.case$ -- 43
+chr.to.int$ -- 7
+cite$ -- 8
+duplicate$ -- 112
+empty$ -- 181
+format.name$ -- 128
+if$ -- 683
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 6
+newline$ -- 30
+num.names$ -- 28
+pop$ -- 44
+preamble$ -- 1
+purify$ -- 43
+quote$ -- 0
+skip$ -- 91
+stack$ -- 0
+substring$ -- 99
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 63
+warning$ -- 1
+while$ -- 25
+width$ -- 0
+write$ -- 82
+(There was 1 warning)

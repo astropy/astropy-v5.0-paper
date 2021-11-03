@@ -1,0 +1,22 @@
+\newcommand{\escapecmd}[1]{\texttt{\detokenize{#1}}}
+
+% Packages / projects / programming - for consistency!
+\newcommand{\package}[1]{\texttt{#1}\xspace}
+\newcommand{\github}{\package{GitHub}}
+\newcommand{\python}{\package{Python}}
+\newcommand{\astropy}{Astropy\xspace}
+\newcommand{\astropypkg}{\package{astropy}}
+
+% For consistency:
+\newcommand{\sectionname}{Section\xspace}
+\renewcommand{\figurename}{Figure\xspace}
+\newcommand{\equationname}{Equation\xspace}
+\renewcommand{\tablename}{Table\xspace}
+
+% Words that should not be hyphenated
+\hyphenation{NumFOCUS}
+
+% For commenting - can be deleted before submission
+\usepackage[colorinlistoftodos]{todonotes}
+\newcommand{\inlinecomment}[2]{\todo[inline]{#1: #2}\xspace}
+\newcommand{\comment}[2]{\todo{#1: #2}\xspace}

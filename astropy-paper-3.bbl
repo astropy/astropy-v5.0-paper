@@ -1,0 +1,48 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Astropy Collaboration} {et~al.}(2013){Astropy Collaboration},
+  {Robitaille}, {Tollerud}, {Greenfield}, {Droettboom}, {Bray}, {Aldcroft},
+  {Davis}, {Ginsburg}, {Price-Whelan}, {Kerzendorf}, {Conley}, {Crighton},
+  {Barbary}, {Muna}, {Ferguson}, {Grollier}, {Parikh}, {Nair}, {Unther},
+  {Deil}, {Woillez}, {Conseil}, {Kramer}, {Turner}, {Singer}, {Fox}, {Weaver},
+  {Zabalza}, {Edwards}, {Azalee Bostroem}, {Burke}, {Casey}, {Crawford},
+  {Dencheva}, {Ely}, {Jenness}, {Labrie}, {Lim}, {Pierfederici}, {Pontzen},
+  {Ptak}, {Refsdal}, {Servillat}, \& {Streicher}}]{astropy}
+{Astropy Collaboration}, {Robitaille}, T.~P., {Tollerud}, E.~J., {et~al.} 2013,
+  \aap, 558, A33, \dodoi{10.1051/0004-6361/201322068}
+
+\bibitem[{Behnel {et~al.}(2011)Behnel, Bradshaw, Citro, Dalcin, Seljebotn, \&
+  Smith}]{cython}
+Behnel, S., Bradshaw, R., Citro, C., {et~al.} 2011, Computing in Science
+  Engineering, 13, 31 , \dodoi{10.1109/MCSE.2010.118}
+
+\bibitem[{{Hohenkerk}(2011)}]{sofa}
+{Hohenkerk}, C. 2011, Scholarpedia, 6, 11404,
+  \dodoi{10.4249/scholarpedia.11404}
+
+\bibitem[{Hunter(2007)}]{matplotlib}
+Hunter, J.~D. 2007, Computing In Science \& Engineering, 9, 90,
+  \dodoi{10.1109/MCSE.2007.55}
+
+\bibitem[{Jones {et~al.}(2001--)Jones, Oliphant, Peterson, {et~al.}}]{scipy}
+Jones, E., Oliphant, T., Peterson, P., {et~al.} 2001--, {SciPy}: Open source
+  scientific tools for {Python}.
+\newblock \url{http://www.scipy.org/}
+
+\bibitem[{Tollerud {et~al.}(2017)Tollerud, Pascual, Nair, Woillez, Jenness,
+  Streicher, \& Droettboom}]{erfa}
+Tollerud, E., Pascual, S., Nair, P., {et~al.} 2017,
+  \dodoi{10.5281/zenodo.1021149}
+
+\bibitem[{{Van der Walt} {et~al.}(2011){Van der Walt}, Colbert, \&
+  Varoquaux}]{numpy}
+{Van der Walt}, S., Colbert, S.~C., \& Varoquaux, G. 2011, {Computing in
+  Science \& Engineering}, 13, 22,
+  \dodoi{http://dx.doi.org/10.1109/MCSE.2011.37}
+
+\end{thebibliography}

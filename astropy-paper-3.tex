@@ -1,0 +1,137 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Style notes:
+%
+%   -
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[modern]{aastex631}
+\usepackage{xspace}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ulem}
+
+% To allow putting figures in a subdir
+\graphicspath{{figures/}}
+
+\submitjournal{ApJ}
+
+\shorttitle{Astropy Project III}
+\shortauthors{The Astropy Collaboration}
+
+\input{preamble.tex}
+
+% Links to documentation: subpackages
+\newcommand{\astropysubpkg}[1]{\href{http://docs.astropy.org/en/stable/#1/index.html}{\texttt{astropy.#1}}\xspace}
+\newcommand{\astropyiosubpkg}[1]{\href{http://docs.astropy.org/en/stable/io/#1/index.html}{\texttt{astropy.io.#1}}\xspace}
+\newcommand{\astropywcsaxes}{\href{http://docs.astropy.org/en/stable/visualization/wcsaxes/index.html}{\texttt{astropy.visualization.wcsaxes}}\xspace}
+
+% Links to documentation: classes
+\newcommand{\astropyskycoord}{\href{http://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html}{\texttt{SkyCoord}}\xspace}
+\newcommand{\astropyQuantity}{\href{http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html}{\texttt{Quantity}}\xspace}
+\newcommand{\astropyTime}{\href{http://docs.astropy.org/en/stable/api/astropy.time.Time.html}{\texttt{Time}}\xspace}
+\newcommand{\astropyTable}{\href{http://docs.astropy.org/en/stable/api/astropy.table.Table.html}{\texttt{Table}}\xspace}
+
+\begin{document}
+
+\draft{\today}
+
+\title{The Astropy Project: xx and status of the v5.0 core package}
+
+\correspondingauthor{Astropy Coordination Committee}
+\email{coordinators@astropy.org}
+
+\author{Astropy Collaboration}
+\noaffiliation
+{\let\thefootnote\relax\footnote{{The author list has three parts: the authors that made significant contributions to the writing of the paper in order of contribution, the four members of the \astropy Project coordination committee, and contributors to the \astropy Project in alphabetical order. The position in the author list does not correspond to contributions to the \astropy Project as a whole. A more complete list of contributors to the core package can be found in the \href{https://github.com/astropy/astropy/graphs/contributors}{package repository}, and at the \href{http://www.astropy.org/team.html}{\astropy team webpage}.}}}
+
+\input{author.tex}
+
+\begin{abstract}
+
+    To be written...
+
+\end{abstract}
+
+\keywords{%
+    Astrophysics - Instrumentation and Methods for Astrophysics
+    ---
+    methods: data analysis
+    ---
+    methods: miscellaneous
+}
+
+
+\section{Introduction} \label{sec:intro}
+
+To be written...
+
+\begin{acknowledgments}
+
+We would like to thank the members of the community that have contributed to
+\astropy, that have opened issues and provided feedback, and have supported the
+project in a number of different ways.
+
+The \astropy community is supported by and makes use
+of a number of organizations and services outside the traditional
+academic community. We thank Google for financing and organizing the
+Google Summer of Code (GSoC) program, that has funded severals
+students per year to work on \astropy related projects over the
+summer. These students often turn into long-term contributors. We also
+thank NumFOCUS and the Python Software Foundation for financial
+support. Within the academic community, we thank
+institutions that make it possible that astronomers and other developers on
+their staff can contribute their time to the development of
+\astropy projects.  We would like acknowledge the support of the
+Space Telescope Science Institute, Harvard–Smithsonian Center for Astrophysics,
+and the South African Astronomical Observatory.
+
+Furthermore, the \astropy packages would not exist in their current form without
+a number of web services for code hosting, continuous integration, and
+documentation; in particular, \astropy heavily relies on GitHub, Travis CI,
+Appveyor, CircleCI, and Read the Docs.
+
+\astropypkg interfaces with the SIMBAD database, operated at CDS, Strasbourg,
+France. It also makes use of the ERFA library \citep{erfa}, which in turn
+derives from the IAU SOFA Collection\footnote{\url{http://www.iausofa.org}}
+developed by the International Astronomical Union Standards of Fundamental
+Astronomy \citep{sofa}.
+
+\end{acknowledgments}
+
+\software{\package{astropy} (\citealt{astropy}),
+          \package{numpy} (\citealt{numpy}),
+          \package{scipy} (\citealt{scipy}),
+          \package{matplotlib} (\citealt{matplotlib}),
+          \package{Cython} (\citealt{cython}),
+          \package{SOFA} (\citealt{sofa}),
+          \package{ERFA} (\citealt{erfa})
+          }
+
+\bibliographystyle{aasjournal}
+\bibliography{bibliography}
+
+
+% \appendix
+
+% \section{List of Affiliated Packages}
+
+% \begin{longrotatetable}
+%     \begin{deluxetable*}{cccp{3in}c}
+%     \tablecaption{Registry of affiliated packages.}
+%     \label{tab:registry}
+%     \tablehead{
+%         \colhead{Package Name} &
+%         \colhead{Stable} &
+%         \colhead{PyPI Name} &
+%         \colhead{Maintainer} &
+%         \colhead{Citation}
+%       }
+%       \startdata
+%         \input{registry.tex}
+%       \enddata
+%   \end{deluxetable*}
+% \end{longrotatetable}
+
+
+\end{document}
