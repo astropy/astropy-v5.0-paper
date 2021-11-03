@@ -8,8 +8,8 @@ Scope of the Paper
 ------------------
 
 Our goal is to produce a brief and informative description of major updates
-about the Astropy Project, drawing on relevant changes or news since 2018
-(v2.0).
+about the Astropy Project, drawing on relevant changes or news since 2018 (the
+last paper).
 
 
 Notes on writing
