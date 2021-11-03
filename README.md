@@ -61,9 +61,9 @@ We invite you to become a co-author if any of the following applies to you:
    - You are a Voting Member, as listed on https://www.astropy.org/team.html#votingmembers
    - You have contributed code to the core package
    - You have contributed to Astropy Project infrastructure, including:
-      - Sphinx plugins
-      - Pytest plugins
-      - Package template
+      - Sphinx plugins (within the Astropy organization)
+      - Pytest plugins (within the Astropy organization)
+      - Astropy package template
       - Astropy Website
       - Learn Astropy
    - You have contributed to one of the following Astropy coordinated packages (see http://affiliated.astropy.org/):
