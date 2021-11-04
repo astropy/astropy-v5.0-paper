@@ -1,0 +1,9 @@
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pip>=20.3.3
+  - pip:
+      - matplotlib>=3.3.3
+      - numpy>=1.20
+      - astropy>=4.2
