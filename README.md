@@ -76,9 +76,9 @@ We invite you to become a co-author if any of the following applies to you:
       - specutils / specreduce
 
 If you would like to be a co-author, please complete the [Google form
-here](TODO). If the above does not apply to you but you feel that you should
-still be considered for co-authorship, please complete the form and your
-application will be reviewed.
+here](https://forms.gle/M93XBNaGbPqoncuE8). If the above does not apply to you
+but you feel that you should still be considered for co-authorship, please
+complete the form and your application will be reviewed.
 
 The author order will be 'The Astropy Collaboration' as the first author,
 followed by people who have contributed significantly to the paper, in order of
