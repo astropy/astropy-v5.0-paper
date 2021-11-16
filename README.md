@@ -1,8 +1,17 @@
 Astropy Paper III
 =================
 
-[![PDF](https://img.shields.io/badge/latex-PDF-blueviolet.svg?style=flat)](https://github.com/astropy/astropy-v5.0-paper/blob/gh-pages/astropy-paper-3.pdf)
-
+<p align="center">
+<a href="https://github.com/astropy/astropy-v5.0-paper/actions/workflows/showyourwork.yml">
+<img src="https://github.com/astropy/astropy-v5.0-paper/actions/workflows/showyourwork.yml/badge.svg" alt="Article status"/>
+</a>
+<a href="https://github.com/astropy/astropy-v5.0-paper/blob/main-pdf/ms.pdf">
+<img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
+</a>
+<a href="https://github.com/astropy/astropy-v5.0-paper/blob/main-pdf/dag.pdf">
+<img src="https://img.shields.io/badge/article-dag-blue.svg?style=flat" alt="Article graph"/>
+</a>
+</p>
 
 Scope of the Paper
 ------------------
