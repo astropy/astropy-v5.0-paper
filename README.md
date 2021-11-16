@@ -12,18 +12,6 @@ about the Astropy Project, drawing on relevant changes or news since 2018 (the
 last paper).
 
 
-Notes on writing
-----------------
-
-*  We don't plan on including code in this paper, but if you think you will need
-   to include code in your section, please add it to a separate python module
-   (.py file) and include it in this repository.
-*  Use `\sectionname` not ``Section``, `\figurename` not ``Figure``,
-   `\equationname` not ``Equation``etc.
-*  Use `\astropypkg` for the astropy package, `\astropy` for the astropy
-   project, `\python` not ``Python``
-
-
 Journal
 -------
 
@@ -40,6 +28,9 @@ this repository, or by messaging any of the Paper Coordinators:
 - Adrian Price-Whelan
 - Nicholas Earl
 - Pey Lian Lim
+
+If you are contributing text to the paper, please see the [Contributing
+document](https://github.com/astropy/astropy-v5.0-paper/blob/main/CONTRIBUTING.md).
 
 
 Rules for Authorship
