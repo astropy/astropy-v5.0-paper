@@ -1,9 +1,25 @@
 # Snakemake temporaries
 .snakemake
-.showyourwork
+.showyourwork*
 
 # Showyourwork output files
 report.html
 arxiv.tar.gz
 ms.pdf
 dag.pdf
+
+
+# Don't track anything...
+src/*
+src/figures/cache
+
+# ... except the following...
+!src/figures
+!src/static
+!src/*.tex
+!src/*.bib
+
+# ... but never these:
+src/xstring.tex
+src/listofitems.tex
+src/*latexindent*

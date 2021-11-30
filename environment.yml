@@ -7,3 +7,5 @@ dependencies:
       - matplotlib>=3.3.3
       - numpy>=1.20
       - astropy>=4.2
+      - ads
+      - pandas

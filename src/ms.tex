@@ -64,7 +64,23 @@
 
 \section{Introduction} \label{sec:intro}
 
-To be written...
+Over the last decade, \python has grown enormously in popularity and has become
+a dominant programming language in the astronomical community.
+
+\begin{figure}
+    \begin{centering}
+        \includegraphics[width=\textwidth]{figures/python-mentions.pdf}
+        \caption{
+            Yearly full-text mentions of programming languages (indicated in the
+            figure legend) in refereed publications in the astronomical
+            literature database in the Astrophysics Data System (ADS;
+            \citealt{ads}).
+            \python has rapidly become the dominant programming language
+            mentioned in refereed articles over the last 10 years.
+        }
+        \label{fig:python-mentions}
+    \end{centering}
+\end{figure}
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
@@ -100,9 +116,13 @@ New funding sources.
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
 
-Timeseries, Box Least Squares
-
-TODO: go through What's New pages and identify a few big additions / changes.
+\begin{itemize}
+    \item Support for representing and transforming velocity data in coordinates, epoch propagation (v3.0)
+    \item Improved support for astronomical time series: TimeSeries object (v3.2), Box Least Squares periodogram (v3.1)
+    \item Overall improved support of Quantity throughout numpy (v4.0) and scipy
+    \item Native support for Time, Quantity, and SkyCoord objects in Astropy tables
+    \item TODO: something about WCS, SpectralCoord?
+\end{itemize}
 
 
 \section{Learn Astropy} \label{sec:learn}
@@ -123,7 +143,7 @@ Infrastructure packages that exist to support and help others maintain their pac
 
 \subsection{Affiliated packages}
 
-Updates!
+New packages and major updates!
 
 \subsection{Connections with observatories}
 
