@@ -85,17 +85,44 @@ the way research is done, data is analyzed, and results are shared in astronomy
 and beyond.
 
 One of the factors that has led to its rapid ascent in popularity in scientific
-contexts has been significant volunteer-driven effort behind developing
+contexts has been the significant, volunteer-driven effort behind developing
 community-oriented open-source software tools and fostering communities of users
-and developers that have grown around these packages.
-TODO: Numpy, scipy, matplotlib, scientific software ecosystem.
-The astropy core package ... one of the first large, community-oriented, open-source \python packages ... was Astropy ... (note: yt)
-TODO: words about astropy core package.
-TODO: The core package is now largely stable and provides core foundational tools.
+and developers that have grown around these efforts.
+Today, a broad and feature-diverse ``ecosystem'' of packages exists in the
+\python scientific computing landscape: Roughly ordered from general-use to
+domain-specific, this landscape now includes packages that provide core
+numerical analysis functionality like \package{numpy} \citep{todo} and
+\package{scipy} \citep{todo}, to visualization frameworks like
+\package{matplotlib} \citep{todo}, to machine learning and data analysis
+packages like \package{tensorflow} \citep{todo}, \package{pymc3} \citep{todo},
+and \package{emcee} \citep{todo}, to specialized, domain-specific packages like
+\package{yt} \citep{todo}, \package{plasmapy} \citep{todo}, \package{sunpy}
+\citep{todo}, \package{Biopython} \citep{todo}, and \package{sympy}
+\citep{sympy} (to name a few in each category).
+The \astropypkg \citep{astropy:2013, astropy:2018} core package began as an
+effort to consolidate the development of commonly-used functionality needed to
+perform astronomical research into a community-developed \python package.
 
-TODO: Astropy has expanded to become the Astropy Project: Broader scope than core package. Core package, Ecosystem of tools, Community of users, developers, maintainers
+The \astropypkg core package was one of the first large, open-source \python
+packages developed for astronomy and provides, among other things, software
+functionality for reading and writing astronomy-specific data formats (e.g.,
+FITS), transforming and representing astronomical coordinates, and representing
+and propagating physical units in code.
+An early description of the core functionality in \astropypkg can be found in
+the first Astropy paper \citep{astropy:2013} or in detail in the core package
+documentation.\footnote{\url{https://docs.astropy.org/}}
+The \astropypkg core package is now largely stable in that the software
+interface does not change without sufficient and significant motivation, and the
+addition of new features into the core package has slowed significantly as
+compared to the first years of its development.
+This is largely driven by the fact that the name Astropy has grown in scope to
+become ``the Astropy Project'': A name used to refer to the union of the
+\astropypkg core package, the ecosystem of astronomy-specific software tools
+that are interoperable with \astropypkg, \emph{and} the community of users,
+developers, and maintainers that participate in Astropy efforts.
 
-TODO:  https://physicsworld.com/a/standing-on-the-shoulders-of-programmers/
+
+% TODO:  https://physicsworld.com/a/standing-on-the-shoulders-of-programmers/
 
 Transition of needs: From new features, to community development, sustainability, ...
 - pipeline between User, Participant, Code contributor, Maintainer, Coordinator.
