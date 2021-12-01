@@ -102,7 +102,7 @@ def get_dfs(cache_path):
 def plot_yearly_mentions(paper_dfs):
     fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
-    for name, df in paper_dfs.items():
+    for i, (name, df) in enumerate(paper_dfs.items()):
         g = df.groupby(by=[df.index.year]).count()
         group_dates = np.array([datetime.date(x, 1, 1) for x in g.index])
         mentions = g['pubdate.1'].values
@@ -115,7 +115,7 @@ def plot_yearly_mentions(paper_dfs):
         ax.plot(group_dates,
                 mentions,
                 marker='', drawstyle='steps-mid',
-                lw=2, label=name)
+                lw=2, label=name, zorder=-i)
 
     ax.set_xlim(datetime.date(1991, 8, 1),
                 datetime.date(2021, 6, 1))  # 2021.5
