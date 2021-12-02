@@ -12,7 +12,6 @@ on:
 jobs:
   showyourwork:
     runs-on: ubuntu-latest
-    environment: "Paper Actions"
     name: Build the article PDF
     concurrency: showyourwork-${{ github.ref }}
     steps:
