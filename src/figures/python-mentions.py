@@ -117,6 +117,14 @@ def plot_yearly_mentions(paper_dfs):
                 marker='', drawstyle='steps-mid',
                 lw=2, label=name, zorder=-i)
 
+    if len(paper_dfs) == 0:
+        # ADS key not found - pull request?
+        ax.set_title(
+            "ADS key not found! If this is a pull request, that is normal: "
+            "ADS queries are not performed.",
+            fontsize=14
+        )
+
     ax.set_xlim(datetime.date(1991, 8, 1),
                 datetime.date(2021, 6, 1))  # 2021.5
 
@@ -132,5 +140,9 @@ if __name__ == "__main__":
     cache_path = pathlib.Path('cache/prog-lang-fulltext')
     cache_path.mkdir(exist_ok=True, parents=True)
 
-    paper_dfs = get_dfs(cache_path)
+    try:
+        paper_dfs = get_dfs(cache_path)
+    except ads.exceptions.APIResponseError:
+        paper_dfs = {}
+
     plot_yearly_mentions(paper_dfs)
