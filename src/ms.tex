@@ -32,6 +32,9 @@
 \newcommand{\astropyTime}{\href{http://docs.astropy.org/en/stable/api/astropy.time.Time.html}{\texttt{Time}}\xspace}
 \newcommand{\astropyTable}{\href{http://docs.astropy.org/en/stable/api/astropy.table.Table.html}{\texttt{Table}}\xspace}
 
+\newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
+\newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
+
 \begin{document}
 
 \draft{\today}
@@ -171,8 +174,18 @@ Project.
 
 \subsection{New Long-term Support (LTS) Version: v5.0} \label{sec:core-v50}
 
+\secauthor{Tom Robitaille}
+
+Summarize a few notable things in v5.0 as compared to the last LTS release.
+
+
 \subsection{Highlighted Feature Development} \label{sec:core-features}
 
+\secauthor{Nathaniel Starkman, Marten van Kerkwijk}
+
+Summarize major pieces of development since the last paper (since v2.0). A few
+ideas (taken from What's New pages) below, but feel free to expand on or remove
+from this list:
 \begin{itemize}
     \item Support for representing and transforming velocity data in coordinates, epoch propagation (v3.0)
     \item Improved support for astronomical time series: TimeSeries object (v3.2), Box Least Squares periodogram (v3.1)
@@ -184,15 +197,18 @@ Project.
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
 
-
 \subsection{Project governance} \label{sec:project-governance}
 
-New CoCo and election overview.
+\secauthor{Erik Tollerud}
 
+Briefly summarize new procedures and governance structure, new CoCo, election
+process overview, etc.
 
 \subsection{Contributor base} \label{sec:project-contributors}
 
-Overview and statistics of contributors. Changes since v2.0.
+\secunfilled
+
+Overview and statistics of contributors. Highlight changes since v2.0.
 
 \begin{figure}
     \begin{centering}
@@ -205,14 +221,17 @@ Overview and statistics of contributors. Changes since v2.0.
 % Transition of needs: From new features, to community development, sustainability, ...
 % - pipeline between User, Participant, Code contributor, Maintainer, Coordinator.
 
+\subsection{Inclusion, Diversity, and Equity Programs} \label{sec:project-ide}
+
+\secauthor{Lía Corrales}
 
 
 \subsection{Funding} \label{sec:project-funding}
 
-New funding sources.
-% Funding received:
-% - Moore
-% - NASA
+\secauthor{Aarya Patil}
+
+Summarize funding sources (Moore, NASA) and amounts and what this has been used
+for.
 
 
 \section{Supporting the Ecosystem of Astronomical Python Software}
@@ -220,37 +239,72 @@ New funding sources.
 
 \subsection{Community-oriented infrastructure}
 
-Infrastructure packages that exist to support and help others maintain their package infrastructure.
+\secunfilled
+
+Infrastructure packages that exist to support and help others maintain their
+package infrastructure.
 
 \subsection{Affiliated packages}
 
-New packages and major updates!
+\secauthor{Matt Craig, Brett Morris}
 
-\subsection{Connections with observatories}
+Highlight a few new affiliated packages and major updates to existing ones.
+Include a big table of all affiliated packages and references (as in v2.0
+paper).
 
-JWST (motivated by excitement around the launch?)
+\subsection{Connections with data archives}
+
+\secauthor{Adam Ginsburg}
+
+Summary of Astroquery and engagement with archives. Cite astroquery paper.
+
+\subsection{Connections with Observatories and Missions}
+
+Brief summary of efforts in observatory- or mission-driven development that have
+contributed to Astropy, and vice versa.
+
+JWST
+\secunfilled
 
 Gemini
+\secunfilled
 
+Cherenkov Telescope Array
+\secauthor{Axel Donath, Max Noethe}
+
+Rubin Observatory
+\secunfilled
 
 \section{Future Plans for the Astropy Project} \label{sec:future}
 
 \subsection{Roadmap}
 
+\secauthor{Clara Brasseur}
+
+Overview of roadmap and some highlights.
+
 \section{Learn Astropy} \label{sec:learn}
 
-Current status and scope
+\secauthor{Lía Corrales, David Shupe + Learn team}
 
-Vision for the future (review what we said in v2.0 paper)
+\begin{itemize}
+\item Current status and scope
+\item Vision for the future (review what we said in v2.0 paper)
+\item User forums and engagement with user base
+\item Workshops
+\end{itemize}
 
-User forums and engagement with user base
 
-\subsection{Challenges}
+\subsection{Current and Future Challenges}
 
-Attracting new contributors when the code has become quite complex,
-Contributor to maintainer mentoring,
-Long-term / sustained funding for maintaining infrastructure,
-...
+\secunfilled
+
+\begin{itemize}
+\item Attracting new contributors when the code has become quite complex,
+\item Contributor to maintainer mentoring,
+\item Long-term / sustained funding for maintaining infrastructure,
+\item ...
+\end{itemize}
 
 
 \begin{acknowledgments}
