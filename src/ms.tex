@@ -266,6 +266,45 @@ Highlight a few new affiliated packages and major updates to existing ones.
 Include a big table of all affiliated packages and references (as in v2.0
 paper).
 
+All affiliated packages are listed on the astropy 
+website\footnote{\url{https://www.astropy.org/affiliated}}. Since 
+\cite{astropy:2018}, there has been an explosion of gravitational-wave affiliated 
+packages including: \texttt{PyCBC} for exploring GW sources, lenstronomy for 
+modeling strong gravitational lenses, \texttt{ligo.skymap} for visualizing GW 
+probability maps, and \texttt{EinsteinPy} for general relativity and gravitational astronomy. 
+There have been several packages related to HEALPix: \texttt{astropy-healpix}
+for a BSD licensed HEALPix implementation, and \texttt{mocpy} for Multi-Order 
+Coverage maps. \texttt{astroalign} as been introduced for astrometric registration, 
+and \texttt{python-cpl} has been added for ESO pipelines and VLT data products. 
+For ground-based astronomy, \texttt{baseband} has added IO capabilities for 
+VLBI, and \texttt{SpectraPy} brings slit spectroscopy to the astropy ecosystem. 
+We have \texttt{agnpy} for AGN astrophysics, and \texttt{statmorph} for fitting galactic 
+morphological diagnostics. \texttt{saba} gives an interface to sherpa's fitting 
+routines. For modeling interstellar dust extinction we have 
+\texttt{dust_extinction}, and for extracting features from time series we 
+have \texttt{feets}. We also have \texttt{corral} for managing data intensive parallel 
+pipelines. \texttt{BayesicFitting} provides an interface for generic Bayesian 
+inference, and \texttt{sbpy} does calculations for asteroid and cometary 
+astrophysics. Finally, \texttt{synphot} provides an interface for synthetic photometry.
+
+Several of the affiliated packages described in [reference to paper 2] 
+have had substantial improvements. \texttt{Astroquery} [reference] has added access 
+to roughly a dozen new missions and data services, including JWST, and the 
+project has switched to a continuous release model. Every time a change 
+is committed to the main development branch it is published on the Python 
+Package Index (PyPI, ref) and available for installation. Formal releases 
+are still done a couple of times per year. \texttt{Photutils} released its first 
+stable version, indicating that the API will change less frequently, and 
+there have been several significant performance improvements.  \texttt{CCDproc} 
+also released a new major version, bringing better performance to some 
+image combination operations. The \texttt{regions} package, for manipulating 
+ds9-style [ref] region definitions, added new ways to manipulate regions 
+and introduced new region types. \texttt{Reproject}’s major new feature is a 
+function to align and co-add images to create a mosaic; better support 
+for parallelization was also added. \texttt{Specutils}, the package that defines 
+containers for 1D and 2D spectra, also had its first stable rele and 
+the addition of classes to read JWST data.
+
 \subsection{Connections with data archives}
 
 \secauthor{Adam Ginsburg}
