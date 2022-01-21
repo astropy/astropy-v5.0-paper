@@ -55,6 +55,9 @@ GalacticLSR}{GalacticLSR}}
 \newcommand{\astropyQuantity}{\astropyapidoc{units.Quantity}{Quantity}}
 \newcommand{\astropyScienceState}{\astropyapidoc{utils.state.ScienceState}{ScienceState}}
 
+% suggestion: shortcut reference to Paper II
+\newcommand{\paperii}{Paper II}
+
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
 
@@ -481,7 +484,15 @@ paper).
 
 \secauthor{Adam Ginsburg}
 
-Summary of Astroquery and engagement with archives. Cite astroquery paper.
+% Summary of Astroquery and engagement with archives. Cite astroquery paper.
+Astroquery \cite{Ginsburg2019} is the astropy-coordinated package for interacting with online archives of astronomical and related data.
+Since \PaperII, significant contributions to \texttt{astroquery} have come from several of the major archives, including the European Space Agency (ESA), the Mikulski Archive for Space Telescopes (MAST; n{\'e}e Multimission Archive for at STSCI}, the Infrared Science Archive at the NASA Infrared Processing and Analysis Center (IRSA at NASA IPAC), the Canadian Astronomical Data Center (CADC), and the Atacama Large Millimeter/Submillimeter Array archive (ALMA).
+These contributions represent a formal acknowledgement of the utility of a centralized tool suite for archive interaction.
+
+Many of the existing and newly-contributed tools rely on Virtual Observatory (VO) tools.
+These use the underlying package \texttt{pyvo}, which has also recently become an astropy-coordinated package.
+While many or all of the functions provided in \texttt{astroquery} can be achieved through direct use of VO tools implemented in \texttt{pyvo}, the \texttt{astroquery} interfaces more closely resemble the web interfaces more familiar to users.
+% note to coauthors: we need a section on pyvo
 
 \subsection{Connections with Observatories and Missions}
 
