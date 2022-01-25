@@ -388,8 +388,59 @@ Summary of Astroquery and engagement with archives. Cite astroquery paper.
 Brief summary of efforts in observatory- or mission-driven development that have
 contributed to Astropy, and vice versa.
 
-JWST
+\subsubsection{James Webb Space Telescope}
 \secauthor{Larry Bradley}
+
+The James Webb Space Telescope (JWST) is a 6.5-meter space-based
+infrared telescope that will provide unprecedented resolution and
+sensitivity from 0.6 -- 28 microns. JWST will enable a broad range
+of scientific investigations from exoplanets and their atmospheres
+to the formation of galaxies in the very early universe. Its four
+key scientific goals are to study the first light from stars and
+galaxies, the assembly and evolution of galaxies, the birth of stars and
+protoplanetary systems, and planetary systems and the origins of life.
+
+The telescope launched on an Ariane 5 rocket on 2021 December 25 from
+Kourou, French Guiana. After a series of successful deployments,
+including the sunshield and primary and secondary mirrors, JWST reached
+its orbit around the L2 Lagrange point on 2022 January 24. Commissioning
+of the telescope optics and science instruments will occur from January
+until the end of June 2022, when science operations are scheduled to
+begin.
+
+Software developers at the Space Telescope Science Institute (STScI),
+the operations center of JWST, have been developing Python-based tools
+for JWST since 2010 (starting with the JWST Calibration Reference Data
+System) and have provided major contributions to \astropy from its
+inception. The JWST instrument calibration pipelines, exposure-time
+calculators, and data analysis tools are all written in Python and
+depend on the \astropypkg core package and some coordinated and
+affiliated packages. For the \astropypkg core package, the JWST mission
+has provided extensive contributions to the \astropysubpkg{modeling},
+\astropysubpkg{units}, \astropysubpkg{coordinates}, \astropysubpkg{wcs},
+\astropysubpkg{fits}, \astropysubpkg{votable}, \astropysubpkg{stats},
+\astropysubpkg{visualization}, and \astropysubpkg{convolution}
+subpackages as well as to the general package infrastructure and
+maintenance.
+
+Likewise, JWST developers have provided significant contributions to
+the \package{photutils}, \package{specutils}, and \package{regions}
+coordinated packages and the \package{gwcs} affiliated package. For
+example, development of the \package{photutils} coordinated package
+for source detection and photometry has largely been led by JWST
+contributions. JWST developers have also made significant contributions
+to the \package{specutils} coordinated package, which is used for
+analyzing spectroscopic data, and the \package{regions} coordinated
+package, which is used to handle geometric regions. The \package{gwcs}
+affiliated package for generalized world coordinate systems was created
+specifically to handle the complex world coordinate systems needed
+for JWST spectroscopic data. Further, the \package{ASDF} (Advanced
+Scientific Data Format) package, a next-generation interchange format
+for scientific data, was initially developed at STScI to serialize JWST
+WCS objects along with \astropypkg models, units, and coordinates. Over
+its mission lifetime, JWST will continue its support in developing and
+maintaining these critically dependent packages.
+
 
 Gemini
 \secunfilled
