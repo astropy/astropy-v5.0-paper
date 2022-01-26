@@ -252,11 +252,47 @@ for.
 
 \secauthor{Nicholas Earl}
 
-Infrastructure packages that exist to support and help others maintain their
-package infrastructure.
+The Astropy project supports the broader ecosystem by providing pre-configured 
+infrastructure packages that the community can use to support and maintain 
+their own software package infrastructure. These include tools to easily 
+generate documentation and setup automated testing, as well as provide 
+package scaffolding for new projects.
 
-This includes an overview of the sphinx-astropy tools, the pytest extensions
-maintained by astropy, and the package template.
+Sphinx is a common and useful tool for generating documentation for Python 
+packages. The Astropy project maintains a default Sphinx configuration along 
+with Astropy-specific extensions which can be easily added to community 
+projects via the \texttt{sphinx-astropy} meta package. This tool provides 
+a pre-configured Sphinx setup compatible with Astropy projects, which 
+includes several extensions useful for generating API documentation 
+(\texttt{sphinx-automodapi}), allowing for Numpy docstring parsing 
+(\texttt{numpydoc}), embedded image handling (\texttt{sphinx-gallery}; 
+\texttt{pillow}), advanced documentation testing support 
+(\texttt{pytest-doctestplus}), and providing a custom documentation theme 
+ideal for analysis packages (\texttt{astropy-sphinx-theme}).
+
+Community package testing infrastructure is supported through the 
+\texttt{pytest-astropy} meta-package, providing a unified testing framework 
+with useful extensions compatible with both Astropy- and 
+non-Astropy-affiliated community packages. This meta-package pulls in several 
+\texttt{pytest} plugins to help with custom test headers 
+(\texttt{pytest-astropy-header}), accessing remotely-hosted data files in 
+tests (\texttt{pytest-remotedata}), interoperability with documentation 
+(\texttt{pytest-doctestplus}), dangling file handle checking 
+(\texttt{pytest-openfiles}), data array comparison support in tests 
+(\texttt{pytest-arraydiff}), sub-package command-line testing support 
+(\texttt{pytest-filter-subpackage}), improved mock object testing 
+(\texttt{pytest-mock}), test coverage reports and measurements 
+(\texttt{pytest-cov}), and configuring package for property-based 
+testing (\texttt{hypothesis}).
+
+The Astropy Package Template helps facilitate the setup and creation of new 
+Python packages leveraging the Astropy ecosystem. This tool utilizes the 
+Cookiecutter project to walk users through the process of creating new 
+packages complete with documentation and testing support. Additionally, the 
+package template generation process includes the ability to setup 
+interoperability with GitHub, allowing for easy repository access from 
+documentation, as well as an example GitHub Actions workflow to demonstrate 
+the use of GitHub's continuous integration tooling.
 
 \subsection{Affiliated packages}
 
