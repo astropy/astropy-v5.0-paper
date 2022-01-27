@@ -313,9 +313,14 @@ The Learn Team meets weekly to work on creating, expanding, improving these educ
 
 \begin{itemize}
 
-\item {\bf Learn Astropy website:} The website has a new search interface powered by
-Algolia which is used by major e-commerce websites. This work has been
-supported in part by the Dunlap grant.
+\item {\bf Learn Astropy website:} The Learn Team re-launched the website in 2021 with a new infrastructure platform, built around full-text search and interactive filtering functionality, with the goal of making content discoverable as the Learn Astropy content catalog expands.
+This work has been supported in part by the Dunlap grant.
+We have adopted Algolia, a search-as-a-service cloud platform, to store the full-text and metadata records of Learn Astropy's content.
+The new Learn Astropy website is a JavaScript (Gatsby/React) application that uses the Algolia service to power its search and filtering user interface.
+Our Python-based application, Learn Astropy Librarian, populates data into the Algolia service. We tuned the Librarian around specific content formats (such as Jupyter Notebook-based tutorial pages and Jupyter Book-based guides) to more accurately index content and heuristically extract metadata.
+A consequence of the new platform is that we now maintain and compile content separately from the website application itself, enabling new content types.
+Tutorials, which as Jupyter Notebook-based, are now compiled into their own Learn Astropy sub-site using nbcollection.
+Guides, which are Jupyter Book-based, are also deployed as separate websites using GitHub pages. This architecture opens future possibilities of indexing third-party content, hosted elsewhere, such as on institutional websites.
 
 \item \textbf{Tutorials} Currently, we have \# of tutorials, spanning a wide range of astronomical topics and common tasks.
 
