@@ -402,7 +402,7 @@ gamma-ray observatory.
 It will improve over the current generation of imaging atmospheric Cherenkov telescopes (IACTs)
 by a factor of five to ten in sensitivity and it will be able to observe the whole sky from a combination of two sites:
 a northern site in La Palma, Spain, and a southern one in Paranal, Chile.
-CTA will be able to observe gamma rays in the energy range between $20\,\mathrm{GeV}$ and $300\,\mathrm{GeV}$
+CTA will be able to observe gamma rays in the energy range between $20\,\mathrm{GeV}$ and $300\,\mathrm{TeV}$
 using three different types of telescopes, in total over 100 telescopes are planned at the two sites.
 CTA will also be the first open gamma-ray observatory.
 
@@ -414,17 +414,17 @@ The data analysis pipeline is developed as open source software and essentially 
     sensitive cameras of the telescopes.
     This includes the energy, particle type and direction of origin of the particle that induced the air shower
     and the time the shower was recorded.
-  \item In the higher-level analysis, these reconstructed event lists are used together with the
-    characterization of the measurement process and the low-level analysis to perform the actual scientific analysis.
-    This includes energy spectra, light curves, sky maps and many more.
+  \item In the higher-level analysis, these reconstructed event lists are used together with some
+    characterization of the instrument response to perform the actual scientific analysis.
+    This software will be delivered as CTA science tools to the future users of the observatory.
 \end{enumerate}
 
 A prototype for the low-level analysis is ctapipe~\cite{ctapipe},
 a python package developed to perform all the necessary tasks to from the raw data
 of Cherenkov telescopes to the reconstructed event lists.
 
-The high-level analysis will be based on the Gammapy~\cite{gammapy} library, which
-will be the core of the CTA science tools.
+The high level analysis (or CTA science tools) will be based on the Astropy affiliated package
+Gammapy~\cite{gammapy}.
 
 Both Gammapy and \texttt{ctapipe} are using astropy heavily, mainly for units, coordinate transformations,
 tables and FITS IO.
@@ -436,7 +436,7 @@ for large numbers of coordinates with different observation times,
 based on earlier work by B.~Winkel.
 
 Together with Gammapy maintainer A.~Donath and former maintainer C.~Deil,
-a total of 107 merged pull requests were contributed to ctapipe.
+a total of 107 merged pull requests were contributed to astropy.
 
 
 Rubin Observatory
