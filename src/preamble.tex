@@ -20,3 +20,11 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \newcommand{\inlinecomment}[2]{\todo[inline]{#1: #2}\xspace}
 \newcommand{\comment}[2]{\todo{#1: #2}\xspace}
+
+\usepackage{newunicodechar,graphicx}
+\DeclareRobustCommand{\okina}{%
+ \raisebox{\dimexpr\fontcharht\font`A-\height}{%
+ \scalebox{0.8}{`}%
+ }%
+}
+\newunicodechar{ʻ}{\okina}
