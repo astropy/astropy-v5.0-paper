@@ -63,7 +63,7 @@ release, version 5.0, and provide major updates for the project.
 We then discuss supporting a broader ecosystem of inter-operable packages,
 including connections with several astronomical observatories and missions.
 We also revisit the future outlook of the \astropy Project and the current
-status of Learn Astropy. 
+status of Learn Astropy.
 We conclude by raising and discussing the current and future challenges facing the project.
 \end{abstract}
 
@@ -412,17 +412,97 @@ Overview of roadmap and some highlights.
 
 \section{Learn Astropy} \label{sec:learn}
 
-\secauthor{Lía Corrales, David Shupe + Learn team}
+\secauthor{Lía Corrales, David Shupe, Kelle Cruz + Learn team}
+
+\subsubsection{Current status and scope}
+
+{\it Learn Astropy} is an umbrella term that acknowledges the broad educational
+efforts made by the Astropy Project, which are led by the Learn Team.
+The efforts focus on developing online content and workshops covering
+astro-specific coding tasks in Python.
+As described in \citet{astropy:2018}, There are four different types of
+Learn Astropy content: \textit{tutorials}, consisting of Jupyter Notebook
+lessons that are published in HTML format online; \textit{guides}, which are a
+series of lessons providing a foundational resource for performing certain
+type of astronomical analyses; \textit{examples}, which are snippets of code
+that showcase a short task that can be performed with Astropy or an affiliated
+package; and \textit{documentation}, which is contained within the code base.
+This categorization drives content development, infrastructure choices, and the
+appearance of the Learn Astropy website.
+The Learn Team meets weekly to work on creating, expanding, improving these
+educational resources.
 
 \begin{itemize}
-\item Current status and scope
-\item Vision for the future (review what we said in v2.0 paper)
-\item User forums and engagement with user base
-\item Workshops
+
+\item {\bf Learn Astropy website:} The Learn Team re-launched the website in
+2021 with a new infrastructure platform, built around full-text search and
+interactive filtering functionality, with the goal of making content
+discoverable as the Learn Astropy content catalog expands.
+This work has been supported in part by the Dunlap grant.
+We have adopted Algolia, a search-as-a-service cloud platform, to store the
+full-text and metadata records of Learn Astropy's content.
+The new Learn Astropy website is a JavaScript (Gatsby/React) application that
+uses the Algolia service to power its search and filtering user interface.
+Our Python-based application, Learn Astropy Librarian, populates data into the
+Algolia service. We tuned the Librarian around specific content formats (such as
+Jupyter Notebook-based tutorial pages and Jupyter Book-based guides) to more
+accurately index content and heuristically extract metadata.
+A consequence of the new platform is that we now maintain and compile content
+separately from the website application itself, enabling new content types.
+Tutorials, which as Jupyter Notebook-based, are now compiled into their own
+Learn Astropy sub-site using nbcollection.
+Guides, which are Jupyter Book-based, are also deployed as separate websites
+using GitHub pages. This architecture opens future possibilities of indexing
+third-party content, hosted elsewhere, such as on institutional websites.
+
+\item \textbf{Tutorials} Currently, we have \# of tutorials, spanning a wide range of astronomical topics and common tasks.
+
+\item \textbf{Guide} {\it ccdproc} Jupyter book has been completed.
+
+\item {\bf Workshops:} the Project has been conducting workshops at winter
+meetings of the American Astronomical Society since AAS 225 in January 2015.
+Up to the start of the coronavirus pandemic, these were full-day in-person
+workshops with as many as 90 participants and a dozen facilitators from the
+project.
+During the pandemic, these workshops were moved to an online format and split
+into basic and advanced sessions.
+Additionally, beginning with the AAS 238 online meeting, the workshops have been
+expanded to Summer AAS meetings.
+The Learn team finds that the workshop audience is best found as AAS meetings as
+opposed to more general Python meetings.
+
+The Astropy Project provided another mode of community engagement at AAS
+Meetings 235 and 237 by organizing a NumFOCUS Sponsored Projects booth in the
+AAS Exhibit Hall.
+Funding for the exhibit hall was provided alternately by NumFOCUS and later by
+the Moore Foundation funding (\textbf{check this}).
+The booth hosted a series of Q\&A special sessions during AAS 235 and webinars
+during the virtual AAS 237 meetings, to provide the general astronomy community
+information and access to experts on a variety of open source astronomical
+tools.
 \end{itemize}
+
+\subsubsection{Learn vision for the future}
+
+The Learn plan going forward is to continue to improve the tutorial website and
+facilate new content;
+to index third-party tutorials; and to look for supportable opportunities to
+expand the reach of Astropy workshops beyond the American Astronomical Society
+meetings.
+
 
 
 \subsection{Current and Future Challenges}
+
+\section{Community Engagement}
+
+\item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
+be on a paid plan; additionally NumFOCUS has negotiated a special rate for
+open-source projets. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easily-to-navigate interface for users to ask for help Accordingly, we have commissioned
+a Discourse site which is more open than the Facebook group and more user-oriented
+than Astropy Slack. A benefit of the Moore Foundation grant is that Astropy
+developers are able to invoice as independent contractors the time they
+spend helping users on these forums.
 
 \secunfilled
 
