@@ -187,7 +187,17 @@ Project.
 
 \secauthor{Tom Robitaille}
 
-Summarize a few notable things in v5.0 as compared to the last LTS release.
+Major versions of the core package -- that is to say versions which add and/or
+modify functionality -- are released approximately every six months, and are
+then maintained with releases that fix issues, until the next major version
+is released. However, every two years a major release is designated as a
+long-term support (LTS) release which continues to be maintained for up to two
+years \citep{ape2}. The motivation for LTS releases is to provide longer-term stable
+versions of astropy that users requiring a high level of stability can make
+use of if they do not always need the latest features (this could include
+for example telescope pipelines and so on). The 5.0 release of the core package was designated as LTS,
+and since it was released at the end of 2021, it will be maintained until the
+end of 2023. 
 
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
@@ -202,7 +212,9 @@ from this list:
     \item Improved support for astronomical time series: TimeSeries object (v3.2), Box Least Squares periodogram (v3.1)
     \item Overall improved support of Quantity throughout numpy (v4.0) and scipy
     \item Native support for Time, Quantity, and SkyCoord objects in Astropy tables
-    \item TODO: something about WCS, SpectralCoord?
+    \item APE 14 WCS
+    \item A new SpectralCoord class for representing and transforming spectral quantities
+    \item Support for dask/large arrays in several places in the core package (4.1, 5.0, and maybe other versions)
 \end{itemize}
 
 
