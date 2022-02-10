@@ -276,8 +276,8 @@ Development may be roughly split into a few categories: new features added, perf
   \item ? Pytest plugin ecosystem
 %  \item A new SpectralCoord class for representing and transforming spectral quantities
 %    Velocity in Coordinates
-  \item WCS API : A shared Python interface for World Coordinate Systems
-        Include APE reference
+%  \item WCS API : A shared Python interface for World Coordinate Systems
+%        Include APE 14 reference
 \end{itemize}
 
 New features come in various forms, from new submodules providing
@@ -334,6 +334,24 @@ Furthermore, it can be made aware of the observer and target reference
 frames, allowing for instance transformation from telescope-centric (or
 topocentric) frames to Barycentric or Local Standard of Rest
 (LSRK and LSRD) velocity frames.
+
+\paragraph{A High-Level Interface to World Coordinate Systems.}
+Astronomical data are often provided with information about the
+``real-world'' coordinates that correspond to pixel coordinates. This
+mapping is the essence of the ``World Coordinate System (WCS)''
+concept.  From its inception, the \astropysubpkg{wcs} sub-package
+allowed access to WCS information provided in, e.g., FITS files, but
+it became clear that other WCS standards and representations had to be
+supported for new missions and observatories (e.g., the James Webb
+Space Telescope and the Rubin Observatory).  To harmonize these, a new
+high-level interface was created, based on a formal design first
+proposed via an \astropy\ Proposal for Enhancement (\astropyAPE{14}).
+The hope is that by having a formal design, it will be straightforward
+for other packages implementing WCS objects to either modify their
+classes to conform to the new interface or build thin wrappers that
+conform to it.  The implementation in \astropysubpkg{wcs} interacts
+well with other \astropypkg\ objects such as \astropyskycoord\ and
+\astropyTime.
 
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
