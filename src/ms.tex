@@ -309,6 +309,17 @@ course a \astropyQuantity, and the goal is to ensure it can be
 seamlessly used to instantiate also other astropy classes, such as
 \astropyskycoord\ and \astropyTime.
 
+Apart from Monte-Carlo error propagation, the plan for
+\astropysubpkg{uncertainties} is to also support the case where values
+have associated uncertainties, and these are propagated assuming that
+they are normally distributed, but tracking covariances.  One
+implementation problem to be solved is when to {\em stop} tracking
+covariances.  For instance, a simple operation such as subtracting the
+mean from $N$ data points implies that all data points are now
+covariant with each other, i.e., one has to carry $N\times N$
+covariances.  For a large image, that becomes not just pointless but
+also prohibitive in terms of memory and CPU usage.
+
 \paragraph{Time series.}  From sampling a continuous variable at fixed
 times to counting events binned into time windows, many different
 areas of astrophysics require the manipulation of time series.  These
