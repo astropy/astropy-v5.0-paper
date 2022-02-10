@@ -64,6 +64,10 @@ GalacticLSR}{GalacticLSR}}
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
 
+\defcitealias{astropy:2013}{Paper I}
+\defcitealias{astropy:2018}{Paper II}
+
+
 \begin{document}
 
 \draft{\today}
@@ -266,7 +270,7 @@ Development may be roughly split into a few categories: new features added, perf
 % \end{itemize}
 
 
-\subsubsection*{New Features} \label{sec:core-features-new}
+\subsubsection*{New and Planned Features} \label{sec:core-features-new}
 
 \begin{itemize}
 %  \item Time Series sub-package (V3.1: New Box Least Squares Periodogram)
@@ -283,8 +287,18 @@ Development may be roughly split into a few categories: new features added, perf
 New features come in various forms, from new submodules providing
 wholly new capabilities, to larger additions to existing submodules,
 to large rewrites of the interface of modules.  This range is spanned
-by the four main features that entered the astropy core, which we
-describe below.
+by the five main new features that entered the astropy core since the
+previous summary \citepalias{astropy:2018}.
+
+New features present a particular difficulty for a mature package such
+as \astropypkg, because by their nature they have not been tried out
+much and it is difficult to know in advance what the best interface
+will be, and hard to address all possible use cases in one go, even
+within \astropypkg\ itself.  To give a sense of this, we include in
+our descriptions how we hope the new features will evolve (realizing
+that, in the end, in a user-driven project like \astropy, what happens
+depends mostly on what is highest on the priority list of those that
+have time to contribute).
 
 \paragraph{Uncertainties and Distributions.} Early in our carreers, we
 were likely all taught that a measurement without a unit or an
