@@ -245,7 +245,7 @@ to rely upon the \astropypkg core package and build specialized packages within
 the Astropy ecosystem.
 Even many non-astronomical \python libraries have come to rely on \astropypkg.
 
-The relationship between \astropy and community is reciprocal, with the growing and evolving needs of the community and the maturation of the broader scientific \python ecosystem driving the development of the \astropypkg core package since \citealt{astropy:2018}.
+The relationship between \astropy and community is reciprocal, with the growing and evolving needs of the community and the maturation of the broader scientific \python ecosystem driving the development of the \astropypkg core package since \citetalias{astropy:2018}.
 % feels like ↑ could be expanded to 2 sentences
 
 % Maybe briefly outline the sectors of  
@@ -255,6 +255,22 @@ The relationship between \astropy and community is reciprocal, with the growing 
 % Astropy has grown to interoperate, e.g. NumPy
 
 Development may be roughly split into a few categories: new features added, performance enhancements, intra and inter-package interoperability, and improvements to precision, accuracy, and reproducibility.
+
+Before discussing those, we should mention that sometimes one realizes
+features do not actually belong in the core package, either because
+they are of more general use outside of \astropypkg, or because they
+are too specialized.  An example of the former is the copy of the IAU
+Standards Of Fundamental Astronomy (SOFA) software
+Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that
+astropy carried, as well as the python wrappers for it.  Since this is
+more basic infrastructure, with a release cycle set by SOFA, it made
+more sense to create separate packages that \astropypkg\ can depend
+on: \package{ERFA} \citep{erfa} and \package{PyERFA} \citep{pyerfa}.
+An example of something that was too specialized was a Virtual
+Observatory sub-package (now removed).  Of its content, the Simple
+Application Message Protocol made sense to keep
+(\astropysubpkg{samp}), but other parts belonged more properly in {\tt
+  Astroquery} (see Sect.~\ref{sec:astroquery}).
 
 % Summarize major pieces of development since the last paper (since v2.0). A few
 % ideas (taken from What's New pages) below, but feel free to expand on or remove
@@ -272,17 +288,17 @@ Development may be roughly split into a few categories: new features added, perf
 
 \subsubsection*{New and Planned Features} \label{sec:core-features-new}
 
-\begin{itemize}
+% \begin{itemize}
 %  \item Time Series sub-package (V3.1: New Box Least Squares Periodogram)
 %  \item Uncertainties and Distributions
-  \item ERFA module is now it’s own thing; Obliquely tie in that units
-    remains in astropy
+%   \item ERFA module is now it’s own thing; Obliquely tie in that units
+%    remains in astropy -> above
 %  \item ? Pytest plugin ecosystem -> done elsewhere
 %  \item A new SpectralCoord class for representing and transforming spectral quantities
 %    Velocity in Coordinates
 %  \item WCS API : A shared Python interface for World Coordinate Systems
 %        Include APE 14 reference
-\end{itemize}
+% \end{itemize}
 
 New features come in various forms, from new submodules providing
 wholly new capabilities, to larger additions to existing submodules,
@@ -628,6 +644,9 @@ Include a big table of all affiliated packages and references (as in v2.0
 paper).
 
 \subsection{Connections with data archives}
+
+\label{sec:astroquery}
+% MHvK: feel free to move above label to where it makes most sense.
 
 \secauthor{Adam Ginsburg}
 
