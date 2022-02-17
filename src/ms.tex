@@ -377,18 +377,154 @@ conform to it.  The implementation in \astropysubpkg{wcs} interacts
 well with other \astropypkg\ objects such as \astropySkyCoord\ and
 \astropyTime.
 
+
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
+  % New features capture a lot of attention. While exciting, the arguably more
+  % significant improvements are those of interoperability -- ensuring existing
+  % features connect smoothly together.
+  
+  The modular nature of \astropypkg means that not all sub-packages deeply
+  integrate with one another -- and similarly between separate \python
+  libraries. Because \astropy is situated at the nexus between scientific
+  computing into astronomy, interoperability has been and continues to be an
+  important focus for \astropy, both within the various \astropypkg sub-packages
+  and with other important \python libraries. While increasing inter and
+  intra-package integration will be a perpetual goal -- with feature additions
+  in one place requiring updates in another -- \astropy has made impactful
+  progress with units, tables, and I/O.
+  % Better list? Also better transition
+  If done right, all a user notices is that code using many different python
+  features and libraries ``just works''. Here we will draw notice to these
+  efforts to make your code ``just work''. 
+
+  \paragraph{\package{numpy} on Units}
+
+    \astropyQuantity\ is a backbone of \astropy, leveraging the power of
+    \package{numpy} and adding units. Previously, many \package{numpy} functions
+    would strip a \astropyQuantity\ of its units (or fail outright), limiting
+    \astropyQuantity's usefulness. Now, advances in \package{numpy} function
+    overloading (see for example
+    \href{https://numpy.org/neps/nep-0018-array-function-protocol.html}{NEP 18})
+    mean \astropyQuantity\ works with almost all \package{numpy} (version 1.7+)
+    functions. These advances have similarly benefitted many
+    \package{numpy}-dependent packages, like \package{scipy} and their sparse
+    matrices. And again \astropypkg benefits since more \package{scipy}
+    functions now work with \astropyQuantity.
+
+    In the remaining gaps, the \package{numpy} and \astropyQuantity\
+    interoperability efforts are ongoing. For some functions, such as in
+    \href{https://numpy.org/doc/stable/user/basics.rec.html#module-numpy.lib.recfunctions}{\package{numpy}'s
+    module} for manipulating structured arrays, compatibility only requires
+    exending the existing \package{numpy}-\astropypkg bridge framework.
+    Community interest, in the form of a Feature Request (or better yet Pull
+    Request) would be sufficient to see this realized. For other functions,
+    discussed further in the
+    \href{https://docs.astropy.org/en/stable/known_issues.html#known-deficiencies}{\astropy
+    documentation}, the \package{numpy} framework does not yet allow for full
+    interoperability with \astropy. A goal of \astropy, and the scientific
+    \python community is to enhance and implement the frameworks, allowing
+    \astropyQuantity\ to propagate units seamlessly across the whole ecosystem of
+    \package{numpy}-like projects.
+
+  \paragraph{Astropy in Time and on Units} 
+
+    % Bad sentence ↓. Rewrite.
+    Not only did \astropyunits gain powerful integrations with \package{numpy},
+    there were many intra-package improvements.
+
+    \astropymodeling can add units to otherwise unit-less models.
+
+    A new module –
+    \astropycosmologyunits
+    – has been added to the cosmology sub-package for defining and collecting
+    cosmological units and equivalencies. The unit \texttt{littleh} and
+    equivalency
+    \astropyapidoc{cosmology.units.with_H0}{with\_H0}
+    are deprecated from the main \astropyunits sub-package and moved to
+    \astropycosmologyunits. A new unit, \texttt{redshift}, is added for tracking
+    factors of cosmological redshift.
+    % As this is a pseudo-unit an equivalency
+    % \astropyapidoc{cosmology.units.dimensionless_redshift}{dimensionless\_redshift}
+    % is added (and enabled by default) to allow for redshift - dimensionless
+    % conversions.
+    To convert between redshift and other cosmological distance
+    measures, e.g. CMB temperature or comoving distance, the equivalency
+    \astropyapidoc{cosmology.units.with_redshift}{with\_redshift}
+    is also added. This equivalency is actually a composite of other
+    equivalencies,
+    % : \astropyapidoc{cosmology.units.redshift_distance}{redshift\_distance},
+    % \astropyapidoc{cosmology.units.redshift_hubble}{redshift\_hubble}, and
+    % \astropyapidoc{cosmology.units.redshift_temperature}{redshift\_temperature},
+    which may be used separately.
+
+    % IN PROGRESS (ADAPTING FROM THE WHATSNEW).
+    The FITS Time standard paper defines the formats and keywords used to
+    represent timing information in FITS files. The Astropy FITS package now
+    provides support for reading and writing native Time table columns using
+    this format. This is described within the FITS unified I/O interface and
+    examples of usage can be found in the Astropy native objects (mixin columns)
+    section.
+
+    Implementation of this feature was made possible through the support of the
+    Google Summer of Code 2017 program. To learn more about this project please
+    see the final report, A mixin protocol for seamless interoperability.
+
+  \paragraph{Table Mixin Columns}
+
+    Numerous \python libraries have custom table implementations
+    \begin{itemize}
+      \item (Support use of SkyCoord as Column happened before) and in table vstack, dstack, and insert\_row
+      \item Converting SkyCoord to QTable (1 sentence addition to above)
+      \item Added support for dask arrays in tables
+      \item Added support for registering array-like objects as mixin columns
+    \end{itemize}
+
+  \paragraph{Unified I/O architecture}
+
+    \astropyiosubpkg{registry} is a powerful way to define input and output
+    (I/O) functions for \astropypkg objects, such as reading or writing to a
+    file. \astropy uses this internally for the I/O methods in \astropyTable and
+    \astropyCosmology (I/O added v5.0+), and users can register custom I/O to
+    extend the options on these classes.
+
+    As of Astropy 5.0 the I/O registry submodule has switched to a class-based
+    architecture and been refactored to allow read-only, write-only, and
+    read-write registries. Additionally, the registry submodule no longer
+    assumes an object has \astropy-style \texttt{read} and \texttt{write}
+    methods when trying to read or write that object. These two improvements
+    enable a number of new use cases for \astropyiosubpkg{registry}, some
+    highlighted here, but others we hope to see have community adoption.
+
+    First, the class-based architecture allows for the creation of custom
+    registries. An application of this is in \astropycosmology, which
+    has two different \textit{kinds} of registries for \astropyCosmology: one
+    for reading and writing files, and another for converting between python
+    objects.
+
+    Second, \textit{any} kind of object is now compatible with
+    \astropyiosubpkg{registry}. Using \astropyiosubpkg{registry} for custom
+    classes means a user does not have to create a whole new I/O system and can
+    offer a unified and familiar API.
+
+  \paragraph{Persistent Storage and I/O}
+
+    % TODO Better transition sentence
+    The imrovements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
+
+    \begin{itemize}
+      \item ASDF : JSWST  and models can be stored with ASDF.
+      \item ECSV : Support for multidimensional and object columns in ECSV
+      \item FITS : Support for writing Dask arrays to FITS files, and Append table to existing FITS file
+      \item Support for reading, writing, and converting Cosmology
+      \item MRT Support for reading and writing tables to MRT format : GSOC
+      \item Support for reading and writing tables to Parquet format
+      \item Support for reading and writing tables to QDP format
+      \item ASDF read write
+    \end{itemize}
+
+
 \subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
-
-
-\subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-performance}
-
-
-\subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-future}
-
-
-\subsection*{Precision, Accuracy, and Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
 
   An important focus of \astropy has been to increase the precision and accuracy
   of its functionality, while, where appropriate, making sure results obtained
@@ -514,6 +650,13 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     % may be used by setting the default value to ``pre-v4.0'' in the
     % \href{https://docs.astropy.org/en/stable/api/astropy.coordinates.galactocentric_frame_defaults.html}{\texttt{galactocentric\_frame\_defaults}}
     % \astropyScienceState.
+
+
+\subsection*{Performance} \label{sec:core-features-performance}
+
+
+
+\subsection*{Future} \label{sec:core-features-future}
 
 
 
