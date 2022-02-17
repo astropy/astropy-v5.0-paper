@@ -266,7 +266,7 @@ Development may be roughly split into a few categories: new features added, perf
 \subsubsection*{New Features} \label{sec:core-features-new}
 
 \begin{itemize}
-  \item Time Series sub-package (V3.1: New Box Least Squares Periodogram)
+%  \item Time Series sub-package (V3.1: New Box Least Squares Periodogram)
 %  \item Uncertainties and Distributions
   \item ERFA module is now it’s own thing; Obliquely tie in that units
     remains in astropy
@@ -306,6 +306,19 @@ course a \astropyQuantity, and the goal is to ensure it can be
 seamlessly used to instantiate also other astropy classes, such as
 \astropyskycoord\ and \astropyTime.
 
+\paragraph{Time series.}  From sampling a continuous variable at fixed
+times to counting events binned into time windows, many different
+areas of astrophysics require the manipulation of time series.  These
+are often logically tables, and the new \astropysubpkg{timeseries}
+sub-package extends the \astropyQTable\ class to tables of data as a
+function of time, where the data can either represent samples or
+averages over particular time bins.  The new classes offer a number of
+special methods to manipulate time series (folding, resampling, etc.)
+and to read different data formats (such as {\em Kepler} lightcurves,
+etc.).
+
+Also part of \astropysubpkg{timeseries} are common analysis routines,
+including Lomb-Scargle and box-least-squares periodogrammes.
 
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
