@@ -267,7 +267,7 @@ Development may be roughly split into a few categories: new features added, perf
 
 \begin{itemize}
   \item Time Series sub-package (V3.1: New Box Least Squares Periodogram)
-  \item Uncertainties and Distributions
+%  \item Uncertainties and Distributions
   \item ERFA module is now it’s own thing; Obliquely tie in that units
     remains in astropy
   \item ? Pytest plugin ecosystem
@@ -276,6 +276,35 @@ Development may be roughly split into a few categories: new features added, perf
   \item WCS API : A shared Python interface for World Coordinate Systems
         Include APE reference
 \end{itemize}
+
+New features come in various forms, from new submodules providing
+wholly new capabilities, to larger additions to existing submodules,
+to large rewrites of the interface of modules.  This range is spanned
+by the four main features that entered the astropy core, which we
+describe below.
+
+\paragraph{Uncertainties and Distributions.} Early in our carreers, we
+were likely all taught that a measurement without a unit or an
+uncertainty is essentially meaningless.  \astropyunits already
+provides the ability to associate numbers with units, and propagate
+these correctly, with its \astropyQuantity\ class, but so far the
+ability to associate and propagate uncertainties is relatively
+limited: in \astropysubpkg{nddata}, there are options to associate
+errors with data arrays, but these are treated as independent, i.e.,
+covariances are not tracked.
+
+In general, proper error propagation is difficult, and often it is
+best to use Monte Carle methods.  With the new
+\astropysubpkg{uncertainties} sub-package, a first step is made to
+make this possible.  It allows one to generate, for each variable,
+randomly drawn samples in a \astropyDistribution, and then propagate
+these by passing them through the normal analysis, producing a
+\astropyDistribution\ of final results that can be inspected.
+
+This \astropyDistribution\ can be any type of array, including of
+course a \astropyQuantity, and the goal is to ensure it can be
+seamlessly used to instantiate also other astropy classes, such as
+\astropyskycoord\ and \astropyTime.
 
 
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
