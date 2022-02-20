@@ -414,6 +414,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
   % significant improvements are those of interoperability -- ensuring existing
   % features connect smoothly together.
 
+  % MHvK: this repeats the same thing 3 times; try to use just one sentence!
   The modular nature of \astropypkg means that not all sub-packages deeply
   integrate with one another -- and similarly between separate \python
   libraries. Because \astropy is situated at the nexus between scientific
@@ -425,8 +426,8 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
   progress with units, tables, and I/O.
   % Better list? Also better transition
   If done right, all a user notices is that code using many different python
-  features and libraries ``just works''. Here we will draw notice to these
-  efforts to make your code ``just work''.
+  features and libraries ``just works''.  Here, we describe a few
+  particular efforts towards this goal.
 
   \paragraph{\package{numpy} on Units}
 
@@ -437,10 +438,12 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     overloading (see for example
     \href{https://numpy.org/neps/nep-0018-array-function-protocol.html}{NEP 18})
     mean \astropyQuantity\ works with almost all \package{numpy} (version 1.17+)
-    functions. These advances have similarly benefitted many
-    \package{numpy}-dependent packages, like \package{scipy} and their sparse
-    matrices. And again \astropypkg benefits since more \package{scipy}
-    functions now work with \astropyQuantity.
+    functions.
+    % MHvK: I don't think the following is true, so commented it out.
+    % These advances have similarly benefitted many
+    % \package{numpy}-dependent packages, like \package{scipy} and their sparse
+    % matrices. And again \astropypkg benefits since more \package{scipy}
+    % functions now work with \astropyQuantity.
 
     In the remaining gaps, the \package{numpy} and \astropyQuantity\
     interoperability efforts are ongoing. For some functions, such as in
@@ -448,7 +451,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     module} for manipulating structured arrays, compatibility only requires
     exending the existing \package{numpy}-\astropypkg bridge framework.
     Community interest, in the form of a Feature Request (or better yet Pull
-    Request) would be sufficient to see this realized. For other functions,
+    Request) would be sufficient to see this realized. For a few remaining functions,
     discussed further in the
     \href{https://docs.astropy.org/en/stable/known_issues.html#known-deficiencies}{\astropy
     documentation}, the \package{numpy} framework does not yet allow for full
