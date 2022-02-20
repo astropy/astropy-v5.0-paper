@@ -684,10 +684,18 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
 
 \subsection*{Performance} \label{sec:core-features-performance}
 
+As features are added and corner cases dealt with, performance often
+suffers.  Hence, pull requests that improve performance are welcomed
+generally, and were even the main goal for one release cycle.  For
+most packages, this meant improvements in the \python\ code, but for
+some the most time-critical pieces were rewritten in~C (e.g., for
+convolution of images, sigma-clipping, and converting time strings to
+binary).  Furthermore, a particular effort was made to ensure
+\astropypkg\ is thread-safe, so that it can be used on supercomputer
+clusters.
 
-
-\subsection*{Future} \label{sec:core-features-future}
-
+% \subsection*{Future} \label{sec:core-features-future}
+% MHvK: Merged with the new feature section
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
