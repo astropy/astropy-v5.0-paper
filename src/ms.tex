@@ -463,8 +463,10 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
   \paragraph{Astropy in Time and on Units}
 
     % Bad sentence ↓. Rewrite.
-    Not only did \astropyunits gain powerful integrations with \package{numpy},
-    there were many intra-package improvements.
+    % Not only did \astropyunits gain powerful integrations with \package{numpy},
+    % there were many intra-package improvements.
+    % MHvK: suggested short replacement.
+    Units were also integrated further within \astropypkg.
 
     \astropymodeling can add units to otherwise unit-less models.
 
@@ -492,6 +494,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     which may be used separately.
 
     % IN PROGRESS (ADAPTING FROM THE WHATSNEW).
+    % MHvK: maybe separate \paragraph?
     The FITS Time standard paper defines the formats and keywords used to
     represent timing information in FITS files. The Astropy FITS package now
     provides support for reading and writing native Time table columns using
@@ -542,7 +545,9 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
 
   \paragraph{Persistent Storage and I/O}
 
-    % TODO Better transition sentence
+  % TODO Better transition sentence
+  % MHvK: maybe do this before the structure? Change in structure
+  % partially driven by this?
     The imrovements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
 
     \begin{itemize}
@@ -567,7 +572,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
   \astropycoordinates, and \astropycosmology.
 
   \paragraph{Time}
-
+  % MHvK: pulsar timing cares about ns, as does VLBI!
     In astronomy, time accuracy down to the second is frequently important.
     Whether for planning observations or crunching data, missing seconds can
     meaningfully impact results. Before, when using \astropyTime in \astropytime
