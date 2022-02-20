@@ -235,38 +235,38 @@ end of 2023.
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
 
-  \secauthor{Nathaniel Starkman, Marten van Kerkwijk}
+\secauthor{Nathaniel Starkman, Marten van Kerkwijk}
 
-  The \astropypkg core package is mature and stable, in that many features have
-  been part of the core package for years with (purposefully) few changes to the
-  software interface. This maturity and stability allows for the broader
-  astronomy \python community to rely upon the \astropypkg core package and
-  build specialized packages within the Astropy ecosystem. Even many
-  non-astronomical \python libraries have come to rely on \astropypkg.
+The \astropypkg core package is mature and stable, in that many features have
+been part of the core package for years with (purposefully) few changes to the
+software interface. This maturity and stability allows for the broader
+astronomy \python community to rely upon the \astropypkg core package and
+build specialized packages within the Astropy ecosystem. Even many
+non-astronomical \python libraries have come to rely on \astropypkg.
 
-  The relationship between \astropy and community is reciprocal, with the
-  growing and evolving needs of the community and the maturation of the broader
-  scientific \python ecosystem now driving the development of the \astropypkg
-  core package.
+The relationship between \astropy and community is reciprocal, with the
+growing and evolving needs of the community and the maturation of the broader
+scientific \python ecosystem now driving the development of the \astropypkg
+core package.
 
-  One manifestation of this development realizing some features do not actually
-  belong in the core package, either because they are of more general use
-  outside of \astropypkg, or because they are too specialized. An example of the
-  former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA)
-  software Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that
-  \astropy carried, as well as the \python wrappers for it.  Since this is more
-  basic infrastructure, with a release cycle set by SOFA, it made more sense to
-  create separate packages that \astropypkg can depend on: \package{ERFA}
-  \citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
-  was too specialized was a Virtual Observatory sub-package (now removed).  Of
-  its content, the Simple Application Message Protocol made sense to keep
-  (\astropysubpkg{samp}), but other parts belonged more properly in {\tt
-  Astroquery} (see Sect.~\ref{sec:astroquery}).
+One manifestation of this was the realization that some features do not actually
+belong in the core package, either because they are of more general use
+outside of \astropypkg, or because they are too specialized. An example of the
+former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA)
+software Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that
+\astropy carried, as well as the \python wrappers for it.  Since this is more
+basic infrastructure, with a release cycle set by SOFA, it made more sense to
+create separate packages that \astropypkg can depend on: \package{ERFA}
+\citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
+was too specialized was a Virtual Observatory sub-package (now removed).  Of
+its content, the Simple Application Message Protocol made sense to keep
+(\astropysubpkg{samp}), but other parts belonged more properly in {\tt
+Astroquery} (see Sect.~\ref{sec:astroquery}).
 
-  Within \astropypkg, development may be roughly split into a few categories:
-  new features added, performance enhancements, intra and inter-package
-  interoperability, and improvements to precision, accuracy, and
-  reproducibility. We discuss these in turn.
+Within \astropypkg, development may be roughly split into a few categories:
+new features added, performance enhancements, intra and inter-package
+interoperability, and improvements to precision, accuracy, and
+reproducibility. We discuss these in turn.
 
 
 \subsubsection*{New and Planned Features} \label{sec:core-features-new}
@@ -383,7 +383,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
   % New features capture a lot of attention. While exciting, the arguably more
   % significant improvements are those of interoperability -- ensuring existing
   % features connect smoothly together.
-  
+
   The modular nature of \astropypkg means that not all sub-packages deeply
   integrate with one another -- and similarly between separate \python
   libraries. Because \astropy is situated at the nexus between scientific
@@ -396,7 +396,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
   % Better list? Also better transition
   If done right, all a user notices is that code using many different python
   features and libraries ``just works''. Here we will draw notice to these
-  efforts to make your code ``just work''. 
+  efforts to make your code ``just work''.
 
   \paragraph{\package{numpy} on Units}
 
@@ -427,7 +427,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \astropyQuantity\ to propagate units seamlessly across the whole ecosystem of
     \package{numpy}-like projects.
 
-  \paragraph{Astropy in Time and on Units} 
+  \paragraph{Astropy in Time and on Units}
 
     % Bad sentence ↓. Rewrite.
     Not only did \astropyunits gain powerful integrations with \package{numpy},
