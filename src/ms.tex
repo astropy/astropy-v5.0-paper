@@ -53,6 +53,7 @@ GalacticLSR}{GalacticLSR}}
 \newcommand{\astropyDistribution}{\astropyapidoc{uncertainty.Distribution}{Distribution}}
 \newcommand{\astropyUnit}{\astropyapidoc{units.Unit}{Unit}}
 \newcommand{\astropyQuantity}{\astropyapidoc{units.Quantity}{Quantity}}
+\newcommand{\astropyMasked}{\astropyapidoc{utils.masked.Masked}{Masked}}
 \newcommand{\astropyScienceState}{\astropyapidoc{utils.state.ScienceState}{ScienceState}}
 
 % suggestion: shortcut reference to Paper II
@@ -333,6 +334,36 @@ covariant with each other, i.e., one has to carry $N\times N$
 covariances.  For a large image, that becomes not just pointless but
 also prohibitive in terms of memory and CPU usage.
 
+\paragraph{Masked quantities.}  Data can be known to be bad, in which
+case it is useful to mask them.  Support for masked data involves a
+number of choices, such as whether one indicates data values are bad
+by a separate flag or by replacing them by a special value, such as
+``Not a Number'' (NaN).  In \astropypkg, both approaches have been
+used: a flag for masked columns in \astropyTable, mask flags and
+bitmaps for N-dimensional data in \astropysubpkg{nddata}, and
+replacing elements with NaN in \astropyTime.  A particular problem was
+that no masked quantities were available, making it more difficult to
+migrate to \astropyQTable, in which \astropyQuantity\ is used for all
+columns with units, thus propagating those correctly (instead of
+treating the unit merely as metadata).
+
+Unfortunately, it turned out that the \texttt{MaskedArray} class from
+\package{numpy} could not be used, as its design made it a wrapper
+around any subclass, rather than allow another class to use it as an
+alternative to a regular data array.  For quantities, this does not
+work, as one can see from the fact that a masked value does not mean
+the unit is not known.  Given this, a new \astropyMasked\ class was
+designed, based on a framework very similar to that of
+\astropyDistribution, making it easy to create masked instances of
+other classes.  In particular, this can be used to create masked
+quantities for \astropyQTable, including full support for reading and
+writing to the different file types.
+
+The masked quantities work mostly without any changes in higher-level
+objects such as \astropySkyCoord, but work is still underway to expose
+the mask in those classes, as well as to use masked arrays in
+\astropyTime\ instead of replacing data with NaN.
+
 \paragraph{Time series.}  From sampling a continuous variable at fixed
 times to counting events binned into time windows, many different
 areas of astrophysics require the manipulation of time series.  These
@@ -376,7 +407,6 @@ classes to conform to the new interface or build thin wrappers that
 conform to it.  The implementation in \astropysubpkg{wcs} interacts
 well with other \astropypkg\ objects such as \astropySkyCoord\ and
 \astropyTime.
-
 
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
