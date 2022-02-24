@@ -456,19 +456,20 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     is also added. This equivalency is actually a composite of other
     equivalencies, which may be used separately.
 
-  \paragraph{Astropy Fits in Time}
-    % IN PROGRESS (ADAPTING FROM THE WHATSNEW).
+  \paragraph{Astropy Fits in Time}    % IN PROGRESS (ADAPTING FROM THE WHATSNEW).
 
-    The FITS Time standard paper defines the formats and keywords used to
-    represent timing information in FITS files. The Astropy FITS package now
-    provides support for reading and writing native Time table columns using
-    this format. This is described within the FITS unified I/O interface and
-    examples of usage can be found in the Astropy native objects (mixin columns)
-    section.
-
-    Implementation of this feature was made possible through the support of the
-    Google Summer of Code 2017 program. To learn more about this project please
-    see the final report, A mixin protocol for seamless interoperability.
+    As anyone who has worked with FITS files knows, the FITS standard is both
+    detailed and very flexible. While this means FITS is useful across many
+    domains, working with the files can be involved. Expanding on the WCS and
+    related work, the \astropyfits package now provides support for reading and
+    writing native \astropyTime table columns using the FITS Time standard
+    \citep{FITS-Time:2015}. For backward compatibility, this feature may be
+    turned off. Implementation of this feature was made possible through the
+    support of the Google Summer of Code 2017 program.
+    % TODO: is there a way to cite this
+    To learn more about this project please see the final report,
+    \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
+    mixin protocol for seamless interoperability}.
 
   \paragraph{Table Mixin Columns}
 
