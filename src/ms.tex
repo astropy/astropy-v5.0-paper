@@ -237,58 +237,46 @@ end of 2023.
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
 
-\secauthor{Nathaniel Starkman, Marten van Kerkwijk}
+  \secauthor{Nathaniel Starkman, Marten van Kerkwijk}
 
-The \astropypkg core package is mature and stable, in that many features have
-been part of the core package for years with (purposefully) few changes to the
-software interface. This maturity and stability allows for the broader
-astronomy \python community to rely upon the \astropypkg core package and
-build specialized packages within the Astropy ecosystem. Even many
-non-astronomical \python libraries have come to rely on \astropypkg.
+  The \astropypkg core package is mature and stable, in that many features have
+  been part of the core package for years with (purposefully) few changes to the
+  software interface. This maturity and stability allows for the broader
+  astronomy \python community to rely upon the \astropypkg core package and
+  build specialized packages within the Astropy ecosystem. Even many
+  non-astronomical \python libraries have come to rely on \astropypkg.
 
-The relationship between \astropy and community is reciprocal, with the
-growing and evolving needs of the community and the maturation of the broader
-scientific \python ecosystem now driving the development of the \astropypkg
-core package.
+  The relationship between \astropy and community is reciprocal, with the
+  growing and evolving needs of the community and the maturation of the broader
+  scientific \python ecosystem driving much of the development of the
+  \astropypkg core package.
 
-One manifestation of this was the realization that some features do not actually
-belong in the core package, either because they are of more general use
-outside of \astropypkg, or because they are too specialized. An example of the
-former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA)
-software Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that
-\astropy carried, as well as the \python wrappers for it.  Since this is more
-basic infrastructure, with a release cycle set by SOFA, it made more sense to
-create separate packages that \astropypkg can depend on: \package{ERFA}
-\citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
-was too specialized was a Virtual Observatory sub-package (now removed).  Of
-its content, the Simple Application Message Protocol made sense to keep
-(\astropysubpkg{samp}), but other parts belonged more properly in {\tt
-Astroquery} (see Sect.~\ref{sec:astroquery}).
+  One manifestation of this was the realization that some features do not
+  actually belong in the core package, either because they are of more general
+  use outside of \astropypkg, or because they are too specialized. An example of
+  the former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA)
+  software Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that
+  \astropy carried, as well as the \python wrappers for it.  Since this is more
+  basic infrastructure, with a release cycle set by SOFA, it made more sense to
+  create separate packages that \astropypkg can depend on: \package{ERFA}
+  \citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
+  was too specialized was a Virtual Observatory sub-package (now removed).  Of
+  its content, the Simple Application Message Protocol made sense to keep
+  (\astropysubpkg{samp}), but other parts belonged more properly in \package{
+  astroquery} (see Sect.~\ref{sec:astroquery}).
 
-Within \astropypkg, development may be roughly split into a few
-categories: new features added, intra and inter-package
-interoperability, improvements to precision, accuracy, and
-reproducibility, and performance enhancements. We discuss these in turn.
+  Within \astropypkg, development may be roughly split into a few categories:
+  new features added, intra and inter-package interoperability, improvements to
+  precision, accuracy, and reproducibility, and performance enhancements. We
+  discuss these in turn.
 
 
 \subsubsection*{New and Planned Features} \label{sec:core-features-new}
 
-% \begin{itemize}
-%  \item Time Series sub-package (V3.1: New Box Least Squares Periodogram)
-%  \item Uncertainties and Distributions
-%   \item ERFA module is now it’s own thing; Obliquely tie in that units
-%    remains in astropy -> above
-%  \item ? Pytest plugin ecosystem -> done elsewhere
-%  \item A new SpectralCoord class for representing and transforming spectral quantities
-%    Velocity in Coordinates
-%  \item WCS API : A shared Python interface for World Coordinate Systems
-%        Include APE 14 reference
-% \end{itemize}
-
 New features come in various forms, from new submodules providing
 wholly new capabilities, to larger additions to existing submodules,
 to large rewrites of the interface of modules.  This range is spanned
-by the five main new features that entered the astropy core since the
+by the five main new features that entered the \astropypkg core since the
 previous summary \citepalias{astropy:2018}.
 
 New features present a particular difficulty for a mature package such
@@ -301,7 +289,7 @@ that, in the end, in a user-driven project like \astropy, what happens
 depends mostly on what is highest on the priority list of those that
 have time to contribute).
 
-\paragraph{Uncertainties and Distributions.} Early in our carreers, we
+\paragraph{Uncertainties and Distributions.} Early in our careers, we
 were likely all taught that a measurement without a unit or an
 uncertainty is essentially meaningless.  \astropyunits already
 provides the ability to associate numbers with units, and propagate
@@ -312,7 +300,7 @@ errors with data arrays, but these are treated as independent, i.e.,
 covariances are not tracked.
 
 In general, proper error propagation is difficult, and often it is
-best to use Monte Carle methods.  With the new
+best to use Monte Carlo methods.  With the new
 \astropysubpkg{uncertainties} sub-package, a first step is made to
 make this possible.  It allows one to generate, for each variable,
 randomly drawn samples in a \astropyDistribution, and then propagate
@@ -321,7 +309,7 @@ these by passing them through the normal analysis, producing a
 
 This \astropyDistribution\ can be any type of array, including of
 course a \astropyQuantity, and the goal is to ensure it can be
-seamlessly used to instantiate also other astropy classes, such as
+seamlessly used to instantiate also other \astropypkg classes, such as
 \astropySkyCoord\ and \astropyTime.
 
 Apart from Monte-Carlo error propagation, the plan for
@@ -488,7 +476,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \begin{itemize}
       \item (Support use of SkyCoord as Column happened before) and in table vstack, dstack, and insert\_row
       \item Converting SkyCoord to QTable (1 sentence addition to above)
-      \item Added support for dask arrays in tables
+      \item Added support for \package{dask} arrays in tables
       \item Added support for registering array-like objects as mixin columns
     \end{itemize}
 
@@ -496,7 +484,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
 
   % MHvK: maybe do this before the structure? Change in structure
   % partially driven by this?
-    The imrovements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
+    The improvements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
 
     \begin{itemize}
       \item ASDF : JSWST  and models can be stored with ASDF.
@@ -581,15 +569,13 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     The constants and units definitions are set by configuration file as well as
     \astropyScienceState (an runtime configuration controller). For work where
     updates to the values of the fundamental constants significantly alters
-    results we recommend including with the work an astropy configuration file,
+    results we recommend including with the work an \astropy configuration file,
     which specifies the set of constants used.
 
   \paragraph{Cosmology}
     % TODO! At least one good sentence about "what is the benefit of astropy.cosmology"
 
     \astropycosmology contains classes for representing cosmological models.
-    % currently all homogeneous and isotropic variations of the
-    % Friedmann-Lemaitre-Robertson-Walker metric.
     Bundled with the classes are commonly used \astropyCosmology realizations, for
     example best-fit measurements from
     \href{https://lambda.gsfc.nasa.gov/product/map/current/}{WMAP}
@@ -645,7 +631,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     ground-based telescopes and intra-solar astronomy. Transformations in the
     \astropyAltAz frame were reasonably precise for very distant objects, but
     wrong by up around several arcseconds for e.g. the location of the moon. Now
-    these transformations are much more precise, down to the milli-arcsecond
+    these transformations are much more precise, down to the milliarcsecond
     level. Similar precision improvements were made to the
     \astropyapi{coordinates.builtin_frames.HADec}{Hour Angle-Declination} frame
     transformations. Additionally,
@@ -677,9 +663,6 @@ convolution of images, sigma-clipping, and converting time strings to
 binary).  Furthermore, a particular effort was made to ensure
 \astropypkg\ is thread-safe, so that it can be used on supercomputer
 clusters.
-
-% \subsection*{Future} \label{sec:core-features-future}
-% MHvK: Merged with the new feature section
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
