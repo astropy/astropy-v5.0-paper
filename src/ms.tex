@@ -230,18 +230,53 @@ end of 2023.
 
 \secauthor{Nathaniel Starkman, Marten van Kerkwijk}
 
-Summarize major pieces of development since the last paper (since v2.0). A few
-ideas (taken from What's New pages) below, but feel free to expand on or remove
-from this list:
-\begin{itemize}
-    \item Support for representing and transforming velocity data in coordinates, epoch propagation (v3.0)
-    \item Improved support for astronomical time series: TimeSeries object (v3.2), Box Least Squares periodogram (v3.1)
-    \item Overall improved support of Quantity throughout numpy (v4.0) and scipy
-    \item Native support for Time, Quantity, and SkyCoord objects in Astropy tables
-    \item APE 14 WCS
-    \item A new SpectralCoord class for representing and transforming spectral quantities
-    \item Support for dask/large arrays in several places in the core package (4.1, 5.0, and maybe other versions)
-\end{itemize}
+The \astropypkg core package is mature and stable, in that many features have
+been part of the core package for years with (purposefully) few changes to the
+software interface.
+This maturity and stability allows for the broader astronomy \python community
+to rely upon the \astropypkg core package and build specialized packages within
+the Astropy ecosystem.
+Even many non-astronomical \python libraries have come to rely on \astropypkg.
+
+The relationship between \astropy and community is reciprocal, with the growing and evolving needs of the community and the maturation of the broader scientific \python ecosystem driving the development of the \astropypkg core package since \citealt{astropy:2018}.
+% feels like ↑ could be expanded to 2 sentences
+
+% Maybe briefly outline the sectors of  
+% Using \astropypkg for
+% precision astronomy has spurred development of faster and more accurate coordinate transformations and time calculations,
+% super-computer work has spurred \astropypkg to be thread-safe and support \package{dask} \citep{daskpkg}
+% Astropy has grown to interoperate, e.g. NumPy
+
+Development may be roughly split into a few categories: new features added, performance enhancements, intra and inter-package interoperability, and improvements to precision, accuracy, and reproducibility.
+
+% Summarize major pieces of development since the last paper (since v2.0). A few
+% ideas (taken from What's New pages) below, but feel free to expand on or remove
+% from this list:
+% \begin{itemize}
+%     \item Support for representing and transforming velocity data in coordinates, epoch propagation (v3.0)
+%     \item Improved support for astronomical time series: TimeSeries object (v3.2), Box Least Squares periodogram (v3.1)
+%     \item Overall improved support of Quantity throughout numpy (v4.0) and scipy
+%     \item Native support for Time, Quantity, and SkyCoord objects in Astropy tables
+%     \item APE 14 WCS
+%     \item A new SpectralCoord class for representing and transforming spectral quantities
+%     \item Support for dask/large arrays in several places in the core package (4.1, 5.0, and maybe other versions)
+% \end{itemize}
+
+
+\subsubsection*{New Features} \label{sec:core-features-new}
+
+
+\subsubsection*{Interoperability} \label{sec:core-features-interoperability}
+
+\subsection*{Precision, Accuracy, & Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
+
+
+\subsection*{Precision, Accuracy, & Reproducibility} \label{sec:core-features-performance}
+
+
+\subsection*{Precision, Accuracy, & Reproducibility} \label{sec:core-features-future}
+
+
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
