@@ -46,6 +46,7 @@ GalacticLSR}{GalacticLSR}}
 \newcommand{\astropyGalactocentric}{\astropyapidoc{coordinates.builtin_frames.Galactocentric}{Galactocentric}}
 \newcommand{\astropyCosmology}{\astropyapidoc{cosmology.Cosmology}{Cosmology}}
 \newcommand{\astropyFlatLambdaCDM}{\astropyapidoc{cosmology.FlatLambdaCDM}{FlatLambdaCDM}}
+\newcommand{\astropyModel}{\astropyapidoc{modeling.Model}{Model}}
 \newcommand{\astropyTable}{\astropyapidoc{table.Table}{Table}}
 \newcommand{\astropyQTable}{\astropyapidoc{table.QTable}{QTable}}
 \newcommand{\astropyTime}{\astropyapidoc{time.Time}{Time}}
@@ -408,26 +409,15 @@ conform to it.  The implementation in \astropysubpkg{wcs} interacts
 well with other \astropypkg\ objects such as \astropySkyCoord\ and
 \astropyTime.
 
+
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
-  % New features capture a lot of attention. While exciting, the arguably more
-  % significant improvements are those of interoperability -- ensuring existing
-  % features connect smoothly together.
-
-  % MHvK: this repeats the same thing 3 times; try to use just one sentence!
-  The modular nature of \astropypkg means that not all sub-packages deeply
-  integrate with one another -- and similarly between separate \python
-  libraries. Because \astropy is situated at the nexus between scientific
-  computing into astronomy, interoperability has been and continues to be an
-  important focus for \astropy, both within the various \astropypkg sub-packages
-  and with other important \python libraries. While increasing inter and
-  intra-package integration will be a perpetual goal -- with feature additions
-  in one place requiring updates in another -- \astropy has made impactful
-  progress with units, tables, and I/O.
-  % Better list? Also better transition
-  If done right, all a user notices is that code using many different python
-  features and libraries ``just works''.  Here, we describe a few
-  particular efforts towards this goal.
+  Because \astropy is modular and situated at the nexus between scientific
+  computing and astronomy, interoperability is an important focus for \astropy,
+  both within the various \astropypkg sub-packages and with other important
+  \python libraries. If done right, all a user notices is that code using many
+  different python features and libraries ``just works''. Here, we describe a
+  few particular efforts towards this goal.
 
   \paragraph{\package{numpy} on Units}
 
@@ -439,62 +429,48 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \href{https://numpy.org/neps/nep-0018-array-function-protocol.html}{NEP 18})
     mean \astropyQuantity\ works with almost all \package{numpy} (version 1.17+)
     functions.
-    % MHvK: I don't think the following is true, so commented it out.
-    % These advances have similarly benefitted many
-    % \package{numpy}-dependent packages, like \package{scipy} and their sparse
-    % matrices. And again \astropypkg benefits since more \package{scipy}
-    % functions now work with \astropyQuantity.
 
     In the remaining gaps, the \package{numpy} and \astropyQuantity\
     interoperability efforts are ongoing. For some functions, such as in
     \href{https://numpy.org/doc/stable/user/basics.rec.html#module-numpy.lib.recfunctions}{\package{numpy}'s
     module} for manipulating structured arrays, compatibility only requires
-    exending the existing \package{numpy}-\astropypkg bridge framework.
+    extending the existing \package{numpy}-\astropypkg bridge framework.
     Community interest, in the form of a Feature Request (or better yet Pull
-    Request) would be sufficient to see this realized. For a few remaining functions,
-    discussed further in the
+    Request) would be sufficient to see this realized. For a few remaining
+    functions, discussed further in the
     \href{https://docs.astropy.org/en/stable/known_issues.html#known-deficiencies}{\astropy
     documentation}, the \package{numpy} framework does not yet allow for full
     interoperability with \astropy. A goal of \astropy, and the scientific
     \python community is to enhance and implement the frameworks, allowing
-    \astropyQuantity\ to propagate units seamlessly across the whole ecosystem of
-    \package{numpy}-like projects.
+    \astropyQuantity\ to propagate units seamlessly across the whole ecosystem
+    of \package{numpy}-like projects.
 
-  \paragraph{Astropy in Time and on Units}
+  \paragraph{\astropypkg on Units}
 
-    % Bad sentence ↓. Rewrite.
-    % Not only did \astropyunits gain powerful integrations with \package{numpy},
-    % there were many intra-package improvements.
-    % MHvK: suggested short replacement.
-    Units were also integrated further within \astropypkg.
-
-    \astropymodeling can add units to otherwise unit-less models.
-
+    Units were also integrated further within \astropypkg. For already-defined
+    \astropyModel, for instance imported from another library, \astropymodeling
+    can now add units to otherwise unit-less models.
+    % TODO! transition words
     A new module –
-    \astropycosmologyunits
-    – has been added to the cosmology sub-package for defining and collecting
-    cosmological units and equivalencies. The unit \texttt{littleh} and
-    equivalency
-    \astropyapidoc{cosmology.units.with_H0}{with\_H0}
-    are deprecated from the main \astropyunits sub-package and moved to
-    \astropycosmologyunits. A new unit, \texttt{redshift}, is added for tracking
-    factors of cosmological redshift.
-    % As this is a pseudo-unit an equivalency
-    % \astropyapidoc{cosmology.units.dimensionless_redshift}{dimensionless\_redshift}
-    % is added (and enabled by default) to allow for redshift - dimensionless
-    % conversions.
-    To convert between redshift and other cosmological distance
-    measures, e.g. CMB temperature or comoving distance, the equivalency
+    \astropycosmologyunits – has been added to the cosmology sub-package for
+    defining and collecting cosmological units and equivalencies. The unit
+    \texttt{littleh} and equivalency
+    \astropyapidoc{cosmology.units.with_H0}{with\_H0} are deprecated from the
+    main \astropyunits sub-package and moved to \astropycosmologyunits. A new
+    unit, \texttt{redshift}, is added for tracking factors of cosmological
+    redshift. To correctly use redshift units in dimensional analysis,
+    \texttt{redshift} is
+    \astropyapidoc{cosmology.units.dimensionless_redshift}{treated as
+    dimensionless} by default. To convert between redshift and other
+    cosmological distance measures, e.g. CMB temperature or comoving distance,
+    the equivalency
     \astropyapidoc{cosmology.units.with_redshift}{with\_redshift}
     is also added. This equivalency is actually a composite of other
-    equivalencies,
-    % : \astropyapidoc{cosmology.units.redshift_distance}{redshift\_distance},
-    % \astropyapidoc{cosmology.units.redshift_hubble}{redshift\_hubble}, and
-    % \astropyapidoc{cosmology.units.redshift_temperature}{redshift\_temperature},
-    which may be used separately.
+    equivalencies, which may be used separately.
 
+  \paragraph{Astropy Fits in Time}
     % IN PROGRESS (ADAPTING FROM THE WHATSNEW).
-    % MHvK: maybe separate \paragraph?
+
     The FITS Time standard paper defines the formats and keywords used to
     represent timing information in FITS files. The Astropy FITS package now
     provides support for reading and writing native Time table columns using
@@ -516,6 +492,24 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
       \item Added support for registering array-like objects as mixin columns
     \end{itemize}
 
+  \paragraph{Persistent Storage and I/O}
+
+  % MHvK: maybe do this before the structure? Change in structure
+  % partially driven by this?
+    The imrovements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
+
+    \begin{itemize}
+      \item ASDF : JSWST  and models can be stored with ASDF.
+      \item ECSV : Support for multidimensional and object columns in ECSV
+      \item FITS : Support for writing Dask arrays to FITS files, and Append table to existing FITS file
+      \item Support for reading, writing, and converting Cosmology
+      \item MRT Support for reading and writing tables to MRT format : GSOC
+      \item Support for reading and writing tables to Parquet format
+      \item Support for reading and writing tables to QDP format
+      \item ASDF read write
+    \end{itemize}
+
+
   \paragraph{Unified I/O architecture}
 
     \astropyiosubpkg{registry} is a powerful way to define input and output
@@ -533,53 +527,35 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     highlighted here, but others we hope to see have community adoption.
 
     First, the class-based architecture allows for the creation of custom
-    registries. An application of this is in \astropycosmology, which
-    has two different \textit{kinds} of registries for \astropyCosmology: one
-    for reading and writing files, and another for converting between python
-    objects.
-
-    Second, \textit{any} kind of object is now compatible with
+    registries. An application of this is in \astropycosmology, which has two
+    different \textit{kinds} of registries for \astropyCosmology: one for
+    reading and writing files, and another for converting between python
+    objects. Second, \textit{any} kind of object is now compatible with
     \astropyiosubpkg{registry}. Using \astropyiosubpkg{registry} for custom
     classes means a user does not have to create a whole new I/O system and can
     offer a unified and familiar API.
-
-  \paragraph{Persistent Storage and I/O}
-
-  % TODO Better transition sentence
-  % MHvK: maybe do this before the structure? Change in structure
-  % partially driven by this?
-    The imrovements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
-
-    \begin{itemize}
-      \item ASDF : JSWST  and models can be stored with ASDF.
-      \item ECSV : Support for multidimensional and object columns in ECSV
-      \item FITS : Support for writing Dask arrays to FITS files, and Append table to existing FITS file
-      \item Support for reading, writing, and converting Cosmology
-      \item MRT Support for reading and writing tables to MRT format : GSOC
-      \item Support for reading and writing tables to Parquet format
-      \item Support for reading and writing tables to QDP format
-      \item ASDF read write
-    \end{itemize}
 
 
 \subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
 
   An important focus of \astropy has been to increase the precision and accuracy
   of its functionality, while, where appropriate, making sure results obtained
-  using older versions of \astropypkg are reproducible.
-  % Something about ScienceState
-  Notable improvements have been made to \astropytime, \astropyconstants,
-  \astropycoordinates, and \astropycosmology.
+  using older versions of \astropypkg are reproducible. Within each section we
+  include in our descriptions how old results may be reproduced. The primary
+  means are with configuration file options, and settings on runtime
+  configuration objects called \astropyScienceState, described further in the
+  documentation. Notable improvements to \astropypkg have been made to
+  \astropytime, \astropyconstants, \astropycoordinates, and \astropycosmology,
+  and we describe each in turn.
 
   \paragraph{Time}
-  % MHvK: pulsar timing cares about ns, as does VLBI!
-    In astronomy, time accuracy down to the second is frequently important.
-    Whether for planning observations or crunching data, missing seconds can
-    meaningfully impact results. Before, when using \astropyTime in \astropytime
-    leap seconds had to be manually applied; now leap seconds are applied
-    automatically. Moreover, \astropypkg updates internal time data-files to
-    ensure that the correct leap second adjustment is always used. For
-    reproducibility, e.g. with an old code, \astropyLeapSeconds may also be
+    In astronomy, time accuracy down to the (nano)second is frequently
+    important. Whether for planning observations, crunching pulsar or VLBI data,
+    missing seconds meaningfully impact results. Before, when using \astropyTime
+    in \astropytime leap seconds had to be manually applied; now leap seconds
+    are applied automatically. Moreover, \astropypkg updates internal time
+    data-files to ensure that the correct leap second adjustment is always used.
+    For reproducibility, e.g. with an old code, \astropyLeapSeconds may also be
     manually applied.
 
   \paragraph{Constants}
