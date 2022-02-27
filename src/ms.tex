@@ -30,8 +30,11 @@
 \newcommand{\astropyunits}{\astropysubpkg{units}}
 \newcommand{\astropycoordinates}{\astropysubpkg{coordinates}}
 \newcommand{\astropyconstants}{\astropysubpkg{constants}}
+\newcommand{\astropytable}{\astropysubpkg{table}}
 \newcommand{\astropytime}{\astropysubpkg{time}}
 \newcommand{\astropymodeling}{\astropysubpkg{modeling}}
+\newcommand{\astropywcs}{\astropysubpkg{wcs}}
+\newcommand{\astropyfits}{\astropyiosubpkg{fits}}
 
 % Links to documentation: classes
 \newcommand{\astropyapi}[2]{\href{https://docs.astropy.org/en/stable/api/astropy.#1.html}{#2}}
@@ -46,7 +49,9 @@ GalacticLSR}{GalacticLSR}}
 \newcommand{\astropyGalactocentric}{\astropyapidoc{coordinates.builtin_frames.Galactocentric}{Galactocentric}}
 \newcommand{\astropyCosmology}{\astropyapidoc{cosmology.Cosmology}{Cosmology}}
 \newcommand{\astropyFlatLambdaCDM}{\astropyapidoc{cosmology.FlatLambdaCDM}{FlatLambdaCDM}}
+\newcommand{\astropyFitsColumn}{\astropyapidoc{io.fits.Column}{Column}}
 \newcommand{\astropyModel}{\astropyapidoc{modeling.Model}{Model}}
+\newcommand{\astropyTableColumn}{\astropyapidoc{table.Column}{Column}}
 \newcommand{\astropyTable}{\astropyapidoc{table.Table}{Table}}
 \newcommand{\astropyQTable}{\astropyapidoc{table.QTable}{QTable}}
 \newcommand{\astropyTime}{\astropyapidoc{time.Time}{Time}}
@@ -456,51 +461,89 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     is also added. This equivalency is actually a composite of other
     equivalencies, which may be used separately.
 
-  \paragraph{Astropy Fits in Time}    % IN PROGRESS (ADAPTING FROM THE WHATSNEW).
+  \paragraph{Table Mixin Columns}
 
-    As anyone who has worked with FITS files knows, the FITS standard is both
-    detailed and very flexible. While this means FITS is useful across many
-    domains, working with the files can be involved. Expanding on the WCS and
-    related work, the \astropyfits package now provides support for reading and
-    writing native \astropyTime table columns using the FITS Time standard
-    \citep{FITS-Time:2015}. For backward compatibility, this feature may be
-    turned off. Implementation of this feature was made possible through the
-    support of the Google Summer of Code 2017 program.
-    % TODO: is there a way to cite this
-    To learn more about this project please see the final report,
+    % TODO: this is very rough. Probably needs a bit of a re-write.
+
+    Within \astropypkg and \python there are numerous ways to represent and
+    store array-valued data. Some of the differences are historical:
+    \astropyapidoc{table.Column}{table.Column} and
+    \astropyapidoc{io.fits.Column}{io.fits.Column} are not the same. Some
+    differences are computational: \package{numpy}, \package{cupy}, and
+    \package{dask} arrays are almost API identical, but are optimized for
+    different compute needs. Lastly, some differences are inherent:
+    \astropyQuantity, \astropyTime and \astropySkyCoord represent fundamentally
+    different types of objects.
+
+    \astropy believes however array-valued data is stored, it should be usable
+    as a column in a table: historical differences are baked into stable API,
+    computational needs can differ, and some objects have extra information. The
+    \astropytable and \astropyfits table implementations allow for mixin-columns
+    (in general a mixin column may contain multiple data components as well as
+    object attributes beyond the standard column). A well defined protocol has
+    been developed to allow the usage of these mixin columns while allowing the
+    object to ``round-trip'' through tables with no loss of data or attributes.
+    With this protocol, it is now possible to store not only standard
+    \astropyTableColumn objects to a FITS table
+    \href{https://docs.astropy.org/en/stable/io/fits/api/hdus.html}{HDU}, but
+    also any \astropy native objects within a \astropyTable. This includes
+    \astropyTime, \astropyQuantity, \astropySkyCoord, and many others. For
+    objects not already covered by the mixin protocol, functions can be
+    registered with \astropyTable to convert, on-the-fly, any array-like object
+    into a `mixin' column that can be used in a table. As an example, this is
+    used to provide the seamless integration of \package{dask} arrays in
+    \astropyTable, allowing computer cluster-scale data to be stored in a
+    \astropyTable.
+
+  \paragraph{Astropy Fits in Time}
+    % TODO! maybe merge with previous section
+
+    Time as a dimension in astronomical data presents challenges in its
+    representation in FITS files. The standard has therefore been extended to
+    describe rigorously the time coordinate in the World Coordinate System (WCS)
+    framework \citep{FITS-Time:2015}.
+
+    \astropyfits can store this data in a standard \astropyFitsColumn (for
+    details, see the
+    \href{https://docs.astropy.org/en/stable/io/fits/index.html}{FITS
+    documentation}), but will not ``understand'' the metadata and attributes.
+    Parsing the column to a useful time representation would be done manually.
+    Thankfully, through the support of the Google Summer of Code 2017 program,
+    % TODO: is there a way to cite this?
+    the \astropyfits package now allows \astropyTime as a `mixin' column.
+    \astropyTime columns in FITS tables ``understand'' the metadata -- scale,
+    reference, position, offset, etc. -- while also providing a similar
+    interface as the regular \astropyFitsColumn objects. For backward
+    compatibility, this feature may be turned off. To learn more about this
+    project please see the final report,
     \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
     mixin protocol for seamless interoperability}.
 
-  \paragraph{Table Mixin Columns}
-
-    Numerous \python libraries have custom table implementations
-    \begin{itemize}
-      \item (Support use of SkyCoord as Column happened before) and in table vstack, dstack, and insert\_row
-      \item Converting SkyCoord to QTable (1 sentence addition to above)
-      \item Added support for \package{dask} arrays in tables
-      \item Added support for registering array-like objects as mixin columns
-    \end{itemize}
-
   \paragraph{Persistent Storage and I/O}
 
-  % MHvK: maybe do this before the structure? Change in structure
-  % partially driven by this?
-    The improvements to \astropy's I/O architecture are mirrored in the increased support for I/O options.
+    % TODO! need good transition sentence. This one is bad.
+    The column mixin options in tables are mirrored in the increased support for
+    I/O options.
 
     \begin{itemize}
-      \item ASDF : JSWST  and models can be stored with ASDF.
       \item ECSV : Support for multidimensional and object columns in ECSV
       \item FITS : Support for writing Dask arrays to FITS files, and Append table to existing FITS file
-      \item Support for reading, writing, and converting Cosmology
       \item MRT Support for reading and writing tables to MRT format : GSOC
       \item Support for reading and writing tables to Parquet format
       \item Support for reading and writing tables to QDP format
       \item ASDF read write
     \end{itemize}
+    
+    Also stuff that isn't a table
+
+    \begin{itemize}
+      \item Support for reading, writing, and converting Cosmology
+    \end{itemize}
 
 
   \paragraph{Unified I/O architecture}
 
+    % TODO! better transition
     \astropyiosubpkg{registry} is a powerful way to define input and output
     (I/O) functions for \astropypkg objects, such as reading or writing to a
     file. \astropy uses this internally for the I/O methods in \astropyTable and
