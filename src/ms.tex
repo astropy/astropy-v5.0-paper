@@ -58,6 +58,9 @@ GalacticLSR}{GalacticLSR}}
 % suggestion: shortcut reference to Paper II
 \newcommand{\paperii}{\cite{astropy:2018}}
 
+% Maybe have command link to Zenodo reference instead, or include it?
+\newcommand{\astropyAPE}[1]{\href{https://github.com/astropy/astropy-APEs/blob/main/APE#1.rst}{APE #1}\xspace}
+
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
 
@@ -271,8 +274,8 @@ Development may be roughly split into a few categories: new features added, perf
   \item ERFA module is now it’s own thing; Obliquely tie in that units
     remains in astropy
   \item ? Pytest plugin ecosystem
-  \item A new SpectralCoord class for representing and transforming spectral quantities
-    Velocity in Coordinates
+%  \item A new SpectralCoord class for representing and transforming spectral quantities
+%    Velocity in Coordinates
   \item WCS API : A shared Python interface for World Coordinate Systems
         Include APE reference
 \end{itemize}
@@ -319,6 +322,18 @@ etc.).
 
 Also part of \astropysubpkg{timeseries} are common analysis routines,
 including Lomb-Scargle and box-least-squares periodogrammes.
+
+\paragraph{Spectral Coordinates.} Measurements are often taken at
+specific ``spectral coordinates'', be they frequencies, wavelengths,
+or photon energies.  The new \astropySpectralCoord\ class allows to
+transform between these as well as to equivalent Doppler velocities.
+It builds on the \astropyQuantity, which can also represent these
+kinds of physical quantities, and allows conversion via dedicated
+equivalencies, but aims to make this more straightforward.
+Furthermore, it can be made aware of the observer and target reference
+frames, allowing for instance transformation from telescope-centric (or
+topocentric) frames to Barycentric or Local Standard of Rest
+(LSRK and LSRD) velocity frames.
 
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
