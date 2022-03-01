@@ -444,10 +444,9 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \astropyModel, for instance imported from another library, \astropymodeling
     can now add units to otherwise unit-less models.
     % TODO! transition words
-    A new module –
-    \astropycosmologyunits – has been added to the cosmology sub-package for
-    defining and collecting cosmological units and equivalencies. The unit
-    \texttt{littleh} and equivalency
+    A new module – \astropycosmologyunits – has been added to the cosmology
+    sub-package for defining and collecting cosmological units and
+    equivalencies. The unit \texttt{littleh} and equivalency
     \astropyapidoc{cosmology.units.with_H0}{with\_H0} are deprecated from the
     main \astropyunits sub-package and moved to \astropycosmologyunits. A new
     unit, \texttt{redshift}, is added for tracking factors of cosmological
@@ -496,26 +495,26 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \astropyTable.
 
   \paragraph{Astropy Fits in Time}
-    % TODO! maybe merge with previous section
 
-    Time as a dimension in astronomical data presents challenges in its
-    representation in FITS files. The standard has therefore been extended to
-    describe rigorously the time coordinate in the World Coordinate System (WCS)
-    framework \citep{FITS-Time:2015}.
-
-    \astropyfits can store this data in a standard \astropyFitsColumn (for
-    details, see the
+    The FITS standard was extended to rigorously describe time coordinates in
+    the World Coordinate System (WCS) framework \citep{FITS-Time:2015}. Compared
+    to other coordinates in the WCS framework, time requires more metadata --
+    format, scale, position, reference etc. -- which had to be manually
+    specified and understood. \astropyfits can store this data in a standard
+    \astropyFitsColumn (for details, see the
     \href{https://docs.astropy.org/en/stable/io/fits/index.html}{FITS
     documentation}), but will not ``understand'' the metadata and attributes.
-    Parsing the column to a useful time representation would be done manually.
-    Thankfully, through the support of the Google Summer of Code 2017 program,
-    % TODO: is there a way to cite this?
-    the \astropyfits package now allows \astropyTime as a `mixin' column.
-    \astropyTime columns in FITS tables ``understand'' the metadata -- scale,
-    reference, position, offset, etc. -- while also providing a similar
-    interface as the regular \astropyFitsColumn objects. For backward
-    compatibility, this feature may be turned off. To learn more about this
-    project please see the final report,
+    Thankfully, through the support of the
+    \href{https://summerofcode.withgoogle.com/archive/2017/projects/4778482366152704}{Google
+    Summer of Code} 2017 program, the \astropyfits package now allows
+    \astropyTime as a `mixin' column. \astropyTime columns in FITS tables
+    ``understand'' the metadata while also providing a similar interface as the
+    regular \astropyFitsColumn objects. With \astropyTime columns, \astropy
+    ensures that time coordinates are stored according to the FITS standard in a
+    consistent manner and can be read/written without loss of information. For
+    backward compatibility with manual systems, this feature may be turned off,
+    but it is recommended to update. To learn more about this project please see
+    the final report,
     \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
     mixin protocol for seamless interoperability}.
 
