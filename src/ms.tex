@@ -440,7 +440,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
 
   \paragraph{\astropypkg on Units}
 
-    Units were also integrated further within \astropypkg. For already-defined
+    Units were also integrated further within \astropypkg. For an already-defined
     \astropyModel, for instance imported from another library, \astropymodeling
     can now add units to otherwise unit-less models.
     % TODO! transition words
@@ -462,8 +462,6 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
 
   \paragraph{Table Mixin Columns}
 
-    % TODO: this is very rough. Probably needs a bit of a re-write.
-
     Within \astropypkg and \python there are numerous ways to represent and
     store array-valued data. Some of the differences are historical:
     \astropyapidoc{table.Column}{table.Column} and
@@ -474,25 +472,21 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \astropyQuantity, \astropyTime and \astropySkyCoord represent fundamentally
     different types of objects.
 
-    \astropy believes however array-valued data is stored, it should be usable
-    as a column in a table: historical differences are baked into stable API,
-    computational needs can differ, and some objects have extra information. The
-    \astropytable and \astropyfits table implementations allow for mixin-columns
-    (in general a mixin column may contain multiple data components as well as
-    object attributes beyond the standard column). A well defined protocol has
-    been developed to allow the usage of these mixin columns while allowing the
-    object to ``round-trip'' through tables with no loss of data or attributes.
-    With this protocol, it is now possible to store not only standard
-    \astropyTableColumn objects to a FITS table
-    \href{https://docs.astropy.org/en/stable/io/fits/api/hdus.html}{HDU}, but
+    \astropy believes that however array-valued data is stored, it should still
+    be usable as a column in a table. A well defined protocol for mixin-columns
+    has been developed for \astropytable and \astropyfits table, allowing the
+    original object to be used as a column with a familiar API, and to
+    ``round-trip'' through tables with no loss of data or attributes. With this
+    protocol, it is now possible to store standard \astropyTableColumn objects
+    to a FITS table
+    \href{https://docs.astropy.org/en/stable/io/fits/api/hdus.html}{HDU}, and
     also any \astropy native objects within a \astropyTable. This includes
     \astropyTime, \astropyQuantity, \astropySkyCoord, and many others. For
     objects not already covered by the mixin protocol, functions can be
-    registered with \astropyTable to convert, on-the-fly, any array-like object
-    into a `mixin' column that can be used in a table. As an example, this is
-    used to provide the seamless integration of \package{dask} arrays in
-    \astropyTable, allowing computer cluster-scale data to be stored in a
-    \astropyTable.
+    registered with \astropyTable to convert on-the-fly any array-like object
+    into a mixin column. As an example, this is used to provide the seamless
+    integration of \package{dask} arrays with \astropyTable, allowing cloud-stored
+    or cluster-scale data to be used as a column in a \astropyTable.
 
   \paragraph{Astropy Fits in Time}
 
@@ -518,27 +512,39 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
     mixin protocol for seamless interoperability}.
 
-  \paragraph{Persistent Storage and I/O}
+  \paragraph{Persistent Storage}
 
-    % TODO! need good transition sentence. This one is bad.
-    The column mixin options in tables are mirrored in the increased support for
-    I/O options.
+    \astropy's efforts to increase support for column types in a table is
+    mirrored by efforts to expand storage format options. New formats have been
+    added, and existing formats updated to support more column types. We detail
+    the changes, starting with the new formats.
 
-    \begin{itemize}
-      \item ECSV : Support for multidimensional and object columns in ECSV
-      \item FITS : Support for writing Dask arrays to FITS files, and Append table to existing FITS file
-      \item MRT Support for reading and writing tables to MRT format : GSOC
-      \item Support for reading and writing tables to Parquet format
-      \item Support for reading and writing tables to QDP format
-      \item ASDF read write
-    \end{itemize}
-    
-    Also stuff that isn't a table
+    \astropy now supports reading and writing tables in the American
+    Astronomical Society Journals' Machine-Readable Table (MRT) format. This has
+    been a long-missing ASCII format, and we are pleased that this year's Google
+    Summer of Code project adds MRT to \astropyTable I/O.  
+    For details see the
+    \href{https://docs.astropy.org/en/stable/io/ascii/write.html#cds-mrt-format}{Machine-Readable
+    Table Format} section. In addition, \astropyTable may also read and write to
+    \href{https://asdf-standard.readthedocs.io/en/latest/}{ASDF},
+    \href{https://docs.astropy.org/en/stable/io/unified.html#table-io-parquet}{Parquet},
+    and \href{https://wwwastro.msfc.nasa.gov/qdp/}{QDP} formats.
 
-    \begin{itemize}
-      \item Support for reading, writing, and converting Cosmology
-    \end{itemize}
+    The \href{https://github.com/astropy/astropy-APEs/blob/main/APE6.rst}{ECSV
+    standard} has been updated to version 1.0, adding support for reading and
+    writing \astropyTable with three additional data subtypes. First,
+    multidimensional column data (both masked and unmasked) with fixed
+    dimensions in all table cells. Second, multidimensional column data with
+    variable-dimension arrays similar to FITS variable-length arrays. Third,
+    object-type columns with simple \python objects.
 
+    As mentioned previously, \package{dask} arrays may be used as a mixin column
+    in \astropyTable. \package{dask} may also be the data array
+    \astropyapidoc{io.fits.PrimaryHDU}{FITS HDU} and if written to disk, the
+    array will be computed while written, avoiding excessive memory use.
+    \astropyTable can now be appended to an existing FITS file, and
+    \package{dask} mixin columns interoperate seamlessly between the two table
+    types.
 
   \paragraph{Unified I/O architecture}
 
@@ -565,6 +571,7 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
     \astropyiosubpkg{registry}. Using \astropyiosubpkg{registry} for custom
     classes means a user does not have to create a whole new I/O system and can
     offer a unified and familiar API.
+
 
 
 \subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
