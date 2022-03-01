@@ -197,7 +197,7 @@ versions of astropy that users requiring a high level of stability can make
 use of if they do not always need the latest features (this could include
 for example telescope pipelines and so on). The 5.0 release of the core package was designated as LTS,
 and since it was released at the end of 2021, it will be maintained until the
-end of 2023. 
+end of 2023.
 
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
@@ -310,10 +310,10 @@ for.
 
 \secauthor{Nicholas Earl}
 
-The Astropy project supports the broader ecosystem by providing pre-configured 
-infrastructure packages that the community can use to support and maintain 
-their own software package infrastructure. These include tools to easily 
-generate documentation and setup automated testing, as well as provide 
+The Astropy project supports the broader ecosystem by providing pre-configured
+infrastructure packages that the community can use to support and maintain
+their own software package infrastructure. These include tools to easily
+generate documentation and setup automated testing, as well as provide
 package scaffolding for new projects.
 
 Sphinx is a common and useful tool for generating documentation for Python
@@ -360,13 +360,13 @@ coverage reports and measurements
 configuring package for property-based testing
 (\href{https://github.com/HypothesisWorks/hypothesis}{\texttt{hypothesis}}).
 
-The Astropy Package Template helps facilitate the setup and creation of new 
-Python packages leveraging the Astropy ecosystem. This tool utilizes the 
-Cookiecutter project to walk users through the process of creating new 
-packages complete with documentation and testing support. Additionally, the 
-package template generation process includes the ability to setup 
-interoperability with GitHub, allowing for easy repository access from 
-documentation, as well as an example GitHub Actions workflow to demonstrate 
+The Astropy Package Template helps facilitate the setup and creation of new
+Python packages leveraging the Astropy ecosystem. This tool utilizes the
+Cookiecutter project to walk users through the process of creating new
+packages complete with documentation and testing support. Additionally, the
+package template generation process includes the ability to setup
+interoperability with GitHub, allowing for easy repository access from
+documentation, as well as an example GitHub Actions workflow to demonstrate
 the use of GitHub's continuous integration tooling.
 
 \subsection{Affiliated packages}
@@ -416,11 +416,12 @@ Overview of roadmap and some highlights.
 
 \subsubsection{Current status and scope}
 
-{\it Learn Astropy} is an umbrella term that acknowledges the broad educational
-efforts made by the Astropy Project, which are led by the Learn Team.
+\textit{Learn Astropy} is an umbrella term that acknowledges the broad
+educational efforts made by the Astropy Project, which are led by the Learn
+Team.
 The efforts focus on developing online content and workshops covering
-astro-specific coding tasks in Python.
-As described in \citet{astropy:2018}, There are four different types of
+astronomy-specific coding tasks in Python.
+As introduced in \citet{astropy:2018}, there are four different types of
 Learn Astropy content: \textit{tutorials}, consisting of Jupyter Notebook
 lessons that are published in HTML format online; \textit{guides}, which are a
 series of lessons providing a foundational resource for performing certain
@@ -432,13 +433,14 @@ appearance of the Learn Astropy website.
 The Learn Team meets weekly to work on creating, expanding, improving these
 educational resources.
 
-\begin{itemize}
+\begin{description}
 
-\item {\bf Learn Astropy website:} The Learn Team re-launched the website in
-2021 with a new infrastructure platform, built around full-text search and
-interactive filtering functionality, with the goal of making content
-discoverable as the Learn Astropy content catalog expands.
-This work has been supported in part by the Dunlap grant.
+\item[Learn Astropy website] The Learn Team re-launched the main website and
+search interface for Learn Astropy in 2021 with a new infrastructure platform,
+built around full-text search and interactive filtering functionality, with the
+goal of making content discoverable as the Learn Astropy content catalog
+expands.
+This work has been supported in part by a grant from the Dunlap Institute.
 We have adopted Algolia, a search-as-a-service cloud platform, to store the
 full-text and metadata records of Learn Astropy's content.
 The new Learn Astropy website is a JavaScript (Gatsby/React) application that
@@ -449,17 +451,19 @@ Jupyter Notebook-based tutorial pages and Jupyter Book-based guides) to more
 accurately index content and heuristically extract metadata.
 A consequence of the new platform is that we now maintain and compile content
 separately from the website application itself, enabling new content types.
-Tutorials, which as Jupyter Notebook-based, are now compiled into their own
-Learn Astropy sub-site using nbcollection.
-Guides, which are Jupyter Book-based, are also deployed as separate websites
-using GitHub pages. This architecture opens future possibilities of indexing
-third-party content, hosted elsewhere, such as on institutional websites.
+Tutorials, which are written as Jupyter Notebooks, are now compiled into their
+own Learn Astropy sub-site using
+\href{https://github.com/astropy/nbcollection}{\texttt{nbcollection}}.
+Guides, which utilize the \href{https://jupyterbook.org/}{Jupyter Book} build
+infrastructure, are also deployed as separate websites using GitHub pages.
+This architecture opens future possibilities of indexing third-party content,
+hosted elsewhere, such as on institutional websites.
 
-\item \textbf{Tutorials} Currently, we have \# of tutorials, spanning a wide range of astronomical topics and common tasks.
+\item[Tutorials] Currently, we have \# of tutorials, spanning a wide range of astronomical topics and common tasks.
 
-\item \textbf{Guide} {\it ccdproc} Jupyter book has been completed.
+\item[Guides] {\it ccdproc} Jupyter book has been completed.
 
-\item {\bf Workshops:} the Project has been conducting workshops at winter
+\item[Workshops] The Project has been conducting workshops at winter
 meetings of the American Astronomical Society since AAS 225 in January 2015.
 Up to the start of the coronavirus pandemic, these were full-day in-person
 workshops with as many as 90 participants and a dozen facilitators from the
@@ -480,7 +484,7 @@ The booth hosted a series of Q\&A special sessions during AAS 235 and webinars
 during the virtual AAS 237 meetings, to provide the general astronomy community
 information and access to experts on a variety of open source astronomical
 tools.
-\end{itemize}
+\end{description}
 
 \subsubsection{Learn vision for the future}
 
@@ -496,7 +500,7 @@ meetings.
 
 \section{Community Engagement}
 
-\item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
+{\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
 be on a paid plan; additionally NumFOCUS has negotiated a special rate for
 open-source projets. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easily-to-navigate interface for users to ask for help Accordingly, we have commissioned
 a Discourse site which is more open than the Facebook group and more user-oriented
