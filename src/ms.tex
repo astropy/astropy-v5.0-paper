@@ -25,12 +25,35 @@
 \newcommand{\astropysubpkg}[1]{\href{http://docs.astropy.org/en/stable/#1/index.html}{\texttt{astropy.#1}}\xspace}
 \newcommand{\astropyiosubpkg}[1]{\href{http://docs.astropy.org/en/stable/io/#1/index.html}{\texttt{astropy.io.#1}}\xspace}
 \newcommand{\astropywcsaxes}{\href{http://docs.astropy.org/en/stable/visualization/wcsaxes/index.html}{\texttt{astropy.visualization.wcsaxes}}\xspace}
+\newcommand{\astropycosmology}{\astropysubpkg{cosmology}}
+\newcommand{\astropycosmologyunits}{\href{https://docs.astropy.org/en/stable/cosmology/units.html}{\texttt{astropy.cosmology.units}}}
+\newcommand{\astropyunits}{\astropysubpkg{units}}
+\newcommand{\astropycoordinates}{\astropysubpkg{coordinates}}
+\newcommand{\astropyconstants}{\astropysubpkg{constants}}
+\newcommand{\astropytime}{\astropysubpkg{time}}
+\newcommand{\astropymodeling}{\astropysubpkg{modeling}}
 
 % Links to documentation: classes
-\newcommand{\astropyskycoord}{\href{http://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html}{\texttt{SkyCoord}}\xspace}
-\newcommand{\astropyQuantity}{\href{http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html}{\texttt{Quantity}}\xspace}
-\newcommand{\astropyTime}{\href{http://docs.astropy.org/en/stable/api/astropy.time.Time.html}{\texttt{Time}}\xspace}
-\newcommand{\astropyTable}{\href{http://docs.astropy.org/en/stable/api/astropy.table.Table.html}{\texttt{Table}}\xspace}
+\newcommand{\astropyapi}[2]{\href{https://docs.astropy.org/en/stable/api/astropy.#1.html}{#2}}
+\newcommand{\astropyapidoc}[2]{\astropyapi{#1}{\texttt{#2}\xspace}}
+
+\newcommand{\astropySpectralCoord}{\astropyapidoc{coordinates.SpectralCoord}{SpectralCoord}}
+\newcommand{\astropySkyCoord}{\astropyapidoc{coordinates.SkyCoord}{SkyCoord}}
+\newcommand{\astropyICRS}{\astropyapidoc{coordinates.builtin_frames.ICRS}{ICRS}}
+\newcommand{\astropyGalacticLSR}{\astropyapidoc{coordinates.builtin_frames.
+GalacticLSR}{GalacticLSR}}
+\newcommand{\astropyAltAz}{\astropyapidoc{coordinates.builtin_frames.AltAz}{AltAz}}
+\newcommand{\astropyGalactocentric}{\astropyapidoc{coordinates.builtin_frames.Galactocentric}{Galactocentric}}
+\newcommand{\astropyCosmology}{\astropyapidoc{cosmology.Cosmology}{Cosmology}}
+\newcommand{\astropyFlatLambdaCDM}{\astropyapidoc{cosmology.FlatLambdaCDM}{FlatLambdaCDM}}
+\newcommand{\astropyTable}{\astropyapidoc{table.Table}{Table}}
+\newcommand{\astropyQTable}{\astropyapidoc{table.QTable}{QTable}}
+\newcommand{\astropyTime}{\astropyapidoc{time.Time}{Time}}
+\newcommand{\astropyLeapSeconds}{\astropyapidoc{time.LeapSeconds}{LeapSeconds}}
+\newcommand{\astropyDistribution}{\astropyapidoc{uncertainty.Distribution}{Distribution}}
+\newcommand{\astropyUnit}{\astropyapidoc{units.Unit}{Unit}}
+\newcommand{\astropyQuantity}{\astropyapidoc{units.Quantity}{Quantity}}
+\newcommand{\astropyScienceState}{\astropyapidoc{utils.state.ScienceState}{ScienceState}}
 
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
