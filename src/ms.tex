@@ -25,12 +25,35 @@
 \newcommand{\astropysubpkg}[1]{\href{http://docs.astropy.org/en/stable/#1/index.html}{\texttt{astropy.#1}}\xspace}
 \newcommand{\astropyiosubpkg}[1]{\href{http://docs.astropy.org/en/stable/io/#1/index.html}{\texttt{astropy.io.#1}}\xspace}
 \newcommand{\astropywcsaxes}{\href{http://docs.astropy.org/en/stable/visualization/wcsaxes/index.html}{\texttt{astropy.visualization.wcsaxes}}\xspace}
+\newcommand{\astropycosmology}{\astropysubpkg{cosmology}}
+\newcommand{\astropycosmologyunits}{\href{https://docs.astropy.org/en/stable/cosmology/units.html}{\texttt{astropy.cosmology.units}}}
+\newcommand{\astropyunits}{\astropysubpkg{units}}
+\newcommand{\astropycoordinates}{\astropysubpkg{coordinates}}
+\newcommand{\astropyconstants}{\astropysubpkg{constants}}
+\newcommand{\astropytime}{\astropysubpkg{time}}
+\newcommand{\astropymodeling}{\astropysubpkg{modeling}}
 
 % Links to documentation: classes
-\newcommand{\astropyskycoord}{\href{http://docs.astropy.org/en/stable/api/astropy.coordinates.SkyCoord.html}{\texttt{SkyCoord}}\xspace}
-\newcommand{\astropyQuantity}{\href{http://docs.astropy.org/en/stable/api/astropy.units.Quantity.html}{\texttt{Quantity}}\xspace}
-\newcommand{\astropyTime}{\href{http://docs.astropy.org/en/stable/api/astropy.time.Time.html}{\texttt{Time}}\xspace}
-\newcommand{\astropyTable}{\href{http://docs.astropy.org/en/stable/api/astropy.table.Table.html}{\texttt{Table}}\xspace}
+\newcommand{\astropyapi}[2]{\href{https://docs.astropy.org/en/stable/api/astropy.#1.html}{#2}}
+\newcommand{\astropyapidoc}[2]{\astropyapi{#1}{\texttt{#2}\xspace}}
+
+\newcommand{\astropySpectralCoord}{\astropyapidoc{coordinates.SpectralCoord}{SpectralCoord}}
+\newcommand{\astropySkyCoord}{\astropyapidoc{coordinates.SkyCoord}{SkyCoord}}
+\newcommand{\astropyICRS}{\astropyapidoc{coordinates.builtin_frames.ICRS}{ICRS}}
+\newcommand{\astropyGalacticLSR}{\astropyapidoc{coordinates.builtin_frames.
+GalacticLSR}{GalacticLSR}}
+\newcommand{\astropyAltAz}{\astropyapidoc{coordinates.builtin_frames.AltAz}{AltAz}}
+\newcommand{\astropyGalactocentric}{\astropyapidoc{coordinates.builtin_frames.Galactocentric}{Galactocentric}}
+\newcommand{\astropyCosmology}{\astropyapidoc{cosmology.Cosmology}{Cosmology}}
+\newcommand{\astropyFlatLambdaCDM}{\astropyapidoc{cosmology.FlatLambdaCDM}{FlatLambdaCDM}}
+\newcommand{\astropyTable}{\astropyapidoc{table.Table}{Table}}
+\newcommand{\astropyQTable}{\astropyapidoc{table.QTable}{QTable}}
+\newcommand{\astropyTime}{\astropyapidoc{time.Time}{Time}}
+\newcommand{\astropyLeapSeconds}{\astropyapidoc{time.LeapSeconds}{LeapSeconds}}
+\newcommand{\astropyDistribution}{\astropyapidoc{uncertainty.Distribution}{Distribution}}
+\newcommand{\astropyUnit}{\astropyapidoc{units.Unit}{Unit}}
+\newcommand{\astropyQuantity}{\astropyapidoc{units.Quantity}{Quantity}}
+\newcommand{\astropyScienceState}{\astropyapidoc{utils.state.ScienceState}{ScienceState}}
 
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
@@ -167,7 +190,7 @@ Project.
 
 \begin{figure}
     \begin{centering}
-        \includegraphics[width=\textwidth]{figures/python-mentions.pdf}
+      % \includegraphics[width=\textwidth]{figures/python-mentions.pdf}
         \caption{
             Yearly full-text mentions of programming languages (indicated in the
             figure legend) in refereed publications in the astronomical
@@ -281,7 +304,7 @@ Overview and statistics of contributors. Highlight changes since v2.0.
 
 \begin{figure}
     \begin{centering}
-        \includegraphics{figures/contributor-summary.pdf}
+      % \includegraphics{figures/contributor-summary.pdf}
         \caption{Placeholder figure!}
         \label{fig:contributor-summary}
     \end{centering}
@@ -293,6 +316,83 @@ Overview and statistics of contributors. Highlight changes since v2.0.
 \subsection{Inclusion, Diversity, and Equity Programs} \label{sec:project-ide}
 
 \secauthor{Lía Corrales}
+
+With support from the Moore Foundation, the \astropy Project was
+allocated funding to support mentoring programs. In 2020 a call was
+made to submit proposals for IDE (Inclusion, Diversity, and
+Empowerment) initiatives for project-wide consideration on
+Github. This process was deemed the most ``open'' because it allowed
+for community wide feedback to focus and improve proposal
+initiatives. Two programs were selected via this process, described
+below.
+
+\textbf{Outreachy:} Describe the outreachy project
+
+\textbf{Women of Color Code (WoCCode)} is a peer-mentoring network for
+coders from traditionally marginalized groups, most notably women of
+color. Participants were invited to the WoCCode Slack space and
+encouraged to attend monthly webinars to share skills in the context
+of open source software libraries. Every other month, a guest speaker
+was invited to talk about their career path and share a skill. Program
+participants were solicited in the fall of 2020, yielding 73
+applications from 17 countries (48\% from the United States, 37\% from
+Africa, and 15\% from remaining continents). We selected participants
+who we identified as having a high potential for contributing to open
+source projects: intermediate to advanced programming skills with a
+vocal interest in contributing. Of the thirty applicants invited to
+the program, nineteen joined the community on Slack. Participants were
+organized into cohorts based on interest and each cohort was assigned
+one of three mentors that were also selected via open
+application. Mentors acted as a general resource to participants, gave
+one webinar, and organized a hack day. WoCCode also supported
+registration of two participants to attend the American Astronomical
+Society virtual summer 2021 meeting.
+
+Participants rated the impact of the program as very high. In the
+final webinar, participants reported a change in their perception of
+coding in general, for example, accepting coding as something they can
+do for fun. Participants reported generally feeling comfortable asking
+questions and interacting with a community where ``[e]veryone's
+thoughts are welcomed, no one is made to feel less important'' and
+where one can enjoy ``warm interactions with likeminded people.''
+WoCCode is continuing into 2022 by broadening participation in the
+Slack space and publicly advertising the guest webinar events.
+
+In addition to the supported mentoring initiatives, the \astropy
+project as a whole has taken steps to examine representation of
+marginalized groups within the project and search for avenues of
+improvement.
+
+% Much of this text was adapted from Robel Geda's report from NSBP and
+% SACNAS. Please include him on the author list.
+\textbf{\astropy representation at national diversity conferences:}
+Several members of the \astropy community attended virtual conferences
+of the National Society of Black Physicists (NSBP) and SACNAS
+(focusing on Hispanic and Native American scientists across all STEM
+fields). \astropy representatives noted that one underlying topic came
+up multiple times. A major barrier for persons who come from
+underrepresented communities is the lack of resources and expertise
+that are necessary to train students. Writing PEP 8 compliant software
+and understanding the Git and Github workflow is not part of the
+standard Physics and Astrophysics curriculum. Additionally, the larger
+Astronomnical community is still in the process of transitioning
+towards Python based tools, making it difficult for students not
+currently under advisement by some one with extensive Python expertise
+to get involved with the open source Python community. Projects such
+as Learn Astropy could have a profound impact by empowering
+underrepresented groups because it provides a free, searchable, and
+accessible introduction to Python tools for astrophysical
+research. Representatives also noted that offering training and
+teaching materials to PIs of Research Experience for Undergraduate
+(REU) programs throughout the United States could be helpful for
+encouraging advisors to teach students how to use Astropy, create
+their own libraries, and use version control on open source platforms
+like Github. Such materials could also be offered as a workshop at
+national diversity conferences themselves, as SACNAS solicits special
+session proposals each year.
+
+\textbf{NumFOCUS ``Contributor Diversification \& Retention'' (CDR)
+  initiative:} Describe more about this.
 
 
 \subsection{Funding} \label{sec:project-funding}
@@ -388,14 +488,111 @@ Summary of Astroquery and engagement with archives. Cite astroquery paper.
 Brief summary of efforts in observatory- or mission-driven development that have
 contributed to Astropy, and vice versa.
 
-JWST
+\subsubsection{James Webb Space Telescope}
 \secauthor{Larry Bradley}
+
+The James Webb Space Telescope (JWST) is a 6.5-meter space-based
+infrared telescope that will provide unprecedented resolution and
+sensitivity from 0.6 -- 28 microns. JWST will enable a broad range
+of scientific investigations from exoplanets and their atmospheres
+to the formation of galaxies in the very early universe. Its four
+key scientific goals are to study the first light from stars and
+galaxies, the assembly and evolution of galaxies, the birth of stars and
+protoplanetary systems, and planetary systems and the origins of life.
+
+The telescope launched on an Ariane 5 rocket on 2021 December 25 from
+Kourou, French Guiana. After a series of successful deployments,
+including the sunshield and primary and secondary mirrors, JWST reached
+its orbit around the L2 Lagrange point on 2022 January 24. Commissioning
+of the telescope optics and science instruments will occur from January
+until the end of June 2022, when science operations are scheduled to
+begin.
+
+Software developers at the Space Telescope Science Institute (STScI),
+the operations center of JWST, have been developing Python-based tools
+for JWST since 2010 (starting with the JWST Calibration Reference Data
+System) and have provided major contributions to \astropy from its
+inception. The JWST instrument calibration pipelines, exposure-time
+calculators, and data analysis tools are all written in Python and
+depend on the \astropypkg core package and some coordinated and
+affiliated packages. For the \astropypkg core package, the JWST mission
+has provided extensive contributions to the \astropysubpkg{modeling},
+\astropysubpkg{units}, \astropysubpkg{coordinates}, \astropysubpkg{wcs},
+\astropysubpkg{io.fits}, \astropysubpkg{io.votable},
+\astropysubpkg{stats}, \astropysubpkg{visualization}, and
+\astropysubpkg{convolution} subpackages as well as to the general
+package infrastructure and maintenance.
+
+Likewise, JWST developers have provided significant contributions
+to the \package{photutils} \citep{photutils}, \package{specutils}
+\citep{specutils}, and \package{regions} \citep{regions} coordinated
+packages and the \package{gwcs} \citep{gwcs} and \package{synphot}
+\citep{synphot} affiliated packages. For example, development of the
+\package{photutils} coordinated package for source detection and
+photometry has largely been led by JWST contributions. JWST developers
+have also made significant contributions to the \package{specutils}
+coordinated package, which is used for analyzing spectroscopic data,
+and the \package{regions} coordinated package, which is used to
+handle geometric regions. The \package{gwcs} affiliated package for
+generalized world coordinate systems was created specifically to handle
+the complex world coordinate systems needed for JWST spectroscopic
+data. The \package{synphot} affiliated package for synthetic photometry
+was created at STScI and is a dependency of the JWST exposure-time
+calculators. Further, the \package{ASDF} (Advanced Scientific Data
+Format) package \citep{ASDF}, a next-generation interchange format for
+scientific data, was initially developed at STScI to serialize JWST WCS
+objects along with \astropypkg models, units, and coordinates. Over
+its mission lifetime, JWST will continue its support in developing and
+maintaining these critically dependent packages.
+
 
 Gemini
 \secunfilled
 
 Cherenkov Telescope Array
-\secauthor{Axel Donath, Max Noethe}
+\secauthor{Axel Donath, Maximilian Nöthe}
+
+The Cherenkov Telescope (CTA) will be the next generation very-high-energy
+gamma-ray observatory.
+CTA will improve over the current generation of imaging atmospheric Cherenkov telescopes (IACTs)
+by a factor of five to ten in sensitivity and will be able to observe the whole sky from a combination of two sites:
+a northern site in La Palma, Spain, and a southern one in Paranal, Chile.
+CTA will be able to observe gamma rays in a broad energy range from around $20\,\mathrm{GeV}$ to over $300\,\mathrm{TeV}$
+using three different types of telescopes, in total over 100 telescopes are planned at the two sites.
+CTA will also be the first open gamma-ray observatory.
+
+The data analysis pipeline is developed as open source software and essentially split in two domains:
+\begin{enumerate}
+  \item In the low-level analysis, the properties of the recorded air-shower events
+    have to be estimated from the raw data.
+    The raw data consists of very short (\textasciitilde $40--100\,\mathrm{ns}$) videos recorded with the fast and
+    sensitive cameras of the telescopes.
+    This includes the energy, particle type and direction of origin of the particle that induced the air shower
+    and the time the shower was recorded.
+  \item In the higher-level analysis, these reconstructed event lists are used together with some
+    characterization of the instrument response to perform the actual scientific analysis.
+    This software will be delivered as CTA science tools to the future users of the Observatory.
+\end{enumerate}
+
+A prototype for the low-level analysis is \texttt{ctapipe} \citep{ctapipe},
+a python package developed to perform all the necessary tasks to from the raw data
+of Cherenkov telescopes to the reconstructed event lists.
+
+The high-level analysis (or CTA science tools) will be based on the astropy affiliated package
+Gammapy~\citep{gammapy}.
+
+Both Gammapy and \texttt{ctapipe} are using astropy heavily, mainly for units, times, coordinate transformations,
+tables and FITS IO.
+
+As CTA will record gamma-ray events with a rate of up to $10\,000$ events per second,
+it needs to perform a large number of coordinate transformations.
+To enable this, CTA member M.~Nöthe contributed a major performance improvement
+for large numbers of coordinates with different observation times,
+based on earlier work by B.~Winkel.
+
+Together with Gammapy maintainer A.~Donath and former maintainer C.~Deil,
+a total of 107 merged pull requests were contributed to astropy.
+
 
 Rubin Observatory
 \secunfilled
@@ -500,14 +697,15 @@ meetings.
 
 \section{Community Engagement}
 
-{\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
+\begin{itemize}
+\item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
 be on a paid plan; additionally NumFOCUS has negotiated a special rate for
-open-source projets. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easily-to-navigate interface for users to ask for help Accordingly, we have commissioned
+open-source projects. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easily-to-navigate interface for users to ask for help Accordingly, we have commissioned
 a Discourse site which is more open than the Facebook group and more user-oriented
 than Astropy Slack. A benefit of the Moore Foundation grant is that Astropy
 developers are able to invoice as independent contractors the time they
 spend helping users on these forums.
-
+\end{itemize}
 \secunfilled
 
 \begin{itemize}
@@ -555,7 +753,13 @@ Astronomy \citep{sofa}.
           \package{numpy} \citep{numpy:nature},
           \package{scipy} \citep{scipy},
           \package{matplotlib} \citep{matplotlib},
-          \package{Cython} \citep{cython}.
+          \package{Cython} \citep{cython},
+          \package{photutils} \citep{photutils},
+          \package{specutils} \citep{specutils},
+          \package{regions} \citep{regions},
+          \package{gwcs} \citep{gwcs},
+          \package{synphot} \citep{synphot},
+          \package{ASDF} \citep{ASDF}.
         %   \package{SOFA} \citep{sofa},
         %   \package{ERFA} (\citealt{erfa})
           }
