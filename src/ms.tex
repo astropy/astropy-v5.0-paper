@@ -388,6 +388,133 @@ well with other \astropypkg\ objects such as \astropySkyCoord\ and
 \subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-future}
 
 
+\subsection*{Precision, Accuracy, and Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
+
+  An important focus of \astropy has been to increase the precision and accuracy
+  of its functionality, while, where appropriate, making sure results obtained
+  using older versions of \astropypkg are reproducible.
+  % Something about ScienceState
+  Notable improvements have been made to \astropytime, \astropyconstants,
+  \astropycoordinates, and \astropycosmology.
+
+  \paragraph{Time}
+
+    In astronomy, time accuracy down to the second is frequently important.
+    Whether for planning observations or crunching data, missing seconds can
+    meaningfully impact results. Before, when using \astropyTime in \astropytime
+    leap seconds had to be manually applied; now leap seconds are applied
+    automatically. Moreover, \astropypkg updates internal time data-files to
+    ensure that the correct leap second adjustment is always used. For
+    reproducibility, e.g. with an old code, \astropyLeapSeconds may also be
+    manually applied.
+
+  \paragraph{Constants}
+
+    Measurements of physical constants (and the units defined from them) improve
+    over time. Periodically the standardized systems of units and constants are
+    updated to reflect these improvements, for instance in 2019 the SI system was
+    redefined \citep{NIST2019}, with an accompanying update to the physical
+    constants in
+    \href{https://codata.org/initiatives/data-science-and-stewardship/fundamental-physical-constants/}{\texttt{SI/CODATA
+    2018}}. \astropypkg contains two modules -- \astropyconstants and
+    \astropyunits -- for working with constants and units, respectively.
+    \astropyconstants now defaults to use the \texttt{SI/CODATA 2018} values, with
+    the relation between units in \astropyunits based upon these constants. Most
+    of \astropypkg and affiliate packages build upon \astropyunits, so this update
+    has far-reaching effects across the \astropy ecosystem and astronomy
+    community.
+
+    For reproducibility, \astropypkg allows the constants (and therefore units)
+    definitions to be rolled back to prior values, for instance the
+    \texttt{SI/CODATA 2014} definitions.
+    % CITATION
+    The constants and units definitions are set by configuration file as well as
+    \astropyScienceState (an runtime configuration controller). For work where
+    updates to the values of the fundamental constants significantly alters
+    results we recommend including with the work an astropy configuration file,
+    which specifies the set of constants used.
+
+  \paragraph{Cosmology}
+    % TODO! At least one good sentence about "what is the benefit of astropy.cosmology"
+
+    \astropycosmology contains classes for representing cosmological models.
+    % currently all homogeneous and isotropic variations of the
+    % Friedmann-Lemaitre-Robertson-Walker metric.
+    Bundled with the classes are commonly used \astropyCosmology realizations, for
+    example best-fit measurements from
+    \href{https://lambda.gsfc.nasa.gov/product/map/current/}{WMAP}
+    \citep{WMAP2003} and \href{https://www.nasa.gov/mission_pages/planck}{Planck}
+    \citep{PlanckMission:2006}.
+
+    When these important missions publish new measurements, \astropycosmology is
+    updated to include these results as realizations of the appropriate class
+    (generally \astropyFlatLambdaCDM). The models used by WMAP and Planck do not
+    always exactly correspond to \astropycosmology classes, for instance the
+    Planck 2018 results \citep{Planck2018VI} include massive neutrinos in
+    $\Omega_{matter,0}$, while in \astropyFlatLambdaCDM this mass contribution is
+    stored in a separate parameter. Consequently, while some parameter values
+    appear different from the source paper, the \astropyCosmology realizations
+    correctly reproduce the cosmological models.
+
+    Since \citealt{astropy:2018} the following cosmology realizations have been
+    added:
+    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP1.html}{\texttt{WMAP1}}
+    from WMAP First Year \citep[Table 7: WMAP + CBI + ACBAR + 2dFGRS +
+    Lya]{WMAP1Year:2003};
+    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP3.html}{\texttt{WMAP3}}
+    from WMAP Three Year \citep[Table 6: WMAP + SNGold]{WMAP3Year:2007};
+    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck15.html}{\texttt{Planck15}}
+    from Planck 2015 \citep[Table 4: TT, TE, EE + lowP + lensing +
+    ext]{Planck2015XIII:2016};
+    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck18.html}{\texttt{Planck18}}
+    from the Planck 2018 best-fit cosmological parameters \citep[Table 2: TT, TE,
+    EE + lowE + lensing + BAO]{Planck2018VI:2020}.
+
+    Astropy provides a
+    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.default_cosmology.html}{configurable
+    default cosmology}. All calculations done in a cosmological context will use
+    this default cosmology. The default \astropyCosmology has been updated to the
+    Planck 2018 parameters. For reproducibility, the default cosmology may be set
+    to old defaults, such as the WMAP Three Year values. The default cosmology is
+    dynamically configurable using \astropyScienceState, meaning a set of
+    calculations may be run using different assumed cosmologies, and results
+    compared between the two.
+    % Repeat the word default less.
+
+  \paragraph{Coordinates}
+
+    Being able to describe the position of objects, i.e. their coordinates, is
+    fundamental across many knowledge domains. \astropypkg provides
+    \astropycoordinates for working with low-level positional and velocity data
+    all the way to high-level coordinate objects with reference frames,
+    atmospheric information, and more. A central feature of \astropycoordinates is
+    the ability to transform data between reference frames, e.g. \astropyICRS
+    \citep{ICRS:1997} to \astropyGalacticLSR \citep{GalacticLSR:2010}. However,
+    there have been some historical limitations for spatially proximate
+    transformations, impacting the usefulness of \astropycoordinates for
+    ground-based telescopes and intra-solar astronomy. Transformations in the
+    \astropyAltAz frame were reasonably precise for very distant objects, but
+    wrong by up around several arcseconds for e.g. the location of the moon. Now
+    these transformations are much more precise, down to the milli-arcsecond
+    level. Similar precision improvements were made to the
+    \astropyapi{coordinates.builtin_frames.HADec}{Hour Angle-Declination} frame
+    transformations. Additionally,
+    \astropyapi{coordinates.builtin_frames.BaseEclipticFrame}{Ecliptic frames}
+    and associated transformations have been updated to correctly reflect the
+    “true” (includes precession but not nutation) and “mean” (precession and
+    nutation) terminology.
+
+    For Galactic astronomers, the \astropyGalactocentric
+    \astropyapi{coordinates.galactocentric_frame_defaults}{frame defaults} have
+    been updated to include more recent measurements (tabulated in the
+    \href{https://docs.astropy.org/en/stable/api/astropy.coordinates.galactocentric_frame_defaults.html#astropy.coordinates.galactocentric_frame_defaults.references}{\texttt{frame\_defaults.references}}
+    attribute). For reproducibility, old definitions are still available, and will
+    continue to be so as \astropypkg is updated with forthcoming measurements of
+    the Galactic center, solar motion, etc.
+    % may be used by setting the default value to ``pre-v4.0'' in the
+    % \href{https://docs.astropy.org/en/stable/api/astropy.coordinates.galactocentric_frame_defaults.html}{\texttt{galactocentric\_frame\_defaults}}
+    % \astropyScienceState.
+
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
