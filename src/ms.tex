@@ -242,477 +242,440 @@ end of 2023.
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
 
-  \secauthor{Nathaniel Starkman, Marten van Kerkwijk}
+\secauthor{Nathaniel Starkman, Marten van Kerkwijk}
 
-  The \astropypkg core package is mature and stable, in that many features have
-  been part of the core package for years with (purposefully) few changes to the
-  software interface. This maturity and stability allows for the broader
-  astronomy \python community to rely upon the \astropypkg core package and
-  build specialized packages within the Astropy ecosystem. Even many
-  non-astronomical \python libraries have come to rely on \astropypkg.
+The \astropypkg core package is mature and stable, in that many features have
+been part of the core package for years with (purposefully) few changes to the
+software interface.  This maturity and stability allows for the broader
+astronomy \python community to rely upon the \astropypkg core package and build
+specialized packages within the Astropy ecosystem.  Even many non-astronomical
+\python libraries have come to rely on \astropypkg. The relationship between
+\astropy and the \python-using community is reciprocal, with the evolving needs
+of the community and the maturation of the broader scientific \python ecosystem
+driving much of the development of the \astropypkg core package.
 
-  The relationship between \astropy and community is reciprocal, with the
-  growing and evolving needs of the community and the maturation of the broader
-  scientific \python ecosystem driving much of the development of the
-  \astropypkg core package.
+Within \astropypkg, development may be roughly split into a few
+categories: new features added, intra and inter-package interoperability,
+improvements to precision, accuracy, and reproducibility, and performance
+enhancements. We discuss these in turn.
 
-  One manifestation of this was the realization that some features do not
-  actually belong in the core package, either because they are of more general
-  use outside of \astropypkg, or because they are too specialized. An example of
-  the former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA)
-  software Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that
-  \astropy carried, as well as the \python wrappers for it.  Since this is more
-  basic infrastructure, with a release cycle set by SOFA, it made more sense to
-  create separate packages that \astropypkg can depend on: \package{ERFA}
-  \citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
-  was too specialized was a Virtual Observatory sub-package (now removed).  Of
-  its content, the Simple Application Message Protocol made sense to keep
-  (\astropysubpkg{samp}), but other parts belonged more properly in \package{
-  astroquery} (see Sect.~\ref{sec:astroquery}).
-
-  Within \astropypkg, development may be roughly split into a few categories:
-  new features added, intra and inter-package interoperability, improvements to
-  precision, accuracy, and reproducibility, and performance enhancements. We
-  discuss these in turn.
+Additionally, some features have been moved from the core package, either
+because they are of more general use outside of \astropypkg, or because they are
+too specialized and belong in an Astropy-affiliated package. An example of the
+former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA) software
+Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that \astropy
+carried, as well as the \python wrappers for it. Since this is basic
+infrastructure, with a release cycle set by SOFA, it made more sense to create
+separate packages that serve as \astropypkg dependencies: \package{ERFA}
+\citep{erfa} and \package{PyERFA} \citep{pyerfa}.  An example of something that
+was too specialized was a Virtual Observatory sub-package; the Simple
+Application Message Protocol made sense to keep (\astropysubpkg{samp}), but
+other parts more properly belonged in \package{astroquery} (see
+Sect.~\ref{sec:astroquery}).
 
 
 \subsubsection*{New and Planned Features} \label{sec:core-features-new}
 
-New features come in various forms, from new submodules providing
-wholly new capabilities, to larger additions to existing submodules,
-to large rewrites of the interface of modules.  This range is spanned
-by the five main new features that entered the \astropypkg core since the
-previous summary \citepalias{astropy:2018}.
+New features present a particular difficulty for a mature package such as
+\astropypkg, because it is difficult to know {\em a priori} what the best
+interface will be, and hard to address all possible use cases in one round of
+development, even within \astropypkg\ itself.
 
-New features present a particular difficulty for a mature package such
-as \astropypkg, because by their nature they have not been tried out
-much and it is difficult to know in advance what the best interface
-will be, and hard to address all possible use cases in one go, even
-within \astropypkg\ itself.  To give a sense of this, we include in
-our descriptions how we hope the new features will evolve (realizing
-that, in the end, in a user-driven project like \astropy, what happens
-depends mostly on what is highest on the priority list of those that
-have time to contribute).
+New features come in various forms, from new submodules providing wholly new
+capabilities, to larger additions to existing submodules, to large rewrites of
+the interface of modules. This range is spanned by five main new features that
+entered the \astropypkg core since the previous summary
+\citepalias{astropy:2018}. In our descriptions of each we include how we hope
+the new feature will evolve. Ultimately, in a user-driven project like \astropy,
+development depends primarily on the priorities of contributors.
 
-\paragraph{Uncertainties and Distributions.} Early in our careers, we
-were likely all taught that a measurement without a unit or an
-uncertainty is essentially meaningless.  \astropyunits already
-provides the ability to associate numbers with units, and propagate
-these correctly, with its \astropyQuantity\ class, but so far the
-ability to associate and propagate uncertainties is relatively
-limited: in \astropysubpkg{nddata}, there are options to associate
-errors with data arrays, but these are treated as independent, i.e.,
-covariances are not tracked.
+\paragraph{Uncertainties and Distributions} Early in our careers we were likely
+all taught that measurements without units and uncertainties are meaningless.
+\astropyunits provides the ability to associate numbers with units, and
+propagate these correctly, using the \astropyQuantity\ class.  However, the
+ability to associate and propagate uncertainties is relatively limited: in
+\astropysubpkg{nddata}, there are options to associate errors with data arrays,
+but these are treated as independent, i.e., covariances are not tracked.
 
-In general, proper error propagation is difficult, and often it is
-best to use Monte Carlo methods.  With the new
-\astropysubpkg{uncertainties} sub-package, a first step is made to
-make this possible.  It allows one to generate, for each variable,
-randomly drawn samples in a \astropyDistribution, and then propagate
-these by passing them through the normal analysis, producing a
-\astropyDistribution\ of final results that can be inspected.
+In general, proper error propagation is difficult, and often it is best to use
+Monte Carlo methods.  The new \astropysubpkg{uncertainties} sub-package is our
+first step towards enabling seamless error propagation.  The package allows one
+to generate, for each variable, randomly drawn samples in a
+\astropyDistribution, and then propagate these by passing them through the
+normal analysis, producing a \astropyDistribution\ of final results that can be
+inspected.
 
-This \astropyDistribution\ can be any type of array, including of
-course a \astropyQuantity, and the goal is to ensure it can be
-seamlessly used to instantiate also other \astropypkg classes, such as
-\astropySkyCoord\ and \astropyTime.
+This \astropyDistribution\ can be any type of array, including a
+\astropyQuantity. The goal is to ensure \astropyDistribution\ can be seamlessly
+used to instantiate other \astropypkg classes as well, such as \astropySkyCoord,
+\astropyTime, and \astropyCosmology.
 
-Apart from Monte-Carlo error propagation, the plan for
-\astropysubpkg{uncertainties} is to also support the case where values
-have associated uncertainties, and these are propagated assuming that
-they are normally distributed, but tracking covariances.  One
-implementation problem to be solved is when to {\em stop} tracking
-covariances.  For instance, a simple operation such as subtracting the
-mean from $N$ data points implies that all data points are now
-covariant with each other, i.e., one has to carry $N\times N$
-covariances.  For a large image, that becomes not just pointless but
-also prohibitive in terms of memory and CPU usage.
+A plan for future development of \astropysubpkg{uncertainties} is to support
+error propagation, tracking covariances, where the uncertainties are assumed to
+be normally distributed rather than approximated by Monte-Carlo means. One
+implementation problem to be solved is when to {\em stop} tracking covariances.
+For instance, a simple operation such as subtracting the mean from $N$ data
+points implies that all data points are now covariant with each other, i.e., one
+has to carry $N\times N$ covariances.  For a large image, that becomes not just
+pointless but also prohibitive in terms of memory and CPU usage.
 
-\paragraph{Masked quantities.}  Data can be known to be bad, in which
-case it is useful to mask them.  Support for masked data involves a
-number of choices, such as whether one indicates data values are bad
-by a separate flag or by replacing them by a special value, such as
-``Not a Number'' (NaN).  In \astropypkg, both approaches have been
-used: a flag for masked columns in \astropyTable, mask flags and
-bitmaps for N-dimensional data in \astropysubpkg{nddata}, and
-replacing elements with NaN in \astropyTime.  A particular problem was
-that no masked quantities were available, making it more difficult to
-migrate to \astropyQTable, in which \astropyQuantity\ is used for all
-columns with units, thus propagating those correctly (instead of
-treating the unit merely as metadata).
+\paragraph{Masked quantities}  It can be useful to mask bad data.  How one
+supports masked data involves a number of choices, such as whether one indicates
+data values are bad by a separate flag or by replacing them with a special
+value, such as ``Not a Number'' (NaN).  In \astropypkg, both approaches have
+been used: a flag for masked columns in \astropyTable, mask flags and bitmaps
+for N-dimensional data in \astropysubpkg{nddata}, and replacing elements with
+NaN in \astropyTime.  However masked quantities were poorly supported, making it
+difficult to use masks in a \astropyQTable (in which \astropyQuantity\ is used
+for all columns with units).
 
-Unfortunately, it turned out that the \texttt{MaskedArray} class from
-\package{numpy} could not be used, as its design made it a wrapper
-around any subclass, rather than allow another class to use it as an
-alternative to a regular data array.  For quantities, this does not
-work, as one can see from the fact that a masked value does not mean
-the unit is not known.  Given this, a new \astropyMasked\ class was
-designed, based on a framework very similar to that of
-\astropyDistribution, making it easy to create masked instances of
-other classes.  In particular, this can be used to create masked
-quantities for \astropyQTable, including full support for reading and
-writing to the different file types.
+Unfortunately, the \texttt{MaskedArray} class from \package{numpy} could not be
+used because its design made it a wrapper around any subclass. Therefore
+another class could not use it as an alternative to a regular data array.
+% Nathaniel: I find this topic sentence a bit confusing.
+For quantities, \texttt{MaskedArray} does not work because a masked value does
+not mean the unit is unknown. Consequently, a new \astropyMasked\ class was
+designed, based on a framework very similar to that of \astropyDistribution,
+making it easy to create masked instances of other classes.  In particular,
+\astropyMasked\ can be used to create masked quantities for \astropyQTable,
+enabling full support for reading and writing different file types.
 
-The masked quantities work mostly without any changes in higher-level
-objects such as \astropySkyCoord, but work is still underway to expose
-the mask in those classes, as well as to use masked arrays in
-\astropyTime\ instead of replacing data with NaN.
+The masked quantities work largely without any changes in higher-level objects
+such as \astropySkyCoord, but work is still underway to expose the mask in those
+classes, as well as to use masked arrays in \astropyTime\ instead of replacing
+data with NaN.
 
-\paragraph{Time series.}  From sampling a continuous variable at fixed
-times to counting events binned into time windows, many different
-areas of astrophysics require the manipulation of time series.  These
-are often logically tables, and the new \astropysubpkg{timeseries}
-sub-package extends the \astropyQTable\ class to tables of data as a
-function of time, where the data can either represent samples or
-averages over particular time bins.  The new classes offer a number of
-special methods to manipulate time series (folding, resampling, etc.)
-and to read different data formats (such as {\em Kepler} lightcurves,
-etc.).
+\paragraph{Time series}  From sampling a continuous variable at fixed times to
+counting events binned into time windows, many different areas of astrophysics
+require the manipulation of time series.  The new \astropysubpkg{timeseries}
+sub-package extends the \astropyQTable\ class to tables of data as a function of
+time, where the data can either represent samples or averages over particular
+time bins. The new classes offer a number of special methods to manipulate time
+series (folding, resampling, etc.) and to read different data formats (such as
+{\em Kepler} lightcurves, etc.).
 
-Also part of \astropysubpkg{timeseries} are common analysis routines,
-including Lomb-Scargle and box-least-squares periodogrammes.
+Also part of \astropysubpkg{timeseries} are common analysis routines, including
+Lomb-Scargle and box-least-squares periodogrammes.
 
-\paragraph{Spectral Coordinates.} Measurements are often taken at
-specific ``spectral coordinates'', be they frequencies, wavelengths,
-or photon energies.  The new \astropySpectralCoord\ class allows to
-transform between these as well as to equivalent Doppler velocities.
-It builds on the \astropyQuantity, which can also represent these
-kinds of physical quantities, and allows conversion via dedicated
-equivalencies, but aims to make this more straightforward.
-Furthermore, it can be made aware of the observer and target reference
-frames, allowing for instance transformation from telescope-centric (or
-topocentric) frames to Barycentric or Local Standard of Rest
-(LSRK and LSRD) velocity frames.
+\paragraph{Spectral Coordinates} Measurements are often taken at specific
+``spectral coordinates,'' be they frequencies, wavelengths, or photon energies.
+\astropyQuantity\ can represent these physical quantities and convert between
+them via dedicated equivalencies. The new \astropySpectralCoord\ builds on
+\astropyQuantity\ by providing a more straightforward interface: baking in these
+equivalencies and those for Doppler velocities. Furthermore,
+\astropySpectralCoord\ can be made aware of the observer and target reference
+frames, allowing transformation from telescope-centric (or topocentric) frames
+to Barycentric or Local Standard of Rest (LSRK and LSRD) velocity frames.
 
-\paragraph{A High-Level Interface to World Coordinate Systems.}
-Astronomical data are often provided with information about the
-``real-world'' coordinates that correspond to pixel coordinates. This
-mapping is the essence of the ``World Coordinate System (WCS)''
-concept.  From its inception, the \astropysubpkg{wcs} sub-package
-allowed access to WCS information provided in, e.g., FITS files, but
-it became clear that other WCS standards and representations had to be
-supported for new missions and observatories (e.g., the James Webb
-Space Telescope and the Rubin Observatory).  To harmonize these, a new
-high-level interface was created, based on a formal design first
-proposed via an \astropy\ Proposal for Enhancement (\astropyAPE{14}).
-The hope is that by having a formal design, it will be straightforward
-for other packages implementing WCS objects to either modify their
-classes to conform to the new interface or build thin wrappers that
-conform to it.  The implementation in \astropysubpkg{wcs} interacts
-well with other \astropypkg\ objects such as \astropySkyCoord\ and
-\astropyTime.
-
+\paragraph{A High-Level Interface to World Coordinate Systems}
+Astronomical data are often provided alongside information about the
+correspondence between ``real-world'' and pixel coordinates. This mapping is the
+essence of the ``World Coordinate System (WCS)'' concept. From its inception,
+the \astropysubpkg{wcs} sub-package allowed access to WCS information provided
+in, e.g., FITS files, but it became clear that other WCS standards and
+representations had to be supported for new missions and observatories (e.g.,
+the James Webb Space Telescope and the Rubin Observatory).  To harmonize these
+needs, a new high-level interface was created based on a formal design first
+proposed in an \astropy\ Proposal for Enhancement (\astropyAPE{14}). The hope is
+that by having a formal design, other packages implementing WCS objects can
+straightforwardly modify their classes to conform to the new interface or build
+thin wrappers that conform.  The implementation in \astropysubpkg{wcs} interacts
+well with other \astropypkg\ objects such as \astropySkyCoord\ and \astropyTime.
 
 \subsubsection*{Interoperability} \label{sec:core-features-interoperability}
 
-  Because \astropy is modular and situated at the nexus between scientific
-  computing and astronomy, interoperability is an important focus for \astropy,
-  both within the various \astropypkg sub-packages and with other important
-  \python libraries. If done right, all a user notices is that code using many
-  different python features and libraries ``just works''. Here, we describe a
-  few particular efforts towards this goal.
+Because \astropy is modular and situated at the nexus between scientific
+computing and astronomy, interoperability is an important focus for \astropy,
+both within the various \astropypkg sub-packages and with other \python
+libraries. If done right, all a person notices is that code using many different
+python features and libraries ``just works.'' Here, we describe a few particular
+efforts towards this goal.
 
-  \paragraph{\package{numpy} on Units}
+\paragraph{\package{numpy} on Units}
 
-    \astropyQuantity\ is a backbone of \astropy, leveraging the power of
-    \package{numpy} and adding units. Previously, many \package{numpy} functions
-    would strip a \astropyQuantity\ of its units (or fail outright), limiting
-    \astropyQuantity's usefulness. Now, advances in \package{numpy} function
-    overloading (see for example
-    \href{https://numpy.org/neps/nep-0018-array-function-protocol.html}{NEP 18})
-    mean \astropyQuantity\ works with almost all \package{numpy} (version 1.17+)
-    functions.
+\astropyQuantity\ is a backbone of \astropy, leveraging the power of
+\package{numpy} and adding units. Previously, many \package{numpy} functions
+would strip a \astropyQuantity\ of its units (or fail outright), limiting
+\astropyQuantity's usefulness. Now, advances in \package{numpy} function
+overloading (e.g.,
+\href{https://numpy.org/neps/nep-0018-array-function-protocol.html}{NEP 18})
+mean \astropyQuantity\ works with almost all \package{numpy} (v1.17+)
+functions.
 
-    In the remaining gaps, the \package{numpy} and \astropyQuantity\
-    interoperability efforts are ongoing. For some functions, such as in
-    \href{https://numpy.org/doc/stable/user/basics.rec.html#module-numpy.lib.recfunctions}{\package{numpy}'s
-    module} for manipulating structured arrays, compatibility only requires
-    extending the existing \package{numpy}-\astropypkg bridge framework.
-    Community interest, in the form of a Feature Request (or better yet Pull
-    Request) would be sufficient to see this realized. For a few remaining
-    functions, discussed further in the
-    \href{https://docs.astropy.org/en/stable/known_issues.html#known-deficiencies}{\astropy
-    documentation}, the \package{numpy} framework does not yet allow for full
-    interoperability with \astropy. A goal of \astropy, and the scientific
-    \python community is to enhance and implement the frameworks, allowing
-    \astropyQuantity\ to propagate units seamlessly across the whole ecosystem
-    of \package{numpy}-like projects.
+In the remaining gaps, the \package{numpy} and \astropyQuantity\
+interoperability efforts are ongoing. For some functions, such as in
+\href{https://numpy.org/doc/stable/user/basics.rec.html#module-numpy.lib.recfunctions}{\package{numpy}'s
+module} for manipulating structured arrays, compatibility only requires
+extending the existing \package{numpy}-\astropypkg bridge frameworks. Community
+interest, in the form of a Feature Request (or better yet Pull Request) would be
+sufficient to see this compatibility completed. For a few remaining functions,
+discussed further in the
+\href{https://docs.astropy.org/en/stable/known_issues.html#known-deficiencies}{\astropy
+documentation}, the \package{numpy} framework does not yet allow for full
+interoperability with \astropy. A goal of \astropy and the scientific \python
+community is to enhance and implement the frameworks, allowing \astropyQuantity\
+to propagate units seamlessly across the whole ecosystem of \package{numpy}-like
+projects.
 
-  \paragraph{\astropypkg on Units}
+\paragraph{\astropypkg on Units}
 
-    Units were also integrated further within \astropypkg. For an already-defined
-    \astropyModel, for instance imported from another library, \astropymodeling
-    can now add units to otherwise unit-less models.
-    % TODO! transition words
-    A new module – \astropycosmologyunits – has been added to the cosmology
-    sub-package for defining and collecting cosmological units and
-    equivalencies. The unit \texttt{littleh} and equivalency
-    \astropyapidoc{cosmology.units.with_H0}{with\_H0} are deprecated from the
-    main \astropyunits sub-package and moved to \astropycosmologyunits. A new
-    unit, \texttt{redshift}, is added for tracking factors of cosmological
-    redshift. To correctly use redshift units in dimensional analysis,
-    \texttt{redshift} is
-    \astropyapidoc{cosmology.units.dimensionless_redshift}{treated as
-    dimensionless} by default. To convert between redshift and other
-    cosmological distance measures, e.g. CMB temperature or comoving distance,
-    the equivalency
-    \astropyapidoc{cosmology.units.with_redshift}{with\_redshift}
-    is also added. This equivalency is actually a composite of other
-    equivalencies, which may be used separately.
+Units were also integrated further within \astropypkg. For an already-defined unit-less
+\astropyModel, e.g. those imported from another library, \astropymodeling can
+now coerce units.
+% TODO! transition words
+A new module – \astropycosmologyunits – has been added to the cosmology
+sub-package for defining and collecting cosmological units and equivalencies.
+The unit \texttt{littleh} and equivalency
+\astropyapidoc{cosmology.units.with_H0}{with\_H0} are deprecated from the main
+\astropyunits sub-package and moved to \astropycosmologyunits. A new unit,
+\texttt{redshift}, has been added for tracking factors of cosmological redshift. To
+correctly use redshift units in dimensional analysis, \texttt{redshift} is
+\astropyapidoc{cosmology.units.dimensionless_redshift}{treated as dimensionless}
+by default. To convert between redshift and other cosmological distance
+measures, e.g. CMB temperature or comoving distance, the equivalency
+\astropyapidoc{cosmology.units.with_redshift}{with\_redshift}
+has also been added. This equivalency is actually a composite of other equivalencies,
+which may be used separately.
 
-  \paragraph{Table Mixin Columns}
+\paragraph{Table Mixin Columns}
 
-    Within \astropypkg and \python there are numerous ways to represent and
-    store array-valued data. Some of the differences are historical:
-    \astropyapidoc{table.Column}{table.Column} and
-    \astropyapidoc{io.fits.Column}{io.fits.Column} are not the same. Some
-    differences are computational: \package{numpy}, \package{cupy}, and
-    \package{dask} arrays are almost API identical, but are optimized for
-    different compute needs. Lastly, some differences are inherent:
-    \astropyQuantity, \astropyTime and \astropySkyCoord represent fundamentally
-    different types of objects.
+Within \astropypkg and \python there are numerous ways to represent and store
+array-valued data. Some of the differences are historical:
+\astropyapidoc{table.Column}{table.Column} and
+\astropyapidoc{io.fits.Column}{io.fits.Column} are not the same. Some
+differences are computational: \package{numpy}, \package{cupy}, and
+\package{dask} arrays are almost API identical, but are optimized for different
+compute needs. Lastly, some differences are inherent: \astropyQuantity,
+\astropyTime\, and \astropySkyCoord\ represent fundamentally different types of
+objects.
 
-    \astropy believes that however array-valued data is stored, it should still
-    be usable as a column in a table. A well defined protocol for mixin-columns
-    has been developed for \astropytable and \astropyfits table, allowing the
-    original object to be used as a column with a familiar API, and to
-    ``round-trip'' through tables with no loss of data or attributes. With this
-    protocol, it is now possible to store standard \astropyTableColumn objects
-    to a FITS table
-    \href{https://docs.astropy.org/en/stable/io/fits/api/hdus.html}{HDU}, and
-    also any \astropy native objects within a \astropyTable. This includes
-    \astropyTime, \astropyQuantity, \astropySkyCoord, and many others. For
-    objects not already covered by the mixin protocol, functions can be
-    registered with \astropyTable to convert on-the-fly any array-like object
-    into a mixin column. As an example, this is used to provide the seamless
-    integration of \package{dask} arrays with \astropyTable, allowing cloud-stored
-    or cluster-scale data to be used as a column in a \astropyTable.
+\astropy believes that however array-valued data is stored, it should still be
+usable as a column in a table. A well defined protocol for mixin-columns has
+been developed for \astropytable and \astropyfits tables, allowing the original
+object to be used as a column with a familiar API, and to ``round-trip'' through
+tables with no loss of data or attributes. With this protocol, it is now
+possible to store standard \astropyTableColumn\ objects to a FITS table
+\href{https://docs.astropy.org/en/stable/io/fits/api/hdus.html}{HDU}. It is also
+possible to store \astropy native objects -- including \astropyTime,
+\astropyQuantity, and \astropySkyCoord --  within a \astropyTable. For objects
+not already covered by the mixin protocol, functions can be registered with
+\astropyTable\ to convert on-the-fly any array-like object into a mixin column.
+As an example, the mixin functions are used to integrate \package{dask} arrays
+with \astropyTable, allowing cloud-stored or cluster-scale data to be used as a
+column in a \astropyTable.
 
-  \paragraph{Astropy Fits in Time}
+\paragraph{Astropy FITS in Time}
 
-    The FITS standard was extended to rigorously describe time coordinates in
-    the World Coordinate System (WCS) framework \citep{FITS-Time:2015}. Compared
-    to other coordinates in the WCS framework, time requires more metadata --
-    format, scale, position, reference etc. -- which had to be manually
-    specified and understood. \astropyfits can store this data in a standard
-    \astropyFitsColumn (for details, see the
-    \href{https://docs.astropy.org/en/stable/io/fits/index.html}{FITS
-    documentation}), but will not ``understand'' the metadata and attributes.
-    Thankfully, through the support of the
-    \href{https://summerofcode.withgoogle.com/archive/2017/projects/4778482366152704}{Google
-    Summer of Code} 2017 program, the \astropyfits package now allows
-    \astropyTime as a `mixin' column. \astropyTime columns in FITS tables
-    ``understand'' the metadata while also providing a similar interface as the
-    regular \astropyFitsColumn objects. With \astropyTime columns, \astropy
-    ensures that time coordinates are stored according to the FITS standard in a
-    consistent manner and can be read/written without loss of information. For
-    backward compatibility with manual systems, this feature may be turned off,
-    but it is recommended to update. To learn more about this project please see
-    the final report,
-    \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
-    mixin protocol for seamless interoperability}.
+The FITS standard was extended to rigorously describe time coordinates in the
+World Coordinate System (WCS) framework \citep{FITS-Time:2015}. Compared to
+other coordinates in the WCS framework, time requires more metadata: format,
+scale, position, reference, etc. This metadata had to be manually specified and
+the nuances understood by the user. \astropyfits could store this data in a
+standard \astropyFitsColumn\ (for details, see the
+\href{https://docs.astropy.org/en/stable/io/fits/index.html}{FITS
+documentation}), but would not ``understand'' the metadata and attributes.
+Thankfully, through the support of the
+\href{https://summerofcode.withgoogle.com/archive/2017/projects/4778482366152704}{Google
+Summer of Code} 2017 program, the \astropyfits package now allows \astropyTime\
+as a `mixin' column. \astropyTime\ columns in FITS tables ``understand'' the
+metadata while also providing a similar interface as the regular
+\astropyFitsColumn\ objects. With \astropyTime\ columns, \astropy ensures that
+time coordinates are stored according to the FITS standard in a consistent
+manner and can be read/written without loss of information. For backward
+compatibility with manual systems, this feature may be turned off, but it is
+recommended to update. To learn more about this project, please see the final
+report,
+\href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
+mixin protocol for seamless interoperability}.
 
-  \paragraph{Persistent Storage}
+\paragraph{Persistent Storage}
 
-    \astropy's efforts to increase support for column types in a table is
-    mirrored by efforts to expand storage format options. New formats have been
-    added, and existing formats updated to support more column types. We detail
-    the changes, starting with the new formats.
+\astropy's efforts to increase support for column types in a table is mirrored
+by efforts to expand storage format options. New formats have been added, and
+existing formats updated to support more column types.
 
-    \astropy now supports reading and writing tables in the American
-    Astronomical Society Journals' Machine-Readable Table (MRT) format. This has
-    been a long-missing ASCII format, and we are pleased that this year's Google
-    Summer of Code project adds MRT to \astropyTable I/O.  
-    For details see the
-    \href{https://docs.astropy.org/en/stable/io/ascii/write.html#cds-mrt-format}{Machine-Readable
-    Table Format} section. In addition, \astropyTable may also read and write to
-    \href{https://asdf-standard.readthedocs.io/en/latest/}{ASDF},
-    \href{https://docs.astropy.org/en/stable/io/unified.html#table-io-parquet}{Parquet},
-    and \href{https://wwwastro.msfc.nasa.gov/qdp/}{QDP} formats.
+\astropy now supports reading and writing tables in the American Astronomical
+Society Journals' Machine-Readable Table (MRT) format. This ASCII format has
+long been missing, and we are pleased that this year's Google Summer of Code
+project adds MRT to \astropyTable\ I/O.  
+For details, see the
+\href{https://docs.astropy.org/en/stable/io/ascii/write.html#cds-mrt-format}{Machine-Readable
+Table Format} section of \astropy's documentation. In addition, \astropyTable\ may also read from and write to
+\href{https://asdf-standard.readthedocs.io/en/latest/}{ASDF},
+\href{https://docs.astropy.org/en/stable/io/unified.html#table-io-parquet}{Parquet},
+and \href{https://wwwastro.msfc.nasa.gov/qdp/}{QDP} formats.
 
-    The \href{https://github.com/astropy/astropy-APEs/blob/main/APE6.rst}{ECSV
-    standard} has been updated to version 1.0, adding support for reading and
-    writing \astropyTable with three additional data subtypes. First,
-    multidimensional column data (both masked and unmasked) with fixed
-    dimensions in all table cells. Second, multidimensional column data with
-    variable-dimension arrays similar to FITS variable-length arrays. Third,
-    object-type columns with simple \python objects.
+The \href{https://github.com/astropy/astropy-APEs/blob/main/APE6.rst}{ECSV
+standard} has been updated to version 1.0, adding support for reading and
+writing \astropyTable\ with three additional data subtypes. First, it adds
+multidimensional column data (both masked and unmasked) with fixed dimensions in
+all table cells. Second, it adds multidimensional column data with
+variable-dimension arrays similar to FITS variable-length arrays. Third, it adds
+object-type columns with simple \python objects.
 
-    As mentioned previously, \package{dask} arrays may be used as a mixin column
-    in \astropyTable. \package{dask} may also be the data array
-    \astropyapidoc{io.fits.PrimaryHDU}{FITS HDU} and if written to disk, the
-    array will be computed while written, avoiding excessive memory use.
-    \astropyTable can now be appended to an existing FITS file, and
-    \package{dask} mixin columns interoperate seamlessly between the two table
-    types.
+As mentioned previously, \package{dask} arrays may be used as a mixin column in
+\astropyTable. Now, \package{dask} may also be the data array in
+\astropyapidoc{io.fits.PrimaryHDU}{FITS HDU} and if written to disk, the array
+will be computed while written, avoiding excessive memory use. \astropyTable\ can
+now be appended to an existing FITS file, and \package{dask} mixin columns
+interoperate seamlessly between the two table types.
 
-  \paragraph{Unified I/O architecture}
+\paragraph{Unified I/O architecture}
 
-    % TODO! better transition
-    \astropyiosubpkg{registry} is a powerful way to define input and output
-    (I/O) functions for \astropypkg objects, such as reading or writing to a
-    file. \astropy uses this internally for the I/O methods in \astropyTable and
-    \astropyCosmology (I/O added v5.0+), and users can register custom I/O to
-    extend the options on these classes.
+% TODO! better transition
+\astropyiosubpkg{registry} is a powerful way to define input and output (I/O)
+functions for \astropypkg objects, such as reading from or writing to a file.
+\astropy uses this internally for the I/O methods in \astropyTable\ and
+\astropyCosmology\ (I/O added v5.0+), and users can register custom I/O to extend
+the options on these classes.
 
-    As of Astropy 5.0 the I/O registry submodule has switched to a class-based
-    architecture and been refactored to allow read-only, write-only, and
-    read-write registries. Additionally, the registry submodule no longer
-    assumes an object has \astropy-style \texttt{read} and \texttt{write}
-    methods when trying to read or write that object. These two improvements
-    enable a number of new use cases for \astropyiosubpkg{registry}, some
-    highlighted here, but others we hope to see have community adoption.
-
-    First, the class-based architecture allows for the creation of custom
-    registries. An application of this is in \astropycosmology, which has two
-    different \textit{kinds} of registries for \astropyCosmology: one for
-    reading and writing files, and another for converting between python
-    objects. Second, \textit{any} kind of object is now compatible with
-    \astropyiosubpkg{registry}. Using \astropyiosubpkg{registry} for custom
-    classes means a user does not have to create a whole new I/O system and can
-    offer a unified and familiar API.
+As of Astropy 5.0, the I/O registry submodule has switched to a class-based
+architecture and has been refactored to allow read-only, write-only, and
+read-write registries. Additionally, the registry submodule no longer assumes an
+object has \astropy-style \texttt{read} and \texttt{write} methods when trying
+to read or write that object. These two improvements enable a number of new use
+cases for \astropyiosubpkg{registry}, which we hope have community adoption.
+First, the class-based architecture allows for the creation of custom
+registries. One application is in \astropycosmology, which has two different
+\textit{kinds} of registries for \astropyCosmology: one for reading and writing
+files, and another for converting between python objects. Second, \textit{any}
+kind of object is now compatible with \astropyiosubpkg{registry}. Using
+\astropyiosubpkg{registry} for custom classes means a developer does not have to
+create a whole new I/O system and can offer to the user a unified and familiar
+API.
 
 
 
-\subsection*{Precision, Accuracy, \& Reproducibility} \label{sec:core-features-precision_accuracy_repreducibility}
+\subsection*{Precision, Accuracy, \& Reproducibility}
+\label{sec:core-features-precision_accuracy_repreducibility}
 
-  An important focus of \astropy has been to increase the precision and accuracy
-  of its functionality, while, where appropriate, making sure results obtained
-  using older versions of \astropypkg are reproducible. Within each section we
-  include in our descriptions how old results may be reproduced. The primary
-  means are with configuration file options, and settings on runtime
-  configuration objects called \astropyScienceState, described further in the
-  documentation. Notable improvements to \astropypkg have been made to
-  \astropytime, \astropyconstants, \astropycoordinates, and \astropycosmology,
-  and we describe each in turn.
+An important focus of \astropy has been to increase the precision and accuracy
+of its functionality, while, where appropriate, making sure results obtained
+using older versions of \astropypkg are reproducible. Within each section below
+we include in our descriptions how old results may be reproduced. The primary
+means are with configuration file options, and settings on runtime configuration
+objects called \astropyScienceState. Notable improvements to \astropypkg have
+been made to \astropytime, \astropyconstants, \astropycoordinates, and
+\astropycosmology, and we describe each in turn.
 
-  \paragraph{Time}
-    In astronomy, time accuracy down to the (nano)second is frequently
-    important. Whether for planning observations, crunching pulsar or VLBI data,
-    missing seconds meaningfully impact results. Before, when using \astropyTime
-    in \astropytime leap seconds had to be manually applied; now leap seconds
-    are applied automatically. Moreover, \astropypkg updates internal time
-    data-files to ensure that the correct leap second adjustment is always used.
-    For reproducibility, e.g. with an old code, \astropyLeapSeconds may also be
-    manually applied.
+\paragraph{Time}
+In astronomy, time accuracy down to the (nano)second is frequently important.
+Whether for planning observations, crunching pulsar or VLBI data, missing
+seconds meaningfully impact results. Before, when using \astropyTime\ in
+\astropytime leap seconds had to be manually applied; now, leap seconds are
+applied automatically. Moreover, \astropypkg updates internal time data-files to
+ensure that the correct leap second adjustment is always used. For
+reproducibility, e.g. with an old code, \astropyLeapSeconds\ may also be
+manually applied.
 
-  \paragraph{Constants}
+\paragraph{Constants}
 
-    Measurements of physical constants (and the units defined from them) improve
-    over time. Periodically the standardized systems of units and constants are
-    updated to reflect these improvements, for instance in 2019 the SI system was
-    redefined \citep{NIST2019}, with an accompanying update to the physical
-    constants in
-    \href{https://codata.org/initiatives/data-science-and-stewardship/fundamental-physical-constants/}{\texttt{SI/CODATA
-    2018}}. \astropypkg contains two modules -- \astropyconstants and
-    \astropyunits -- for working with constants and units, respectively.
-    \astropyconstants now defaults to use the \texttt{SI/CODATA 2018} values, with
-    the relation between units in \astropyunits based upon these constants. Most
-    of \astropypkg and affiliate packages build upon \astropyunits, so this update
-    has far-reaching effects across the \astropy ecosystem and astronomy
-    community.
+Measurements of physical constants (and the units defined from them) improve
+over time. Periodically the standardized systems of units and constants are
+updated to reflect these improvements. For instance, in 2019 the SI system was
+redefined \citep{NIST2019}, with an accompanying update to the physical
+constants in
+\href{https://codata.org/initiatives/data-science-and-stewardship/fundamental-physical-constants/}{\texttt{SI/CODATA
+2018}}. \astropyconstants now defaults to use the \texttt{SI/CODATA 2018}
+values, with the relation between units in \astropyunits based upon these
+constants. Most of \astropypkg and affiliate packages build upon \astropyunits,
+so this update has far-reaching effects across the \astropy ecosystem and
+astronomy community.
 
-    For reproducibility, \astropypkg allows the constants (and therefore units)
-    definitions to be rolled back to prior values, for instance the
-    \texttt{SI/CODATA 2014} definitions.
-    % CITATION
-    The constants and units definitions are set by configuration file as well as
-    \astropyScienceState (an runtime configuration controller). For work where
-    updates to the values of the fundamental constants significantly alters
-    results we recommend including with the work an \astropy configuration file,
-    which specifies the set of constants used.
+For reproducibility, \astropypkg allows the constants' (and therefore units')
+definitions to be rolled back to prior values, e.g. to the
+\texttt{SI/CODATA 2014} values.
+% CITATION
+The constants' and units' definitions are set by configuration file as well as a
+\astropyScienceState\. For work sensitive to the values of the fundamental
+constants we recommend including with the work an \astropy configuration file,
+which specifies the set of constants used.
 
-  \paragraph{Cosmology}
-    % TODO! At least one good sentence about "what is the benefit of astropy.cosmology"
+\paragraph{Cosmology}
+% TODO! At least one good sentence about "what is the benefit of
+% astropy.cosmology"
 
-    \astropycosmology contains classes for representing cosmological models.
-    Bundled with the classes are commonly used \astropyCosmology realizations, for
-    example best-fit measurements from
-    \href{https://lambda.gsfc.nasa.gov/product/map/current/}{WMAP}
-    \citep{WMAP2003} and \href{https://www.nasa.gov/mission_pages/planck}{Planck}
-    \citep{PlanckMission:2006}.
+\astropycosmology contains classes for representing cosmological models. Bundled
+with the classes are commonly used \astropyCosmology\ realizations, e.g.,
+best-fit measurements from
+\href{https://lambda.gsfc.nasa.gov/product/map/current/}{WMAP}
+\citep{WMAP2003} and
+\href{https://www.nasa.gov/mission_pages/planck}{Planck}
+\citep{PlanckMission:2006}.
 
-    When these important missions publish new measurements, \astropycosmology is
-    updated to include these results as realizations of the appropriate class
-    (generally \astropyFlatLambdaCDM). The models used by WMAP and Planck do not
-    always exactly correspond to \astropycosmology classes, for instance the
-    Planck 2018 results \citep{Planck2018VI} include massive neutrinos in
-    $\Omega_{matter,0}$, while in \astropyFlatLambdaCDM this mass contribution is
-    stored in a separate parameter. Consequently, while some parameter values
-    appear different from the source paper, the \astropyCosmology realizations
-    correctly reproduce the cosmological models.
+When these important missions publish new measurements, \astropycosmology is
+updated to include these results as realizations of the appropriate class
+(generally \astropyFlatLambdaCDM). The models used by WMAP and Planck do not
+always exactly correspond to \astropycosmology classes. For instance, the Planck
+2018 results \citep{Planck2018VI:2020} include massive neutrinos in
+$\Omega_{matter,0}$, while in \astropyFlatLambdaCDM\ this mass contribution is
+stored in a separate parameter. Consequently, while some parameter values appear
+different from the source paper, the \astropyCosmology\ realizations correctly
+reproduce the cosmological models.
 
-    Since \citealt{astropy:2018} the following cosmology realizations have been
-    added:
-    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP1.html}{\texttt{WMAP1}}
-    from WMAP First Year \citep[Table 7: WMAP + CBI + ACBAR + 2dFGRS +
-    Lya]{WMAP1Year:2003};
-    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP3.html}{\texttt{WMAP3}}
-    from WMAP Three Year \citep[Table 6: WMAP + SNGold]{WMAP3Year:2007};
-    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck15.html}{\texttt{Planck15}}
-    from Planck 2015 \citep[Table 4: TT, TE, EE + lowP + lensing +
-    ext]{Planck2015XIII:2016};
-    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck18.html}{\texttt{Planck18}}
-    from the Planck 2018 best-fit cosmological parameters \citep[Table 2: TT, TE,
-    EE + lowE + lensing + BAO]{Planck2018VI:2020}.
+Since \citealt{astropy:2018} the following cosmology realizations have been
+added:
+\href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP1.html}{\texttt{WMAP1}}
+from WMAP First Year \citep[Table 7: WMAP + CBI + ACBAR + 2dFGRS +
+Lya]{WMAP1Year:2003};
+\href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP3.html}{\texttt{WMAP3}}
+from WMAP Three Year \citep[Table 6: WMAP + SNGold]{WMAP3Year:2007};
+\href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck15.html}{\texttt{Planck15}}
+from Planck 2015 \citep[Table 4: TT, TE, EE + lowP + lensing +
+ext]{Planck2015XIII:2016};
+and \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck18.html}{\texttt{Planck18}}
+from the Planck 2018 best-fit cosmological parameters \citep[Table 2: TT, TE, EE
++ lowE + lensing + BAO]{Planck2018VI:2020}.
 
-    Astropy provides a
-    \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.default_cosmology.html}{configurable
-    default cosmology}. All calculations done in a cosmological context will use
-    this default cosmology. The default \astropyCosmology has been updated to the
-    Planck 2018 parameters. For reproducibility, the default cosmology may be set
-    to old defaults, such as the WMAP Three Year values. The default cosmology is
-    dynamically configurable using \astropyScienceState, meaning a set of
-    calculations may be run using different assumed cosmologies, and results
-    compared between the two.
-    % Repeat the word default less.
+Astropy provides a
+\href{http://docs.astropy.org/en/stable/api/astropy.cosmology.default_cosmology.html}{configurable
+default cosmology}, which is used in calculations done in a cosmological
+context. The default \astropyCosmology\ has been updated to the Planck 2018
+parameters. For reproducibility, this cosmology may be set to old defaults, such
+as the WMAP Three Year values. The default cosmology is dynamically configurable
+using \astropyScienceState, meaning a set of calculations may be run using
+different assumed cosmologies, and results compared between the two.
 
-  \paragraph{Coordinates}
+\paragraph{Coordinates}
 
-    Being able to describe the position of objects, i.e. their coordinates, is
-    fundamental across many knowledge domains. \astropypkg provides
-    \astropycoordinates for working with low-level positional and velocity data
-    all the way to high-level coordinate objects with reference frames,
-    atmospheric information, and more. A central feature of \astropycoordinates is
-    the ability to transform data between reference frames, e.g. \astropyICRS
-    \citep{ICRS:1997} to \astropyGalacticLSR \citep{GalacticLSR:2010}. However,
-    there have been some historical limitations for spatially proximate
-    transformations, impacting the usefulness of \astropycoordinates for
-    ground-based telescopes and intra-solar astronomy. Transformations in the
-    \astropyAltAz frame were reasonably precise for very distant objects, but
-    wrong by up around several arcseconds for e.g. the location of the moon. Now
-    these transformations are much more precise, down to the milliarcsecond
-    level. Similar precision improvements were made to the
-    \astropyapi{coordinates.builtin_frames.HADec}{Hour Angle-Declination} frame
-    transformations. Additionally,
-    \astropyapi{coordinates.builtin_frames.BaseEclipticFrame}{Ecliptic frames}
-    and associated transformations have been updated to correctly reflect the
-    “true” (includes precession but not nutation) and “mean” (precession and
-    nutation) terminology.
+Being able to describe the position of objects, i.e. their coordinates, is
+fundamental across many knowledge domains. \astropypkg provides
+\astropycoordinates for working with low-level positional and velocity data all
+the way to high-level coordinate objects with reference frames, atmospheric
+information, and more. A central feature of \astropycoordinates is the ability
+to transform data between reference frames, e.g. \astropyICRS\ \citep{ICRS:1997}
+to \astropyGalacticLSR\ \citep{GalacticLSR:2010}. However, there have been some
+historical limitations for spatially proximate transformations, impacting the
+usefulness of \astropycoordinates for ground-based telescopes and intra-solar
+astronomy. Transformations in the \astropyAltAz\ frame were reasonably precise
+for very distant objects, but wrong by up to several arcseconds for e.g., the
+location of the moon. Now these transformations are much more precise, down to
+the milliarcsecond level. Similar precision improvements were made to the
+\astropyapi{coordinates.builtin_frames.HADec}{Hour Angle-Declination}
+frame transformations. Additionally,
+\astropyapi{coordinates.builtin_frames.BaseEclipticFrame}{Ecliptic frames}
+and associated transformations have been updated to correctly reflect the “true”
+(precession but not nutation) and “mean” (both precession and nutation)
+terminology.
 
-    For Galactic astronomers, the \astropyGalactocentric
-    \astropyapi{coordinates.galactocentric_frame_defaults}{frame defaults} have
-    been updated to include more recent measurements (tabulated in the
-    \href{https://docs.astropy.org/en/stable/api/astropy.coordinates.galactocentric_frame_defaults.html#astropy.coordinates.galactocentric_frame_defaults.references}{\texttt{frame\_defaults.references}}
-    attribute). For reproducibility, old definitions are still available, and will
-    continue to be so as \astropypkg is updated with forthcoming measurements of
-    the Galactic center, solar motion, etc.
-    % may be used by setting the default value to ``pre-v4.0'' in the
-    % \href{https://docs.astropy.org/en/stable/api/astropy.coordinates.galactocentric_frame_defaults.html}{\texttt{galactocentric\_frame\_defaults}}
-    % \astropyScienceState.
+For Galactic astronomers, the \astropyGalactocentric\
+\astropyapi{coordinates.galactocentric_frame_defaults}{frame defaults}
+have been updated to include more recent measurements (tabulated in the
+\href{https://docs.astropy.org/en/stable/api/astropy.coordinates.galactocentric_frame_defaults.html#astropy.coordinates.galactocentric_frame_defaults.references}{\texttt{frame\_defaults.references}}
+attribute). For reproducibility, old definitions are still available, and will
+continue to be so as \astropypkg is updated with forthcoming measurements of the
+Galactic center, solar motion, etc.
 
 
 \subsection*{Performance} \label{sec:core-features-performance}
 
-As features are added and corner cases dealt with, performance often
-suffers.  Hence, pull requests that improve performance are welcomed
-generally, and were even the main goal for one release cycle.  For
-most packages, this meant improvements in the \python\ code, but for
-some the most time-critical pieces were rewritten in~C (e.g., for
-convolution of images, sigma-clipping, and converting time strings to
-binary).  Furthermore, a particular effort was made to ensure
-\astropypkg\ is thread-safe, so that it can be used on supercomputer
-clusters.
+As features are added and corner cases dealt with, performance often suffers.
+Hence, pull requests that improve performance are welcomed, and were even the
+main goal for one release cycle.  For most sub-packages, performance was
+improved in the \python\ code, but for some, the most time-critical pieces were
+rewritten in~C (e.g., for convolution of images, sigma-clipping, and converting
+time strings to binary).  Furthermore, a particular effort was made to ensure
+\astropypkg\ is thread-safe, so that it can be used on supercomputer clusters.
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
