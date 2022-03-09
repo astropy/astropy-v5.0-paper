@@ -11,3 +11,4 @@ dependencies:
       - ads
       - pandas
       - pylatexenc
+      - gitpython
