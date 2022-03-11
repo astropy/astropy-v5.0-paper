@@ -661,7 +661,7 @@ clear the foundation is now in place.
 
 % TODO: move this subsection to "updates to core package" section above?
 
-\begin{figure}[ht]
+\begin{figure}[t!]
     \begin{centering}
       \includegraphics[width=0.8\textwidth]{Ncommitters_vs_frac_commits.pdf}
         \caption{
@@ -704,11 +704,7 @@ contributing more, fractionally --- this emphasizes that, still, the vast
 majority of the work in \astropypkg is done my a small subset ($<20\%$) of the
 115, 216, and 234 contributors, respectively, within each era.
 
-Since its inception, the most active contributors to the \astropypkg package
-have spanned a range of career stages and career paths.
-
-
-\begin{figure}[ht]
+\begin{figure}[t!]
     \begin{centering}
       \includegraphics[width=0.75\textwidth]{top_contributors_career.pdf}
         \caption{
@@ -718,15 +714,40 @@ have spanned a range of career stages and career paths.
     \end{centering}
 \end{figure}
 
-\begin{figure}[ht]
+Since its inception, the most active contributors to the \astropypkg package
+have spanned a range of career stages and career paths.
+For example, Figure~\ref{fig:contributor-summary:top} shows a breakdown of the
+career stage/path at the midpoint of the three time eras defined in the previous
+paragraph for all contributors with more than 50 commits to the \astropypkg
+package within each era.
+Over the $\sim$6 years between the ``early'' and ``recent'' eras, many
+contributors moved between these categories (i.e., have graduated as students to
+become research staff / faculty or software engineers), but also a number of
+early contributors moved on to other positions and stopped contributing to the
+core \astropypkg package.
+Given this, it is encouraging that the numbers in each career stage/path have
+stayed relatively constant over the history of \astropy (with some showing
+growth), as new, active contributors have generally joined and stepped in to
+fill top contributor roles within the project.
+On the other hand, the total number of top contributors has not grown
+substantially, reflecting one of our principal challenges: Sustaining a pipeline
+from users to contributors to maintainers of the package.
+One other thing to note in this context is that in all eras, 50--60\% of the
+software engineers who contributed to \astropypkg were (or are) employed by
+STScI, whose leadership have consistently provided resources (financial and
+personnel) towards sustaining \astropypkg.
+
+\begin{figure}[t!]
     \begin{centering}
-      \includegraphics[width=0.5\textwidth]{commits_committers_per_month.pdf}
+      \includegraphics[width=0.75\textwidth]{commits_committers_per_month.pdf}
         \caption{
             todo
         }
         \label{fig:contributor-summary:per-month}
     \end{centering}
 \end{figure}
+
+A final metric we consider ... rate of contributions and contributor participation ...
 
 % Transition of needs: From new features, to community development, sustainability, ...
 % - pipeline between User, Participant, Code contributor, Maintainer, Coordinator.
