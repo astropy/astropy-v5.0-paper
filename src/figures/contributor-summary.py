@@ -233,6 +233,8 @@ for name, era_lim in eras.items():
     ).split('\n')
     era_shortlogs[name] = _shortlog
     era_n_commits[name] = np.array([int(x.split('\t')[0]) for x in _shortlog])
+    
+    print(f"era={name} had {len(era_n_commits[name])} committers")
 
 # +
 _bins = np.logspace(-5, 0, 25)
