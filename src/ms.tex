@@ -761,13 +761,15 @@ personnel) towards sustaining \astropypkg.
             consecutive 30 day windows) merged into to the \astropypkg core
             package over the whole history of the project (up to end of 2021,
             v5.0).
-            The number clearly peaks just before feature freezes (vertical
+            The dark line shows the mean rate using a 1 year rolling window, but
+            the under-plotted gray line shows the raw monthly rate.
+            The raw number clearly peaks just before feature freezes (vertical
             lines) as a flurry of activity leading up to each release, but in
             recent years the mean rate has remained steady at about $\sim$300
             commits per month.
-            \textbf{Bottom panel:} The number of unique Git committers who
-            contribute to the \astropypkg core package each month (again defined
-            as consecutive 30 day windows).
+            \textbf{Bottom panel:} Similar to above, but now showing the number
+            of unique Git committers who contribute to the \astropypkg core
+            package each month (again defined as consecutive 30 day windows).
             While this also shows some variation depending on proximity to
             feature freezes, in recent years the mean rate of unique
             contributors has remained consistent at about $\sim$22 committers
@@ -777,7 +779,16 @@ personnel) towards sustaining \astropypkg.
     \end{centering}
 \end{figure}
 
-A final metric we consider ... rate of contributions and contributor participation ...
+A final metric we consider as a diagnostic of the contributor base and
+contributions to the \astropypkg core package is the rate of contributions and
+contributor participation, defined again using Git commits to quantify
+contributions.
+Figure~\ref{fig:contributor-summary:per-month} shows the monthly rates of
+commits and unique committers to the \astropypkg core package over the history
+of the package.
+After an initial ramp-up in the commit rate and number of committers (lasting
+roughly from 2011 to 2014), the commit rate and number of unique committers have
+both remained fairly constant.
 
 % Transition of needs: From new features, to community development, sustainability, ...
 % - pipeline between User, Participant, Code contributor, Maintainer, Coordinator.
