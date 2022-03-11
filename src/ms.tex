@@ -663,7 +663,7 @@ clear the foundation is now in place.
 
 \begin{figure}[t!]
     \begin{centering}
-      \includegraphics[width=0.8\textwidth]{Ncommitters_vs_frac_commits.pdf}
+      \includegraphics[width=0.9\textwidth]{Ncommitters_vs_frac_commits.pdf}
         \caption{
             The cumulative fraction of Git commits to the \astropypkg core
             package as a function of number of contributors (committers) broken
@@ -719,7 +719,12 @@ majority of the work in \astropypkg is done my a small subset ($<20\%$) of the
     \begin{centering}
       \includegraphics[width=0.75\textwidth]{top_contributors_career.pdf}
         \caption{
-            todo
+            The career stages and/or positions of the top contributors within
+            each time era (defined as having contributed $>50$ commits to the
+            \astropypkg core package in each era).
+            The time eras early, mid, and recent correspond to the approximate
+            year ranges 2011--2015, 2015--2018, 2018--2021 (defined more
+            precisely in Section~\ref{sec:project-contributors}).
         }
         \label{fig:contributor-summary:top}
     \end{centering}
@@ -752,7 +757,21 @@ personnel) towards sustaining \astropypkg.
     \begin{centering}
       \includegraphics[width=0.75\textwidth]{commits_committers_per_month.pdf}
         \caption{
-            todo
+            \textbf{Top panel:} The number of Git commits per month (defined as
+            consecutive 30 day windows) merged into to the \astropypkg core
+            package over the whole history of the project (up to end of 2021,
+            v5.0).
+            The number clearly peaks just before feature freezes (vertical
+            lines) as a flurry of activity leading up to each release, but in
+            recent years the mean rate has remained steady at about $\sim$300
+            commits per month.
+            \textbf{Bottom panel:} The number of unique Git committers who
+            contribute to the \astropypkg core package each month (again defined
+            as consecutive 30 day windows).
+            While this also shows some variation depending on proximity to
+            feature freezes, in recent years the mean rate of unique
+            contributors has remained consistent at about $\sim$22 committers
+            per month.
         }
         \label{fig:contributor-summary:per-month}
     \end{centering}
