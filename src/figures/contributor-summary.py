@@ -353,13 +353,17 @@ width = 0.25
 for i, (name, _data) in enumerate(top_contr_data.items()):
     ax.bar(ind + i*width, _data, width, label=name, color=era_colors[i], alpha=0.8)
 
-ax.set_title('Number of contributors with >50 commits per era')
+ax.set_title('Career stage/position of top contributors\nto the Astropy core package', pad=10)
+ax.set_ylabel('Number of contributors\nwith >50 commits per era')
 
 ax.set_xticks(ind + width)
-ax.set_xticklabels(labels)
+ax.set_xticklabels(labels, fontsize=18)
 ax.legend(loc='upper right', fontsize=18,
           title='Era:', title_fontsize=19)
 
 ax.set_ylim(0, 15)
 
-fig.savefig('top_contributors_career.pdf')
+fig.savefig('top_contributors_career.pdf', bbox_inches='tight')
+# -
+
+
