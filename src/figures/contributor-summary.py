@@ -70,6 +70,7 @@ for name, era in eras.items():
 
 figsize = (8.5, 6)
 style = dict(color='k')
+era_colors = ['#1b9e77', '#d95f02', '#7570b3']
 
 # ## Commits per month
 
@@ -272,7 +273,49 @@ ax.set_yticklabels([str(tick) for tick in yticks])
 
 ax.set_ylim(0.5, 200)
 
-fig.savefig('Ncommitters_vs_frac_commits.pdf')
+# +
+fig, ax = plt.subplots(figsize=figsize)
+for i, (name, _n_commits) in enumerate(era_n_commits.items()):
+    y = np.cumsum(_n_commits) / np.sum(_n_commits)
+    x = np.arange(1, len(y)+1)
+    ax.semilogx(x, y, 
+                marker='', color=era_colors[i], lw=2,
+                label=name)
+    
+    _idx = np.abs(y - 0.9).argmin()
+    
+    btm = 0.9 - 0.4 - i * 0.15
+    ax.plot(
+        [x[_idx]]*2, [btm, 0.9], 
+        marker='', ls='--', 
+        alpha=0.6, color=era_colors[i]
+    )
+    
+    _val = np.where(y > 0.9)[0][0]
+    ax.text(1.15 * x[_idx], btm, 
+            f'{_val} committers',
+            fontsize=16,
+            ha='right', va='top',
+            color=era_colors[i]
+           )
+    
+    print(name, np.where(y > 0.5)[0][0], np.where(y > 0.9)[0][0])
+    
+ax.set_xlim(1, 300)
+ax.set_ylim(0, 1.04)
+ax.legend(
+    loc='lower right', fontsize=18,
+    title='Era:', title_fontsize=19
+)
+
+ax.text(1.1, 0.9, '90% of commits', ha='left', va='bottom', 
+        fontsize=16, color='#666666')
+ax.axhline(0.9, zorder=-10, color='#aaaaaa', ls='--')
+
+ax.set_xlabel('Number of committers')
+ax.set_ylabel('Cumulative fraction of commits\nin each time period')
+
+fig.savefig('Ncommitters_vs_frac_commits.pdf', bbox_inches='tight')
 # -
 
 # ## Career stages
@@ -305,10 +348,8 @@ fig, ax = plt.subplots(figsize=figsize, constrained_layout=True)
 ind = np.arange(len(labels))
 width = 0.25
 
-colors = ['C1', 'C2', 'C3']
-
 for i, (name, _data) in enumerate(top_contr_data.items()):
-    ax.bar(ind + i*width, _data, width, label=name, color=colors[i], alpha=0.8)
+    ax.bar(ind + i*width, _data, width, label=name, color=era_colors[i], alpha=0.8)
 
 ax.set_title('Number of contributors with >50 commits per era')
 
