@@ -24,6 +24,7 @@ import astropy.units as u
 from git import Repo
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.ndimage import generic_filter
 # -
 
 astropy_repo_path = pathlib.Path(
@@ -146,12 +147,28 @@ fig, axes = plt.subplots(2, 1, figsize=(8, 8),
                          constrained_layout=True)
 
 ax = axes[0]
+# ax.plot(
+#     month_bins[:-1].datetime,
+#     commits_per_month,
+#     drawstyle='steps',
+#     marker='',
+#     **style
+# )
 ax.plot(
     month_bins[:-1].datetime,
     commits_per_month,
     drawstyle='steps',
     marker='',
-    **style
+    zorder=-10, color='#aaaaaa', lw=1,
+    label='raw monthly'
+)
+ax.plot(
+    month_bins[:-1].datetime,
+    generic_filter(commits_per_month, function=np.mean, size=12),
+    drawstyle='steps',
+    marker='',
+    label='monthly rate, 1 year window',
+    color='k', lw=2
 )
 
 _label = True
@@ -161,25 +178,42 @@ for _date in freeze_dates.datetime:
         _label = False
     else:
         kw = dict()
-    ax.axvline(_date, color='tab:blue', alpha=0.2, zorder=-10, marker='',
+    ax.axvline(_date, color='tab:blue', 
+               alpha=0.2, zorder=-10, marker='', ls='--', lw=1,
                **kw)
 
 ax.set_xlim(month_bins[0].datetime, month_bins[-1].datetime)
 # ax.set_xlabel('date')
 ax.set_ylabel('commits per month')
 
-ax.legend(loc='upper left', fontsize=18)
+ax.legend(loc='upper left', fontsize=15)
 
 # ---
 
 ax = axes[1]
+# ax.plot(
+#     month_bins[:-1].datetime,
+#     committers_per_month,
+#     drawstyle='steps',
+#     marker='',
+#     **style
+# )
 ax.plot(
     month_bins[:-1].datetime,
     committers_per_month,
     drawstyle='steps',
     marker='',
-    **style
+    zorder=-10, color='#aaaaaa', lw=1
 )
+ax.plot(
+    month_bins[:-1].datetime,
+    generic_filter(committers_per_month, function=np.mean, size=12),
+    drawstyle='steps',
+    marker='',
+    color='k', lw=2
+)
+
+
 ax.set_xlim(month_bins[0].datetime, month_bins[-1].datetime)
 ax.set_xlabel('date')
 ax.set_ylabel('committers per month')
