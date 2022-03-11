@@ -17,6 +17,7 @@
 # +
 from collections import defaultdict
 import datetime
+import os
 import pathlib
 
 from astropy.time import Time
@@ -27,8 +28,8 @@ import numpy as np
 from scipy.ndimage import generic_filter
 # -
 
-astropy_repo_path = pathlib.Path(
-    '/Users/apricewhelan/projects/astropy-all/astropy')
+_astropy_path = os.environ.get('ASTROPY_REPO_PATH', '../../../astropy')
+astropy_repo_path = pathlib.Path(_astropy_path)
 
 repo = Repo(astropy_repo_path)
 
