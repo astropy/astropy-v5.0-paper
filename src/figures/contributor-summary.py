@@ -187,6 +187,10 @@ ax.set_ylabel('committers per month')
 fig.savefig('commits_committers_per_month.pdf')
 # -
 
+np.mean(commits_per_month[-20:])
+
+np.mean(committers_per_month[-20:])
+
 # ## Number of commits x number of committers
 
 full_shortlog = repo.git.shortlog(
@@ -316,6 +320,8 @@ ax.axhline(0.9, zorder=-10, color='#aaaaaa', ls='--')
 
 ax.set_xlabel('Number of committers')
 ax.set_ylabel('Cumulative fraction of commits\nin each time period')
+ax.set_title('Cumulative fraction of commits\nto the Astropy core package', 
+             pad=10)
 
 fig.savefig('Ncommitters_vs_frac_commits.pdf', bbox_inches='tight')
 # -
