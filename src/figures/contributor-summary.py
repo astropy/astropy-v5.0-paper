@@ -184,7 +184,10 @@ ax.set_xlim(month_bins[0].datetime, month_bins[-1].datetime)
 ax.set_xlabel('date')
 ax.set_ylabel('committers per month')
 
-fig.savefig('commits_committers_per_month.pdf')
+axes[0].set_title("Monthly rate of contributions and contributors\n"
+                  "to the Astropy core package", pad=10)
+
+fig.savefig('commits_committers_per_month.pdf', bbox_inches='tight')
 # -
 
 np.mean(commits_per_month[-20:])
