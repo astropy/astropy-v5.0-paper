@@ -820,17 +820,17 @@ strengthen its promising and sustainable future.
 
 \subsection{Community-oriented infrastructure}
 
-\secauthor{Nicholas Earl}
+% \secauthor{Nicholas Earl}
 
 The Astropy project supports the broader ecosystem by providing pre-configured
-infrastructure packages that the community can use to support and maintain
-their own software package infrastructure. These include tools to easily
-generate documentation and setup automated testing, as well as provide
-package scaffolding for new projects.
+infrastructure packages that the community can use to support and maintain their
+own software package infrastructure. These include tools and extensions that
+enable easily generating documentation and setting up automated testing, as well
+as providing package scaffolding for new projects.
 
 Sphinx is a common and useful tool for generating documentation for Python
 packages. The Astropy project maintains a default Sphinx configuration along
-with Astropy-specific extensions which can be easily added to community
+with Astropy-specific extensions that can be easily added to community
 projects via the
 \href{https://github.com/astropy/sphinx-astropy}{\texttt{sphinx-astropy}} meta
 package. This tool provides a pre-configured Sphinx setup compatible with
@@ -869,7 +869,7 @@ improved mock object testing
 (\href{https://github.com/pytest-dev/pytest-mock}{\texttt{pytest-mock}}), test
 coverage reports and measurements
 (\href{https://github.com/pytest-dev/pytest-cov}{\texttt{pytest-cov}}), and
-configuring package for property-based testing
+configuring packages for property-based testing
 (\href{https://github.com/HypothesisWorks/hypothesis}{\texttt{hypothesis}}).
 
 The Astropy Package Template helps facilitate the setup and creation of new
@@ -877,89 +877,120 @@ Python packages leveraging the Astropy ecosystem. This tool utilizes the
 Cookiecutter project to walk users through the process of creating new
 packages complete with documentation and testing support. Additionally, the
 package template generation process includes the ability to setup
-interoperability with GitHub, allowing for easy repository access from
-documentation, as well as an example GitHub Actions workflow to demonstrate
-the use of GitHub's continuous integration tooling.
+interoperability with \github, allowing for easy repository access from
+documentation, as well as an example \github Actions workflow to demonstrate
+the use of \github's continuous integration tooling.
 
-\subsection{Affiliated packages}
+\subsection{Astropy affiliated packages}
 
-\secauthor{Matt Craig, Brett Morris}
+% \secauthor{Matt Craig, Brett Morris}
 
-Highlight a few new affiliated packages and major updates to existing ones.
-Include a big table of all affiliated packages and references (as in v2.0
-paper).
+% Highlight a few new affiliated packages and major updates to existing ones.
+% Include a big table of all affiliated packages and references (as in v2.0
+% paper).
 
-All coordinated and affiliated packages are listed on the astropy
-website\footnote{\url{https://www.astropy.org/affiliated}}. Since
-\cite{astropy:2018}, there has been an expansion of affiliated
-packages for gravitational astrophysics including:
+As defined in \paperii, Astropy affiliated packages are astronomy-related
+\python packages that provide functionality that builds upon and extends the
+\astropypkg core package that have requested to be included as part of the
+Astropy Project community. These packages support the goals and vision of
+Astropy of improving code re-use, interoperability, and embracing good coding
+practices such as testing and thorough documentation.
+All Astropy-coordinated and other affiliated packages are listed on the astropy
+website.\footnote{\url{https://www.astropy.org/affiliated}}
+
+Since \paperii, there has been an expansion of affiliated
+packages for gravitational astrophysics, including:
 \texttt{PyCBC} for exploring gravitational wave signals, \texttt{lenstronomy} for
 modeling strong gravitational lenses, \texttt{ligo.skymap} for visualizing
 gravitational wave probability maps, and \texttt{EinsteinPy} for general
-relativity and gravitational astronomy. There have been several packages
+relativity and gravitational astronomy. There have also been several packages
 added to the ecosystem related to HEALPix: \texttt{astropy-healpix}
 for a BSD-licensed HEALPix implementation, and \texttt{mocpy} for Multi-Order
 Coverage maps. \texttt{astroalign} has been introduced for astrometric registration,
 and \texttt{python-cpl} has been added for ESO pipelines and VLT data products.
 For ground-based astronomy, \texttt{baseband} has added IO capabilities for
-VLBI, and \texttt{SpectraPy} brings slit spectroscopy to the astropy ecosystem.
-We have \texttt{agnpy} for AGN jets, and \texttt{statmorph} for fitting galactic
-morphological diagnostics. \texttt{saba} gives an interface to sherpa's fitting
-routines. For modeling interstellar dust extinction we have
-\texttt{dust\_extinction}, and for extracting features from time series we
-have \texttt{feets}. We also have \texttt{corral} for managing data intensive parallel
-pipelines. \texttt{BayesicFitting} provides an interface for generic Bayesian
-inference, and \texttt{sbpy} \cite{Mommert2019} does calculations for asteroid and cometary
-astrophysics. Finally, \texttt{synphot} provides an interface for synthetic photometry.
+VLBI, and \texttt{SpectraPy} brings slit spectroscopy to the \astropy ecosystem.
+Other new affiliated packages include \texttt{agnpy} for AGN jets,
+\texttt{statmorph} for fitting galactic morphological diagnostics,
+\texttt{dust\_extinction} for modeling interstellar dust extinction,
+\texttt{feets} for extracting features from time series data, and
+\texttt{corral} for managing data intensive parallel pipelines.
+\texttt{saba} gives an interface to the Sherpa \citep{sherpa} fitting routines,
+\texttt{BayesicFitting} provides an interface for generic Bayesian inference,
+and \texttt{sbpy} enables calculations for asteroid and
+cometary astrophysics. Finally, \texttt{synphot} provides an interface for
+synthetic photometry.
+% \citep{Mommert2019}
 
-Several of the coordinated and affiliated packages described in \cite{astropy:2018} have had substantial improvements. \texttt{astroquery}
-\cite{astroquery} has added
-access to roughly a dozen new missions and data services, including JWST, and
-the project has switched to a continuous release model. Every time a change
-is committed to the main development branch it is published on the Python
-Package Index (PyPI, ref) and available for installation. Formal releases are
-still done a couple of times per year. \texttt{photutils} \cite
-{photutils} released its first stable version, indicating that the API will
-change less frequently, and there have been several significant performance
-improvements. \texttt{ccdproc} \cite{ccdproc} also released a new major
-version, bringing better performance to some image combination operations.
-The \texttt{regions} package \cite{pyregions}, for manipulating ds9-style
-region definitions \cite{ds9}, added new ways to manipulate regions and
-introduced new region types. \texttt{reproject}’s \cite{reproject} major new
-feature is a function to align and co-add images to create a mosaic; better
-support for parallelization was also added. \texttt{specutils}, the package
-that defines containers for 1D and 2D spectra \cite{specutils}, also had its
-first stable release and the addition of classes to read JWST data.
-\texttt{stingray} has also had a major performance overhaul. The package
-\texttt{gammapy} \cite{gammapy} also has major performance improvements,
-has unified its API in preparation for its first stable release.
+Several of the coordinated and affiliated packages described in
+\cite{astropy:2018} have had substantial improvements. \texttt{astroquery}
+\citep{astroquery} has added access to roughly a dozen new missions and data
+services, including the James Webb Space Telescope (JWST) archive, and the
+project has switched to a continuous release model: Every time a change is
+committed to the main development branch it is published on the Python Package
+Index (PyPI) and available for installation. (However, formal releases are still
+done a few times per year.) \texttt{photutils} \cite {photutils} released its
+first stable version, indicating that the API will change less frequently, and
+there have been several significant performance improvements. \texttt{ccdproc}
+\cite{ccdproc} also released a new major version, bringing better performance to
+some image combination operations. The \texttt{regions} package
+\cite{pyregions}, for manipulating ds9-style region definitions \cite{ds9},
+added new ways to manipulate regions and introduced new region types.
+\texttt{reproject}'s \cite{reproject} major new feature is a function to align
+and co-add images to create a mosaic; better support for parallelization was
+also added. \texttt{specutils}, the package that defines containers for 1D and
+2D spectra \cite{specutils}, also had its first stable release and the addition
+of classes to read JWST data. \texttt{stingray} has also had a major performance
+overhaul. The package \texttt{gammapy} \cite{gammapy} also has major performance
+improvements and has unified its API in preparation for its first stable
+release.
+
+\todo{APW}{Add a table of all affiliated packages, like in the previous paper}
 
 \subsection{Connections with data archives}
-
 \label{sec:astroquery}
-% MHvK: feel free to move above label to where it makes most sense.
 
-\secauthor{Adam Ginsburg}
+% \secauthor{Adam Ginsburg}
 
-Astroquery \cite{Ginsburg2019} is the astropy-coordinated package for interacting with online archives of astronomical and related data. It contains over 50 modules for querying astronomical databases, large and small. In particular, since \paperii, significant contributions to \texttt{astroquery} have come from several of the major archives, including the European Space Agency (ESA), the Mikulski Archive for Space Telescopes (MAST) at the Space Telescope Science Institute (STScI), the Infrared Science Archive at the NASA Infrared Processing and Analysis Center (IRSA at NASA IPAC), the Canadian Astronomical Data Center (CADC), and the Atacama Large Millimeter/Submillimeter Array archive (ALMA). These contributions represent a formal acknowledgement of the utility of a centralized tool suite for archive interaction.
+\texttt{astroquery} \citep{Ginsburg2019} is the Astropy-coordinated package for
+interacting with online archives of astronomical and related data. It contains
+over 50 modules for querying astronomical databases, large and small. In
+particular, since \paperii, significant contributions to \texttt{astroquery}
+have come from several of the major archives, including the European Space
+Agency (ESA), the Mikulski Archive for Space Telescopes (MAST) at the Space
+Telescope Science Institute (STScI), the Infrared Science Archive at the NASA
+Infrared Processing and Analysis Center (IRSA at NASA IPAC), the Canadian
+Astronomical Data Center (CADC), and the Atacama Large Millimeter/Submillimeter
+Array archive (ALMA). These contributions represent a formal acknowledgement of
+the utility of a centralized tool suite for archive interaction from \python.
+The widespread usage of \texttt{astroquery} is apparent from the range of
+keywords represented in the journal articles that cite the \texttt{astroquery}
+paper \citep{Ginsburg2019}; everything from asteroids to galaxies is
+represented. Additionally \texttt{astroquery} functionality has been built into
+several special-purpose \python packages, such as \texttt{LightKurve}
+\citep{LightKurve} and SORA \citep{SORA}]. More than 4,000 repositories on
+\github make use of \texttt{astroquery} in some way, and \texttt{astroquery}
+features in a large number of tutorials on various facets of astronomical
+analysis.
 
-The widespread usage of \texttt{astroquery} is apparent from the range of keywords represented in the journal articles which cite \cite{Ginsburg2019}; everything from astroids to galaxies is represented. Additionally Astroquery functionality has been built into several special purpose Python packages, such as \texttt{LightKurve} \cite{LightKurve} and SORA \cite{SORA}]. More than 4,000 repositories on GitHub make use of \texttt{astroquery} in some way, an \texttt{astroquery} features in a large number of tutorials on various facets of astronomical analysis.
-
-Many of the existing and newly-contributed tools rely on Virtual Observatory (VO) tools.
-These use the underlying package \texttt{pyvo}, which has also recently become an astropy-coordinated package. While many or all of the functions provided in \texttt{astroquery} can be achieved through direct use of VO tools implemented in \texttt{pyvo}, the \texttt{astroquery} interfaces more closely resemble the web interfaces more familiar to users.
-% note to coauthors: we need a section on pyvo
+Many of the existing and newly-contributed tools rely on Virtual Observatory
+(VO) tools. These use the underlying package \texttt{pyvo}, which has also
+recently become an Astropy-coordinated package. While many or all of the
+functions provided in \texttt{astroquery} can be achieved through direct use of
+VO tools implemented in \texttt{pyvo}, the \texttt{astroquery} interfaces more
+closely resemble the web interfaces that are more familiar to most users.
 
 \subsection{Connections with Observatories and Missions}
 
-Brief summary of efforts in observatory- or mission-driven development that have
-contributed to Astropy, and vice versa.
+In this section, we highlight a few efforts in observatory- or mission-driven
+development that have contributed to Astropy, and vice versa.
 
 \subsubsection{James Webb Space Telescope}
-\secauthor{Larry Bradley}
+% \secauthor{Larry Bradley}
 
 The James Webb Space Telescope (JWST) is a 6.5-meter space-based
 infrared telescope that will provide unprecedented resolution and
-sensitivity from 0.6 -- 28 microns. JWST will enable a broad range
+sensitivity from 0.6--28 microns. JWST will enable a broad range
 of scientific investigations from exoplanets and their atmospheres
 to the formation of galaxies in the very early universe. Its four
 key scientific goals are to study the first light from stars and
@@ -975,7 +1006,7 @@ until the end of June 2022, when science operations are scheduled to
 begin.
 
 Software developers at the Space Telescope Science Institute (STScI),
-the operations center of JWST, have been developing Python-based tools
+the operations center of JWST, have been developing \python-based tools
 for JWST since 2010 (starting with the JWST Calibration Reference Data
 System) and have provided major contributions to \astropy from its
 inception. The JWST instrument calibration pipelines, exposure-time
@@ -1012,11 +1043,11 @@ its mission lifetime, JWST will continue its support in developing and
 maintaining these critically dependent packages.
 
 
-Gemini
-\secunfilled
+% Gemini
+% \secunfilled
 
-Cherenkov Telescope Array
-\secauthor{Axel Donath, Maximilian Nöthe}
+\subsubsection{Cherenkov Telescope Array}
+% \secauthor{Axel Donath, Maximilian Nöthe}
 
 The Cherenkov Telescope (CTA) will be the next generation very-high-energy
 gamma-ray observatory.
@@ -1043,28 +1074,24 @@ The data analysis pipeline is developed as open source software and essentially 
 A prototype for the low-level analysis is \texttt{ctapipe} \citep{ctapipe},
 a python package developed to perform all the necessary tasks to from the raw data
 of Cherenkov telescopes to the reconstructed event lists.
-
-The high-level analysis (or CTA science tools) will be based on the astropy affiliated package
+The high-level analysis (or CTA science tools) will be based on the Astropy affiliated package
 Gammapy~\citep{gammapy}.
-
-Both Gammapy and \texttt{ctapipe} are using astropy heavily, mainly for units, times, coordinate transformations,
-tables and FITS IO.
-
+Both Gammapy and \texttt{ctapipe} make heavy use of the \astropy core package, mainly for units, times, coordinate transformations,
+tables and FITS I/O.
 As CTA will record gamma-ray events with a rate of up to $10\,000$ events per second,
 it needs to perform a large number of coordinate transformations.
 To enable this, CTA member M.~Nöthe contributed a major performance improvement
 for large numbers of coordinates with different observation times,
 based on earlier work by B.~Winkel.
-
 Together with Gammapy maintainer A.~Donath and former maintainer C.~Deil,
 a total of 107 merged pull requests were contributed to astropy.
 
+% Rubin Observatory
+% \secunfilled
 
-Rubin Observatory
-\secunfilled
+% LIGO/Virgo/KAGRA
+% \secauthor{Leo Singer}
 
-LIGO/Virgo/KAGRA
-\secauthor{Leo Singer}
 \section{Future Plans for the Astropy Project} \label{sec:future}
 
 \subsection{Roadmap}
