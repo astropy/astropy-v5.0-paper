@@ -174,7 +174,7 @@ except ads.exceptions.APIResponseError:
 # +
 this_cache_file = cache_path / 'total_counts.pkl'
 
-if not this_cache_file.exists() or True:
+if not this_cache_file.exists():
     total_astro_counts = []
     years = np.arange(min_year, 2022+1)
     for year in tqdm(years):
