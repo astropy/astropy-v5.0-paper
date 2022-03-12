@@ -1,10 +1,7 @@
-"""
-TODO: describe
-"""
-
 # Standard library
 import datetime
 import pathlib
+import pickle
 
 # Third-party
 import ads
@@ -12,6 +9,7 @@ import astropy.table as at
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from tqdm.auto import tqdm
 
 
 def get_papers(query, rows_per_page=100, max_pages=100):
@@ -70,6 +68,25 @@ def get_papers(query, rows_per_page=100, max_pages=100):
     return q, df
 
 
+def get_paper_count(query, rows_per_page=500, max_pages=100):
+    """
+    Parameters
+    ----------
+    query : str
+    rows_per_page : int (optional)
+    max_pages : int (optional)
+
+    Returns
+    -------
+    search_query : `ads.SearchQuery`
+    count : int
+    """
+    q = ads.SearchQuery(q=query)
+    for paper in q:
+        break
+    return q, q.response.numFound
+
+
 def get_dfs(cache_path):
     cache_path = pathlib.Path(cache_path)
     queries = {
@@ -99,7 +116,7 @@ def get_dfs(cache_path):
     return dfs
 
 
-def plot_yearly_mentions(paper_dfs):
+def plot_yearly_mentions(paper_dfs, total_counts, min_year=1991):
     fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
 
     for i, (name, df) in enumerate(paper_dfs.items()):
@@ -116,7 +133,12 @@ def plot_yearly_mentions(paper_dfs):
                 mentions,
                 marker='', drawstyle='steps-mid',
                 lw=2, label=name, zorder=-i)
-
+    
+    ax.plot(total_counts['date'], total_counts['counts'],
+            marker='', lw=2, label='all astronomy',
+            drawstyle='steps-mid', zorder=-10, ls='-', 
+            color='#aaaaaa')
+    
     if len(paper_dfs) == 0:
         # ADS key not found - pull request?
         ax.set_title(
@@ -125,24 +147,52 @@ def plot_yearly_mentions(paper_dfs):
             fontsize=14
         )
 
-    ax.set_xlim(datetime.date(1991, 8, 1),
+    ax.set_xlim(datetime.date(min_year, 8, 1),
                 datetime.date(2021, 6, 1))  # 2021.5
 
-    ax.legend(loc='upper left', fontsize=16)
+    ax.legend(loc='lower right', fontsize=16, ncol=2)
 
     ax.set_xlabel('Time [year]')
     ax.set_ylabel('Full-text mentions per year')
+    
+    ax.set_yscale('log')
 
     fig.savefig("python-mentions.pdf", bbox_inches="tight")
 
 
-if __name__ == "__main__":
-    cache_path = pathlib.Path('cache/prog-lang-fulltext')
-    cache_path.mkdir(exist_ok=True, parents=True)
+min_year = 1991
 
-    try:
-        paper_dfs = get_dfs(cache_path)
-    except ads.exceptions.APIResponseError:
-        paper_dfs = {}
+# +
+cache_path = pathlib.Path('cache/prog-lang-fulltext')
+cache_path.mkdir(exist_ok=True, parents=True)
 
-    plot_yearly_mentions(paper_dfs)
+try:
+    paper_dfs = get_dfs(cache_path)
+except ads.exceptions.APIResponseError:
+    paper_dfs = {}
+
+# +
+this_cache_file = cache_path / 'total_counts.pkl'
+
+if not this_cache_file.exists() or True:
+    total_astro_counts = []
+    years = np.arange(min_year, 2022+1)
+    for year in tqdm(years):
+        q, count = get_paper_count(
+            f'collection:astronomy year:{year} property:refereed'
+        )
+        total_astro_counts.append(count)
+
+    total_counts = {
+        'date': [datetime.date(y, 1, 1) for y in years],
+        'counts': total_astro_counts
+    }
+    with open(this_cache_file, 'wb') as f:
+        pickle.dump(total_counts, f)
+        
+else:
+    with open(this_cache_file, 'rb') as f:
+        total_counts = pickle.load(f)
+# -
+
+plot_yearly_mentions(paper_dfs, total_counts)
