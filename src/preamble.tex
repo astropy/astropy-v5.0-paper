@@ -28,3 +28,50 @@
  }%
 }
 \newunicodechar{ʻ}{\okina}
+
+% Links to documentation: subpackages
+\newcommand{\astropysubpkg}[1]{\href{http://docs.astropy.org/en/stable/#1/index.html}{\texttt{astropy.#1}}\xspace}
+\newcommand{\astropyiosubpkg}[1]{\href{http://docs.astropy.org/en/stable/io/#1/index.html}{\texttt{astropy.io.#1}}\xspace}
+\newcommand{\astropywcsaxes}{\href{http://docs.astropy.org/en/stable/visualization/wcsaxes/index.html}{\texttt{astropy.visualization.wcsaxes}}\xspace}
+\newcommand{\astropycosmology}{\astropysubpkg{cosmology}}
+\newcommand{\astropycosmologyunits}{\href{https://docs.astropy.org/en/stable/cosmology/units.html}{\texttt{astropy.cosmology.units}}}
+\newcommand{\astropyunits}{\astropysubpkg{units}}
+\newcommand{\astropycoordinates}{\astropysubpkg{coordinates}}
+\newcommand{\astropyconstants}{\astropysubpkg{constants}}
+\newcommand{\astropytable}{\astropysubpkg{table}}
+\newcommand{\astropytime}{\astropysubpkg{time}}
+\newcommand{\astropymodeling}{\astropysubpkg{modeling}}
+\newcommand{\astropywcs}{\astropysubpkg{wcs}}
+\newcommand{\astropyfits}{\astropyiosubpkg{fits}}
+
+% Links to documentation: classes
+\newcommand{\astropyapi}[2]{\href{https://docs.astropy.org/en/stable/api/astropy.#1.html}{#2}}
+\newcommand{\astropyapidoc}[2]{\astropyapi{#1}{\texttt{#2}\xspace}}
+
+\newcommand{\astropySpectralCoord}{\astropyapidoc{coordinates.SpectralCoord}{SpectralCoord}}
+\newcommand{\astropySkyCoord}{\astropyapidoc{coordinates.SkyCoord}{SkyCoord}}
+\newcommand{\astropyICRS}{\astropyapidoc{coordinates.builtin_frames.ICRS}{ICRS}}
+\newcommand{\astropyGalacticLSR}{\astropyapidoc{coordinates.builtin_frames.
+GalacticLSR}{GalacticLSR}}
+\newcommand{\astropyAltAz}{\astropyapidoc{coordinates.builtin_frames.AltAz}{AltAz}}
+\newcommand{\astropyGalactocentric}{\astropyapidoc{coordinates.builtin_frames.Galactocentric}{Galactocentric}}
+\newcommand{\astropyCosmology}{\astropyapidoc{cosmology.Cosmology}{Cosmology}}
+\newcommand{\astropyFlatLambdaCDM}{\astropyapidoc{cosmology.FlatLambdaCDM}{FlatLambdaCDM}}
+\newcommand{\astropyFitsColumn}{\astropyapidoc{io.fits.Column}{Column}}
+\newcommand{\astropyModel}{\astropyapidoc{modeling.Model}{Model}}
+\newcommand{\astropyTableColumn}{\astropyapidoc{table.Column}{Column}}
+\newcommand{\astropyTable}{\astropyapidoc{table.Table}{Table}}
+\newcommand{\astropyQTable}{\astropyapidoc{table.QTable}{QTable}}
+\newcommand{\astropyTime}{\astropyapidoc{time.Time}{Time}}
+\newcommand{\astropyLeapSeconds}{\astropyapidoc{time.LeapSeconds}{LeapSeconds}}
+\newcommand{\astropyDistribution}{\astropyapidoc{uncertainty.Distribution}{Distribution}}
+\newcommand{\astropyUnit}{\astropyapidoc{units.Unit}{Unit}}
+\newcommand{\astropyQuantity}{\astropyapidoc{units.Quantity}{Quantity}}
+\newcommand{\astropyMasked}{\astropyapidoc{utils.masked.Masked}{Masked}}
+\newcommand{\astropyScienceState}{\astropyapidoc{utils.state.ScienceState}{ScienceState}}
+
+% suggestion: shortcut reference to Paper II
+\newcommand{\paperii}{\cite{astropy:2018}}
+
+% Maybe have command link to Zenodo reference instead, or include it?
+\newcommand{\astropyAPE}[1]{\href{https://github.com/astropy/astropy-APEs/blob/main/APE#1.rst}{APE #1}\xspace}
