@@ -28,3 +28,8 @@ jobs:
         uses: ./showyourwork/showyourwork-action
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: built paper
+          path: ms.pdf

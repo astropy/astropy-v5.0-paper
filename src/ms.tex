@@ -1295,26 +1295,26 @@ Astronomy \citep{sofa}.
 \bibliographystyle{aasjournal}
 \bibliography{refs}
 
-% \appendix
+\appendix
 
-% \section{List of Affiliated Packages}
+\section{List of Affiliated Packages}
 
-% \begin{longrotatetable}
-%     \begin{deluxetable*}{cccp{3in}c}
-%     \tablecaption{Registry of affiliated packages.}
-%     \label{tab:registry}
-%     \tablehead{
-%         \colhead{Package Name} &
-%         \colhead{Stable} &
-%         \colhead{PyPI Name} &
-%         \colhead{Maintainer} &
-%         \colhead{Citation}
-%       }
-%       \startdata
-%         \input{registry.tex}
-%       \enddata
-%   \end{deluxetable*}
-% \end{longrotatetable}
+\begin{longrotatetable}
+    \begin{deluxetable*}{ccp{3in}c}
+    \tablecaption{Registry of affiliated packages.}
+    \label{tab:registry}
+    \tablehead{
+        \colhead{Package Name} &
+        % \colhead{Stable} &
+        \colhead{PyPI Name} &
+        \colhead{Maintainer} &
+        \colhead{Citation}
+      }
+      \startdata
+        \input{generated/affiliated-table.tex}
+      \enddata
+  \end{deluxetable*}
+\end{longrotatetable}
 
 
 \end{document}

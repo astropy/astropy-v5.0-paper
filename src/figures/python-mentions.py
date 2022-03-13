@@ -133,14 +133,16 @@ def plot_yearly_mentions(paper_dfs, total_counts, min_year=1991):
                 mentions,
                 marker='', drawstyle='steps-mid',
                 lw=2, label=name, zorder=-i)
-    
-    ax.plot(total_counts['date'], total_counts['counts'],
-            marker='', lw=2, label='all astronomy',
-            drawstyle='steps-mid', zorder=-10, ls='-', 
-            color='#aaaaaa')
-    
+
+    if len(total_counts) != 0:
+        ax.plot(total_counts['date'], total_counts['counts'],
+                marker='', lw=2, label='all astronomy',
+                drawstyle='steps-mid', zorder=-10, ls='-',
+                color='#aaaaaa')
+
     if len(paper_dfs) == 0:
-        # ADS key not found - pull request?
+        # ADS key not found - pull request? secrets are only exposed when run
+        # from the main repo (not forks)
         ax.set_title(
             "ADS key not found! If this is a pull request, that is normal: "
             "ADS queries are not performed.",
@@ -154,7 +156,7 @@ def plot_yearly_mentions(paper_dfs, total_counts, min_year=1991):
 
     ax.set_xlabel('Time [year]')
     ax.set_ylabel('Full-text mentions per year')
-    
+
     ax.set_yscale('log')
 
     fig.savefig("python-mentions.pdf", bbox_inches="tight")
@@ -168,13 +170,15 @@ cache_path.mkdir(exist_ok=True, parents=True)
 
 try:
     paper_dfs = get_dfs(cache_path)
+    api_success = True
 except ads.exceptions.APIResponseError:
     paper_dfs = {}
+    api_success = False
 
 # +
 this_cache_file = cache_path / 'total_counts.pkl'
 
-if not this_cache_file.exists():
+if not this_cache_file.exists() and api_success:
     total_astro_counts = []
     years = np.arange(min_year, 2022+1)
     for year in tqdm(years):
@@ -189,10 +193,15 @@ if not this_cache_file.exists():
     }
     with open(this_cache_file, 'wb') as f:
         pickle.dump(total_counts, f)
-        
-else:
+
+elif this_cache_file.exists():
     with open(this_cache_file, 'rb') as f:
         total_counts = pickle.load(f)
+
+else:
+    total_counts = {}
+
+
 # -
 
 plot_yearly_mentions(paper_dfs, total_counts)
