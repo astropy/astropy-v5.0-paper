@@ -38,3 +38,8 @@ jobs:
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
           ASTROPY_REPO_PATH: /home/runner/work/astropy-v5.0-paper/astropy-v5.0-paper/astropy
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: built paper
+          path: ms.pdf
