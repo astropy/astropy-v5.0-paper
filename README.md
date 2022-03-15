@@ -92,7 +92,9 @@ you need to use the `Makefile` at the repository root. Building locally required
 having `anaconda`, `snakemake`, and a Latex installation on your machine. With
 these, in the repository root, run:
 
-   make
+```
+make
+```
 
 This *should* automatically install all of the required dependencies into a
 `conda` environment and build the paper with this environment. If this fails for
