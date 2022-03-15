@@ -1293,22 +1293,22 @@ Astronomy \citep{sofa}.
           }
 
 \bibliographystyle{aasjournal}
-\bibliography{refs}
+\bibliography{refs, static/affiliated-refs}
 
 \appendix
 
 \section{List of Affiliated Packages}
 
 \begin{longrotatetable}
-    \begin{deluxetable*}{ccp{3in}c}
+    \begin{deluxetable*}{ccp{2in}p{2.5in}}
     \tablecaption{Registry of affiliated packages.}
     \label{tab:registry}
     \tablehead{
         \colhead{Package Name} &
         % \colhead{Stable} &
         \colhead{PyPI Name} &
-        \colhead{Maintainer} &
-        \colhead{Citation}
+        \colhead{Maintainer(s)} &
+        \colhead{Citation(s)}
       }
       \startdata
         \input{generated/affiliated-table.tex}

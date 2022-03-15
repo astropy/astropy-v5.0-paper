@@ -1,6 +1,3 @@
-envvars:
-    "ADS_DEV_KEY"
-
 # User config
 configfile: "showyourwork.yml"
 

@@ -10,3 +10,4 @@ dependencies:
       - tqdm
       - ads
       - pandas
+      - pylatexenc
