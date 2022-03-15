@@ -27,6 +27,6 @@ jobs:
         id: build
         uses: ./showyourwork/showyourwork-action
         with:
-          article-cache-number: 0  # disable caching
+          article-cache-number: null  # disable caching
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
