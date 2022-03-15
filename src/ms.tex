@@ -1094,13 +1094,13 @@ a total of 107 merged pull requests were contributed to astropy.
 
 \subsection{Learn Astropy} \label{sec:learn}
 
-\secauthor{Lía Corrales, David Shupe, Kelle Cruz + Learn team}
+% \secauthor{Lía Corrales, David Shupe, Kelle Cruz + Learn team}
 
 % \subsubsection{Current status and scope}
 
 \textit{Learn Astropy} is an umbrella term that acknowledges the broad
 educational efforts made by the Astropy Project, which are led by the Learn
-Team.
+Astropy Team.
 The efforts focus on developing online content and workshops covering
 astronomy-specific coding tasks in Python.
 As introduced in \citet{astropy:2018}, there are four different types of
@@ -1109,28 +1109,29 @@ lessons that are published in HTML format online; \textit{guides}, which are a
 series of lessons providing a foundational resource for performing certain
 type of astronomical analyses; \textit{examples}, which are snippets of code
 that showcase a short task that can be performed with Astropy or an affiliated
-package; and \textit{documentation}, which is contained within the code base.
+package; and \textit{documentation}, which contains more detailed information
+about the code base and user interface.
 This categorization drives content development, infrastructure choices, and the
-appearance of the Learn Astropy website.
+appearance of the \href{https://learn.astropy.org}{Learn Astropy website}.
 The Learn Team meets weekly to work on creating, expanding, improving these
 educational resources.
 
-\begin{description}
-
-\item[Learn Astropy website] The Learn Team re-launched the main website and
-search interface for Learn Astropy in 2021 with a new infrastructure platform,
-built around full-text search and interactive filtering functionality, with the
-goal of making content discoverable as the Learn Astropy content catalog
+The Learn Team recently re-launched the main website and search interface for
+Learn Astropy in 2021 with a new infrastructure platform, built around full-text
+search and interactive filtering functionality, with the goal of making content
+more easily searchable and discoverable as the Learn Astropy content catalog
 expands.
 This work has been supported in part by a grant from the Dunlap Institute.
 We have adopted Algolia, a search-as-a-service cloud platform, to store the
 full-text and metadata records of Learn Astropy's content.
 The new Learn Astropy website is a JavaScript (Gatsby/React) application that
 uses the Algolia service to power its search and filtering user interface.
-Our Python-based application, Learn Astropy Librarian, populates data into the
-Algolia service. We tuned the Librarian around specific content formats (such as
-Jupyter Notebook-based tutorial pages and Jupyter Book-based guides) to more
-accurately index content and heuristically extract metadata.
+Our \python-based application,
+\href{https://github.com/astropy/learn-astropy-librarian/}{Learn Astropy
+Librarian}, populates data into the Algolia service. We tuned the Librarian
+around specific content formats (such as Jupyter Notebook-based tutorial pages
+and Jupyter Book-based guides) to more accurately index content and
+heuristically extract metadata.
 A consequence of the new platform is that we now maintain and compile content
 separately from the website application itself, enabling new content types.
 Tutorials, which are written as Jupyter Notebooks, are now compiled into their
@@ -1141,12 +1142,27 @@ infrastructure, are also deployed as separate websites using GitHub pages.
 This architecture opens future possibilities of indexing third-party content,
 hosted elsewhere, such as on institutional websites.
 
-\item[Tutorials] Currently, we have \# of tutorials, spanning a wide range of astronomical topics and common tasks.
+We currently host 19 tutorials written as interactive Jupyter Notebooks and
+rendered into static HTML pages with the infrastructure described above.
+The tutorials span a range of astronomical topics, from general tasks like
+reading or creating FITS files with different content or working with
+astronomical coordinate systems, to more specific exercises like analyzing
+spectroscopic data from the UVES instrument.
+Now that the backend infrastructure is stable, we are interested in collecting
+new content to serve and share: If you have ideas for contributions, or have
+tutorials hosted on third-party sites that you would like to make searchable
+through the Learn Astropy interface, please reach out by creating a \github
+issue in the \href{https://github.com/astropy/astropy-tutorials}{Astropy
+Tutorials repository}.
+We currently host one Guide --- a longer-form walkthrough of a more complex
+concept or topic --- that is focused on
+\href{http://www.astropy.org/ccd-reduction-and-photometry-guide}{CCD image
+reduction and photometry}, but are also actively seeking new material that would
+be suitable for new guides.
 
-\item[Guides] {\it ccdproc} Jupyter book has been completed.
-
-\item[Workshops] The Project has been conducting workshops at winter
-meetings of the American Astronomical Society since AAS 225 in January 2015.
+Beyond developing and serving educational content, the \astropy Project has been
+conducting workshops at winter meetings of the American Astronomical Society
+since AAS 225 in January 2015.
 Up to the start of the coronavirus pandemic, these were full-day in-person
 workshops with as many as 90 participants and a dozen facilitators from the
 project.
@@ -1155,26 +1171,31 @@ into basic and advanced sessions.
 Additionally, beginning with the AAS 238 online meeting, the workshops have been
 expanded to Summer AAS meetings.
 The Learn team finds that the workshop audience is best found as AAS meetings as
-opposed to more general Python meetings.
+opposed to more general \python meetings, as the content tends to be more
+applicable for students and researchers in astronomy and astrophysics.
 
-The Astropy Project provided another mode of community engagement at AAS
-Meetings 235 and 237 by organizing a NumFOCUS Sponsored Projects booth in the
-AAS Exhibit Hall.
+The Astropy Project recently provided another mode of community engagement at
+AAS Meetings 235 and 237 by organizing a NumFOCUS Sponsored Projects booth in
+the AAS Exhibit Hall.
 Funding for the exhibit hall was provided alternately by NumFOCUS and later by
-the Moore Foundation funding (\textbf{check this}).
+the Moore Foundation funding.
 The booth hosted a series of Q\&A special sessions during AAS 235 and webinars
 during the virtual AAS 237 meetings, to provide the general astronomy community
 information and access to experts on a variety of open source astronomical
 tools.
-\end{description}
 
 % \subsubsection{Learn vision for the future}
 
-The Learn plan going forward is to continue to improve the tutorial website and
-facilate new content;
-to index third-party tutorials; and to look for supportable opportunities to
-expand the reach of Astropy workshops beyond the American Astronomical Society
-meetings.
+The focus of Learn Astropy over the coming months and years is to further
+improve the interface for sharing educational content on the main Learn Astropy
+website, and to facilitate the development of new content that highlights
+\astropy and \astropy-affiliated package functionality.
+However, we simultaneously also plan to solicit indexing and ingestion of
+third-party tutorial series, to provide a unified interface for identifying
+astronomy-specific educational content that demonstrates the functionality
+available in the vast ecosystem of open-source software packages.
+We also plan to look for opportunities to expand the reach of \astropy workshops
+beyond the AAS meetings.
 
 
 \section{Future Plans for the Astropy Project} \label{sec:future}
