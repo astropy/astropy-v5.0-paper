@@ -21,53 +21,6 @@
 
 \input{preamble.tex}
 
-% Links to documentation: subpackages
-\newcommand{\astropysubpkg}[1]{\href{http://docs.astropy.org/en/stable/#1/index.html}{\texttt{astropy.#1}}\xspace}
-\newcommand{\astropyiosubpkg}[1]{\href{http://docs.astropy.org/en/stable/io/#1/index.html}{\texttt{astropy.io.#1}}\xspace}
-\newcommand{\astropywcsaxes}{\href{http://docs.astropy.org/en/stable/visualization/wcsaxes/index.html}{\texttt{astropy.visualization.wcsaxes}}\xspace}
-\newcommand{\astropycosmology}{\astropysubpkg{cosmology}}
-\newcommand{\astropycosmologyunits}{\href{https://docs.astropy.org/en/stable/cosmology/units.html}{\texttt{astropy.cosmology.units}}}
-\newcommand{\astropyunits}{\astropysubpkg{units}}
-\newcommand{\astropycoordinates}{\astropysubpkg{coordinates}}
-\newcommand{\astropyconstants}{\astropysubpkg{constants}}
-\newcommand{\astropytable}{\astropysubpkg{table}}
-\newcommand{\astropytime}{\astropysubpkg{time}}
-\newcommand{\astropymodeling}{\astropysubpkg{modeling}}
-\newcommand{\astropywcs}{\astropysubpkg{wcs}}
-\newcommand{\astropyfits}{\astropyiosubpkg{fits}}
-
-% Links to documentation: classes
-\newcommand{\astropyapi}[2]{\href{https://docs.astropy.org/en/stable/api/astropy.#1.html}{#2}}
-\newcommand{\astropyapidoc}[2]{\astropyapi{#1}{\texttt{#2}\xspace}}
-
-\newcommand{\astropySpectralCoord}{\astropyapidoc{coordinates.SpectralCoord}{SpectralCoord}}
-\newcommand{\astropySkyCoord}{\astropyapidoc{coordinates.SkyCoord}{SkyCoord}}
-\newcommand{\astropyICRS}{\astropyapidoc{coordinates.builtin_frames.ICRS}{ICRS}}
-\newcommand{\astropyGalacticLSR}{\astropyapidoc{coordinates.builtin_frames.
-GalacticLSR}{GalacticLSR}}
-\newcommand{\astropyAltAz}{\astropyapidoc{coordinates.builtin_frames.AltAz}{AltAz}}
-\newcommand{\astropyGalactocentric}{\astropyapidoc{coordinates.builtin_frames.Galactocentric}{Galactocentric}}
-\newcommand{\astropyCosmology}{\astropyapidoc{cosmology.Cosmology}{Cosmology}}
-\newcommand{\astropyFlatLambdaCDM}{\astropyapidoc{cosmology.FlatLambdaCDM}{FlatLambdaCDM}}
-\newcommand{\astropyFitsColumn}{\astropyapidoc{io.fits.Column}{Column}}
-\newcommand{\astropyModel}{\astropyapidoc{modeling.Model}{Model}}
-\newcommand{\astropyTableColumn}{\astropyapidoc{table.Column}{Column}}
-\newcommand{\astropyTable}{\astropyapidoc{table.Table}{Table}}
-\newcommand{\astropyQTable}{\astropyapidoc{table.QTable}{QTable}}
-\newcommand{\astropyTime}{\astropyapidoc{time.Time}{Time}}
-\newcommand{\astropyLeapSeconds}{\astropyapidoc{time.LeapSeconds}{LeapSeconds}}
-\newcommand{\astropyDistribution}{\astropyapidoc{uncertainty.Distribution}{Distribution}}
-\newcommand{\astropyUnit}{\astropyapidoc{units.Unit}{Unit}}
-\newcommand{\astropyQuantity}{\astropyapidoc{units.Quantity}{Quantity}}
-\newcommand{\astropyMasked}{\astropyapidoc{utils.masked.Masked}{Masked}}
-\newcommand{\astropyScienceState}{\astropyapidoc{utils.state.ScienceState}{ScienceState}}
-
-% suggestion: shortcut reference to Paper II
-\newcommand{\paperii}{\cite{astropy:2018}}
-
-% Maybe have command link to Zenodo reference instead, or include it?
-\newcommand{\astropyAPE}[1]{\href{https://github.com/astropy/astropy-APEs/blob/main/APE#1.rst}{APE #1}\xspace}
-
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
 
@@ -118,27 +71,27 @@ We conclude by raising and discussing the current and future challenges facing t
 
 \section{Introduction} \label{sec:intro}
 
-\secauthor{Adrian Price-Whelan}
+% \secauthor{Adrian Price-Whelan}
 
 The \python programming language is a high-level, interpreted (as opposed to
 compiled) programming language that has become an industry standard across many
 computational domains, technological sectors, and fields of research.
-Despite claims to the contrary \citep{Portegies-Zwart:2020}, \python enables
+This recent and rapid adoption of \python stems from the fact that it enables
 scalable, time- and energy-efficient code execution \citep[e.g.,][]{Augier:2021}
 with a focus on code readability, ease of use, and interoperability with other
 languages.
 Over the last decade, \python has grown enormously in popularity to become a
-dominant programming language in the astronomical and broader scientific
+dominant programming language also in the astronomical and broader scientific
 communities.
 For example, Figure~\ref{fig:python-mentions} shows the number of yearly
 full-text mentions of \python as compared to a few other programming languages
 in refereed articles in the astronomical literature, demonstrating its nearly
 exponential growth in popularity.
-The rapid adoption of \python by astronomy researchers, students, observatories,
-and technical staff combined with an associated increase in awareness and
-interest about open-source software tools is contributing to a paradigm shift in
-the way research is done, data is analyzed, and results are shared in astronomy
-and beyond.
+The adoption of \python by astronomy researchers, students, observatories, and
+technical staff combined with an associated increase in awareness and interest
+about open-source software tools is contributing to a paradigm shift in the way
+research is done, data is analyzed, and results are shared in astronomy and
+beyond.
 
 One of the factors that has led to its rapid ascent in popularity in scientific
 contexts has been the significant, volunteer-driven effort behind developing
@@ -167,21 +120,35 @@ functionality for reading and writing astronomy-specific data formats (e.g.,
 FITS), transforming and representing astronomical coordinates, and representing
 and propagating physical units in code.
 An early description of the core functionality in \astropypkg can be found in
-the first Astropy paper \citep{astropy:2013} or in detail in the core package
+the first \astropy paper \citep{astropy:2013} or in detail in the core package
 documentation.\footnote{\url{https://docs.astropy.org/}}
-The \astropypkg core package is now largely stable in that the software
-interface does not change without sufficient and significant motivation, and the
-addition of new features into the core package has slowed significantly as
-compared to the first years of its development.
+The codebase in the \astropypkg core package is now largely stable, in that the
+software interface does not change without sufficient and significant
+motivation, and the addition of new features into the core package has slowed
+as compared to the first years of its development.
 This is largely driven by the fact that the core package now represents just one
 piece of the broader astronomy \python context, and much new feature development
 is now happening in more specialized packages that are expanding the
-capabilities of the Astropy ecosystem by building on top of the foundations laid
-by the \astropypkg core package.
-Because of this natural expansion, the name Astropy has grown in scope beyond a
+capabilities of the \astropy ecosystem by building on top of the foundations
+laid by the \astropypkg core package.
+Because of this natural expansion, the name \astropy has grown in scope beyond a
 single \python library to become ``the Astropy Project.''
 
-The Astropy Project is a community effort that represents the union of the
+\begin{figure}[th]
+    \begin{centering}
+      \includegraphics[width=\textwidth]{python-mentions.pdf}
+        \caption{
+            Yearly full-text mentions of programming languages (indicated in the
+            figure legend) in refereed publications in the astronomical
+            literature database in the Astrophysics Data System (ADS).
+            \python has rapidly become the dominant programming language
+            mentioned in refereed articles over the last 10 years.
+        }
+        \label{fig:python-mentions}
+    \end{centering}
+\end{figure}
+
+The \astropy Project is a community effort that represents the union of the
 \astropypkg core package, the ecosystem of astronomy-specific software tools
 that are interoperable with \astropypkg (Astropy Affiliated Packages),
 \emph{and} the community of users, developers, and maintainers that participate
@@ -205,59 +172,43 @@ and discuss some of the future plans and challenges faced by the Astropy
 Project.
 
 
-\begin{figure}
-    \begin{centering}
-      % \includegraphics[width=\textwidth]{figures/python-mentions.pdf}
-        \caption{
-            Yearly full-text mentions of programming languages (indicated in the
-            figure legend) in refereed publications in the astronomical
-            literature database in the Astrophysics Data System (ADS;
-            \citealt{ads}).
-            \python has rapidly become the dominant programming language
-            mentioned in refereed articles over the last 10 years.
-        }
-        \label{fig:python-mentions}
-    \end{centering}
-\end{figure}
-
-
 \section{Major Updates to the Astropy Core Package} \label{sec:core-updates}
 
 \subsection{New Long-term Support (LTS) Version: v5.0} \label{sec:core-v50}
 
-\secauthor{Tom Robitaille}
+% \secauthor{Tom Robitaille}
 
-Major versions of the core package -- that is to say versions which add and/or
-modify functionality -- are released approximately every six months, and are
-then maintained with releases that fix issues, until the next major version
-is released. However, every two years a major release is designated as a
-long-term support (LTS) release which continues to be maintained for up to two
-years \citep{ape2}. The motivation for LTS releases is to provide longer-term stable
-versions of astropy that users requiring a high level of stability can make
-use of if they do not always need the latest features (this could include
-for example telescope pipelines and so on). The 5.0 release of the core package was designated as LTS,
-and since it was released at the end of 2021, it will be maintained until the
-end of 2023.
+Major versions of the core package --- that is, versions that add and/or modify
+functionality --- are released approximately every six months, and are then
+maintained with releases that fix issues until the next major version is
+released. However, every two years a major release is designated as a long-term
+support (LTS) release, which continues to be maintained for up to two years
+\citep{ape2}. The motivation for LTS releases is to provide longer-term stable
+versions of \astropypkg that users that require a high level of stability can
+make use of if they do not always need the latest features (this could include,
+for example, telescope operation or data reduction pipelines, etc.). The v5.0
+release of the core package was designated as LTS, and since it was released at
+the end of 2021, it will be maintained until the end of 2023.
 
 
 \subsection{Highlighted Feature Development} \label{sec:core-features}
 
-\secauthor{Nathaniel Starkman, Marten van Kerkwijk}
+% \secauthor{Nathaniel Starkman, Marten van Kerkwijk}
 
 The \astropypkg core package is mature and stable, in that many features have
 been part of the core package for years with purposefully few changes to the
-software interface.  This maturity and stability allows for the broader
+software interface. This maturity and stability allows for the broader
 astronomy \python community to rely upon the \astropypkg core package and build
-specialized packages within the Astropy ecosystem.  Even many non-astronomical
+specialized packages within the Astropy ecosystem. Even many non-astronomical
 \python libraries have come to rely on \astropypkg. The relationship between
 \astropy and the \python-using community is reciprocal, with the evolving needs
 of the community and the maturation of the broader scientific \python ecosystem
 driving much of the development of the \astropypkg core package.
 
 Within \astropypkg, development may be roughly split into a few
-categories: new features added, intra and inter-package interoperability,
+categories: new features added, intra- and inter-package interoperability,
 improvements to precision, accuracy, and reproducibility, and performance
-enhancements. We discuss these in turn.
+enhancements. We discuss these in the subsections below.
 
 Additionally, some features have been moved from the core package, either
 because they are of more general use outside of \astropypkg, or because they are
@@ -267,14 +218,14 @@ Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that \astropy
 carried, as well as the \python wrappers for it. Since this is basic
 infrastructure, with a release cycle set by SOFA, it made more sense to create
 separate packages that serve as \astropypkg dependencies: \package{ERFA}
-\citep{erfa} and \package{PyERFA} \citep{pyerfa}.  An example of something that
+\citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
 was too specialized was a Virtual Observatory sub-package; the Simple
-Application Message Protocol made sense to keep (\astropysubpkg{samp}), but
-other parts more properly belonged in \package{astroquery} (see
-Sect.~\ref{sec:astroquery}).
+Application Message Protocol was kept in the core package
+(\astropysubpkg{samp}), but other parts more properly belonged in
+\package{astroquery} (see Section~\ref{sec:astroquery}).
 
 
-\subsubsection*{New and Planned Features} \label{sec:core-features-new}
+\subsubsection{New and Planned Features} \label{sec:core-features-new}
 
 New features present a particular difficulty for a mature package such as
 \astropypkg, because it is difficult to know {\em a priori} what the best
@@ -291,14 +242,14 @@ contributors.
 \paragraph{Uncertainties and Distributions} Early in our careers we were likely
 all taught that measurements without units and uncertainties are meaningless.
 \astropyunits provides the ability to associate numbers with units, and
-propagate these correctly, using the \astropyQuantity\ class.  However, the
+propagate these correctly, using the \astropyQuantity\ class. However, the
 ability to associate and propagate uncertainties is relatively limited: in
 \astropysubpkg{nddata}, there are options to associate errors with data arrays,
 but these are treated as independent, i.e., covariances are not tracked.
 
 Error propagation is difficult, and often is best approximated using Monte Carlo
-methods.  The new \astropysubpkg{uncertainties} sub-package is our first step
-towards enabling seamless error propagation.  The package allows one to
+methods. The new \astropysubpkg{uncertainties} sub-package is our first step
+towards enabling seamless error propagation. The package allows one to
 generate, for each variable, randomly drawn samples in a \astropyDistribution,
 and then propagate these by passing them through the normal analysis, producing
 a \astropyDistribution\ of final results that can be inspected. This
@@ -313,16 +264,16 @@ are normally distributed rather than approximated by Monte-Carlo means. One
 implementation problem to be solved is when to {\em stop} tracking covariances.
 For instance, a simple operation such as subtracting the mean from $N$ data
 points implies that all data points are now covariant with each other, i.e., one
-has to carry $N\times N$ covariances.  For a large image, that becomes not just
+has to carry $N\times N$ covariances. For a large image, that becomes not just
 pointless but also prohibitive in terms of memory and CPU usage.
 
-\paragraph{Masked quantities}  It can be useful to mask bad data.  How one
+\paragraph{Masked quantities}  It can be useful to mask bad data. How one
 supports masked data involves a number of choices, such as whether one indicates
 data values are bad by a separate flag or by replacing bad data with a special
-value, such as ``Not a Number'' (NaN).  In \astropypkg, both approaches have
+value, such as ``Not a Number'' (NaN). In \astropypkg, both approaches have
 been used: a flag for masked columns in \astropyTable, mask flags and bitmaps
 for N-dimensional data in \astropysubpkg{nddata}, and replacing elements with
-NaN in \astropyTime.  However masked quantities were poorly supported, making it
+NaN in \astropyTime. However masked quantities were poorly supported, making it
 difficult to use masks in a \astropyQTable\ (in which \astropyQuantity\ is used
 for all columns with units).
 
@@ -331,7 +282,7 @@ well with plain data arrays, hiding other metadata and attributes, for example
 the \texttt{unit} of a \astropyQuantity. Consequently, a new \astropyMasked\
 class was designed, based on a framework very similar to that of
 \astropyDistribution, making it easy to create masked instances of other
-classes.  In particular, \astropyMasked\ can be used to create masked quantities
+classes. In particular, \astropyMasked\ can be used to create masked quantities
 for \astropyQTable, enabling I/O of masked data from different file types.
 
 The masked quantities work largely without any changes in higher-level objects
@@ -341,18 +292,18 @@ data with NaN.
 
 \paragraph{Time series}  From sampling a continuous variable at fixed times to
 counting events binned into time windows, many different areas of astrophysics
-require the manipulation of time series.  The new \astropysubpkg{timeseries}
-sub-package extends the \astropyQTable\ class to tables of data as a function of
-time, where the data can either represent samples or averages over particular
-time bins. The new classes offer a number of special methods to manipulate time
-series (folding, resampling, etc.) and to read different data formats (such as
-{\em Kepler} lightcurves, etc.).
+require the manipulation of time series. The new \astropysubpkg{timeseries}
+sub-package extends the \astropyQTable\ class to support tables of data as a
+function of time, where the data can either represent samples or averages over
+particular time bins. The new classes offer a number of special methods to
+manipulate time series (folding, resampling, etc.) and to read different data
+formats (such as \mission{Kepler} light curves, etc.).
 
 Also part of \astropysubpkg{timeseries} are common analysis routines, including
 \href{https://docs.astropy.org/en/stable/timeseries/lombscargle.html}{Lomb-Scargle}
 and
 \href{https://docs.astropy.org/en/stable/timeseries/bls.html}{box-least-squares}
-periodogrammes.
+periodograms.
 
 \paragraph{Spectral Coordinates} Measurements are often taken at specific
 ``spectral coordinates,'' be they frequencies, wavelengths, or photon energies.
@@ -371,15 +322,15 @@ essence of the ``World Coordinate System (WCS)'' concept. From its inception,
 the \astropysubpkg{wcs} sub-package allowed access to WCS information provided
 in, e.g., FITS files, but it became clear that other WCS standards and
 representations had to be supported for new missions and observatories (e.g.,
-the James Webb Space Telescope and the Rubin Observatory).  To harmonize these
+the James Webb Space Telescope and the Rubin Observatory). To harmonize these
 needs, a new high-level interface was created based on a formal design first
 proposed in an \astropy\ Proposal for Enhancement (\astropyAPE{14}). The hope is
 that by having a formal design, other packages implementing WCS objects can
 straightforwardly modify their classes to conform to the new interface or build
-thin wrappers that conform.  The implementation in \astropysubpkg{wcs} interacts
+thin wrappers that conform. The implementation in \astropysubpkg{wcs} interacts
 well with other \astropypkg\ objects such as \astropySkyCoord\ and \astropyTime.
 
-\subsubsection*{Interoperability} \label{sec:core-features-interoperability}
+\subsubsection{Interoperability} \label{sec:core-features-interoperability}
 
 Because \astropy is modular and situated at the nexus between scientific
 computing and astronomy, interoperability is an important focus for \astropy,
@@ -452,7 +403,7 @@ table. A well defined protocol for mixin-columns has been developed for
 familiar API, and to ``round-trip'' through tables with no loss of data or
 attributes. With this protocol, it is now possible to store \astropy native
 objects -- including \astropyTime, \astropyQuantity, and \astropySkyCoord --
-within a \astropyTable and write these to various file formats, such as FITs.
+within a \astropyTable\ and write these to various file formats, such as FITS.
 For objects not already covered by the mixin protocol, functions can be
 registered with \astropyTable\ to convert any array-like object into a mixin
 column. As an example, the mixin functions are used to integrate \package{dask}
@@ -469,11 +420,11 @@ nuances understood by the user. \astropyfits could read this data as a standard
 \astropyFitsColumn\, but would not interpret the time-related metadata and
 attributes. Through the support of the
 \href{https://summerofcode.withgoogle.com/archive/2017/projects/4778482366152704}{Google
-Summer of Code} 2017 program\footnote{ To learn more about this project, please
-see the final report,
+Summer of Code} 2017 program,\footnote{ To learn more about this project, please
+see the final report
 \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
-mixin protocol for seamless interoperability}}, the \astropyfits package now
-interprets time data correctly, using \astropyTime\ as a `mixin' column.  For
+mixin protocol for seamless interoperability}.}, the \astropyfits package now
+interprets time data correctly, using \astropyTime\ as a `mixin' column. For
 backward compatibility with manual systems, this feature may be turned off.
 
 \paragraph{Persistent Storage}
@@ -507,7 +458,6 @@ interoperate seamlessly between the two table types.
 
 \paragraph{Unified I/O architecture}
 
-% TODO! better transition
 \astropyiosubpkg{registry} is a powerful way to define input and output (I/O)
 functions for \astropypkg objects, such as reading from or writing to a file,
 following a given standard. \astropy uses this internally for the I/O methods in
@@ -524,7 +474,7 @@ does not have to create a whole new I/O system and can offer to the user a
 unified and familiar API.
 
 
-\subsection*{Precision, Accuracy, \& Reproducibility}
+\subsection{Precision, Accuracy, \& Reproducibility}
 \label{sec:core-features-precision_accuracy_repreducibility}
 
 An important focus of \astropy has been to increase the precision and accuracy
@@ -539,11 +489,11 @@ been made to \astropytime, \astropyconstants, \astropycoordinates, and
 \paragraph{Time}
 In astronomy, time accuracy down to the (nano)second is frequently important.
 Whether for planning observations, crunching pulsar or VLBI data, missing
-seconds meaningfully impact results. Before, when using \astropyTime\ in
-\astropytime leap seconds had to be manually applied; now, leap seconds are
-applied automatically. Moreover, \astropypkg updates internal time data-files to
-ensure that the correct leap second adjustment is always used. For
-reproducibility, e.g. with an old code, \astropyLeapSeconds\ may also be
+seconds meaningfully impact results. In past versions of \astropypkg, when using
+\astropyTime\ in \astropytime leap seconds had to be manually applied; now, leap
+seconds are applied automatically. Moreover, \astropypkg updates internal time
+data-files to ensure that the correct leap second adjustment is always used. For
+reproducibility, e.g., with an old code, \astropyLeapSeconds\ may also be
 manually applied.
 
 \paragraph{Constants}
@@ -560,14 +510,12 @@ values, with the units in \astropyunits based on these constants. Most of
 effects the entire \astropy ecosystem.
 
 For reproducibility, \astropypkg allows the constants' (and therefore units')
-definitions to be rolled back to prior values, e.g. to the \texttt{SI/CODATA
+definitions to be rolled back to prior values, e.g., to the \texttt{SI/CODATA
 2014} values. For work sensitive to the values of the fundamental constants we
-recommend including with the work an \astropy configuration file, which
+recommend including an \astropy configuration file with the work, which
 specifies the set of constants used.
 
 \paragraph{Cosmology}
-% TODO! At least one good sentence about "what is the benefit of
-% astropy.cosmology"
 
 \astropycosmology contains classes for representing cosmological models. Bundled
 with the classes are commonly used \astropyCosmology\ realizations, e.g.,
@@ -587,7 +535,7 @@ stored in a separate parameter. Consequently, while some parameter values appear
 different from the source paper, the \astropyCosmology\ realizations correctly
 reproduce the cosmological models.
 
-Since \citealt{astropy:2018} the following cosmology realizations have been
+Since \citet{astropy:2018}, the following cosmology realizations have been
 added:
 \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.WMAP1.html}{WMAP First Year}
 \citep{WMAP1Year:2003};
@@ -614,10 +562,10 @@ fundamental across many knowledge domains. \astropycoordinates allows one to
 work with low-level positional and velocity data all the way to high-level
 coordinate objects with reference frames, atmospheric information, and more. A
 central feature of \astropycoordinates is the ability to transform data between
-reference frames, e.g. \astropyICRS\ \citep{ICRS:1997} to \astropyGalacticLSR\
+reference frames, e.g., \astropyICRS\ \citep{ICRS:1997} to \astropyGalacticLSR\
 \citep{GalacticLSR:2010}. However, there have been some historical limitations
 for spatially proximate transformations, impacting the usefulness of
-\astropycoordinates for ground-based telescopes and astronometry within the
+\astropycoordinates for ground-based telescopes and astrometry within the
 solar system. Transformations in the \astropyAltAz\ frame were reasonably
 precise for very distant objects, but wrong by up to several arcseconds for
 e.g., the location of the moon. Now these transformations are much more precise,
@@ -636,35 +584,40 @@ have been updated to include more recent measurements (tabulated in the
 attribute). For reproducibility, old definitions are still available.
 
 
-\subsection*{Performance} \label{sec:core-features-performance}
+\subsection{Performance} \label{sec:core-features-performance}
 
 As features are added and corner cases dealt with, performance often suffers.
 Hence, pull requests that improve performance are welcomed, and were even the
-main goal for one release cycle.  For most sub-packages, performance was
+main goal for one release cycle. For most sub-packages, performance was
 improved in the \python\ code, but for some, the most time-critical pieces were
 rewritten in~C (e.g., for convolution of images, sigma-clipping, and converting
-time strings to binary).  Furthermore, a particular effort was made to ensure
+time strings to binary). Furthermore, a particular effort was made to ensure
 \astropypkg\ is thread-safe, so that it can be used on supercomputer clusters.
+
+Performance in \astropypkg is addressed based on feedback and requests, and
+through contributions from community members: If you find that parts of
+\astropypkg are not performant, we encourage you to open a \github issue to
+start a discussion with the \astropypkg core maintainers.
 
 
 \section{Major Updates in the Astropy Project} \label{sec:project-updates}
 
 \subsection{Project governance} \label{sec:project-governance}
 
-\secauthor{Erik Tollerud}
+% \secauthor{Erik Tollerud}
 
 %Briefly summarize new procedures and governance structure, new CoCo, election
 %process overview, etc.
 
-As part of the process of developing Astropy into a long-term sustainable
+As part of the process of developing \astropypkg into a long-term sustainable
 product, and to improve transparency and accountability, the Project agreed to
 write down and formalize our governance structure (partly supported by explicit
-funding for this purpose - see \S \ref{sec:project-funding}). At the 2019
+funding for this purpose; see Section~\ref{sec:project-funding}). At the 2019
 Astropy Coordination Meeting, input was gathered from participants on what governance
 structures existed in the associated Open Source Software communities, and what
-would fit well with the needs of Astropy. This led into a ``retreat'' planned
+would fit well with the needs of \astropy. This led into a ``retreat'' planned
 for March 2020, but due to the COVID-19 pandemic, this became a series of
-virtual meetings of the ``Astropy Governance Working Group''.  This group
+virtual meetings of the ``Astropy Governance Working Group.'' This group
 drafted the APE 0 document \citep{ape0}, which was then eventually ratified and
 implemented by the ``Astropy Governance Implementation Working Group'' in Fall
 2021. While the process emphasized flexibility and the ability to adapt to
@@ -673,27 +626,27 @@ governance will operate in for at least the medium-term future.
 
 The APE0 \citep{ape0} document lays out the principles of this governance
 structure, so we refer the reader to that document for a more thorough
-description.  However here we highlight some key elements. While many of these
+description, and here we only highlight some key elements. While many of these
 principles were already de facto true or have been discussed organically (and
 have been discussed in earlier papers in this series), the APE0-based governance
-aimed to provide a single place where the community can agree as a starting
+aims to provide a single place where the community can agree as a starting
 point. With this in mind, it highlights the developer and user community of the
 Astropy Project as the ultimate sources of authority, as well as the core
 principle of ``do-ocracy'' that those who do work for the Project (be it coding,
-training, or other less concrete contributions) gain more influence on the
-outputs of the Project by virtue of their effort.  APE0 adds, however, the
-concept of ``voting members'' - a self-governed part of that community who are
-entrusted to elect the Coordination Committee. While this committee has existed
+training, or other harder-to-quantify contributions) gain more influence on the
+outputs of the Project by virtue of their effort. However, APE0 adds the
+concept of ``voting members'': a self-governed part of that community who are
+entrusted to elect the Coordination Committee (CoCo). While the CoCo has existed
 from the inception of the project, APE0 establishes a formal voting process for
-this committee, and explicitly outlines the rights and responsibilities of the
-Coordination Committee. This role is mainly to facilitate consensus and act as
-the decision maker when other mechanisms have failed.  However, it also includes
-powers that either require central authority or secrets (e.g., passwords), but
-APE0 also charges the Committee to devolve responsibilities and seek community
-input on these items as often as possible.
+CoCo members, and explicitly outlines the rights and responsibilities of the
+CoCo. This role is mainly to facilitate consensus and act as the decision maker
+when other mechanisms have failed, and includes powers that either
+require central authority or secrets (e.g., passwords) However, APE0 also
+charges the Committee to devolve responsibilities and seek community input on
+these items as often as possible.
 
 The first Coordination Committee election under these rules took place in Fall
-2021, electing a mix of prior existing and new coordination committee members,
+2021, electing a mix of prior and new coordination committee members,
 and was contested in the sense of more candidates than available slots. This
 suggests the process is already working to serve the long-term interests of the
 committee to both spread the coordination effort, and to ensure it is not
@@ -721,18 +674,18 @@ Overview and statistics of contributors. Highlight changes since v2.0.
 
 \subsection{Inclusion, Diversity, and Equity Programs} \label{sec:project-ide}
 
-\secauthor{Lía Corrales}
+% \secauthor{Lía Corrales}
 
 With support from the Moore Foundation, the \astropy Project was
 allocated funding to support mentoring programs. In 2020 a call was
 made to submit proposals for IDE (Inclusion, Diversity, and
 Empowerment) initiatives for project-wide consideration on
 Github. This process was deemed the most ``open'' because it allowed
-for community wide feedback to focus and improve proposal
-initiatives. Two programs were selected via this process, described
-below.
+for community-wide feedback to focus and improve proposal
+initiatives. Two highlighted programs that were selected and implemented via
+this process are described below.
 
-\textbf{Outreachy:} \todo{No author assigned}{Describe the outreachy project}
+% \textbf{Outreachy:} \todo{No author assigned}{Describe the outreachy project}
 
 \textbf{Women of Color Code (WoCCode)} is a peer-mentoring network for
 coders from traditionally marginalized groups, most notably women of
@@ -772,85 +725,83 @@ improvement.
 % Much of this text was adapted from Robel Geda's report from NSBP and
 % SACNAS. Please include him on the author list.
 \textbf{\astropy representation at national diversity conferences:}
-Several members of the \astropy community attended virtual conferences
-of the National Society of Black Physicists (NSBP) and SACNAS
-(focusing on Hispanic and Native American scientists across all STEM
-fields). \astropy representatives noted that one underlying topic came
-up multiple times. A major barrier for persons who come from
-underrepresented communities is the lack of resources and expertise
-that are necessary to train students. Writing PEP 8 compliant software
-and understanding the Git and Github workflow is not part of the
-standard Physics and Astrophysics curriculum. Additionally, the larger
-Astronomnical community is still in the process of transitioning
-towards Python based tools, making it difficult for students not
-currently under advisement by some one with extensive Python expertise
-to get involved with the open source Python community. Projects such
-as Learn Astropy could have a profound impact by empowering
-underrepresented groups because it provides a free, searchable, and
-accessible introduction to Python tools for astrophysical
-research. Representatives also noted that offering training and
-teaching materials to PIs of Research Experience for Undergraduate
-(REU) programs throughout the United States could be helpful for
-encouraging advisors to teach students how to use Astropy, create
-their own libraries, and use version control on open source platforms
-like Github. Such materials could also be offered as a workshop at
-national diversity conferences themselves, as SACNAS solicits special
-session proposals each year.
+Several members of the \astropy community attended virtual conferences of the
+National Society of Black Physicists (NSBP) and SACNAS (focusing on Hispanic and
+Native American scientists across all STEM fields). \astropy representatives
+noted that one underlying topic came up multiple times. A major barrier for
+persons who come from underrepresented communities is the lack of resources and
+expertise that are necessary to train students. Writing PEP 8 compliant software
+and understanding the Git and \github workflow is not part of the standard
+Physics and Astrophysics curriculum. Additionally, the larger astronomical
+community is still in the process of transitioning towards \python-based tools,
+making it difficult for students not currently under advisement by some one with
+extensive \python expertise to get involved with the open source \python
+community. Projects such as Learn Astropy (see Section~\ref{sec:learn}) could
+have a profound impact by empowering underrepresented groups because it provides
+a free, searchable, and accessible introduction to \python tools for
+astrophysical research. Representatives also noted that offering training and
+teaching materials to PIs of Research Experience for Undergraduate (REU)
+programs throughout the United States could be helpful for encouraging advisors
+to teach students how to use Astropy, create their own libraries, and use
+version control on open source platforms like \github. Such materials could also
+be offered as a workshop at national diversity conferences themselves, as SACNAS
+solicits special session proposals each year.
 
-\textbf{NumFOCUS ``Contributor Diversification \& Retention'' (CDR)
-  initiative:} \todo{No author assigned}{Describe more about this.}
+% \textbf{NumFOCUS ``Contributor Diversification \& Retention'' (CDR)
+%   initiative:} \todo{No author assigned}{Describe more about this.}
 
 
-\subsection{Funding} \label{sec:project-funding}
+\subsection{Project funding} \label{sec:project-funding}
 
-\secauthor{Aarya Patil}
+% \secauthor{Aarya Patil}
 
 % Summarize funding sources (Moore, NASA) and amounts and what this has been
 % used for.
 
 With the goal of establishing a sustainable financial model for the Astropy
-Project, the Coordination Committee under the new governance charter (see \S
-\ref{sec:project-governance}) established a standing Finance committee.
-This committee oversee the planning and allocation of finances on behalf
-of the project. The Astropy Project accepts funds from institutions as well as
-individuals through NUMFOCUS\footnote{NUMFOCUS is a 501(c)(3) nonprofit that
-supports and promotes world-class, innovative, open source scientific computing.}.
+Project, the Coordination Committee, under the new governance charter (see
+Section~\ref{sec:project-governance}), established a standing Finance Committee.
+This committee oversees the planning and allocation of finances on behalf
+of the Project. The Astropy Project accepts funds from institutions as well as
+individuals through NumFOCUS.\footnote{NumFOCUS is a 501(c)(3) nonprofit that
+supports and promotes world-class, innovative, open source scientific computing.}
 Previously, no direct financial support was available for the project development,
-and NUMFOCUS covered most of the incurred operational costs. However, transitioning
+and NumFOCUS covered most of the incurred operational costs. However, transitioning
 to long-term financial stability meant having an influx of funds in the form of
 institutional support, and hence the Astropy Project applied for and successfully
-acquired four grants. These grants are administered by NumFOCUS on behalf of the
-project, providing a ``neutral'' space not tied to any particular astronomy
-institution. The two major ones are briefly summarized below.
+acquired four grants over the last several years. These grants are administered by NumFOCUS on behalf of the
+Project, providing a ``neutral'' space not tied to any particular astronomy
+institution. The two major grants are briefly summarized below.
 
-\begin{itemize}
-    \item Moore: The Gordon and Betty Moore Foundation awarded the Astropy
+\begin{description}
+    \item[Moore] The Gordon and Betty Moore Foundation awarded the Astropy
     project a $\sim$\$900k (US) grant in 2019 for the proposal ``Sustaining and
-    Growing the Astropy Project". Over a three-year term, this grant supported
-    sustenance of the project by providing funds for (1) the development and
-    maintenance of the \astropypkg and its infrastructure to existing project
-    members and targeted hires, (2) the transition of long-term users to
-    contributors and maintainers through mentorship efforts, (3) the formalization
-    of a governance structure (see \S \ref{sec:project-governance}), and (4) the
-    improvement of equity, diversity, and inclusion efforts in the project (see \S
-    \ref{sec:project-ide}). Some of the money supported travel for meetings,
-    conferences, and workshops. This generous grant helped reduce reliance on
-    volunteer-driven maintenance of the openly-developed package and paved
-    the way to acquire funding from federal agencies: a big milestone for the
-    success of the project.
+    Growing the Astropy Project.'' Over a three-year term, this grant supported
+    sustenance of the Project by providing funds for (1) the development and
+    maintenance of the \astropypkg and its infrastructure, provided to existing
+    project members and targeted hires, (2) the transition of long-term users to
+    contributors and maintainers through mentorship efforts, (3) the
+    formalization of a governance structure (see
+    Section~\ref{sec:project-governance}), and (4) the improvement of equity,
+    diversity, and inclusion efforts in the project (see
+    Section~\ref{sec:project-ide}). Some of this money supported travel for
+    meetings, conferences, and workshops. This generous grant helped reduce
+    reliance on volunteer-driven maintenance of the openly-developed package and
+    paved the way to acquire funding from federal agencies, representing a major
+    milestone for the success of the project.
 
-    \item NASA: A successful proposal to the NASA ROSES-2020
+    \item[NASA] A successful proposal to the NASA ROSES-2020
     call\footnote{http://solicitation.nasaprs.com/ROSES2020}, section E.7
     (Support for Open Source Tools, Frameworks, and Libraries), granted the
     Astropy Project $\sim$\$600k (US) to support its work. Funded work for a
     term of three years includes (1) project-wide infrastructure maintenance and
     improvements, (2) targeted work on areas of the \astropy core and
-    coordinated packages that need support, (3) enhancements to the Learn
-    Astropy ecosystem and educational materials (see \S \ref{sec:learn}),
+    coordinated packages, (3) enhancements to the Learn
+    Astropy ecosystem and educational materials (see Section~\ref{sec:learn}),
     and (4) support for the \astropy affiliated packages. These goals
     support the sustenance of the project by encouraging further
     development of the package ecosystem and community engagement.
-\end{itemize}
+\end{description}
 
 In addition to the two grants described above, the project benefited from
 a Gemini Observatory contract under its Science User Support Department,
@@ -858,7 +809,7 @@ which awarded funds for development work that supports both the Astropy and
 DRAGONS projects. The project also received financial support from the Dunlap
 Seed Funding program at the University of Toronto to develop educational
 resources for scientific software packaging within the Learn Astropy
-framework. All these successful proposals show that the Astropy project
+framework. All of these successful proposals show that the Astropy Project
 is vital for the astronomical infrastructure and community at large, and
 strengthen its promising and sustainable future.
 
@@ -869,17 +820,17 @@ strengthen its promising and sustainable future.
 
 \subsection{Community-oriented infrastructure}
 
-\secauthor{Nicholas Earl}
+% \secauthor{Nicholas Earl}
 
 The Astropy project supports the broader ecosystem by providing pre-configured
-infrastructure packages that the community can use to support and maintain
-their own software package infrastructure. These include tools to easily
-generate documentation and setup automated testing, as well as provide
-package scaffolding for new projects.
+infrastructure packages that the community can use to support and maintain their
+own software package infrastructure. These include tools and extensions that
+enable easily generating documentation and setting up automated testing, as well
+as providing package scaffolding for new projects.
 
 Sphinx is a common and useful tool for generating documentation for Python
 packages. The Astropy project maintains a default Sphinx configuration along
-with Astropy-specific extensions which can be easily added to community
+with Astropy-specific extensions that can be easily added to community
 projects via the
 \href{https://github.com/astropy/sphinx-astropy}{\texttt{sphinx-astropy}} meta
 package. This tool provides a pre-configured Sphinx setup compatible with
@@ -918,7 +869,7 @@ improved mock object testing
 (\href{https://github.com/pytest-dev/pytest-mock}{\texttt{pytest-mock}}), test
 coverage reports and measurements
 (\href{https://github.com/pytest-dev/pytest-cov}{\texttt{pytest-cov}}), and
-configuring package for property-based testing
+configuring packages for property-based testing
 (\href{https://github.com/HypothesisWorks/hypothesis}{\texttt{hypothesis}}).
 
 The Astropy Package Template helps facilitate the setup and creation of new
@@ -926,89 +877,120 @@ Python packages leveraging the Astropy ecosystem. This tool utilizes the
 Cookiecutter project to walk users through the process of creating new
 packages complete with documentation and testing support. Additionally, the
 package template generation process includes the ability to setup
-interoperability with GitHub, allowing for easy repository access from
-documentation, as well as an example GitHub Actions workflow to demonstrate
-the use of GitHub's continuous integration tooling.
+interoperability with \github, allowing for easy repository access from
+documentation, as well as an example \github Actions workflow to demonstrate
+the use of \github's continuous integration tooling.
 
-\subsection{Affiliated packages}
+\subsection{Astropy affiliated packages}
 
-\secauthor{Matt Craig, Brett Morris}
+% \secauthor{Matt Craig, Brett Morris}
 
-Highlight a few new affiliated packages and major updates to existing ones.
-Include a big table of all affiliated packages and references (as in v2.0
-paper).
+% Highlight a few new affiliated packages and major updates to existing ones.
+% Include a big table of all affiliated packages and references (as in v2.0
+% paper).
 
-All coordinated and affiliated packages are listed on the astropy
-website\footnote{\url{https://www.astropy.org/affiliated}}. Since
-\cite{astropy:2018}, there has been an expansion of affiliated
-packages for gravitational astrophysics including:
+As defined in \paperii, Astropy affiliated packages are astronomy-related
+\python packages that provide functionality that builds upon and extends the
+\astropypkg core package that have requested to be included as part of the
+Astropy Project community. These packages support the goals and vision of
+Astropy of improving code re-use, interoperability, and embracing good coding
+practices such as testing and thorough documentation.
+All Astropy-coordinated and other affiliated packages are listed on the astropy
+website.\footnote{\url{https://www.astropy.org/affiliated}}
+
+Since \paperii, there has been an expansion of affiliated
+packages for gravitational astrophysics, including:
 \texttt{PyCBC} for exploring gravitational wave signals, \texttt{lenstronomy} for
 modeling strong gravitational lenses, \texttt{ligo.skymap} for visualizing
 gravitational wave probability maps, and \texttt{EinsteinPy} for general
-relativity and gravitational astronomy. There have been several packages
+relativity and gravitational astronomy. There have also been several packages
 added to the ecosystem related to HEALPix: \texttt{astropy-healpix}
 for a BSD-licensed HEALPix implementation, and \texttt{mocpy} for Multi-Order
 Coverage maps. \texttt{astroalign} has been introduced for astrometric registration,
 and \texttt{python-cpl} has been added for ESO pipelines and VLT data products.
 For ground-based astronomy, \texttt{baseband} has added IO capabilities for
-VLBI, and \texttt{SpectraPy} brings slit spectroscopy to the astropy ecosystem.
-We have \texttt{agnpy} for AGN jets, and \texttt{statmorph} for fitting galactic
-morphological diagnostics. \texttt{saba} gives an interface to sherpa's fitting
-routines. For modeling interstellar dust extinction we have
-\texttt{dust\_extinction}, and for extracting features from time series we
-have \texttt{feets}. We also have \texttt{corral} for managing data intensive parallel
-pipelines. \texttt{BayesicFitting} provides an interface for generic Bayesian
-inference, and \texttt{sbpy} \cite{Mommert2019} does calculations for asteroid and cometary
-astrophysics. Finally, \texttt{synphot} provides an interface for synthetic photometry.
+VLBI, and \texttt{SpectraPy} brings slit spectroscopy to the \astropy ecosystem.
+Other new affiliated packages include \texttt{agnpy} for AGN jets,
+\texttt{statmorph} for fitting galactic morphological diagnostics,
+\texttt{dust\_extinction} for modeling interstellar dust extinction,
+\texttt{feets} for extracting features from time series data, and
+\texttt{corral} for managing data intensive parallel pipelines.
+\texttt{saba} gives an interface to the Sherpa \citep{sherpa} fitting routines,
+\texttt{BayesicFitting} provides an interface for generic Bayesian inference,
+and \texttt{sbpy} enables calculations for asteroid and
+cometary astrophysics. Finally, \texttt{synphot} provides an interface for
+synthetic photometry.
+% \citep{Mommert2019}
 
-Several of the coordinated and affiliated packages described in \cite{astropy:2018} have had substantial improvements. \texttt{astroquery}
-\cite{astroquery} has added
-access to roughly a dozen new missions and data services, including JWST, and
-the project has switched to a continuous release model. Every time a change
-is committed to the main development branch it is published on the Python
-Package Index (PyPI, ref) and available for installation. Formal releases are
-still done a couple of times per year. \texttt{photutils} \cite
-{photutils} released its first stable version, indicating that the API will
-change less frequently, and there have been several significant performance
-improvements.  \texttt{ccdproc} \cite{ccdproc} also released a new major
-version, bringing better performance to some image combination operations.
-The \texttt{regions} package \cite{pyregions}, for manipulating ds9-style
-region definitions \cite{ds9}, added new ways to manipulate regions and
-introduced new region types. \texttt{reproject}’s \cite{reproject} major new
-feature is a function to align and co-add images to create a mosaic; better
-support for parallelization was also added. \texttt{specutils}, the package
-that defines containers for 1D and 2D spectra \cite{specutils}, also had its
-first stable release and the addition of classes to read JWST data.
-\texttt{stingray} has also had a major performance overhaul. The package
-\texttt{gammapy} \cite{gammapy} also has major performance improvements,
-has unified its API in preparation for its first stable release.
+Several of the coordinated and affiliated packages described in
+\cite{astropy:2018} have had substantial improvements. \texttt{astroquery}
+\citep{astroquery} has added access to roughly a dozen new missions and data
+services, including the James Webb Space Telescope (JWST) archive, and the
+project has switched to a continuous release model: Every time a change is
+committed to the main development branch it is published on the Python Package
+Index (PyPI) and available for installation. (However, formal releases are still
+done a few times per year.) \texttt{photutils} \cite {photutils} released its
+first stable version, indicating that the API will change less frequently, and
+there have been several significant performance improvements. \texttt{ccdproc}
+\cite{ccdproc} also released a new major version, bringing better performance to
+some image combination operations. The \texttt{regions} package
+\cite{pyregions}, for manipulating ds9-style region definitions \cite{ds9},
+added new ways to manipulate regions and introduced new region types.
+\texttt{reproject}'s \cite{reproject} major new feature is a function to align
+and co-add images to create a mosaic; better support for parallelization was
+also added. \texttt{specutils}, the package that defines containers for 1D and
+2D spectra \cite{specutils}, also had its first stable release and the addition
+of classes to read JWST data. \texttt{stingray} has also had a major performance
+overhaul. The package \texttt{gammapy} \cite{gammapy} also has major performance
+improvements and has unified its API in preparation for its first stable
+release.
+
+\todo{APW}{Add a table of all affiliated packages, like in the previous paper}
 
 \subsection{Connections with data archives}
-
 \label{sec:astroquery}
-% MHvK: feel free to move above label to where it makes most sense.
 
-\secauthor{Adam Ginsburg}
+% \secauthor{Adam Ginsburg}
 
-Astroquery \cite{Ginsburg2019} is the astropy-coordinated package for interacting with online archives of astronomical and related data. It contains over 50 modules for querying astronomical databases, large and small. In particular, since \paperii, significant contributions to \texttt{astroquery} have come from several of the major archives, including the European Space Agency (ESA), the Mikulski Archive for Space Telescopes (MAST) at the Space Telescope Science Institute (STScI), the Infrared Science Archive at the NASA Infrared Processing and Analysis Center (IRSA at NASA IPAC), the Canadian Astronomical Data Center (CADC), and the Atacama Large Millimeter/Submillimeter Array archive (ALMA). These contributions represent a formal acknowledgement of the utility of a centralized tool suite for archive interaction.
+\texttt{astroquery} \citep{Ginsburg2019} is the Astropy-coordinated package for
+interacting with online archives of astronomical and related data. It contains
+over 50 modules for querying astronomical databases, large and small. In
+particular, since \paperii, significant contributions to \texttt{astroquery}
+have come from several of the major archives, including the European Space
+Agency (ESA), the Mikulski Archive for Space Telescopes (MAST) at the Space
+Telescope Science Institute (STScI), the Infrared Science Archive at the NASA
+Infrared Processing and Analysis Center (IRSA at NASA IPAC), the Canadian
+Astronomical Data Center (CADC), and the Atacama Large Millimeter/Submillimeter
+Array archive (ALMA). These contributions represent a formal acknowledgement of
+the utility of a centralized tool suite for archive interaction from \python.
+The widespread usage of \texttt{astroquery} is apparent from the range of
+keywords represented in the journal articles that cite the \texttt{astroquery}
+paper \citep{Ginsburg2019}; everything from asteroids to galaxies is
+represented. Additionally \texttt{astroquery} functionality has been built into
+several special-purpose \python packages, such as \texttt{LightKurve}
+\citep{LightKurve} and SORA \citep{SORA}]. More than 4,000 repositories on
+\github make use of \texttt{astroquery} in some way, and \texttt{astroquery}
+features in a large number of tutorials on various facets of astronomical
+analysis.
 
-The widespread usage of \texttt{astroquery} is apparent from the range of keywords represented in the journal articles which cite \cite{Ginsburg2019}; everything from astroids to galaxies is represented. Additionally Astroquery functionality has been built into several special purpose Python packages, such as \texttt{LightKurve} \cite{LightKurve} and SORA \cite{SORA}]. More than 4,000 repositories on GitHub make use of \texttt{astroquery} in some way, an \texttt{astroquery} features in a large number of tutorials on various facets of astronomical analysis.
-
-Many of the existing and newly-contributed tools rely on Virtual Observatory (VO) tools.
-These use the underlying package \texttt{pyvo}, which has also recently become an astropy-coordinated package. While many or all of the functions provided in \texttt{astroquery} can be achieved through direct use of VO tools implemented in \texttt{pyvo}, the \texttt{astroquery} interfaces more closely resemble the web interfaces more familiar to users.
-% note to coauthors: we need a section on pyvo
+Many of the existing and newly-contributed tools rely on Virtual Observatory
+(VO) tools. These use the underlying package \texttt{pyvo}, which has also
+recently become an Astropy-coordinated package. While many or all of the
+functions provided in \texttt{astroquery} can be achieved through direct use of
+VO tools implemented in \texttt{pyvo}, the \texttt{astroquery} interfaces more
+closely resemble the web interfaces that are more familiar to most users.
 
 \subsection{Connections with Observatories and Missions}
 
-Brief summary of efforts in observatory- or mission-driven development that have
-contributed to Astropy, and vice versa.
+In this section, we highlight a few efforts in observatory- or mission-driven
+development that have contributed to Astropy, and vice versa.
 
 \subsubsection{James Webb Space Telescope}
-\secauthor{Larry Bradley}
+% \secauthor{Larry Bradley}
 
 The James Webb Space Telescope (JWST) is a 6.5-meter space-based
 infrared telescope that will provide unprecedented resolution and
-sensitivity from 0.6 -- 28 microns. JWST will enable a broad range
+sensitivity from 0.6--28 microns. JWST will enable a broad range
 of scientific investigations from exoplanets and their atmospheres
 to the formation of galaxies in the very early universe. Its four
 key scientific goals are to study the first light from stars and
@@ -1024,7 +1006,7 @@ until the end of June 2022, when science operations are scheduled to
 begin.
 
 Software developers at the Space Telescope Science Institute (STScI),
-the operations center of JWST, have been developing Python-based tools
+the operations center of JWST, have been developing \python-based tools
 for JWST since 2010 (starting with the JWST Calibration Reference Data
 System) and have provided major contributions to \astropy from its
 inception. The JWST instrument calibration pipelines, exposure-time
@@ -1061,11 +1043,11 @@ its mission lifetime, JWST will continue its support in developing and
 maintaining these critically dependent packages.
 
 
-Gemini
-\secunfilled
+% Gemini
+% \secunfilled
 
-Cherenkov Telescope Array
-\secauthor{Axel Donath, Maximilian Nöthe}
+\subsubsection{Cherenkov Telescope Array}
+% \secauthor{Axel Donath, Maximilian Nöthe}
 
 The Cherenkov Telescope (CTA) will be the next generation very-high-energy
 gamma-ray observatory.
@@ -1092,47 +1074,29 @@ The data analysis pipeline is developed as open source software and essentially 
 A prototype for the low-level analysis is \texttt{ctapipe} \citep{ctapipe},
 a python package developed to perform all the necessary tasks to from the raw data
 of Cherenkov telescopes to the reconstructed event lists.
-
-The high-level analysis (or CTA science tools) will be based on the astropy affiliated package
+The high-level analysis (or CTA science tools) will be based on the Astropy affiliated package
 Gammapy~\citep{gammapy}.
-
-Both Gammapy and \texttt{ctapipe} are using astropy heavily, mainly for units, times, coordinate transformations,
-tables and FITS IO.
-
+Both Gammapy and \texttt{ctapipe} make heavy use of the \astropy core package, mainly for units, times, coordinate transformations,
+tables and FITS I/O.
 As CTA will record gamma-ray events with a rate of up to $10\,000$ events per second,
 it needs to perform a large number of coordinate transformations.
 To enable this, CTA member M.~Nöthe contributed a major performance improvement
 for large numbers of coordinates with different observation times,
 based on earlier work by B.~Winkel.
-
 Together with Gammapy maintainer A.~Donath and former maintainer C.~Deil,
 a total of 107 merged pull requests were contributed to astropy.
 
+% Rubin Observatory
+% \secunfilled
 
-Rubin Observatory
-\secunfilled
+% LIGO/Virgo/KAGRA
+% \secauthor{Leo Singer}
 
-LIGO/Virgo/KAGRA
-\secauthor{Leo Singer}
-\section{Future Plans for the Astropy Project} \label{sec:future}
-
-\subsection{Roadmap}
-
-\secauthor{Clara Brasseur}
-
-
-The Astropy Roadmap\footnote{\url{https://github.com/astropy/astropy-project/blob/main/roadmap/roadmap.md}} is a document in the astropy-project repository that captures high level actionable items that the Astropy project aims to undertake to improve the health and stability of the  project. It is a static document that is revisited regularly at the Astropy coordination meetings, to keep track of progress and write new versions as needed. There is a related project board linked to the Roadmap document, that holds specific issues and efforts related to Roadmap items. The project board is a living document that is continually updated as work is planned, assigned, and completed.
-
-All items in the Roadmap have been agreed to be priorities for the Astropy Project, and are color-coded based on resources (both time/effort and developers/expertise) needed to complete the item. Green items are well underway, have sufficient resources/support and a plan in place for completion. Orange items are well defined, and work for aquiring sufficient resources underway. Red items do not yet have a plan for implementation and need more resources.
-\todo{addition}{Add some examples of high priority items from the roadmap in a new paragraph here}
-The Astropy Roadmap originates from the March 2021 Astropy Coordination meeting where it was first drafted before being handed off to a newly formed Astropy Roadmap working group for completion. The Roadmap in its currant form was adopted via pull request in December 2021.
-
-
-\section{Learn Astropy} \label{sec:learn}
+\subsection{Learn Astropy} \label{sec:learn}
 
 \secauthor{Lía Corrales, David Shupe, Kelle Cruz + Learn team}
 
-\subsubsection{Current status and scope}
+% \subsubsection{Current status and scope}
 
 \textit{Learn Astropy} is an umbrella term that acknowledges the broad
 educational efforts made by the Astropy Project, which are led by the Learn
@@ -1204,7 +1168,7 @@ information and access to experts on a variety of open source astronomical
 tools.
 \end{description}
 
-\subsubsection{Learn vision for the future}
+% \subsubsection{Learn vision for the future}
 
 The Learn plan going forward is to continue to improve the tutorial website and
 facilate new content;
@@ -1213,10 +1177,45 @@ expand the reach of Astropy workshops beyond the American Astronomical Society
 meetings.
 
 
+\section{Future Plans for the Astropy Project} \label{sec:future}
+
+\subsection{A roadmap for future priorities}
+% \secauthor{Clara Brasseur}
+
+The
+\href{https://github.com/astropy/astropy-project/blob/main/roadmap/roadmap.md}{Astropy Roadmap} is a document in the \texttt{astropy-project} \github
+repository within the \astropy organization that captures high level actionable
+items that the Astropy project aims to undertake to improve the health and
+stability of the project. It is a static document that is revisited regularly at
+the Astropy coordination meetings, intended to keep track of progress and write
+new versions as needed. There is a related project board linked to the Roadmap
+document that holds specific issues and efforts related to Roadmap items. The
+project board is a living document that is continually updated as work is
+planned, assigned, and completed.
+
+All items in the Roadmap have been agreed to be priorities for the Astropy
+Project, and are color-coded based on resources (both time/effort and
+developers/expertise) needed to complete the item. Green items are well
+underway, have sufficient resources/support and a plan in place for completion;
+For example, efforts to improve the discoverability of documentation and
+educational materials by overhauling the Learn website, which is underway (see
+Section~\ref{sec:learn}).
+Orange items are well defined, and work for acquiring sufficient resources
+underway; For example, the goal of providing next-generation spectroscopic
+reduction, analysis, and visualization tools usable by individual researchers
+and larger surveys.
+Red items do not yet have a plan for implementation and need more resources; For
+example, the goal of improving interoperability with performant I/O file formats
+and libraries such as HDF5 and Dask.
+The Astropy Roadmap originates from the March 2021 Astropy Coordination meeting
+where it was first drafted before being handed off to a newly formed Astropy
+Roadmap working group for completion. The Roadmap in its current form was
+adopted via pull request in December 2021.
+
 
 \subsection{Current and Future Challenges}
 
-\section{Community Engagement}
+Community Engagement
 
 \begin{itemize}
 \item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
@@ -1268,6 +1267,8 @@ a number of web services for code hosting, continuous integration, and
 documentation; in particular, \astropy heavily relies on GitHub, Azure
 Pipelines, CircleCI, and Read the Docs.
 
+This research has made use of NASA's Astrophysics Data System.
+
 \astropypkg interfaces with the SIMBAD database, operated at CDS, Strasbourg,
 France. It also makes use of the ERFA library \citep{erfa}, which in turn
 derives from the IAU SOFA Collection\footnote{\url{http://www.iausofa.org}}
@@ -1292,28 +1293,28 @@ Astronomy \citep{sofa}.
           }
 
 \bibliographystyle{aasjournal}
-\bibliography{refs}
+\bibliography{refs, static/affiliated-refs}
 
-% \appendix
+\appendix
 
-% \section{List of Affiliated Packages}
+\section{List of Affiliated Packages}
 
-% \begin{longrotatetable}
-%     \begin{deluxetable*}{cccp{3in}c}
-%     \tablecaption{Registry of affiliated packages.}
-%     \label{tab:registry}
-%     \tablehead{
-%         \colhead{Package Name} &
-%         \colhead{Stable} &
-%         \colhead{PyPI Name} &
-%         \colhead{Maintainer} &
-%         \colhead{Citation}
-%       }
-%       \startdata
-%         \input{registry.tex}
-%       \enddata
-%   \end{deluxetable*}
-% \end{longrotatetable}
+\begin{longrotatetable}
+    \begin{deluxetable*}{ccp{2in}p{2.5in}}
+    \tablecaption{Registry of affiliated packages.}
+    \label{tab:registry}
+    \tablehead{
+        \colhead{Package Name} &
+        % \colhead{Stable} &
+        \colhead{PyPI Name} &
+        \colhead{Maintainer(s)} &
+        \colhead{Citation(s)}
+      }
+      \startdata
+        \input{generated/affiliated-table.tex}
+      \enddata
+  \end{deluxetable*}
+\end{longrotatetable}
 
 
 \end{document}
