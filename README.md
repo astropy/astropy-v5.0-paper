@@ -75,3 +75,25 @@ followed by people who have contributed significantly to the paper, in order of
 contribution level (or alphabetically where contribution levels are similar),
 and all other authors will then be listed alphabetically. A note will be
 included to indicate the author list and how it was determined.
+
+Building the paper locally
+--------------------------
+
+This paper and project uses
+[showyourwork](https://github.com/rodluger/showyourwork/) to build the article.
+This is a new tool that aims to improve the reproducibility of scientific
+articles. Under the hood, this ultimately uses Latex to generate the rendered
+PDF, but also uses [Snakemake](https://snakemake.readthedocs.io/) to enable
+constructing a pipeline of dependencies that generate build components (e.g.,
+figures, tables, datasets, etc.) automatically during the paper build process.
+Importantly, **this means that you can not simply change directory into the src
+path and use `pdflatex` to build the paper**. To build the PDF of the article,
+you need to use the `Makefile` at the repository root. Building locally required
+having `anaconda`, `snakemake`, and a Latex installation on your machine. With
+these, in the repository root, run:
+
+   make
+
+This *should* automatically install all of the required dependencies into a
+`conda` environment and build the paper with this environment. If this fails for
+you, please open an issue.
