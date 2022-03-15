@@ -60,12 +60,12 @@ for pkg in package_list:
     maintainer_block = re.sub(' [<(].*?[>)]', '', pkg["maintainer"])
     maintainers = [x.split(',') for x in maintainer_block.split(' and ')]
     maintainers = [x.strip() for x in sum(maintainers, [])
-                    if len(x.strip()) > 0]
+                   if len(x.strip()) > 0]
     maintainers = [unicode_to_latex(x).replace(" ", "~")
-                    for x in maintainers]
+                   for x in maintainers]
 
-    name = re.sub('_', '\_', pkg["name"])
-    pypi_name = re.sub('_', '\_', pkg["pypi_name"])
+    name = re.sub('_', r'\_', pkg["name"])
+    pypi_name = re.sub('_', r'\_', pkg["pypi_name"])
 
     lines.append(
         row.format(
