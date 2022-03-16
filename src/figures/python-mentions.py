@@ -83,7 +83,7 @@ def get_paper_count(query, rows_per_page=500, max_pages=100):
     """
     q = ads.SearchQuery(q=query, rows=1)
     q.execute()
-    return q.response.numFound()
+    return q.response.numFound
 
 
 def get_dfs(cache_path):
