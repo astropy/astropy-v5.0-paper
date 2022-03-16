@@ -1086,6 +1086,32 @@ based on earlier work by B.~Winkel.
 Together with Gammapy maintainer A.~Donath and former maintainer C.~Deil,
 a total of 107 merged pull requests were contributed to astropy.
 
+\subsubsection{Data Central and the Anglo-Australian Telescope Archive}
+\secauthor{James Tocknell}
+Data Central is one of the five Australian Virtual Observatory\footnote{known as
+  the All-Sky Virtual Observatory, or ASVO} nodes, providing both Australian and
+international astronomers access to and services for surveys of the southern
+sky. Whilst primarily hosting optical data, including the Anglo-Australian
+Telescope (AAT) Archive\footnote{The AAT Archive is currently jointly managed by
+  Data Central, Astronomy Australia Limited (AAL), and National Computational
+  Infrastructure (NCI)}, Data Central also assists theoretical and radio
+astronomers host and manage their data.
+
+Python is widely used by Data Central, and \astropy and its wider ecosystem play
+a vital role in the initial ingestion, reduction, access and visualisation of
+the hosted data and services. For example, the AAT Archive hosts data back to
+1974, so \astropycoordinates, \astropytime and \astropyfits are used to ingest
+data flowing from the AAT to ensure that a consistent time and coordinate
+system is provided to users for simpler querying.
+
+As many of the surveys hosted by Data Central are spectroscopic surveys from the
+AAT, specutils is heavily used to standardise the variety of encodings of
+spectroscopic data into a form easily readable and visualisable by many standard
+tools (such as ds9 or splat). Data Central has upstreamed into specutils loaders
+for all hosted spectra, including 2dfdr-reduced spectra from the AAT Archive,
+and strongly encourages other archives to provide loaders for their data to
+further reuse of existing archival data.
+
 % Rubin Observatory
 % \secunfilled
 
