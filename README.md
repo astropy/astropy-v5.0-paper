@@ -89,8 +89,15 @@ figures, tables, datasets, etc.) automatically during the paper build process.
 Importantly, **this means that you can not simply change directory into the src
 path and use `pdflatex` to build the paper**. To build the PDF of the article,
 you need to use the `Makefile` at the repository root. Building locally required
-having `anaconda`, `snakemake`, and a Latex installation on your machine. With
-these, in the repository root, run:
+having `anaconda`, `snakemake`, and a Latex installation on your machine.
+
+To generate the figures, you also need to have some environment variables set.
+You must have a local clone of the `astropy/astropy` repository and set the env
+variable `ASTROPY_REPO_PATH` to the path of the cloned repository (required).
+You also should generate an ADS developer key and set the env variable
+`ADS_DEV_KEY` to this key (optional).
+
+With these, in the repository root, run:
 
 ```
 make
