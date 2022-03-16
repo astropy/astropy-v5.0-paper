@@ -81,10 +81,9 @@ def get_paper_count(query, rows_per_page=500, max_pages=100):
     search_query : `ads.SearchQuery`
     count : int
     """
-    q = ads.SearchQuery(q=query)
-    for paper in q:
-        break
-    return q, q.response.numFound
+    q = ads.SearchQuery(q=query, rows=1)
+    q.execute()
+    return q.response.numFound()
 
 
 def get_dfs(cache_path):
@@ -182,7 +181,7 @@ if not this_cache_file.exists() and api_success:
     total_astro_counts = []
     years = np.arange(min_year, 2022+1)
     for year in tqdm(years):
-        q, count = get_paper_count(
+        count = get_paper_count(
             f'collection:astronomy year:{year} property:refereed'
         )
         total_astro_counts.append(count)
