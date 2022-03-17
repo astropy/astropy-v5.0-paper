@@ -655,19 +655,141 @@ more fine-grained governance improvements are planned for the future, it is
 clear the foundation is now in place.
 
 
-\subsection{Contributor base} \label{sec:project-contributors}
+\subsection{Core package contributor base} \label{sec:project-contributors}
 
 \secauthor{Adrian Price-Whelan}
 
-Overview and statistics of contributors. Highlight changes since v2.0.
+% TODO: move this subsection to "updates to core package" section above?
 
-\begin{figure}
+\begin{figure}[t!]
     \begin{centering}
-      % \includegraphics{figures/contributor-summary.pdf}
-        \caption{Placeholder figure!}
-        \label{fig:contributor-summary}
+      \includegraphics[width=0.9\textwidth]{Ncommitters_vs_frac_commits.pdf}
+        \caption{
+            The cumulative fraction of Git commits to the \astropypkg core
+            package as a function of number of contributors (committers) broken
+            into three equal-length time periods between the start of \astropy
+            and the feature freeze date of v5.0.
+            The time eras early, mid, and recent correspond to the approximate
+            year ranges 2011--2015, 2015--2018, 2018--2021 (defined more
+            precisely in Section~\ref{sec:project-contributors}).
+            In all eras, the majority of commits to the \astropypkg core package
+            have come from a small subset of the total number of contributors.
+            For example, as annotated in the figure, 90\% of the Git commits
+            have come from 18, 34, and 44 committers in the early, mid, and
+            recent eras, respectively.
+        }
+        \label{fig:contributor-summary:Ncommitters}
     \end{centering}
 \end{figure}
+
+As described in the introduction above, the \astropy Project is broader than the
+core \astropypkg package as it also represents a number of core infrastructure
+packages, affiliated packages, educational initiatives, and user communities.
+In total, well over 1500 people have contributed in some way to the Project,
+whether, for example, through contributing code or documentation, opening issues
+on \github, providing infrastructure support, writing tutorials, or helping to
+coordinate workshops that relate to Astropy.
+The vast majority of these contributors and participants have interacted as
+volunteers choosing to engage with the open-source and open-development software
+community.
+However, while the total number of contributors is large, the number of
+contributions and bulk of the maintenance of the \astropy Project components has
+primarily been sustained by a small number of heavily-engaged or
+explicitly-employed contributors \citep[see, e.g., ][]{astropy:2018}, as is the
+case in many large, open-source software communities
+\citep[e.g.,][]{numpy:nature}.
+
+As an example of this within the \astropy Project, here we focus on
+contributions made to the \astropypkg core package.
+Figure~\ref{fig:contributor-summary:Ncommitters} shows the number of
+contributors who have contributed a given fraction of the total number of Git
+commits, separated into three separate time spans (``eras'') in the history of
+the Project.\footnote{Note, however, that measuring these statistics in terms of
+Git commits is not a perfect way of encapsulating ``effort,'' but we use this
+metric for its simplicity and clear definition.}
+The annotations show that, within the early (July 2011--January 2015), mid
+(January 2015--June 2018), and recent (June 2018--November 2021) eras, 90\% of
+the commits to the \astropypkg core package have come from 18, 34, and 44
+contributors.
+While the trend is encouraging --- a larger pool of contributors are
+contributing more, fractionally --- this emphasizes that, still, the vast
+majority of the work in \astropypkg is done my a small subset ($<20\%$) of the
+115, 216, and 234 contributors, respectively, within each era.
+
+\begin{figure}[t!]
+    \begin{centering}
+      \includegraphics[width=0.75\textwidth]{top_contributors_career.pdf}
+        \caption{
+            The career stages and/or positions of the top contributors within
+            each time era (defined as having contributed $>50$ commits to the
+            \astropypkg core package in each era).
+            The time eras early, mid, and recent correspond to the approximate
+            year ranges 2011--2015, 2015--2018, 2018--2021 (defined more
+            precisely in Section~\ref{sec:project-contributors}).
+        }
+        \label{fig:contributor-summary:top}
+    \end{centering}
+\end{figure}
+
+Since its inception, the most active contributors to the \astropypkg package
+have spanned a range of career stages and career paths.
+For example, Figure~\ref{fig:contributor-summary:top} shows a breakdown of the
+career stage/path at the midpoint of the three time eras defined in the previous
+paragraph for all contributors with more than 50 commits to the \astropypkg
+package within each era.
+Over the $\sim$6 years between the ``early'' and ``recent'' eras, many
+contributors moved between these categories (i.e., have graduated as students to
+become research staff / faculty or software engineers), but also a number of
+early contributors moved on to other positions and stopped contributing to the
+core \astropypkg package.
+Given this, it is encouraging that the numbers in each career stage/path have
+stayed relatively constant over the history of \astropy (with some showing
+growth), as new, active contributors have generally joined and stepped in to
+fill top contributor roles within the project.
+On the other hand, the total number of top contributors has not grown
+substantially, reflecting one of our principal challenges: Sustaining a pipeline
+from users to contributors to maintainers of the package.
+One other thing to note in this context is that in all eras, 50--60\% of the
+software engineers who contributed to \astropypkg were (or are) employed by
+STScI, whose leadership have consistently provided resources (financial and
+personnel) towards sustaining \astropypkg.
+
+\begin{figure}[t!]
+    \begin{centering}
+      \includegraphics[width=0.75\textwidth]{commits_committers_per_month.pdf}
+        \caption{
+            \textbf{Top panel:} The number of Git commits per month (defined as
+            consecutive 30 day windows) merged into to the \astropypkg core
+            package over the whole history of the project (up to end of 2021,
+            v5.0).
+            The dark line shows the mean rate using a 1 year rolling window, but
+            the under-plotted gray line shows the raw monthly rate.
+            The raw number clearly peaks just before feature freezes (vertical
+            lines) as a flurry of activity leading up to each release, but in
+            recent years the mean rate has remained steady at about $\sim$300
+            commits per month.
+            \textbf{Bottom panel:} Similar to above, but now showing the number
+            of unique Git committers who contribute to the \astropypkg core
+            package each month (again defined as consecutive 30 day windows).
+            While this also shows some variation depending on proximity to
+            feature freezes, in recent years the mean rate of unique
+            contributors has remained consistent at about $\sim$22 committers
+            per month.
+        }
+        \label{fig:contributor-summary:per-month}
+    \end{centering}
+\end{figure}
+
+A final metric we consider as a diagnostic of the contributor base and
+contributions to the \astropypkg core package is the rate of contributions and
+contributor participation, defined again using Git commits to quantify
+contributions.
+Figure~\ref{fig:contributor-summary:per-month} shows the monthly rates of
+commits and unique committers to the \astropypkg core package over the history
+of the package.
+After an initial ramp-up in the commit rate and number of committers (lasting
+roughly from 2011 to 2014), the commit rate and number of unique committers have
+both remained fairly constant.
 
 % Transition of needs: From new features, to community development, sustainability, ...
 % - pipeline between User, Participant, Code contributor, Maintainer, Coordinator.

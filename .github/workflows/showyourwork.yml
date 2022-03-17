@@ -18,10 +18,17 @@ jobs:
       ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: recursive
+
+      - name: Checkout astropy
+        uses: actions/checkout@v3
+        with:
+          repository: astropy/astropy
+          fetch-depth: 0
+          path: astropy
 
       - name: Build the article PDF
         id: build
@@ -30,3 +37,9 @@ jobs:
           article-cache-number: null  # disable caching
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          ASTROPY_REPO_PATH: /home/runner/work/astropy-v5.0-paper/astropy-v5.0-paper/astropy
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: built paper
+          path: ms.pdf
