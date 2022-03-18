@@ -22,3 +22,13 @@ rule affiliated_registry:
         "environment.yml"
     shell:
         "python {input[0]}"
+
+rule git_header:
+    input:
+        "src/scripts/make-repo-info.py"
+    output:
+        "src/generated/git-header.tex"
+    conda:
+        "environment.yml"
+    shell:
+        "python {input[0]}"

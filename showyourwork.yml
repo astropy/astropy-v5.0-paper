@@ -4,3 +4,4 @@ verbose: true
 dependencies:
     src/ms.tex:
         - src/generated/affiliated-table.tex
+        - src/generated/git-header.tex

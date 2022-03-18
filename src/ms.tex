@@ -20,6 +20,7 @@
 \shortauthors{The Astropy Collaboration}
 
 \input{preamble.tex}
+\input{generated/git-header.tex}
 
 \newcommand{\secauthor}[1]{{\color{blue}Author:~\textit{#1}}}
 \newcommand{\secunfilled}{{\color{red}Author:~\textit{Looking for volunteers!}}}
@@ -30,7 +31,8 @@
 
 \begin{document}
 
-\draft{\today}
+\let\oldtoday\today
+\renewcommand{\today}{\oldtoday;\qquad\textnormal{\gitHeader}}
 
 \title{The Astropy Project: \\
        Sustaining and Growing a Community-oriented Open-source Project and
