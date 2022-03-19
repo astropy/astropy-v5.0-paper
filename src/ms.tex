@@ -369,23 +369,15 @@ projects.
 
 \paragraph{\astropypkg on Units}
 
-Units were also integrated further within \astropypkg. For an already-defined unit-less
-\astropyModel, e.g. those imported from another library, \astropymodeling can
-now coerce units.
-% TODO! transition words
-A new module – \astropycosmologyunits – has been added to the cosmology
-sub-package for defining and collecting cosmological units and equivalencies.
-The unit \texttt{littleh} and equivalency
-\astropyapidoc{cosmology.units.with_H0}{with\_H0} was moved from the main
-\astropyunits sub-package to \astropycosmologyunits. A new unit,
-\texttt{redshift}, has been added for tracking factors of cosmological redshift.
-To correctly use redshift units in dimensional analysis, \texttt{redshift} is
-\astropyapi{cosmology.units.dimensionless_redshift}{treated as dimensionless}
-by default. To convert between redshift and other cosmological distance
-measures, e.g. CMB temperature or comoving distance, the equivalency
-\astropyapidoc{cosmology.units.with_redshift}{with\_redshift}
-has also been added. This equivalency is actually a composite of other equivalencies,
-which may be used separately.
+Units were also integrated further within \astropypkg. For an already-defined
+unit-less \astropyModel, e.g. those imported from another library,
+\astropymodeling can now coerce units. A new module – \astropycosmologyunits –
+has been added to the cosmology sub-package for defining and collecting
+cosmological units and equivalencies. \astropycosmologyunits has a unit and
+equivalencies for \texttt{littleh}, and a new unit, \texttt{redshift}, for
+factors of cosmological redshift. \texttt{redshift} has a number of
+equivalencies for converting between cosmological distance measures, e.g. CMB
+temperature or comoving distance.
 
 \paragraph{Table Mixin Columns}
 
