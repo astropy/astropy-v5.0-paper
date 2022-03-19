@@ -48,14 +48,14 @@
 % \input{author.tex}
 
 \begin{abstract}
-The \astropy Project supports and fosters the development of open-source and openly-developed
-\python packages that provide commonly-needed functionality to the astronomical
+The \astropy Project supports and fosters the development of open-source and openly developed
+\python packages that provide commonly needed functionality to the astronomical
 community.
 A key element of the \astropy Project is the core package \astropypkg, which serves as the
 foundation for more specialized projects and packages.
 In this article, we summarize key features in the core package as of the recent major
 release, version 5.0, and provide major updates for the project.
-We then discuss supporting a broader ecosystem of inter-operable packages,
+We then discuss supporting a broader ecosystem of interoperable packages,
 including connections with several astronomical observatories and missions.
 We also revisit the future outlook of the \astropy Project and the current
 status of Learn Astropy.
@@ -83,10 +83,10 @@ scalable, time- and energy-efficient code execution \citep[e.g.,][]{Augier:2021}
 with a focus on code readability, ease of use, and interoperability with other
 languages.
 Over the last decade, \python has grown enormously in popularity to become a
-dominant programming language also in the astronomical and broader scientific
+dominant programming language, especially in the astronomical and broader scientific
 communities.
 For example, Figure~\ref{fig:python-mentions} shows the number of yearly
-full-text mentions of \python as compared to a few other programming languages
+full-text mentions of \python as compared to a selection of other programming languages
 in refereed articles in the astronomical literature, demonstrating its nearly
 exponential growth in popularity.
 The adoption of \python by astronomy researchers, students, observatories, and
@@ -100,7 +100,7 @@ contexts has been the significant, volunteer-driven effort behind developing
 community-oriented open-source software tools and fostering communities of users
 and developers that have grown around these efforts.
 Today, a broad and feature-diverse ``ecosystem'' of packages exists in the
-\python scientific computing landscape: Roughly ordered from general-use to
+\python scientific computing landscape: roughly ordered from general-use to
 domain-specific, this landscape now includes packages that provide core
 numerical analysis functionality like \package{numpy} \citep{numpy:nature} and
 \package{scipy} \citep{scipy}, visualization frameworks like
@@ -112,7 +112,7 @@ libraries like \package{yt} \citep{yt:2011}, \package{plasmapy}
 \citep{biopython}, and \package{sympy} \citep{sympy} (to name a few in each
 category).
 The \astropypkg \citep{astropy:2013, astropy:2018} core package began in this
-vein, as an effort to consolidate the development of commonly-used functionality
+vein, as an effort to consolidate the development of commonly used functionality
 needed to perform astronomical research into a community-developed \python
 package.
 
@@ -129,7 +129,7 @@ software interface does not change without sufficient and significant
 motivation, and the addition of new features into the core package has slowed
 as compared to the first years of its development.
 This is largely driven by the fact that the core package now represents just one
-piece of the broader astronomy \python context, and much new feature development
+piece of the broader astronomy \python context, and new feature development
 is now happening in more specialized packages that are expanding the
 capabilities of the \astropy ecosystem by building on top of the foundations
 laid by the \astropypkg core package.
@@ -186,7 +186,7 @@ maintained with releases that fix issues until the next major version is
 released. However, every two years a major release is designated as a long-term
 support (LTS) release, which continues to be maintained for up to two years
 \citep{ape2}. The motivation for LTS releases is to provide longer-term stable
-versions of \astropypkg that users that require a high level of stability can
+versions of \astropypkg that users who require a high level of stability can
 make use of if they do not always need the latest features (this could include,
 for example, telescope operation or data reduction pipelines, etc.). The v5.0
 release of the core package was designated as LTS, and since it was released at
@@ -217,7 +217,7 @@ because they are of more general use outside of \astropypkg, or because they are
 too specialized and belong in an Astropy-affiliated package. An example of the
 former is the copy of the IAU Standards Of Fundamental Astronomy (SOFA) software
 Collection\footnote{\url{http://www.iausofa.org}} \citep{sofa} that \astropy
-carried, as well as the \python wrappers for it. Since this is basic
+carried, as well as the associated \python wrappers. Since this is basic
 infrastructure, with a release cycle set by SOFA, it made more sense to create
 separate packages that serve as \astropypkg dependencies: \package{ERFA}
 \citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
@@ -230,7 +230,7 @@ Application Message Protocol was kept in the core package
 \subsubsection{New and Planned Features} \label{sec:core-features-new}
 
 New features present a particular difficulty for a mature package such as
-\astropypkg, because it is difficult to know {\em a priori} what the best
+\astropypkg, because it is challenging to know {\em a priori} what the best
 interface will be, and hard to address all possible use cases in one round of
 development, even within \astropypkg\ itself. New features come in various forms,
 from new submodules providing wholly new capabilities, to larger additions to
@@ -429,15 +429,15 @@ existing formats updated to support more column types.
 
 \astropy now supports reading and writing tables in the American Astronomical
 Society Journals' Machine-Readable Table (MRT) format. This ASCII format has
-long been missing and as added in this year's Google Summer of Code project adds
+long been missing and as part of this year's Google Summer of Code project
 \href{https://docs.astropy.org/en/stable/io/ascii/write.html#cds-mrt-format}{MRT}
-to \astropyTable\ I/O. In addition, \astropyTable\ may also read from and write
+has been added to the \astropyTable\ I/O. In addition, \astropyTable\ may also read from and write
 to \href{https://asdf-standard.readthedocs.io/en/latest/}{ASDF},
 \href{https://docs.astropy.org/en/stable/io/unified.html#table-io-parquet}{Parquet},
 and \href{https://wwwastro.msfc.nasa.gov/qdp/}{QDP} formats.
 
 The \href{https://github.com/astropy/astropy-APEs/blob/main/APE6.rst}{ECSV
-standard} has been updated to version 1.0, adding support three additional data
+standard} has been updated to version 1.0, adding support for three additional data
 subtypes. First, it adds multidimensional column data (both masked and unmasked)
 with fixed dimensions in all table cells. Second, it adds multidimensional
 column data with variable-dimension arrays similar to FITS variable-length
@@ -459,7 +459,7 @@ following a given standard. \astropy uses this internally for the I/O methods in
 extend the options on these classes.
 
 As of Astropy 5.0, the I/O registry submodule has been generalized to enable a
-number of new use cases. for instance, the class-based architecture allows for
+number of new use cases. For instance, the class-based architecture allows for
 the creation of custom registries. One application is in \astropycosmology,
 which has two different \textit{kinds} of registries for \astropyCosmology: one
 for reading and writing files, and another for converting between python
