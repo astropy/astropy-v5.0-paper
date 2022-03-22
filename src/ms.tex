@@ -482,12 +482,12 @@ been made to \astropytime, \astropyconstants, \astropycoordinates, and
 
 \paragraph{Time}
 In astronomy, time accuracy down to the (nano)second is frequently important.
-Whether for planning observations, crunching pulsar or VLBI data, missing
+Whether for planning observations or crunching pulsar or VLBI data, missing
 seconds meaningfully impact results. In past versions of \astropypkg, when using
-\astropyTime\ in \astropytime leap seconds had to be manually applied; now, leap
+\astropyTime\, leap seconds had to be manually applied; now, leap
 seconds are applied automatically. Moreover, \astropypkg updates internal time
-data-files to ensure that the correct leap second adjustment is always used. For
-reproducibility, e.g., with an old code, \astropyLeapSeconds\ may also be
+data files to ensure that the correct leap second adjustment is always used. For
+reproducibility with older code, \astropyLeapSeconds\ may also be
 manually applied.
 
 \paragraph{Constants}
@@ -498,10 +498,10 @@ updated to reflect these improvements. For instance, in 2019 the SI system was
 redefined \citep{NIST2019}, with an accompanying update to the physical
 constants in
 \href{https://codata.org/initiatives/data-science-and-stewardship/fundamental-physical-constants/}{\texttt{SI/CODATA
-2018}}. \astropyconstants now defaults to use the \texttt{SI/CODATA 2018}
+2018}}. \astropyconstants now defaults to using the \texttt{SI/CODATA 2018}
 values, with the units in \astropyunits based on these constants. Most of
 \astropypkg and affiliate packages build upon \astropyunits, so this update
-effects the entire \astropy ecosystem.
+affects the entire \astropy ecosystem.
 
 For reproducibility, \astropypkg allows the constants' (and therefore units')
 definitions to be rolled back to prior values, e.g., to the \texttt{SI/CODATA
@@ -568,8 +568,8 @@ the
 \astropyapi{coordinates.builtin_frames.HADec}{Hour Angle-Declination}
 frame transformations. Additionally,
 \astropyapi{coordinates.builtin_frames.BaseEclipticFrame}{Ecliptic frames}
-and associated transformations have been updated to correctly reflect the “true”
-and “mean” terminology.
+and associated transformations have been updated to correctly reflect the ``true''
+and ``mean" terminology.
 
 For Galactic astronomers, the \astropyGalactocentric\
 \astropyapi{coordinates.galactocentric_frame_defaults}{frame defaults}
@@ -589,7 +589,7 @@ time strings to binary). Furthermore, a particular effort was made to ensure
 \astropypkg\ is thread-safe, so that it can be used on supercomputer clusters.
 
 Performance in \astropypkg is addressed based on feedback and requests, and
-through contributions from community members: If you find that parts of
+through contributions from community members: if you find that parts of
 \astropypkg are not performant, we encourage you to open a \github issue to
 start a discussion with the \astropypkg core maintainers.
 
@@ -626,7 +626,7 @@ have been discussed in earlier papers in this series), the APE0-based governance
 aims to provide a single place where the community can agree as a starting
 point. With this in mind, it highlights the developer and user community of the
 Astropy Project as the ultimate sources of authority, as well as the core
-principle of ``do-ocracy'' that those who do work for the Project (be it coding,
+principle of ``do-ocracy'': those who do work for the Project (be it coding,
 training, or other harder-to-quantify contributions) gain more influence on the
 outputs of the Project by virtue of their effort. However, APE0 adds the
 concept of ``voting members'': a self-governed part of that community who are
@@ -635,7 +635,7 @@ from the inception of the project, APE0 establishes a formal voting process for
 CoCo members, and explicitly outlines the rights and responsibilities of the
 CoCo. This role is mainly to facilitate consensus and act as the decision maker
 when other mechanisms have failed, and includes powers that either
-require central authority or secrets (e.g., passwords) However, APE0 also
+require central authority or secrets (e.g., passwords). However, APE0 also
 charges the Committee to devolve responsibilities and seek community input on
 these items as often as possible.
 
@@ -753,7 +753,7 @@ personnel) towards sustaining \astropypkg.
       \includegraphics[width=0.75\textwidth]{commits_committers_per_month.pdf}
         \caption{
             \textbf{Top panel:} The number of Git commits per month (defined as
-            consecutive 30 day windows) merged into to the \astropypkg core
+            consecutive 30 day windows) merged into the \astropypkg core
             package over the whole history of the project (up to end of 2021,
             v5.0).
             The dark line shows the mean rate using a 1 year rolling window, but
@@ -941,7 +941,7 @@ strengthen its promising and sustainable future.
 The Astropy project supports the broader ecosystem by providing pre-configured
 infrastructure packages that the community can use to support and maintain their
 own software package infrastructure. These include tools and extensions that
-enable easily generating documentation and setting up automated testing, as well
+enable generating documentation and setting up automated testing, as well
 as providing package scaffolding for new projects.
 
 Sphinx is a common and useful tool for generating documentation for Python
@@ -990,12 +990,13 @@ configuring packages for property-based testing
 
 The Astropy Package Template helps facilitate the setup and creation of new
 Python packages leveraging the Astropy ecosystem. This tool utilizes the
-Cookiecutter project to walk users through the process of creating new
-packages complete with documentation and testing support. Additionally, the
-package template generation process includes the ability to setup
-interoperability with \github, allowing for easy repository access from
-documentation, as well as an example \github Actions workflow to demonstrate
-the use of \github's continuous integration tooling.
+\href{https://github.com/cookiecutter/cookiecutter}{Cookiecutter} project to 
+walk users through the process of creating new packages complete with 
+documentation and testing support. Additionally, the package template 
+generation process includes the ability to setup interoperability with 
+\github, allowing for easy repository access from documentation, as well as an 
+example \github Actions workflow to demonstrate the use of \github's 
+continuous integration tooling.
 
 \subsection{Astropy affiliated packages}
 
@@ -1044,10 +1045,10 @@ Several of the coordinated and affiliated packages described in
 \cite{astropy:2018} have had substantial improvements. \texttt{astroquery}
 \citep{astroquery} has added access to roughly a dozen new missions and data
 services, including the James Webb Space Telescope (JWST) archive, and the
-project has switched to a continuous release model: Every time a change is
+project has switched to a continuous release model: every time a change is
 committed to the main development branch it is published on the Python Package
 Index (PyPI) and available for installation. (However, formal releases are still
-done a few times per year.) \texttt{photutils} \cite {photutils} released its
+done a few times per year.) \texttt{photutils} \cite{photutils} released its
 first stable version, indicating that the API will change less frequently, and
 there have been several significant performance improvements. \texttt{ccdproc}
 \cite{ccdproc} also released a new major version, bringing better performance to
@@ -1084,7 +1085,7 @@ keywords represented in the journal articles that cite the \texttt{astroquery}
 paper \citep{Ginsburg2019}; everything from asteroids to galaxies is
 represented. Additionally \texttt{astroquery} functionality has been built into
 several special-purpose \python packages, such as \texttt{LightKurve}
-\citep{LightKurve} and SORA \citep{SORA}]. More than 4,000 repositories on
+\citep{LightKurve} and SORA \citep{SORA}. More than 4,000 repositories on
 \github make use of \texttt{astroquery} in some way, and \texttt{astroquery}
 features in a large number of tutorials on various facets of astronomical
 analysis.
@@ -1188,12 +1189,12 @@ The data analysis pipeline is developed as open source software and essentially 
 \end{enumerate}
 
 A prototype for the low-level analysis is \texttt{ctapipe} \citep{ctapipe},
-a python package developed to perform all the necessary tasks to from the raw data
+a python package developed to perform all the necessary tasks to perform data processing, from the raw data
 of Cherenkov telescopes to the reconstructed event lists.
 The high-level analysis (or CTA science tools) will be based on the Astropy affiliated package
 Gammapy~\citep{gammapy}.
 Both Gammapy and \texttt{ctapipe} make heavy use of the \astropy core package, mainly for units, times, coordinate transformations,
-tables and FITS I/O.
+tables, and FITS I/O.
 As CTA will record gamma-ray events with a rate of up to $10\,000$ events per second,
 it needs to perform a large number of coordinate transformations.
 To enable this, CTA member M.~Nöthe contributed a major performance improvement
@@ -1204,18 +1205,18 @@ a total of 107 merged pull requests were contributed to astropy.
 
 \subsubsection{Data Central and the Anglo-Australian Telescope Archive}
 % \secauthor{James Tocknell}
-Data Central is one of the five Australian Virtual Observatory\footnote{known as
-  the All-Sky Virtual Observatory, or ASVO} nodes, providing both Australian and
+Data Central is one of the five Australian Virtual Observatory\footnote{Known as
+  the All-Sky Virtual Observatory, or ASVO.} nodes, providing both Australian and
 international astronomers access to and services for surveys of the southern
 sky. Whilst primarily hosting optical data, including the Anglo-Australian
 Telescope (AAT) Archive\footnote{The AAT Archive is currently jointly managed by
   Data Central, Astronomy Australia Limited (AAL), and National Computational
-  Infrastructure (NCI)}, Data Central also assists theoretical and radio
-astronomers host and manage their data.
+  Infrastructure (NCI).}, Data Central also assists theoretical and radio
+astronomers with hosting and managing their data.
 
 \python is widely used by Data Central, and \astropy and its wider ecosystem
 play a vital role in the initial ingestion, reduction, access and visualization
-of the hosted data and services. For example, the AAT Archive hosts data back to
+of the hosted data and services. For example, the AAT Archive hosts date back to
 1974, so \astropycoordinates, \astropytime and \astropyfits are used to ingest
 data flowing from the AAT to ensure that a consistent time and coordinate system
 is provided to users for simpler querying.
@@ -1226,7 +1227,7 @@ of spectroscopic data into a form easily readable and visualizable by many
 standard tools (such as \package{ds9} or \package{splat}). Data Central has
 upstreamed into \package{specutils} loaders for all hosted spectra, including
 2dfdr-reduced spectra from the AAT Archive, and strongly encourages other
-archives to provide loaders for their data to further reuse of existing archival
+archives to provide loaders for their data to further the reuse of existing archival
 data.
 
 % Rubin Observatory
@@ -1256,7 +1257,7 @@ package; and \textit{documentation}, which contains more detailed information
 about the code base and user interface.
 This categorization drives content development, infrastructure choices, and the
 appearance of the \href{https://learn.astropy.org}{Learn Astropy website}.
-The Learn Team meets weekly to work on creating, expanding, improving these
+The Learn Team meets weekly to work on creating, expanding, and improving these
 educational resources.
 
 The Learn Team recently re-launched the main website and search interface for
@@ -1292,7 +1293,7 @@ reading or creating FITS files with different content or working with
 astronomical coordinate systems, to more specific exercises like analyzing
 spectroscopic data from the UVES instrument.
 Now that the backend infrastructure is stable, we are interested in collecting
-new content to serve and share: If you have ideas for contributions, or have
+new content to serve and share: if you have ideas for contributions, or have
 tutorials hosted on third-party sites that you would like to make searchable
 through the Learn Astropy interface, please reach out by creating a \github
 issue in the \href{https://github.com/astropy/astropy-tutorials}{Astropy
@@ -1313,7 +1314,7 @@ During the pandemic, these workshops were moved to an online format and split
 into basic and advanced sessions.
 Additionally, beginning with the AAS 238 online meeting, the workshops have been
 expanded to Summer AAS meetings.
-The Learn team finds that the workshop audience is best found as AAS meetings as
+The Learn team finds that the workshop audience is best found at AAS meetings as
 opposed to more general \python meetings, as the content tends to be more
 applicable for students and researchers in astronomy and astrophysics.
 
@@ -1361,14 +1362,14 @@ All items in the Roadmap have been agreed to be priorities for the Astropy
 Project, and are color-coded based on resources (both time/effort and
 developers/expertise) needed to complete the item. Green items are well
 underway, have sufficient resources/support and a plan in place for completion;
-For example, efforts to improve the discoverability of documentation and
+for example, efforts to improve the discoverability of documentation and
 educational materials by overhauling the Learn website, which is underway (see
 Section~\ref{sec:learn}).
 Orange items are well defined, and work for acquiring sufficient resources
-underway; For example, the goal of providing next-generation spectroscopic
+underway; for example, the goal of providing next-generation spectroscopic
 reduction, analysis, and visualization tools usable by individual researchers
 and larger surveys.
-Red items do not yet have a plan for implementation and need more resources; For
+Red items do not yet have a plan for implementation and need more resources; for
 example, the goal of improving interoperability with performant I/O file formats
 and libraries such as HDF5 and Dask.
 The Astropy Roadmap originates from the March 2021 Astropy Coordination meeting
@@ -1384,7 +1385,7 @@ Community Engagement
 \begin{itemize}
 \item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
 be on a paid plan; additionally NumFOCUS has negotiated a special rate for
-open-source projects. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easily-to-navigate interface for users to ask for help Accordingly, we have commissioned
+open-source projects. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easy-to-navigate interface for users to ask for help. Accordingly, we have commissioned
 a Discourse site which is more open than the Facebook group and more user-oriented
 than Astropy Slack. A benefit of the Moore Foundation grant is that Astropy
 developers are able to invoice as independent contractors the time they
@@ -1414,8 +1415,8 @@ have continued to engage a growing pool of active and top contributors
 (Section~\ref{sec:project-contributors}), and have begun to receive significant
 formal funding for the project itself (Section~\ref{sec:project-funding}).
 The Astropy Project is also expanding its educational and community-focused
-initiatives, by soliciting and funding initiatives in inclusion, diversity, and
-equity (Section~\ref{sec:project-ide}) and through the Learn Astropy initiative,
+initiatives by soliciting and funding initiatives in inclusion, diversity, and
+equity (Section~\ref{sec:project-ide}) as well as through the Learn Astropy initiative,
 which aims to make tutorials and educational content that highlight software
 tools for astronomy more discoverable and accessible (Section~\ref{sec:learn}).
 We expect to continue in all of these threads over the coming years as we aim to
@@ -1426,7 +1427,7 @@ for open-source software users and enthusiasts in astronomy.
 \begin{acknowledgments}
 
 We would like to thank the members of the community who have contributed to
-\astropy, who have opened issues and provided feedback, and have supported the
+\astropy, opened issues and provided feedback, and supported the
 project in a number of different ways.
 
 We acknowledge the Gordon and Betty Moore foundation for their continued
@@ -1447,8 +1448,8 @@ We thank Google for financing and organizing the
 Google Summer of Code (GSoC) program, that has funded severals
 students per year to work on \astropy related projects over the
 summer. These students often turn into long-term contributors.
-Within the academic community, we thank institutions that make it possible that
-astronomers and other developers on their staff can contribute their time to the
+Within the academic community, we thank institutions that make it possible for
+astronomers and other developers on their staff to contribute their time to the
 development of \astropy projects.
 We would like acknowledge the support of the Space Telescope Science Institute,
 Harvard--Smithsonian Center for Astrophysics, and the South African Astronomical
