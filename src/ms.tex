@@ -431,7 +431,10 @@ existing formats updated to support more column types.
 Society Journals' Machine-Readable Table (\href{https://docs.astropy.org/en/stable/io/ascii/write.html#cds-mrt-format}{MRT}) format. This ASCII format has
 long been missing and was added to \astropyTable\ I/O in a Google Summer of Code 2021 project.
 In addition, \astropyTable\ may also read from and write
-to \href{https://asdf-standard.readthedocs.io/en/latest/}{ASDF},
+to \href{https://asdf-standard.readthedocs.io/en/latest/}{ASDF},\footnote{Starting in v5.1,
+direct \astropypkg support for ASDF has been deprecated in favor of moving it
+to the new \package{asdf-astropy} \citep{asdf-astropy} package to accommodate
+the differing release schedules between ASDF and \astropypkg.}
 \href{https://docs.astropy.org/en/stable/io/unified.html#table-io-parquet}{Parquet},
 and \href{https://wwwastro.msfc.nasa.gov/qdp/}{QDP} formats.
 
