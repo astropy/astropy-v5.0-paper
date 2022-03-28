@@ -470,9 +470,9 @@ for reading and writing files, and another for converting between \python object
 \subsection{Numerical Precision, Accuracy, \& Reproducibility}
 \label{sec:core-features-precision_accuracy_repreducibility}
 
-An important focus of \astropy has been to increase the precision and accuracy
+An important focus of \astropypkg has been to increase the numerical precision and accuracy
 of its functionality, while, where appropriate, making sure results obtained
-using older versions of \astropypkg are reproducible. Within each section below
+using older versions of \astropypkg are reproducible. Within each section below,
 we include in our descriptions how old results may be reproduced. The primary
 means are with options in configuration files and settings on runtime configuration
 objects called \astropyScienceState. Notable improvements to \astropypkg have
@@ -483,7 +483,7 @@ been made to \astropytime, \astropyconstants, \astropycoordinates, and
 In astronomy, time accuracy down to the (nano)second is frequently important.
 Whether for planning observations or crunching pulsar or VLBI data, missing
 seconds meaningfully impact results. In past versions of \astropypkg, when using
-\astropyTime\, leap seconds had to be manually applied; now, leap
+\astropyTime, leap seconds had to be manually applied; now, leap
 seconds are applied automatically. Moreover, \astropypkg updates internal time
 data files to ensure that the correct leap second adjustment is always used. For
 reproducibility with older code, \astropyLeapSeconds\ may also be
@@ -499,14 +499,14 @@ constants in
 \href{https://codata.org/initiatives/data-science-and-stewardship/fundamental-physical-constants/}{\texttt{SI/CODATA
 2018}}. \astropyconstants now defaults to using the \texttt{SI/CODATA 2018}
 values, with the units in \astropyunits based on these constants. Most of
-\astropypkg and affiliate packages build upon \astropyunits, so this update
+\astropy and affiliated packages build upon \astropyunits, so this update
 affects the entire \astropy ecosystem.
 
 For reproducibility, \astropypkg allows the constants' (and therefore units')
-definitions to be rolled back to prior values, e.g., to the \texttt{SI/CODATA
-2014} values. For work sensitive to the values of the fundamental constants we
-recommend including an \astropy configuration file with the work, which
-specifies the set of constants used.
+definitions to be rolled back to prior values, e.g., to \texttt{SI/CODATA
+2014}. For work sensitive to the values of the fundamental constants, we
+recommend including an \astropypkg configuration file (i.e., \texttt{astropy.cfg})
+with the work, which specifies the set of constants used.
 
 \paragraph{Cosmology}
 
@@ -539,7 +539,7 @@ Three Year} \citep{WMAP3Year:2007};
 \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.Planck18.html}{Planck
 2018} best-fit cosmological parameters \citep{Planck2018VI:2020}.
 
-Astropy provides a
+\astropypkg provides a
 \href{http://docs.astropy.org/en/stable/api/astropy.cosmology.default_cosmology.html}{configurable
 default cosmology}, which is used in calculations done in a cosmological
 context. The default \astropyCosmology\ has been updated to the Planck 2018
@@ -550,17 +550,17 @@ different assumed cosmologies, and results compared between the two.
 
 \paragraph{Coordinates}
 
-Being able to describe the position of objects, i.e., their coordinates, is
+Being able to describe the coordinates of objects is
 fundamental across many knowledge domains. \astropycoordinates allows one to
 work with low-level positional and velocity data all the way to high-level
-coordinate objects with reference frames, atmospheric information, and more. A
+coordinate objects with reference frames, atmospheric information, etc. A
 central feature of \astropycoordinates is the ability to transform data between
 reference frames, e.g., \astropyICRS\ \citep{ICRS:1997} to \astropyGalacticLSR\
 \citep{GalacticLSR:2010}. However, there have been some historical limitations
 for spatially proximate transformations, impacting the usefulness of
 \astropycoordinates for ground-based telescopes and astrometry within the
 solar system. Transformations in the \astropyAltAz\ frame were reasonably
-precise for very distant objects, but wrong by up to several arcseconds for
+precise for very distant objects, but wrong by up to several arcseconds for,
 e.g., the location of the moon. Now these transformations are much more precise,
 down to the milliarcsecond level. Similar precision improvements were made to
 the
@@ -579,13 +579,14 @@ attribute). For reproducibility, old definitions are still available.
 
 \subsection{Performance} \label{sec:core-features-performance}
 
-As features are added and corner cases dealt with, performance often suffers.
-Hence, pull requests that improve performance are welcomed, and were even the
-main goal for one release cycle. For most sub-packages, performance was
+In some cases, feature enhancements and corner-case handling were added
+at the cost of performance.
+Hence, \github pull requests that improve performance are welcomed, and were even the
+main goal for v3.1 release. For most sub-packages, performance was
 improved in the \python\ code, but for some, the most time-critical pieces were
 rewritten in~C (e.g., for convolution of images, sigma-clipping, and converting
 time strings to binary). Furthermore, a particular effort was made to ensure
-\astropypkg\ is thread-safe, so that it can be used on supercomputer clusters.
+\astropypkg\ is thread-safe, so that it can be used on supercomputing clusters.
 
 Performance in \astropypkg is addressed based on feedback and requests, and
 through contributions from community members: if you find that parts of
