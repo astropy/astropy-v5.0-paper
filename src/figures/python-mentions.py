@@ -124,9 +124,11 @@ def plot_yearly_mentions(paper_dfs, total_counts, min_year=1991):
         mentions = g['pubdate.1'].values
 
         if name.lower() == 'julia':
+            # HACK: Correct julia counts for people named "Julia"
             jmask = group_dates > datetime.date(2012, 1, 1)
+            prev_jmask = (group_dates > datetime.date(2000, 1, 1)) & ~jmask
             group_dates = group_dates[jmask]
-            mentions = mentions[jmask]
+            mentions = mentions[jmask] - np.mean(mentions[prev_jmask])
 
         ax.plot(group_dates,
                 mentions,
@@ -151,7 +153,7 @@ def plot_yearly_mentions(paper_dfs, total_counts, min_year=1991):
     ax.set_xlim(datetime.date(min_year, 8, 1),
                 datetime.date(2021, 6, 1))  # 2021.5
 
-    ax.legend(loc='lower right', fontsize=16, ncol=2)
+    ax.legend(loc='lower center', fontsize=15, ncol=2)
 
     ax.set_xlabel('Time [year]')
     ax.set_ylabel('Full-text mentions per year')
