@@ -1524,7 +1524,11 @@ make the Astropy Project more sustainable and a larger, more welcoming community
 for open-source software users and enthusiasts in astronomy.
 
 
-\begin{acknowledgments}
+% Due to a bug in AAStex 6.3.1, using this with amsmath leads to line numbers in
+% the acknowledgements...
+% https://github.com/AASJournals/AASTeX60/issues/130
+% \begin{acknowledgments}
+\vspace{2em}
 
 We would like to thank the members of the community who have contributed to
 \astropy, opened issues and provided feedback, and supported the
@@ -1568,7 +1572,7 @@ derives from the IAU SOFA Collection\footnote{\url{http://www.iausofa.org}}
 developed by the International Astronomical Union Standards of Fundamental
 Astronomy \citep{sofa}.
 
-\end{acknowledgments}
+% \end{acknowledgments}
 
 \software{\package{astropy} \citep{astropy:2013, astropy:2018},
           \package{numpy} \citep{numpy:nature},
