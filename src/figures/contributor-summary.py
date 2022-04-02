@@ -70,7 +70,7 @@ for name, era in eras.items():
 
 # ### Plot style things:
 
-figsize = (8.5, 6)
+figsize = (9.5, 6)
 style = dict(color='k')
 era_colors = ['#1b9e77', '#d95f02', '#7570b3']
 

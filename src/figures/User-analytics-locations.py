@@ -177,7 +177,7 @@ ax.legend(loc='lower left', fontsize=16)
 
 ax.annotate('16/41 voting members\n4/5 CoCo members', 
             xy=(-72, 39), xytext=(-65, 23), ha='left', 
-            fontsize=12, color='#444444',
+            fontsize=11, color='#444444',
             arrowprops=dict(facecolor='#555555', 
                             width=2, headwidth=8, headlength=10))
 
