@@ -952,7 +952,7 @@ package. This tool provides a pre-configured Sphinx setup compatible with
 Astropy projects, which includes several extensions useful for generating API
 documentation
 (\href{https://github.com/astropy/sphinx-automodapi}{\texttt{sphinx-automodapi}}),
-allowing for Numpy docstring parsing
+allowing for \package{numpy} docstring parsing
 (\href{https://github.com/numpy/numpydoc}{\texttt{numpydoc}}), embedded image
 handling
 (\href{https://github.com/sphinx-gallery/sphinx-gallery}{\texttt{sphinx-gallery}};
@@ -1388,25 +1388,64 @@ adopted via pull request in December 2021.
 
 \subsection{Current and Future Challenges}
 
-Over the last decade, the needs of (and challenges faced by) the \astropy
-Project have evolved, but many common themes persist.
-For example, ...list...
-In many cases, these themes are not unique to \astropy: Many Open-Source
-Software communities are facing and addressing similar issues.
-Below we discuss a few of these challenges and ...
-
+Over the history of \astropy, the needs and challenges of the \astropy Project
+have evolved, but many common themes have persisted and are shared by other
+open source software communities.
+However, \astropy also faces a number of unique challenges stemming from the
+fact that the Project is in a special position in the astronomy software stack:
+The \astropy code and ecosystem are more specialized than core scientific tools
+like \package{numpy} and \package{scipy}, but more general than software
+packages developed to enable specific research subdomains like
+\package{exoplanet} \citep{exoplanet:2021}.
+Below we discuss a few challenges faced by the Project in more detail, but we
+stress that this list is not complete or exhaustive.
 \begin{description}
-  \item[Supporting an active group of maintainers] With funding, can pay maintainers. But: time commitment, some positions don't allow. Need for new career paths on the spectrum from software engineer to astronomy researcher. Also need to attract new non-hired contributors to sustain the project, but challenging when the code has become quite complex (astropy as an "institution", don't want to be a walled-off group). (Need for fast feedback and code reviews to empower contributors, but puts a burden on maintainers)
-  \item[Diversity of contributor, maintainer, coordinator communities] Practical issues: translation of content and documentation, github is not accessible in some countries.
-  \item[Long-term / sustained funding for maintaining infrastructure] Software and packaging infrastructure
-  includes but not limited to Continuous Integration (CI), test plugins, documentation builds, and package
-  delivery. Keeping the infrastructure working is essential in software development and operations.
-  This kind of work has low visibility and is not attractive to scientists or volunteer contributors;
-  therefore, it is most effective to delegate such tasks to paid roles. \astropy secured a three-year grant
-  for this but the situation remains uncertain once the grant runs out, as infrastructure evolves and
-  requires constant maintenance and upgrades. Some of the engineers currently in these roles are
-  also employees of research institutions that may leave the Project without much notice, adding to
-  the uncertainty factor.
+  \item[Supporting an active group of maintainers] Throughout its history,
+  development and maintenance of code and educational materials in the \astropy
+  Project --- the \astropypkg core package, coordinated packages, Learn Astropy
+  repositories, and Project infrastructure packages --- has been done by a mix
+  of volunteer effort and institutional support.
+  At present, the \href{https://www.astropy.org/team.html}{named roles} and
+  maintainer positions in the \astropy Project are also split roughly evenly
+  between these types of contributors.
+  As is the case with many other open-source software communities, the culture
+  of the Project and overall coordination relies heavily on volunteer effort,
+  but we therefore have significant amounts of critical infrastructure or core
+  functionality that is either maintained with no redundancy or unmaintained as
+  contributors naturally move on from and stop contributing to the Project.
+  Within the core package, a prime example is the \astropyfits subpackage, which
+  is largely in maintenance mode and maintained by just one contributor (despite
+  the significant codebase and user community behind this subpackage).
+  While we now have funding to support the longer-term sustainability of the
+  Project and thus to address these issues, we are finding it difficult to use
+  this funding in ways that address our needs.
+  For one, many of the needs of the Project require long-term and sustained
+  funding rather than short-term contracts.
+  But also the specialized nature of the software requires being able to hire or
+  contract software engineers with domain knowledge about astronomical software
+  tools.
+  Finally, we want to be able to preserve and sustain the engaged community of
+  volunteers, software-engaged researchers, and existing software engineers that
+  contribute to the Project and that have enabled its success in ways that
+  support their careers.
+  These challenges will require cultural and larger systemic changes to
+  astronomical research and career paths, and so will take time to influence and
+  implement.
+  \item[Diversity of users, contributors, maintainers, and coordinators]
+  Astropy is
+  Practical issues: translation of content and documentation, github is not accessible in some countries.
+  \item[Long-term / sustained funding for maintaining infrastructure] Software
+  and packaging infrastructure includes but not limited to Continuous
+  Integration (CI), test plugins, documentation builds, and package delivery.
+  Keeping the infrastructure working is essential in software development and
+  operations. This kind of work has low visibility and is not attractive to
+  scientists or volunteer contributors; therefore, it is most effective to
+  delegate such tasks to paid roles. \astropy secured a three-year grant for
+  this but the situation remains uncertain once the grant runs out, as
+  infrastructure evolves and requires constant maintenance and upgrades. Some of
+  the engineers currently in these roles are also employees of research
+  institutions that may leave the Project without much notice, adding to the
+  uncertainty factor.
   \item[Understanding, communicating with, and engaging our user communities] Different overlapping and intersecting communities of users: telescopes, archives, researchers, students, educators, general public. Communities have different needs from Astropy. Also, as ecosystem grows, making sure users know about all of the functionality (workshops, tutorials, educational materials, discoverability, accessibility) (Continued engagement with user community).
 \end{description}
 
