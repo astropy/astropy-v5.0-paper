@@ -164,9 +164,9 @@ core functionality in the \astropypkg package, representing a natural expansion
 of the Astropy Project ecosystem, the needs of and challenges faced by the
 Project are evolving.
 In particular, the transition from focusing our energy on development and
-maintenance of a single core package, to instead sustaining the core package and
-fostering the development of the community and its expansion has been a key
-issue faced by the Astropy Project in the last several years.
+maintenance of a single core package, to instead maintaining the core package
+and fostering the development of the community and its expansion has been a key
+goal of the Astropy Project over the last several years.
 
 In this Article, we briefly describe recent key updates in the \astropypkg core
 package since the last Astropy paper (``Paper II''; \citealt{astropy:2018}),
@@ -953,7 +953,7 @@ package. This tool provides a pre-configured Sphinx setup compatible with
 Astropy projects, which includes several extensions useful for generating API
 documentation
 (\href{https://github.com/astropy/sphinx-automodapi}{\texttt{sphinx-automodapi}}),
-allowing for Numpy docstring parsing
+allowing for \package{numpy} docstring parsing
 (\href{https://github.com/numpy/numpydoc}{\texttt{numpydoc}}), embedded image
 handling
 (\href{https://github.com/sphinx-gallery/sphinx-gallery}{\texttt{sphinx-gallery}};
@@ -1341,10 +1341,19 @@ available in the vast ecosystem of open-source software packages.
 We also plan to look for opportunities to expand the reach of \astropy workshops
 beyond the AAS meetings.
 
+% \begin{itemize}
+% \item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
+% be on a paid plan; additionally NumFOCUS has negotiated a special rate for
+% open-source projects. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easily-to-navigate interface for users to ask for help Accordingly, we have commissioned
+% a Discourse site which is more open than the Facebook group and more user-oriented
+% than Astropy Slack. A benefit of the Moore Foundation grant is that Astropy
+% developers are able to invoice as independent contractors the time they
+% spend helping users on these forums.
+% \end{itemize}
 
 \section{Future Plans for the Astropy Project} \label{sec:future}
 
-\subsection{A roadmap for future priorities}
+\subsection{A Roadmap for Future Priorities}
 % \secauthor{Clara Brasseur}
 
 The
@@ -1377,27 +1386,119 @@ where it was first drafted before being handed off to a newly formed Astropy
 Roadmap working group for completion. The Roadmap in its current form was
 adopted via pull request in December 2021.
 
+\begin{figure}[th!]
+  \begin{centering}
+    \includegraphics[width=\textwidth]{docu_analytics.pdf}
+      \caption{
+          The number of users who accessed the \astropypkg core package
+          documentation in 2021, based on data from Google Analytics.
+          The circle markers show the approximate locations of home institutions
+          for \astropy voting members (green) and coordination committee members
+          (red), demonstrating the over-representation of the United States and,
+          less so, Europe given the global spread of \astropypkg users.
+      }
+      \label{fig:User-analytics-locations}
+  \end{centering}
+\end{figure}
 
 \subsection{Current and Future Challenges}
 
-Community Engagement
-
-\begin{itemize}
-\item {\bf User forums:} The Astropy Project has historically maintained a number of avenues for users to seek help or gain access to the developer community. This includes the Astropy mailing list, the Python in Astronomy Facebook group, and the Astropy Slack workspace. The Moore Foundation grant allows this Slack space to
-be on a paid plan; additionally NumFOCUS has negotiated a special rate for
-open-source projects. While the Slack and Astropy-dev mailing lists are primarily used to discuss the project direction and updates, it was noted that the use of a Facebook community could present a barrier to open source. The Astropy Project identified a need for a public, archived, searchable, and easy-to-navigate interface for users to ask for help. Accordingly, we have commissioned
-a Discourse site which is more open than the Facebook group and more user-oriented
-than Astropy Slack. A benefit of the Moore Foundation grant is that Astropy
-developers are able to invoice as independent contractors the time they
-spend helping users on these forums.
-\end{itemize}
-
-\begin{itemize}
-\item Attracting new contributors when the code has become quite complex,
-\item Contributor to maintainer mentoring,
-\item Long-term / sustained funding for maintaining infrastructure,
-\item ...
-\end{itemize}
+Over the history of \astropy, the needs and challenges of the \astropy Project
+have evolved, but many common themes have persisted and are shared by other
+open source software communities.
+However, \astropy also faces a number of unique challenges stemming from the
+fact that the Project is in a special position in the astronomy software stack:
+The \astropy code and ecosystem are more specialized than core scientific tools
+like \package{numpy} and \package{scipy}, but more general than software
+packages developed to enable specific research subdomains like
+\package{exoplanet} \citep{exoplanet:2021}.
+Below we discuss a few challenges faced by the Project in more detail, but we
+stress that this list is not complete or exhaustive.
+\begin{description}
+  \item[Supporting an active group of maintainers] Throughout its history,
+  development and maintenance of code and educational materials in the \astropy
+  Project --- the \astropypkg core package, coordinated packages, Learn Astropy
+  repositories, and Project infrastructure packages --- has been done by a mix
+  of volunteer effort and institutional support.
+  At present, the \href{https://www.astropy.org/team.html}{named roles} and
+  maintainer positions in the \astropy Project are also split roughly evenly
+  between these types of contributors.
+  As is the case with many other open-source software communities, the culture
+  of the Project and overall coordination relies heavily on volunteer effort,
+  but we therefore have significant amounts of critical infrastructure or core
+  functionality that is either maintained with no redundancy or unmaintained as
+  contributors naturally move on from and stop contributing to the Project.
+  Within the core package, a prime example is the \astropyfits subpackage, which
+  is largely in maintenance mode and maintained by just one contributor (despite
+  the significant codebase and user community behind this subpackage).
+  While we now have funding to support the longer-term sustainability of the
+  Project and thus to address these issues, we are finding it difficult to use
+  this funding in ways that address our needs.
+  For one, many of the needs of the Project require long-term and sustained
+  funding rather than short-term contracts.
+  But also the specialized nature of the software requires being able to hire or
+  contract software engineers with domain knowledge about astronomical software
+  tools.
+  Finally, we want to be able to preserve and sustain the engaged community of
+  volunteers, software-engaged researchers, and existing software engineers that
+  contribute to the Project and that have enabled its success in ways that
+  support their careers.
+  These challenges will require cultural and larger systemic changes to
+  astronomical research and career paths, and so will take time to influence and
+  implement.
+  \item[Diversity of users, contributors, maintainers, and coordinators]
+  The \astropy project aims to be a project that is made up of members at all
+  levels (users to contributors to coordinators) with a diverse set of skills,
+  backgrounds, and experiences.
+  While \astropy is used globally --- for example,
+  Figure~\ref{fig:User-analytics-locations} shows the numnber of users per
+  country who accessed the \astropypkg core package documentation in 2021 ---
+  our user community is underrepresented in non-English-speaking or -teaching
+  countries and our maintainers and coordinators are fairly narrowly
+  concentrated in the United States (US) and Europe (see the circle markers on
+  Figure~\ref{fig:User-analytics-locations}).
+  The gap in users in many countries is understandable given that much of our
+  content and documentation is written in English and therefore only available
+  in other languages through imperfect, automated translation services (like
+  Google translate).
+  The fact that our maintainers and coordinators are generally in the US (even
+  then, mostly on the East coast) and Europe is a reflection of where
+  institutions have explicitly supported \astropy, and where volunteers have had
+  the ability to contribute to the project.
+  \item[Long-term and sustained funding for maintaining infrastructure] The
+  software and packaging infrastructure within the \astropy Project includes
+  (but is not limited to) Continuous Integration (CI), test plugins,
+  documentation builds, and package delivery.
+  Keeping the infrastructure working is essential in software development and
+  operations.
+  This kind of work has low visibility and is not attractive to scientists or
+  volunteer contributors; therefore, it is most effective to delegate such tasks
+  to paid roles.
+  \astropy secured a three-year grant for this but the situation remains
+  uncertain once the grant runs out, as infrastructure evolves and requires
+  constant maintenance and upgrades.
+  Some of the engineers currently in these roles are also employees of research
+  institutions that may leave the Project without much notice, adding to the
+  uncertainty factor.
+  \item[Understanding, communicating with, and engaging our user communities]
+  The \astropy Project is used by a number of intersecting and overlapping
+  communities, such as telescope operations and data management, data archives,
+  researchers, students, educators, and the general public.
+  These communities have different needs from and uses for \astropy, many of
+  which we are only aware of through individual engagement from members of these
+  respective communities.
+  This kind of communication may provide bias pespectives on these communities.
+  We therefore need to develop more formal ways of engaging these communities in
+  more democratic ways, such as through running and analyzing user surveys, or
+  creating and engaging with user groups that can better represent these
+  communities.
+  Additionally, as the \astropy ecosystem has and continues to grow, we need to
+  ensure that users in these different communities have access to educational
+  materials to train new users to use \astropy and \python software tools.
+  This may involve tailoring workshops, tutorials, and educational materials to
+  these communities, however this represents a significant maintenance and
+  content-development burden on the Project.
+\end{description}
 
 
 \section{Conclusions}
@@ -1424,7 +1525,11 @@ make the Astropy Project more sustainable and a larger, more welcoming community
 for open-source software users and enthusiasts in astronomy.
 
 
-\begin{acknowledgments}
+% Due to a bug in AAStex 6.3.1, using this with amsmath leads to line numbers in
+% the acknowledgements...
+% https://github.com/AASJournals/AASTeX60/issues/130
+% \begin{acknowledgments}
+\vspace{2em}
 
 We would like to thank the members of the community who have contributed to
 \astropy, opened issues and provided feedback, and supported the
@@ -1468,7 +1573,7 @@ derives from the IAU SOFA Collection\footnote{\url{http://www.iausofa.org}}
 developed by the International Astronomical Union Standards of Fundamental
 Astronomy \citep{sofa}.
 
-\end{acknowledgments}
+% \end{acknowledgments}
 
 \software{\package{astropy} \citep{astropy:2013, astropy:2018},
           \package{numpy} \citep{numpy:nature},

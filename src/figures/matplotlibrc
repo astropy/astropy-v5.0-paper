@@ -1,0 +1,23 @@
+backend: agg
+
+axes.titlesize: 26
+axes.labelsize: 22
+xtick.labelsize: 18
+ytick.labelsize: 18
+
+# ticks
+xtick.major.width: 1.
+ytick.major.width: 1.
+xtick.color: 444444
+ytick.color: 444444
+xtick.direction: in
+ytick.direction: in
+xtick.major.size: 8      # major tick size in points
+xtick.minor.size: 4      # minor tick size in points
+ytick.major.size: 8      # major tick size in points
+ytick.minor.size: 4      # minor tick size in points
+
+xtick.top: True
+ytick.right: True
+
+image.cmap: magma
