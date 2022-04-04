@@ -139,7 +139,7 @@ plot_world = gp.GeoDataFrame(joined.to_pandas())
 joined[joined['Users'] < 0]['name', 'Country', 'Users']
 
 water_color = '#d6f3ff'
-cmap = copy.copy(plt.get_cmap('magma_r'))
+cmap = copy.copy(plt.get_cmap('magma'))
 cmap.set_bad(color='w')
 
 # +
