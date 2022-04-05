@@ -944,7 +944,7 @@ own software package infrastructure. These include tools and extensions that
 enable generating documentation and setting up automated testing, as well
 as providing package scaffolding for new projects.
 
-Sphinx is a common and useful tool for generating documentation for Python
+Sphinx is a common and useful tool for generating documentation for \python
 packages. The Astropy project maintains a default Sphinx configuration along
 with Astropy-specific extensions that can be easily added to community
 projects via the
@@ -989,7 +989,7 @@ configuring packages for property-based testing
 (\href{https://github.com/HypothesisWorks/hypothesis}{\texttt{hypothesis}}).
 
 The Astropy Package Template helps facilitate the setup and creation of new
-Python packages leveraging the Astropy ecosystem. This tool utilizes the
+\python packages leveraging the Astropy ecosystem. This tool utilizes the
 \href{https://github.com/cookiecutter/cookiecutter}{Cookiecutter} project to
 walk users through the process of creating new packages complete with
 documentation and testing support. Additionally, the package template
@@ -1127,7 +1127,7 @@ the operations center of JWST, have been developing \python-based tools
 for JWST since 2010 (starting with the JWST Calibration Reference Data
 System) and have provided major contributions to \astropy from its
 inception. The JWST instrument calibration pipelines, exposure-time
-calculators, and data analysis tools are all written in Python and
+calculators, and data analysis tools are all written in \python and
 depend on the \astropypkg core package and some coordinated and
 affiliated packages. For the \astropypkg core package, the JWST mission
 has provided extensive contributions to the \astropysubpkg{modeling},
@@ -1192,15 +1192,15 @@ A prototype for the low-level analysis is \texttt{ctapipe} \citep{ctapipe},
 a \python package developed to perform all the necessary tasks to perform data processing, from the raw data
 of Cherenkov telescopes to the reconstructed event lists.
 The high-level analysis (or CTA science tools) will be based on the Astropy affiliated package
-Gammapy~\citep{gammapy}.
-Both Gammapy and \texttt{ctapipe} make heavy use of the \astropy core package, mainly for units, times, coordinate transformations,
+\package{gammapy}~\citep{gammapy}.
+Both \package{gammapy} and \texttt{ctapipe} make heavy use of the \astropy core package, mainly for units, times, coordinate transformations,
 tables, and FITS I/O.
 As CTA will record gamma-ray events with a rate of up to $10\,000$ events per second,
 it needs to perform a large number of coordinate transformations.
 To enable this, CTA member M.~Nöthe contributed a major performance improvement
 for large numbers of coordinates with different observation times,
 based on earlier work by B.~Winkel.
-Together with Gammapy maintainer A.~Donath and former maintainer C.~Deil,
+Together with \package{gammapy} maintainer A.~Donath and former maintainer C.~Deil,
 a total of 107 merged pull requests were contributed to astropy.
 
 \subsubsection{Data Central and the Anglo-Australian Telescope Archive}
@@ -1246,13 +1246,13 @@ data.
 educational efforts made by the Astropy Project, which are led by the Learn
 Astropy Team.
 The efforts focus on developing online content and workshops covering
-astronomy-specific coding tasks in Python.
+astronomy-specific coding tasks in \python.
 As introduced in \citet{astropy:2018}, there are four different types of
 Learn Astropy content: \textit{tutorials}, consisting of Jupyter Notebook
 lessons that are published in HTML format online; \textit{guides}, which are a
 series of lessons providing a foundational resource for performing certain
 type of astronomical analyses; \textit{examples}, which are snippets of code
-that showcase a short task that can be performed with Astropy or an affiliated
+that showcase a short task that can be performed with \astropypkg or an affiliated
 package; and \textit{documentation}, which contains more detailed information
 about the code base and user interface.
 This categorization drives content development, infrastructure choices, and the
@@ -1282,7 +1282,7 @@ Tutorials, which are written as Jupyter Notebooks, are now compiled into their
 own Learn Astropy sub-site using
 \href{https://github.com/astropy/nbcollection}{\texttt{nbcollection}}.
 Guides, which utilize the \href{https://jupyterbook.org/}{Jupyter Book} build
-infrastructure, are also deployed as separate websites using GitHub pages.
+infrastructure, are also deployed as separate websites using \github pages.
 This architecture opens future possibilities of indexing third-party content,
 hosted elsewhere, such as on institutional websites.
 
@@ -1333,7 +1333,7 @@ tools.
 The focus of Learn Astropy over the coming months and years is to further
 improve the interface for sharing educational content on the main Learn Astropy
 website, and to facilitate the development of new content that highlights
-\astropy and \astropy-affiliated package functionality.
+\astropypkg and \astropy-affiliated package functionality.
 However, we simultaneously also plan to solicit indexing and ingestion of
 third-party tutorial series, to provide a unified interface for identifying
 astronomy-specific educational content that demonstrates the functionality
@@ -1563,13 +1563,13 @@ Observatory.
 
 Furthermore, the \astropy packages would not exist in their current form without
 a number of web services for code hosting, continuous integration, and
-documentation; in particular, \astropy heavily relies on GitHub, Azure
+documentation; in particular, \astropy heavily relies on \github, Azure
 Pipelines, CircleCI, and Read the Docs.
 
 This research has made use of NASA's Astrophysics Data System.
 
 \astropypkg interfaces with the SIMBAD database, operated at CDS, Strasbourg,
-France. It also makes use of the ERFA library \citep{erfa}, which in turn
+France. It also makes use of the \package{ERFA} library \citep{erfa}, which in turn
 derives from the IAU SOFA Collection\footnote{\url{http://www.iausofa.org}}
 developed by the International Astronomical Union Standards of Fundamental
 Astronomy \citep{sofa}.
