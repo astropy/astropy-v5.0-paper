@@ -23,6 +23,7 @@ import pathlib
 from astropy.time import Time
 import astropy.units as u
 from git import Repo
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage import generic_filter
@@ -216,6 +217,13 @@ ax.plot(
 
 
 ax.set_xlim(month_bins[0].datetime, month_bins[-1].datetime)
+
+xticks = (Time(datetime.datetime(2011, 6, 1)) + np.arange(0, 10+1, 1) * u.year).datetime
+ax.set_xticks(xticks)
+ax.xaxis.set_major_formatter(mpl.dates.DateFormatter('%Y'))
+for label in ax.get_xticklabels(which='major'):
+    label.set(rotation=30, horizontalalignment='center')
+
 ax.set_xlabel('date')
 ax.set_ylabel('committers per month')
 
