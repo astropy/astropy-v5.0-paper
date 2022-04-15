@@ -21,3 +21,6 @@ xtick.top: True
 ytick.right: True
 
 image.cmap: magma
+
+font.family: serif
+font.serif: dejavu serif
