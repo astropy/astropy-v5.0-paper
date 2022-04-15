@@ -741,11 +741,11 @@ stayed relatively constant over the history of \astropy (with some showing
 growth), as new, active contributors have generally joined and stepped in to
 fill top contributor roles within the project.
 On the other hand, the total number of top contributors has not grown
-substantially, reflecting one of our principal challenges: Sustaining a pipeline
+substantially, reflecting one of our principal challenges: sustaining a pipeline
 from users to contributors to maintainers of the package.
 One other thing to note in this context is that in all eras, 50--60\% of the
 software engineers who contributed to \astropypkg were (or are) employed by
-STScI, whose leadership have consistently provided resources (financial and
+STScI, whose leadership has consistently provided resources (financial and
 personnel) towards sustaining \astropypkg.
 
 \begin{figure}[t!]
@@ -925,7 +925,9 @@ which awarded funds for development work that supports both the Astropy and
 DRAGONS projects. The project also received financial support from the Dunlap
 Seed Funding program at the University of Toronto to develop educational
 resources for scientific software packaging within the Learn Astropy
-framework. All of these successful proposals show that the Astropy Project
+framework.  The project also indirectly benefited from the NRAO ALMA Development
+Study program, which supported the grant ``Linking CASA to the astropy ecosystem''\footnote{\url{https://science.nrao.edu/facilities/alma/science_sustainability/Spectral_Cube_and_Radio_Beam_Ginsburg.pdf}}.
+All of these successful proposals show that the Astropy Project
 is vital for the astronomical infrastructure and community at large, and
 strengthen its promising and sustainable future.
 
@@ -1014,7 +1016,7 @@ Astropy of improving code re-use, interoperability, and embracing good coding
 practices such as testing and thorough documentation.
 All Astropy-coordinated and other affiliated packages are listed with detailed
 information on the \href{{https://www.astropy.org/affiliated}}{\astropy
-website}; A table summarizing key aspects of the affiliated packages is included
+website}; a table summarizing key aspects of the affiliated packages is included
 in the Appendix below (Table~\ref{tab:affiliated-registry}).
 
 Since \paperii, there has been an expansion of affiliated
@@ -1034,6 +1036,7 @@ Other new affiliated packages include \texttt{agnpy} for AGN jets,
 \texttt{dust\_extinction} for modeling interstellar dust extinction,
 \texttt{feets} for extracting features from time series data, and
 \texttt{corral} for managing data intensive parallel pipelines.
+\texttt{casaformats-io} provides infrastructure for reading data stored in CASA table formats.
 \texttt{saba} gives an interface to the Sherpa \citep{sherpa} fitting routines,
 \texttt{BayesicFitting} provides an interface for generic Bayesian inference,
 and \texttt{sbpy} enables calculations for asteroid and
@@ -1051,16 +1054,17 @@ Index (PyPI) and available for installation. (However, formal releases are still
 done a few times per year.) \texttt{photutils} \citep{photutils} released its
 first stable version, indicating that the API will change less frequently, and
 there have been several significant performance improvements. \texttt{ccdproc}
-\citep{ccdproc} also released a new major version, bringing better performance to
+\citep{ccdproc}  released a new major version, bringing better performance to
 some image combination operations. The \texttt{regions} package
-\citep{pyregions}, for manipulating ds9-style region definitions \citep{ds9},
-added new ways to manipulate regions and introduced new region types.
+\citep{pyregions}, for manipulating ds9-, CASA-, or FITS-style region definitions \citep{ds9},
+added new ways to manipulate regions, introduced new region types, and obtained
+expanded visualization and interactive region editing capabilities.
 \texttt{reproject}'s \citep{reproject} major new feature is a function to align
 and co-add images to create a mosaic; better support for parallelization was
 also added. \texttt{specutils}, the package that defines containers for 1D and
-2D spectra \citep{specutils}, also had its first stable release and the addition
-of classes to read JWST data. \texttt{stingray} has also had a major performance
-overhaul. The package \texttt{gammapy} \citep{gammapy} also has major performance
+2D spectra \citep{specutils},  had its first stable release and the addition
+of classes to read JWST data. \texttt{stingray} has had a major performance
+overhaul. The package \texttt{gammapy} \citep{gammapy} has had major performance
 improvements and has unified its API in preparation for its first stable
 release.
 
