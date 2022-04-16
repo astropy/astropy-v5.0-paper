@@ -580,12 +580,13 @@ attribute). For reproducibility, old definitions are still available.
 
 In some cases, feature enhancements and corner-case handling were added
 at the cost of performance.
-Hence, \github pull requests that improve performance are welcomed, and were even the
-main goal for v3.1 release. For most sub-packages, performance was
+Hence, \github pull requests that improve performance are welcomed, and were
+even the main goal for v3.1 release. For most sub-packages, performance was
 improved in the \python\ code, but for some, the most time-critical pieces were
-rewritten in~C (e.g., for convolution of images, sigma-clipping, and converting
-time strings to binary). Furthermore, a particular effort was made to ensure
-\astropypkg\ is thread-safe, so that it can be used on supercomputing clusters.
+rewritten in~C and wrapped with \package{Cython} (\citealt{cython}; e.g., for
+convolution of images, sigma-clipping, and converting time strings to binary).
+Furthermore, a particular effort was made to ensure \astropypkg\ is thread-safe,
+so that it can be used on supercomputing clusters.
 
 Performance in \astropypkg is addressed based on feedback and requests, and
 through contributions from community members: if you find that parts of
