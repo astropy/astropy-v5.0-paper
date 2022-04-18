@@ -6,6 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[modern]{aastex631}
+\NewPageAfterKeywords
 \usepackage{xspace}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -14,7 +15,7 @@
 % To allow putting figures in a subdir
 \graphicspath{{figures/}}
 
-\submitjournal{ApJ}
+% \submitjournal{ApJ}
 
 \shorttitle{Astropy Project III}
 \shortauthors{The Astropy Collaboration}
@@ -27,7 +28,6 @@
 
 \defcitealias{astropy:2013}{Paper I}
 \defcitealias{astropy:2018}{Paper II}
-
 
 \begin{document}
 
@@ -42,15 +42,18 @@
 \email{coordinators@astropy.org}
 
 \author{Astropy~Collaboration}
-\altaffiliation{The author list has two parts: the authors that made significant
-contributions to the writing of the paper in order of contribution, followed by
-contributors to the Astropy Project in alphabetical order. \textbf{The position
-in the author list does not correspond to contributions to the Astropy Project
-as a whole.} A more complete list of contributors to the core package can be
-found in the
-\href{https://github.com/astropy/astropy/graphs/contributors}{package
-repository}, and at the \href{http://www.astropy.org/team.html}{Astropy team
-webpage}.}
+\noaffiliation
+{\let\thefootnote\relax\footnote{{
+  The author list has two parts: the authors that made significant contributions
+  to the writing and/or coordination of the paper (in order of contribution),
+  followed by maintainers of and contributors to to the Astropy Project (in
+  alphabetical order). \textbf{The position in the author list does not
+  correspond to contributions to the Astropy Project as a whole.} A more
+  complete list of contributors to the core package can be found in the
+  \href{https://github.com/astropy/astropy/graphs/contributors}{package
+  repository}, and at the \href{http://www.astropy.org/team.html}{Astropy team
+  webpage}.
+}}}
 
 \input{static/authors.tex}
 
@@ -70,13 +73,13 @@ status of Learn Astropy.
 We conclude by raising and discussing the current and future challenges facing the Project.
 \end{abstract}
 
-\keywords{%
-    Astrophysics - Instrumentation and Methods for Astrophysics
-    ---
-    methods: data analysis
-    ---
-    methods: miscellaneous
-}
+% \keywords{%
+%     Astrophysics - Instrumentation and Methods for Astrophysics
+%     ---
+%     methods: data analysis
+%     ---
+%     methods: miscellaneous
+% }
 
 
 \section{Introduction} \label{sec:intro}
@@ -145,7 +148,7 @@ laid by the \astropypkg core package.
 Because of this natural expansion, the name \astropy has grown in scope beyond a
 single \python library to become ``the Astropy Project.''
 
-\begin{figure}[th]
+\begin{figure}[t!]
     \begin{centering}
       \includegraphics[width=\textwidth]{python-mentions.pdf}
         \caption{
