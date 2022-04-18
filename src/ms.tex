@@ -6,15 +6,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[modern]{aastex631}
+\NewPageAfterKeywords
 \usepackage{xspace}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{ulem}
 
-% To allow putting figures in a subdir
-\graphicspath{{figures/}}
-
-\submitjournal{ApJ}
+% \submitjournal{ApJ}
 
 \shorttitle{Astropy Project III}
 \shortauthors{The Astropy Collaboration}
@@ -28,7 +26,6 @@
 \defcitealias{astropy:2013}{Paper I}
 \defcitealias{astropy:2018}{Paper II}
 
-
 \begin{document}
 
 \let\oldtoday\today
@@ -41,11 +38,22 @@
 \correspondingauthor{Astropy Coordination Committee}
 \email{coordinators@astropy.org}
 
-\author{Astropy Collaboration}
+\author{Astropy~Collaboration}
 \noaffiliation
-{\let\thefootnote\relax\footnote{{The author list has two parts: the authors that made significant contributions to the writing of the paper in order of contribution, followed by contributors to the \astropy Project in alphabetical order. \textbf{The position in the author list does not correspond to contributions to the \astropy Project as a whole.} A more complete list of contributors to the core package can be found in the \href{https://github.com/astropy/astropy/graphs/contributors}{package repository}, and at the \href{http://www.astropy.org/team.html}{\astropy team webpage}.}}}
+{\let\thefootnote\relax\footnote{{
+  The author list has two parts: the authors that made significant contributions
+  to the writing and/or coordination of the paper (in order of contribution),
+  followed by maintainers of and contributors to to the Astropy Project (in
+  alphabetical order). \textbf{The position in the author list does not
+  correspond to contributions to the Astropy Project as a whole.} A more
+  complete list of contributors to the core package can be found in the
+  \href{https://github.com/astropy/astropy/graphs/contributors}{package
+  repository}, and at the \href{http://www.astropy.org/team.html}{Astropy team
+  webpage}.
+}}}
 
-% \input{author.tex}
+\input{static/authors.tex}
+
 
 \begin{abstract}
 The \astropy Project supports and fosters the development of open-source and openly developed
@@ -62,13 +70,13 @@ status of Learn Astropy.
 We conclude by raising and discussing the current and future challenges facing the Project.
 \end{abstract}
 
-\keywords{%
-    Astrophysics - Instrumentation and Methods for Astrophysics
-    ---
-    methods: data analysis
-    ---
-    methods: miscellaneous
-}
+% \keywords{%
+%     Astrophysics - Instrumentation and Methods for Astrophysics
+%     ---
+%     methods: data analysis
+%     ---
+%     methods: miscellaneous
+% }
 
 
 \section{Introduction} \label{sec:intro}
@@ -137,9 +145,9 @@ laid by the \astropypkg core package.
 Because of this natural expansion, the name \astropy has grown in scope beyond a
 single \python library to become ``the Astropy Project.''
 
-\begin{figure}[th]
+\begin{figure}[t!]
     \begin{centering}
-      \includegraphics[width=\textwidth]{python-mentions.pdf}
+      \includegraphics[width=\textwidth]{figures/python-mentions.pdf}
         \caption{
             Yearly full-text mentions of programming languages (indicated in the
             figure legend) in refereed publications in the astronomical
@@ -654,7 +662,7 @@ clear the foundation is now in place.
 
 \begin{figure}[t!]
     \begin{centering}
-      \includegraphics[width=0.9\textwidth]{Ncommitters_vs_frac_commits.pdf}
+      \includegraphics[width=0.9\textwidth]{figures/Ncommitters_vs_frac_commits.pdf}
         \caption{
             The cumulative fraction of Git commits to the \astropypkg core
             package as a function of number of contributors (committers) broken
@@ -709,7 +717,7 @@ majority of the work in \astropypkg is done by a small subset ($<20\%$) of the
 
 \begin{figure}[t!]
     \begin{centering}
-      \includegraphics[width=0.75\textwidth]{top_contributors_career.pdf}
+      \includegraphics[width=0.75\textwidth]{figures/top_contributors_career.pdf}
         \caption{
             The career stages and/or positions of the top contributors within
             each time era (defined as having contributed $>50$ commits to the
@@ -747,7 +755,7 @@ personnel) towards sustaining \astropy.
 
 \begin{figure}[t!]
     \begin{centering}
-      \includegraphics[width=0.75\textwidth]{commits_committers_per_month.pdf}
+      \includegraphics[width=0.75\textwidth]{figures/commits_committers_per_month.pdf}
         \caption{
             \textbf{Top panel:} The number of Git commits per month (defined as
             consecutive 30 day windows) merged into the \astropypkg core
@@ -1399,7 +1407,7 @@ adopted via pull request in December 2021.
 
 \begin{figure}[th!]
   \begin{centering}
-    \includegraphics[width=\textwidth]{docu_analytics.pdf}
+    \includegraphics[width=\textwidth]{figures/docu_analytics.pdf}
       \caption{
           The number of users who accessed the \astropypkg core package
           documentation in 2021, based on data from Google Analytics.
@@ -1625,6 +1633,5 @@ Astronomy \citep{sofa}.
       \enddata
   \end{deluxetable*}
 \end{longrotatetable}
-
 
 \end{document}
