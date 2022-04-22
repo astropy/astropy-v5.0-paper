@@ -490,11 +490,10 @@ been made to \astropytime, \astropyconstants, \astropycoordinates, and
 In astronomy, time accuracy down to the (nano)second is frequently important.
 Whether for planning observations or crunching pulsar or VLBI data, missing
 seconds meaningfully impact results. In past versions of \astropypkg, when using
-\astropyTime, leap seconds had to be manually applied; now, leap
-seconds are applied automatically. Moreover, \astropypkg updates internal time
-data files to ensure that the correct leap second adjustment is always used. For
-reproducibility with older code, \astropyLeapSeconds\ may also be
-manually applied.
+\astropyTime, leap second tables had to be manually updated. Now, \astropypkg
+automatically updates internal time data files to ensure that the correct leap
+second adjustment is always used. For reproducibility with older code,
+\astropyLeapSeconds\ may also be manually applied.
 
 \paragraph{Constants}
 
