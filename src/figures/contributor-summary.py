@@ -180,7 +180,7 @@ for _date in freeze_dates.datetime:
         _label = False
     else:
         kw = dict()
-    ax.axvline(_date, color='tab:blue', 
+    ax.axvline(_date, color='tab:blue',
                alpha=0.2, zorder=-10, marker='', ls='--', lw=1,
                **kw)
 
@@ -283,7 +283,7 @@ for name, era_lim in eras.items():
     ).split('\n')
     era_shortlogs[name] = _shortlog
     era_n_commits[name] = np.array([int(x.split('\t')[0]) for x in _shortlog])
-    
+
     print(f"era={name} had {len(era_n_commits[name])} committers")
 
 # +
@@ -330,29 +330,29 @@ fig, ax = plt.subplots(figsize=figsize)
 for i, (name, _n_commits) in enumerate(era_n_commits.items()):
     y = np.cumsum(_n_commits) / np.sum(_n_commits)
     x = np.arange(1, len(y)+1)
-    ax.semilogx(x, y, 
+    ax.semilogx(x, y,
                 marker='', color=era_colors[i], lw=2,
                 label=name)
-    
+
     _idx = np.abs(y - 0.9).argmin()
-    
+
     btm = 0.9 - 0.4 - i * 0.15
     ax.plot(
-        [x[_idx]]*2, [btm, 0.9], 
-        marker='', ls='--', 
+        [x[_idx]]*2, [btm, 0.9],
+        marker='', ls='--',
         alpha=0.6, color=era_colors[i]
     )
-    
+
     _val = np.where(y > 0.9)[0][0]
-    ax.text(1.15 * x[_idx], btm, 
+    ax.text(1.15 * x[_idx], btm,
             f'{_val} committers',
             fontsize=16,
             ha='right', va='top',
             color=era_colors[i]
            )
-    
+
     print(name, np.where(y > 0.5)[0][0], np.where(y > 0.9)[0][0])
-    
+
 ax.set_xlim(1, 300)
 ax.set_ylim(0, 1.04)
 ax.legend(
@@ -360,13 +360,13 @@ ax.legend(
     title='Era:', title_fontsize=19
 )
 
-ax.text(1.1, 0.9, '90% of commits', ha='left', va='bottom', 
+ax.text(1.1, 0.9, '90% of commits', ha='left', va='bottom',
         fontsize=16, color='#666666')
 ax.axhline(0.9, zorder=-10, color='#aaaaaa', ls='--')
 
 ax.set_xlabel('Number of committers')
 ax.set_ylabel('Cumulative fraction of commits\nin each time period')
-ax.set_title('Cumulative fraction of commits\nto the Astropy core package', 
+ax.set_title('Cumulative fraction of commits\nto the Astropy core package',
              pad=10)
 
 fig.savefig('Ncommitters_vs_frac_commits.pdf', bbox_inches='tight')
@@ -391,9 +391,9 @@ for name, shortlog in era_shortlogs.items():
 
 # +
 top_contr_data = {
-    'early': [9, 8, 6],
-    'mid': [9, 11, 3],
-    'recent': [10, 13, 3]
+    'early': [10, 7, 6],
+    'mid': [10, 10, 3],
+    'recent': [11, 12, 3]
 }
 labels = ['research staff / faculty', 'software engineer', 'student']
 
