@@ -97,7 +97,7 @@ def get_dfs(cache_path):
             'full:"matlab" property:"refereed" collection:"astronomy"'),
         'Julia': (
             'full:"julia" property:"refereed" collection:"astronomy"'),
-        'FORTRAN': (
+        'Fortran': (
             'full:"fortran" property:"refereed" collection:"astronomy"')
     }
 
