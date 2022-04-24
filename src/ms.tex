@@ -386,47 +386,49 @@ factors of cosmological redshift. \texttt{redshift} has a number of
 equivalencies for converting between cosmological distance measures, e.g., CMB
 temperature or comoving distance.
 
-\paragraph{Table Mixin Columns}
+\paragraph{Table Column Types}
 
 Within \astropypkg and \python, there are numerous ways to represent and store
-array-valued data. Some of the differences are historical:
-\astropyapidoc{table.Column}{table.Column} and
-\astropyapidoc{io.fits.Column}{io.fits.Column} are not the same. Some
-differences are computational: \package{numpy}, \package{cupy}, and
-\package{dask} arrays have almost identical APIs, but are optimized for
-different use cases. Lastly, some differences are inherent: \astropyQuantity,
-\astropyTime, and \astropySkyCoord\ represent fundamentally different types of
-objects.
+array-valued data. Some of the differences are historical: \astropytable and
+\astropyapidoc{io.fits.BinTableHDU}{io.fits.BinTableHDU} are not the same since
+\astropyfits was originally developed in a separate package (\package{PyFITS})
+yet both are for holding tabular data. Some differences are computational:
+\package{numpy}, \package{cupy}, and \package{dask} arrays have almost identical
+APIs, but are optimized for different use cases. Lastly, some differences are
+inherent: \astropyQuantity, \astropyTime, and \astropySkyCoord\ represent
+fundamentally different types of objects.
 
-We aim to make it possible for any array-valued data to be used as a column in a
-table. A well-defined protocol for mixin-columns has been developed for
-\astropytable, allowing the original object to be used as a column with a
-familiar API, and to ``round-trip'' through tables with no loss of data or
-attributes. With this protocol, it is now possible to store \astropy native
-objects -- including \astropyTime, \astropyQuantity, and \astropySkyCoord\ --
-within a \astropyTable\ and write these to various file formats, such as FITS.
-For objects not already covered by the mixin protocol, functions can be
-registered with \astropyTable\ to convert any array-like object into a mixin
-column. As an example, the mixin functions are used to integrate \package{dask}
-arrays with \astropyTable, allowing cloud-stored or cluster-scale data to be
-used as a column in a \astropyTable.
+\astropytable is \astropypkg's most general container for array-valued data.
+Rather than requiring component data be converted to a
+\astropyapidoc{table.Column}{table.Column}, a well-defined protocol has been
+developed for any array-valued data to be used in a \astropytable, without
+having to convert the data. The protocol for ``mixing'' column types provides
+the same familiar table API, yet loses none the object's data or attributes.
+With this protocol, it is now possible to store \astropy native objects --
+including \astropyTime, \astropyQuantity, and \astropySkyCoord\ -- within a
+\astropyTable\ and write these to various file formats, such as FITS. For
+objects not already covered by the ``mixing'' protocol, functions can be
+registered with \astropyTable\ to enable the interoperability. As an example,
+\astropypkg arelady implements the ``mixing'' functions to integrate
+\package{dask} arrays with \astropyTable, allowing cloud-stored or cluster-scale
+data to be used as a column in a \astropyTable.
 
 \paragraph{Astropy FITS in Time}
 
 The FITS standard was extended to rigorously describe time coordinates in the
-WCS framework \citep{FITS-Time:2015}. Compared to
-other types of coordinates in WCS, time requires more metadata: format, scale,
-position, reference, etc. This metadata had to be manually specified and the
-nuances understood by the user. \astropyfits could read this data as a standard
-\astropyFitsColumn\, but would not interpret the time-related metadata and
-attributes. Through the support of the
+WCS framework \citep{FITS-Time:2015}. Compared to other types of coordinates in
+WCS, time requires more metadata: format, scale, position, reference, etc. This
+metadata had to be manually specified and the nuances understood by the user.
+\astropyfits could read this data as a standard \astropyFitsColumn, but would
+not interpret the time-related metadata and attributes. Through the support of
+the
 \href{https://summerofcode.withgoogle.com/archive/2017/projects/4778482366152704}{Google
-Summer of Code} 2017 program,\footnote{To learn more about this project,
-see the final report
+Summer of Code} 2017 program,\footnote{To learn more about this project, see the
+final report
 \href{https://aaryapatil.wordpress.com/2017/08/28/a-mixin-protocol-for-seamless-interoperability/}{A
 mixin protocol for seamless interoperability}.} the \astropyfits package now
-interprets time data correctly, using \astropyTime\ as a mixin column. For
-backward compatibility, this feature may be turned off.
+interprets time data correctly, using \astropyTime\ as a column. For backward
+compatibility, this feature may be turned off.
 
 \paragraph{Persistent Storage}
 
@@ -452,12 +454,12 @@ with fixed dimensions in all table cells, multidimensional
 column data with variable-dimension arrays similar to FITS variable-length
 arrays, and object-type columns with simple \python objects.
 
-As mentioned previously, \package{dask} arrays may be used as a mixin column in
+As mentioned previously, \package{dask} arrays may be used as a column in
 \astropyTable. Now, \package{dask} may also be a data array in
-\astropyapidoc{io.fits.PrimaryHDU}{FITS HDU} and only
-computed while written, avoiding excessive memory use. Furthermore, \astropyTable\ can
-be appended to an existing FITS file, where \package{dask} mixin columns can
-interoperate seamlessly between them.
+\astropyapidoc{io.fits.PrimaryHDU}{FITS HDU} and only computed while written,
+avoiding excessive memory use. Furthermore, \astropyTable\ can be appended to an
+existing FITS file, where \package{dask} columns can interoperate seamlessly
+between them.
 
 \paragraph{Unified I/O architecture}
 
