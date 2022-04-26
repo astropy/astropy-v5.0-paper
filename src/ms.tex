@@ -388,30 +388,31 @@ temperature or comoving distance.
 
 \paragraph{Table Column Types}
 
-Within \astropypkg and \python, there are numerous ways to represent and store
-array-valued data. Some of the differences are historical: \astropytable and
-\astropyapidoc{io.fits.BinTableHDU}{io.fits.BinTableHDU} are not the same since
-\astropyfits was originally developed in a separate package (\package{PyFITS})
-yet both are for holding tabular data. Some differences are computational:
-\package{numpy}, \package{cupy}, and \package{dask} arrays have almost identical
-APIs, but are optimized for different use cases. Lastly, some differences are
-inherent: \astropyQuantity, \astropyTime, and \astropySkyCoord\ represent
-fundamentally different types of objects.
+Within \astropypkg and \python, there are numerous different ways to represent
+and store array-valued data. Some differences are historical: \astropytable and
+\astropyapidoc{io.fits.BinTableHDU}{io.fits.BinTableHDU} are both for holding
+tabular data but the latter was developed for and remains largely specific to
+FITS. Some differences are computational: \package{numpy}, \package{cupy}, and
+\package{dask} arrays have almost identical APIs, but are optimized for
+different use cases. Lastly, some differences are inherent: \astropyQuantity,
+\astropyTime, and \astropySkyCoord\ represent fundamentally different types of
+objects.
 
 \astropytable is \astropypkg's most general container for array-valued data.
 Rather than requiring component data be converted to a
 \astropyapidoc{table.Column}{table.Column}, a well-defined protocol has been
 developed for any array-valued data to be used in a \astropytable, without
-having to convert the data. The protocol for ``mixing'' column types provides
-the same familiar table API, yet loses none the object's data or attributes.
-With this protocol, it is now possible to store \astropy native objects --
-including \astropyTime, \astropyQuantity, and \astropySkyCoord\ -- within a
-\astropyTable\ and write these to various file formats, such as FITS. For
-objects not already covered by the ``mixing'' protocol, functions can be
-registered with \astropyTable\ to enable the interoperability. As an example,
-\astropypkg arelady implements the ``mixing'' functions to integrate
-\package{dask} arrays with \astropyTable, allowing cloud-stored or cluster-scale
-data to be used as a column in a \astropyTable.
+having to convert the data. The protocol for mixing column types, which astropy
+terms ``mixin''-columns, provides the same familiar table API, yet loses none
+the object's data or attributes. Note ``mixin'' here does not refer to Python's
+inheritance definition. Rather, it is a composition protocol that makes it
+possible to store \astropy native objects -- including \astropyTime,
+\astropyQuantity, and \astropySkyCoord\ -- within a \astropyTable\ and write
+these to various file formats, such as FITS. For objects not already covered by
+the astropy mixin-protocol, functions can be registered with \astropyTable\ to
+enable interoperability. As an example, \astropypkg already implements these
+mixin functions to integrate \package{dask} arrays with \astropyTable, allowing
+cloud-stored or cluster-scale data to be used as a column in a \astropyTable.
 
 \paragraph{Astropy FITS in Time}
 
