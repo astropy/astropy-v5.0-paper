@@ -404,8 +404,9 @@ Rather than requiring component data be converted to a
 developed for any array-valued data to be used in a \astropytable, without
 having to convert the data. The protocol for mixing column types, which \astropypkg
 terms ``mixin''-columns, provides the same familiar table API, yet loses none
-the object's data or attributes. Note ``mixin'' here does not refer to Python's
-inheritance definition. Rather, it is a composition protocol that makes it
+the object's data or attributes. Note that ``mixin'' here is not implemented
+in the commonly used Python scheme of multiple inheritance.
+Rather, it is a composition protocol that makes it
 possible to store \astropy native objects -- including \astropyTime,
 \astropyQuantity, and \astropySkyCoord\ -- within a \astropyTable\ and write
 these to various file formats, such as FITS. For objects not already covered by
