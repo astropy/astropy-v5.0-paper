@@ -228,7 +228,7 @@ carried, as well as the associated \python wrappers. Since this is basic
 infrastructure, with a release cycle set by SOFA, it made more sense to create
 separate packages that serve as \astropypkg dependencies: \package{ERFA}
 \citep{erfa} and \package{PyERFA} \citep{pyerfa}. An example of something that
-was too specialized was a Virtual Observatory sub-package; the Simple
+was too specialized was a Virtual Observatory subpackage; the Simple
 Application Message Protocol (\astropysubpkg{samp}) is kept in the core package
 for now, but other parts more properly belonged in
 \package{astroquery} (see Section~\ref{sec:astroquery}).
@@ -257,7 +257,7 @@ ability to associate and propagate uncertainties is relatively limited: in
 but covariances are not tracked.
 
 Error propagation is difficult, and often is best approximated using Monte Carlo
-methods. The new \astropysubpkg{uncertainties} sub-package is our first step
+methods. The new \astropysubpkg{uncertainties} subpackage is our first step
 towards enabling seamless error propagation. The package allows one to
 generate, for each variable, randomly drawn samples in a \astropyDistribution,
 and then propagate these by passing them through the normal analysis, producing
@@ -300,7 +300,7 @@ the rest of \astropypkg, e.g., using masked arrays in \astropyTime\ instead of N
 \paragraph{Time series}  From sampling a continuous variable at fixed times to
 counting events binned into time windows, many different areas of astrophysics
 require the manipulation of time series. The new \astropysubpkg{timeseries}
-sub-package extends the \astropyQTable\ class to support tables of data as a
+subpackage extends the \astropyQTable\ class to support tables of data as a
 function of time, where the data can either represent samples or averages over
 particular time bins. The new classes offer a number of special methods to
 manipulate time series (e.g., folding and resampling) and to read different data
@@ -326,7 +326,7 @@ Rest (LSRK and LSRD) velocity frames.
 Astronomical data are often provided alongside information about the
 correspondence between ``real-world'' and pixel coordinates. This mapping is the
 essence of the World Coordinate System (WCS) concept. From its inception,
-the \astropysubpkg{wcs} sub-package allowed access to WCS information provided
+the \astropysubpkg{wcs} subpackage allowed access to WCS information provided
 in, e.g., FITS files, but it became clear that other WCS standards and
 representations had to be supported for new missions and observatories (e.g.,
 JWST and the Rubin Observatory). To harmonize these
@@ -343,7 +343,7 @@ the Project.
 
 Because \astropy is modular and situated at the nexus between scientific
 computing and astronomy, interoperability is an important focus for \astropy,
-both within the various \astropypkg sub-packages and with other \python
+both within the various \astropypkg subpackages and with other \python
 libraries. We aim for a seamless user experience, where different code blocks
 would ``just work'' when put together. Here, we describe a few particular
 efforts towards this goal.
@@ -379,7 +379,7 @@ projects.
 Units were also integrated further within \astropypkg. For an already-defined
 unit-less \astropyModel, e.g., those imported from another library,
 \astropymodeling can now coerce units. A new module – \astropycosmologyunits –
-has been added to the cosmology sub-package for defining and collecting
+has been added to the cosmology subpackage for defining and collecting
 cosmological units and equivalencies. \astropycosmologyunits\ has a unit and
 equivalencies for \texttt{littleh}, and a new unit, \texttt{redshift}, for
 factors of cosmological redshift. \texttt{redshift} has a number of
@@ -471,7 +471,7 @@ following a given standard. \astropypkg uses this internally for the I/O methods
 \astropyTable\ and \astropyCosmology. Users can also register custom I/O to
 extend the options on these classes.
 
-As of \astropypkg v5.0, the I/O registry submodule has been generalized to enable a
+As of \astropypkg v5.0, the I/O registry subpackage has been generalized to enable a
 number of new use cases; for instance, the class-based architecture allows
 streamlining of the creation of custom registries while minimizing code duplication.
 One application is in \astropycosmology,
@@ -592,7 +592,7 @@ attribute). For reproducibility, old definitions are still available.
 In some cases, feature enhancements and corner-case handling were added
 at the cost of performance.
 Hence, \github pull requests that improve performance are welcomed, and were
-even the main goal for v3.1 release. For most sub-packages, performance was
+even the main goal for v3.1 release. For most subpackages, performance was
 improved in the \python\ code, but for some, the most time-critical pieces were
 rewritten in~C and wrapped with \package{Cython} (\citealt{cython}; e.g., for
 convolution of images, sigma-clipping, and converting time strings to binary).
@@ -998,7 +998,7 @@ dangling file handle checking
 (\href{https://github.com/astropy/pytest-openfiles}{\texttt{pytest-openfiles}}),
 data array comparison support in tests
 (\href{https://github.com/astropy/pytest-arraydiff}{\texttt{pytest-arraydiff}}),
-sub-package command-line testing support
+subpackage command-line testing support
 (\href{https://github.com/astropy/pytest-filter-subpackage}{\texttt{pytest-filter-subpackage}}),
 improved mock object testing
 (\href{https://github.com/pytest-dev/pytest-mock}{\texttt{pytest-mock}}), test
@@ -1300,7 +1300,7 @@ heuristically extract metadata.
 A consequence of the new platform is that we now maintain and compile content
 separately from the website application itself, enabling new content types.
 Tutorials, which are written as Jupyter Notebooks, are now compiled into their
-own Learn Astropy sub-site using
+own Learn Astropy website using
 \href{https://github.com/astropy/nbcollection}{\texttt{nbcollection}}.
 Guides, which utilize the \href{https://jupyterbook.org/}{Jupyter Book} build
 infrastructure, are also deployed as separate websites using \github pages.
