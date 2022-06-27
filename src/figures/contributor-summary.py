@@ -80,7 +80,7 @@ era_colors = ['#1b9e77', '#d95f02', '#7570b3']
 commits_per_month = []
 for after_dt, before_dt in zip(month_bins[:-1].datetime,
                                month_bins[1:].datetime):
-    count = repo.git.rev_list(['--count', '--all', '--no-merges',
+    count = repo.git.rev_list(['--count', '--all',
                                f'--after={after_dt:%Y-%m-%d}',
                                f'--before={before_dt:%Y-%m-%d}'])
     commits_per_month.append(int(count))
@@ -125,7 +125,7 @@ committers_per_month = []
 for after_dt, before_dt in zip(month_bins[:-1],
                                month_bins[1:]):
     shortlog = repo.git.shortlog(
-        'HEAD', s=True, n=True, no_merges=True,
+        'HEAD', s=True, n=True,
         after=f"{after_dt.datetime:%Y-%m-%d}",
         before=f"{(before_dt + 1*u.day).datetime:%Y-%m-%d}"
     )
@@ -240,7 +240,7 @@ np.mean(committers_per_month[-20:])
 # ## Number of commits x number of committers
 
 full_shortlog = repo.git.shortlog(
-    'HEAD', s=True, n=True, no_merges=True,
+    'HEAD', s=True, n=True,
     before=f"{(v50_date + 1*u.day).datetime:%Y-%m-%d}"
 ).split('\n')
 full_n_commits = [int(x.split('\t')[0]) for x in full_shortlog]
