@@ -24,8 +24,7 @@ last paper).
 Journal
 -------
 
-The paper will be jointly submitted to the software section of the
-Astrophysical Journal and the Journal of Open Source Software.
+The paper appears in [the Astrophysical Journal](https://iopscience.iop.org/article/10.3847/1538-4357/ac7c74).
 
 
 Coordinators
